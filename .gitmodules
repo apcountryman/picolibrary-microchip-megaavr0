@@ -15,3 +15,8 @@
 
 # File: .gitmodules
 # Description: Git submodules of the picolibrary-microchip-megaavr0 repository.
+
+# AVR GCC CMake toolchain
+[submodule "toolchain-avr-gcc"]
+	path = toolchain-avr-gcc
+	url = ../toolchain-avr-gcc

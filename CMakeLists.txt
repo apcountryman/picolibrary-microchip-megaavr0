@@ -23,7 +23,7 @@ project(
 )
 
 # project configuration
-option( PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-megaavr0: use parent project's build flags" ON  )
+option( PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-megaavr0: use parent project's build flags" ON )
 
 # configure compilation and linking
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_BUILD_FLAGS} )

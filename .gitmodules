@@ -20,3 +20,18 @@
 [submodule "toolchain-avr-gcc"]
 	path = toolchain-avr-gcc
 	url = ../toolchain-avr-gcc
+
+# CMake modules
+[submodule "cmake/modules/cmake-utilities"]
+	path = cmake/modules/cmake-utilities
+	url = ../cmake-utilities
+
+# avr-libcpp
+[submodule "avr-libcpp"]
+	path = avr-libcpp
+	url = ../avr-libcpp
+
+# picolibrary
+[submodule "picolibrary"]
+	path = picolibrary
+	url = ../picolibrary

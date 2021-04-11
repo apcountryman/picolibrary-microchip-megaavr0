@@ -84,7 +84,7 @@ function display_version()
 
 function ensure_filenames_are_portable()
 {
-    message "checking for non-portable (non-ASCII) filenames .................................. "
+    message "checking for non-portable (non-ASCII) filenames ................................. "
 
     if [[ $( git -C "$repository" diff --cached --name-only --diff-filter=A -z "$against" | LC_ALL=C tr -d '[ -~]\0' | wc -c ) != 0 ]]; then
         errors_found
@@ -97,7 +97,7 @@ function ensure_filenames_are_portable()
 
 function ensure_no_whitespace_errors_are_present()
 {
-    message "checking for whitespace errors ................................................... "
+    message "checking for whitespace errors .................................................. "
 
     if ! git -C "$repository" diff-index --check --cached "$against" -- > "/dev/null" 2>&1; then
         errors_found
@@ -111,7 +111,7 @@ function ensure_no_whitespace_errors_are_present()
 
 function ensure_no_script_errors_are_present()
 {
-    message "checking for script errors ....................................................... "
+    message "checking for script errors ...................................................... "
 
     local scripts; mapfile -t scripts < <( git -C "$repository" ls-files ':!:avr-libcpp/' ':!:cmake/modules/' ':!:lizard/' ':!:picolibrary/' ':!:toolchain-avr-gcc/' | xargs -r -d '\n' -I '{}' find "$repository/{}" -executable ); readonly scripts
 
@@ -166,7 +166,7 @@ function ensure_no_build_errors_are_present()
 function ensure_no_release_atmega4809_build_errors_are_present()
 {
     local -r build_type="release-atmega4809"
-    local -r ellipsis="..................................."
+    local -r ellipsis=".................................."
 
     ensure_no_build_errors_are_present "$build_type" "$ellipsis"
 }
@@ -174,7 +174,7 @@ function ensure_no_release_atmega4809_build_errors_are_present()
 function ensure_no_testing_interactive_atmega4809_arduino_nano_every_build_errors_are_present()
 {
     local -r build_type="testing-interactive-atmega4809-arduino-nano-every"
-    local -r ellipsis="...."
+    local -r ellipsis="..."
 
     ensure_no_build_errors_are_present "$build_type" "$ellipsis"
 }

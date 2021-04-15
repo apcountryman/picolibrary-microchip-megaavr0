@@ -26,6 +26,7 @@ set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
     "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr0/version.cc"
     "picolibrary/microchip/megaavr0.cc"
+    "picolibrary/microchip/megaavr0/register.cc"
 )
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_LINK_LIBRARIES

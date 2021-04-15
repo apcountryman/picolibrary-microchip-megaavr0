@@ -27,6 +27,7 @@ set(
     "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr0/version.cc"
     "picolibrary/microchip/megaavr0.cc"
     "picolibrary/microchip/megaavr0/peripheral.cc"
+    "picolibrary/microchip/megaavr0/peripheral/atmega4809.cc"
     "picolibrary/microchip/megaavr0/register.cc"
 )
 set(

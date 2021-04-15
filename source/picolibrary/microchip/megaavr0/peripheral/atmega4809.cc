@@ -17,18 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809 implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
 #include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
-
-/**
- * \brief Microchip megaAVR 0-series peripheral facilities.
- */
-namespace picolibrary::Microchip::megaAVR0::Peripheral {
-} // namespace picolibrary::Microchip::megaAVR0::Peripheral
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H

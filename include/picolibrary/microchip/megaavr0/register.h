@@ -123,6 +123,38 @@ class Register {
     Type volatile m_register;
 };
 
+/**
+ * \brief A Microchip megaAVR 0-series reserved register.
+ *
+ * \tparam T The reserved register's underlying integral type.
+ */
+template<typename T>
+class Reserved_Register {
+  public:
+    /**
+     * \brief The reserved register's underlying integral type.
+     */
+    using Type = T;
+
+    Reserved_Register() = delete;
+
+    Reserved_Register( Reserved_Register && ) = delete;
+
+    Reserved_Register( Reserved_Register const & ) = delete;
+
+    ~Reserved_Register() = delete;
+
+    auto operator=( Reserved_Register && ) = delete;
+
+    auto operator=( Reserved_Register const & ) = delete;
+
+  private:
+    /**
+     * \brief The reserved register.
+     */
+    Type volatile m_reserved_register;
+};
+
 } // namespace picolibrary::Microchip::megaAVR0
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_REGISTER_H

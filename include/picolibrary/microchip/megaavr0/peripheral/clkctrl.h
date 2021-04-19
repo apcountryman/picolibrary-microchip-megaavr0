@@ -34,7 +34,7 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 /**
  * \brief Microchip megaAVR 0-series Clock Controller (CLKCTRL) peripheral.
  */
-class CLKCTRL : public Register<std::uint8_t> {
+class CLKCTRL {
   public:
     /**
      * \brief Main Clock Control A (MCLKCTRLA) register.

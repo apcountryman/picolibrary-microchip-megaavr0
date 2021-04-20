@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_ATMEGA4809_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_ATMEGA4809_H
 
+#include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+
 /**
  * \brief Microchip megaAVR 0-series ATmega4809 peripherals.
  *
@@ -31,6 +33,16 @@
  *            picolibrary::Microchip::megaAVR0::Peripheral namespace.
  */
 namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809 {
+
+/**
+ * \brief CLKCTRL0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0.
+ */
+using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
+
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {

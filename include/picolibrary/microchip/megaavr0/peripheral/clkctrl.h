@@ -529,64 +529,9 @@ class CLKCTRL {
     MCLKSTATUS mclkstatus;
 
     /**
-     * \brief Reserved register (offset 0x04).
+     * \brief Reserved registers (offset 0x04-0x0F).
      */
-    Reserved_Register<std::uint8_t> const reserved_0x04;
-
-    /**
-     * \brief Reserved register (offset 0x05).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x05;
-
-    /**
-     * \brief Reserved register (offset 0x06).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x06;
-
-    /**
-     * \brief Reserved register (offset 0x07).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x07;
-
-    /**
-     * \brief Reserved register (offset 0x08).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x08;
-
-    /**
-     * \brief Reserved register (offset 0x09).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x09;
-
-    /**
-     * \brief Reserved register (offset 0x0A).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0A;
-
-    /**
-     * \brief Reserved register (offset 0x0B).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0B;
-
-    /**
-     * \brief Reserved register (offset 0x0C).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0C;
-
-    /**
-     * \brief Reserved register (offset 0x0D).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0D;
-
-    /**
-     * \brief Reserved register (offset 0x0E).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0E;
-
-    /**
-     * \brief Reserved register (offset 0x0F).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0F;
+    Reserved_Register<std::uint8_t> const reserved_0x04_0x0F[ ( 0x0F - 0x04 ) + 1 ];
 
     /**
      * \brief OSC20MCTRLA.
@@ -604,29 +549,9 @@ class CLKCTRL {
     OSC20MCALIBB osc20mcalibb;
 
     /**
-     * \brief Reserved register (offset 0x13).
+     * \brief Reserved registers (offset 0x13-0x17).
      */
-    Reserved_Register<std::uint8_t> const reserved_0x13;
-
-    /**
-     * \brief Reserved register (offset 0x14).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x14;
-
-    /**
-     * \brief Reserved register (offset 0x15).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x15;
-
-    /**
-     * \brief Reserved register (offset 0x16).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x16;
-
-    /**
-     * \brief Reserved register (offset 0x17).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x17;
+    Reserved_Register<std::uint8_t> const reserved_0x13_0x17[ ( 0x17 - 0x13 ) + 1 ];
 
     /**
      * \brief OSC32KCTRLA.
@@ -634,19 +559,9 @@ class CLKCTRL {
     OSC32KCTRLA osc32kctrla;
 
     /**
-     * \brief Reserved register (offset 0x19).
+     * \brief Reserved registers (offset 0x19-0x1B).
      */
-    Reserved_Register<std::uint8_t> const reserved_0x19;
-
-    /**
-     * \brief Reserved register (offset 0x1A).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x1A;
-
-    /**
-     * \brief Reserved register (offset 0x1B).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x1B;
+    Reserved_Register<std::uint8_t> const reserved_0x19_0x1B[ ( 0x1B - 0x19 ) + 1 ];
 
     /**
      * \brief XOSC32KCTRLA.

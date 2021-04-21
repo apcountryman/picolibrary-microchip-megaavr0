@@ -30,6 +30,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/atmega4809.cc"
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/instance.cc"
+    "picolibrary/microchip/megaavr0/peripheral/port.cc"
     "picolibrary/microchip/megaavr0/register.cc"
 )
 set(

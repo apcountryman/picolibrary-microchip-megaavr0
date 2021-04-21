@@ -25,6 +25,7 @@
 
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
+#include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
  * \brief Microchip megaAVR 0-series ATmega4809 peripherals.
@@ -34,6 +35,60 @@
  *            picolibrary::Microchip::megaAVR0::Peripheral namespace.
  */
 namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809 {
+
+/**
+ * \brief VPORTA.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTA.
+ */
+using VPORTA = VPORT_Instance<0x0000>;
+
+/**
+ * \brief VPORTB.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTB.
+ */
+using VPORTB = VPORT_Instance<0x0004>;
+
+/**
+ * \brief VPORTC.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTC.
+ */
+using VPORTC = VPORT_Instance<0x0008>;
+
+/**
+ * \brief VPORTD.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTD.
+ */
+using VPORTD = VPORT_Instance<0x000C>;
+
+/**
+ * \brief VPORTE.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTE.
+ */
+using VPORTE = VPORT_Instance<0x0010>;
+
+/**
+ * \brief VPORTF.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTF.
+ */
+using VPORTF = VPORT_Instance<0x0014>;
 
 /**
  * \brief CLKCTRL0.

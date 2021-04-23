@@ -25,6 +25,7 @@
 
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
+#include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
@@ -152,6 +153,15 @@ using PORTE = PORT_Instance<0x0480>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::PORTF.
  */
 using PORTF = PORT_Instance<0x04A0>;
+
+/**
+ * \brief PORTMUX0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX0.
+ */
+using PORTMUX0 = PORTMUX_Instance<0x05E0>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809
 

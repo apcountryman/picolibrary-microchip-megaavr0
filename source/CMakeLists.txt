@@ -31,6 +31,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/instance.cc"
     "picolibrary/microchip/megaavr0/peripheral/port.cc"
+    "picolibrary/microchip/megaavr0/peripheral/portmux.cc"
     "picolibrary/microchip/megaavr0/peripheral/vport.cc"
     "picolibrary/microchip/megaavr0/register.cc"
 )

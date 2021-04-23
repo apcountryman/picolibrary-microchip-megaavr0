@@ -219,7 +219,7 @@ class PORTMUX {
     };
 
     /**
-     * \brief PORTMUX Control for USART (TWISPIROUTEA) register.
+     * \brief PORTMUX Control for TWI and SPI (TWISPIROUTEA) register.
      *
      * This register has the following fields:
      * - SPI 0 Communication (SPI0)

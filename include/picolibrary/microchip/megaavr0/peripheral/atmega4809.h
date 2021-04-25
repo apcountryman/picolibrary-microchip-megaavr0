@@ -26,6 +26,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
@@ -162,6 +163,42 @@ using PORTF = PORT_Instance<0x04A0>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX0.
  */
 using PORTMUX0 = PORTMUX_Instance<0x05E0>;
+
+/**
+ * \brief USART0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::USART0.
+ */
+using USART0 = USART_Instance<0x0800>;
+
+/**
+ * \brief USART1.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::USART1.
+ */
+using USART1 = USART_Instance<0x0820>;
+
+/**
+ * \brief USART2.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::USART2.
+ */
+using USART2 = USART_Instance<0x0840>;
+
+/**
+ * \brief USART3.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::USART3.
+ */
+using USART3 = USART_Instance<0x0860>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809
 

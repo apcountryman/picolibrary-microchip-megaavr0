@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_ATMEGA4809_H
 
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/cpu.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
@@ -91,6 +92,15 @@ using VPORTE = VPORT_Instance<0x0010>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTF.
  */
 using VPORTF = VPORT_Instance<0x0014>;
+
+/**
+ * \brief CPU0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::CPU0.
+ */
+using CPU0 = CPU_Instance<0x0030>;
 
 /**
  * \brief CLKCTRL0.

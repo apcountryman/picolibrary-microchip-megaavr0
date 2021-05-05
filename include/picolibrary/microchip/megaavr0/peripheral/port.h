@@ -255,6 +255,17 @@ class PORT {
     }
 
     /**
+     * \brief Configure a pin to act as a open-drain I/O pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured to act as a
+     *            open-drain I/O pin.
+     */
+    void configure_pin_as_open_drain_io( std::uint8_t mask ) noexcept
+    {
+        outclr = mask;
+    }
+
+    /**
      * \brief Enable a pin's internal pull-up resistor.
      *
      * \param[in] n The pin number of the pin whose internal pull-up resistor is to be
@@ -300,6 +311,17 @@ class PORT {
     }
 
     /**
+     * \brief Transition a open-drain I/O pin to the high state.
+     *
+     * \param[in] mask The mask identifying the open-drain I/O pin to transition to the
+     *            high state.
+     */
+    void transition_open_drain_io_to_high( std::uint8_t mask ) noexcept
+    {
+        dirclr = mask;
+    }
+
+    /**
      * \brief Transition a push-pull I/O pin to the low state.
      *
      * \param[in] mask The mask identifying the push-pull I/O pin to transition to the low
@@ -311,6 +333,17 @@ class PORT {
     }
 
     /**
+     * \brief Transition a open-drain I/O pin to the low state.
+     *
+     * \param[in] mask The mask identifying the open-drain I/O pin to transition to the
+     *            low state.
+     */
+    void transition_open_drain_io_to_low( std::uint8_t mask ) noexcept
+    {
+        dirset = mask;
+    }
+
+    /**
      * \brief Toggle the state of a push-pull I/O pin.
      *
      * \param[in] mask The mask identifying the push-pull I/O pin to toggle the state of.
@@ -318,6 +351,16 @@ class PORT {
     void toggle_push_pull_io( std::uint8_t mask ) noexcept
     {
         outtgl = mask;
+    }
+
+    /**
+     * \brief Toggle the state of a open-drain I/O pin.
+     *
+     * \param[in] mask The mask identifying the open-drain I/O pin to toggle the state of.
+     */
+    void toggle_open_drain_io( std::uint8_t mask ) noexcept
+    {
+        dirtgl = mask;
     }
 };
 

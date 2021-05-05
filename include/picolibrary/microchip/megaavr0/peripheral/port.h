@@ -255,9 +255,9 @@ class PORT {
     }
 
     /**
-     * \brief Configure a pin to act as a open-drain I/O pin.
+     * \brief Configure a pin to act as an open-drain I/O pin.
      *
-     * \param[in] mask The mask identifying the pin to be configured to act as a
+     * \param[in] mask The mask identifying the pin to be configured to act as an
      *            open-drain I/O pin.
      */
     void configure_pin_as_open_drain_io( std::uint8_t mask ) noexcept
@@ -311,7 +311,7 @@ class PORT {
     }
 
     /**
-     * \brief Transition a open-drain I/O pin to the high state.
+     * \brief Transition an open-drain I/O pin to the high state.
      *
      * \param[in] mask The mask identifying the open-drain I/O pin to transition to the
      *            high state.
@@ -333,7 +333,7 @@ class PORT {
     }
 
     /**
-     * \brief Transition a open-drain I/O pin to the low state.
+     * \brief Transition an open-drain I/O pin to the low state.
      *
      * \param[in] mask The mask identifying the open-drain I/O pin to transition to the
      *            low state.
@@ -354,7 +354,7 @@ class PORT {
     }
 
     /**
-     * \brief Toggle the state of a open-drain I/O pin.
+     * \brief Toggle the state of an open-drain I/O pin.
      *
      * \param[in] mask The mask identifying the open-drain I/O pin to toggle the state of.
      */

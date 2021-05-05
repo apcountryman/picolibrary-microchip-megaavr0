@@ -137,6 +137,22 @@ class PORT {
         auto operator=( PINCTRL const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Enable a pin's internal pull-up resistor.
+         */
+        void enable_pull_up() noexcept
+        {
+            *this |= Mask::PULLUPEN;
+        }
+
+        /**
+         * \brief Disable a pin's internal pull-up resistor.
+         */
+        void disable_pull_up() noexcept
+        {
+            *this &= ~Mask::PULLUPEN;
+        }
     };
 
     /**
@@ -215,6 +231,51 @@ class PORT {
     auto operator=( PORT && ) = delete;
 
     auto operator=( PORT const & ) = delete;
+
+    /**
+     * \brief Configure a pin to act as an internally pulled-up input pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured to act as an
+     *            internally pulled-up input.
+     */
+    void configure_pin_as_internally_pulled_up_input( std::uint8_t mask ) noexcept
+    {
+        dirclr = mask;
+    }
+
+    /**
+     * \brief Enable a pin's internal pull-up resistor.
+     *
+     * \param[in] n The pin number of the pin whose internal pull-up resistor is to be
+     *            enabled.
+     */
+    void enable_pull_up( std::uint_fast8_t n ) noexcept
+    {
+        pinctrl[ n ].enable_pull_up();
+    }
+
+    /**
+     * \brief Disable a pin's internal pull-up resistor.
+     *
+     * \param[in] n The pin number of the pin whose internal pull-up resistor is to be
+     *            disabled.
+     */
+    void disable_pull_up( std::uint_fast8_t n ) noexcept
+    {
+        pinctrl[ n ].disable_pull_up();
+    }
+
+    /**
+     * \brief Get the state of a pin.
+     *
+     * \input[in] mask The mask identifying the pin whose state is to be gotten.
+     *
+     * \return The state of the pin.
+     */
+    auto state( std::uint8_t mask ) const noexcept -> std::uint8_t
+    {
+        return in & mask;
+    }
 };
 
 /**

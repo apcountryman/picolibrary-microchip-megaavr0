@@ -80,6 +80,17 @@ class VPORT {
     }
 
     /**
+     * \brief Configure a pin to act as a push-pull I/O pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured to act as a push-pull
+     *            I/O pin.
+     */
+    void configure_pin_as_push_pull_io( std::uint8_t mask ) noexcept
+    {
+        dir |= mask;
+    }
+
+    /**
      * \brief Get the state of a pin.
      *
      * \param[in] mask The mask identifying the pin whose state is to be gotten.
@@ -89,6 +100,38 @@ class VPORT {
     auto state( std::uint8_t mask ) const noexcept -> std::uint8_t
     {
         return in & mask;
+    }
+
+    /**
+     * \brief Transition a push-pull I/O pin to the high state.
+     *
+     * \param[in] mask The mask identifying the push-pull I/O pin to transition to the
+     *            high state.
+     */
+    void transition_push_pull_io_to_high( std::uint8_t mask ) noexcept
+    {
+        out |= mask;
+    }
+
+    /**
+     * \brief Transition a push-pull I/O pin to the low state.
+     *
+     * \param[in] mask The mask identifying the push-pull I/O pin to transition to the low
+     *            state.
+     */
+    void transition_push_pull_io_to_low( std::uint8_t mask ) noexcept
+    {
+        out &= ~mask;
+    }
+
+    /**
+     * \brief Toggle the state of a push-pull I/O pin.
+     *
+     * \param[in] mask The mask identifying the push-pull I/O pin to toggle the state of.
+     */
+    void toggle_push_pull_io( std::uint8_t mask ) noexcept
+    {
+        out ^= mask;
     }
 };
 

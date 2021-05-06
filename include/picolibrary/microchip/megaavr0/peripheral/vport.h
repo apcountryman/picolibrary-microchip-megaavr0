@@ -67,6 +67,29 @@ class VPORT {
     auto operator=( VPORT && ) = delete;
 
     auto operator=( VPORT const & ) = delete;
+
+    /**
+     * \brief Configure a pin to act as an input pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured to act as an input
+     *            pin.
+     */
+    void configure_pin_as_input( std::uint8_t mask ) noexcept
+    {
+        dir &= ~mask;
+    }
+
+    /**
+     * \brief Get the state of a pin.
+     *
+     * \param[in] mask The mask identifying the pin whose state is to be gotten.
+     *
+     * \return The state of the pin.
+     */
+    auto state( std::uint8_t mask ) const noexcept -> std::uint8_t
+    {
+        return in & mask;
+    }
 };
 
 /**

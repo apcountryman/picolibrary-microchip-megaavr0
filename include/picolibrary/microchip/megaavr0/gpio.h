@@ -27,6 +27,15 @@
  * \brief Microchip megaAVR 0-series General Purpose Input/Output (GPIO) facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::GPIO {
+
+/**
+ * \brief Input pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement input pin functionality.
+ */
+template<typename Peripheral>
+class Input_Pin;
+
 } // namespace picolibrary::Microchip::megaAVR0::GPIO
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H

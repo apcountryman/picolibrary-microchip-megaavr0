@@ -233,6 +233,17 @@ class PORT {
     auto operator=( PORT const & ) = delete;
 
     /**
+     * \brief Configure a pin to act as an input pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured to act as an
+     *            input pin.
+     */
+    void configure_pin_as_input( std::uint8_t mask ) noexcept
+    {
+        dirclr = mask;
+    }
+
+    /**
      * \brief Configure a pin to act as an internally pulled-up input pin.
      *
      * \param[in] mask The mask identifying the pin to be configured to act as an

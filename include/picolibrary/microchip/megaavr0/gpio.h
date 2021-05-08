@@ -144,6 +144,160 @@ class Input_Pin {
     std::uint8_t m_mask{};
 };
 
+/**
+ * \brief Internally pulled-up input pin.
+ */
+class Internally_Pulled_Up_Input_Pin {
+  public:
+    /**
+     * \brief Initial internal pull-up resistor state.
+     */
+    using Initial_Pull_Up_State = ::picolibrary::GPIO::Initial_Pull_Up_State;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] port The GPIO port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
+        m_port{ &port },
+        m_mask{ mask }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin && source ) noexcept :
+        m_port{ source.m_port },
+        m_mask{ source.m_mask }
+    {
+        source.m_port = nullptr;
+        source.m_mask = 0;
+    }
+
+    Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Internally_Pulled_Up_Input_Pin() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_port = expression.m_port;
+            m_mask = expression.m_mask;
+
+            expression.m_port = nullptr;
+            expression.m_mask = 0;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Internally_Pulled_Up_Input_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \param[in] initial_pull_up_state The initial state of the pin's internal pull-up
+     *            resistor.
+     *
+     * \return Success.
+     */
+    auto initialize( Initial_Pull_Up_State initial_pull_up_state = Initial_Pull_Up_State::DISABLED ) noexcept
+        -> Result<Void, Void>
+    {
+        m_port->configure_pin_as_internally_pulled_up_input( m_mask );
+
+        switch ( initial_pull_up_state ) {
+            case Initial_Pull_Up_State::ENABLED: m_port->enable_pull_up( m_mask ); break;
+            case Initial_Pull_Up_State::DISABLED:
+                m_port->disable_pull_up( m_mask );
+                break;
+        } // switch
+
+        return {};
+    }
+
+    /**
+     * \brief Enable the pin's internal pull-up resistor.
+     *
+     * \return Success.
+     */
+    auto enable_pull_up() noexcept -> Result<Void, Void>
+    {
+        m_port->enable_pull_up( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Disable the pin's internal pull-up resistor.
+     *
+     * \return Success.
+     */
+    auto disable_pull_up() noexcept -> Result<Void, Void>
+    {
+        m_port->disable_pull_up( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Get the state of the pin.
+     *
+     * \return High if the pin is high.
+     * \return Low if the pin is low.
+     */
+    auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
+    {
+        return static_cast<bool>( m_port->state( m_mask ) );
+    }
+
+  private:
+    /**
+     * \brief The GPIO port the pin is a member of.
+     */
+    Peripheral::PORT * m_port{};
+
+    /**
+     * \brief The mask identifying the pin.
+     */
+    std::uint8_t m_mask{};
+
+    /**
+     * \brief Disable the pin's internal pull-up resistor.
+     */
+    void disable() noexcept
+    {
+        if ( m_port ) {
+            m_port->disable_pull_up( m_mask );
+        } // if
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::GPIO
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H

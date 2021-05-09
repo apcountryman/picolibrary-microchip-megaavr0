@@ -26,6 +26,7 @@
 #include <cstdint>
 #include <type_traits>
 
+#include "picolibrary/bit_manipulation.h"
 #include "picolibrary/gpio.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
@@ -167,7 +168,8 @@ class Internally_Pulled_Up_Input_Pin {
      */
     constexpr Internally_Pulled_Up_Input_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
         m_port{ &port },
-        m_mask{ mask }
+        m_mask{ mask },
+        m_n{ highest_bit_set( mask ) }
     {
     }
 
@@ -178,10 +180,12 @@ class Internally_Pulled_Up_Input_Pin {
      */
     constexpr Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin && source ) noexcept :
         m_port{ source.m_port },
-        m_mask{ source.m_mask }
+        m_mask{ source.m_mask },
+        m_n{ source.m_n }
     {
         source.m_port = nullptr;
         source.m_mask = 0;
+        source.m_n    = 0;
     }
 
     Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin const & ) = delete;
@@ -208,9 +212,11 @@ class Internally_Pulled_Up_Input_Pin {
 
             m_port = expression.m_port;
             m_mask = expression.m_mask;
+            m_n    = expression.m_n;
 
             expression.m_port = nullptr;
             expression.m_mask = 0;
+            expression.m_n    = 0;
         } // if
 
         return *this;
@@ -232,10 +238,8 @@ class Internally_Pulled_Up_Input_Pin {
         m_port->configure_pin_as_internally_pulled_up_input( m_mask );
 
         switch ( initial_pull_up_state ) {
-            case Initial_Pull_Up_State::ENABLED: m_port->enable_pull_up( m_mask ); break;
-            case Initial_Pull_Up_State::DISABLED:
-                m_port->disable_pull_up( m_mask );
-                break;
+            case Initial_Pull_Up_State::ENABLED: m_port->enable_pull_up( m_n ); break;
+            case Initial_Pull_Up_State::DISABLED: m_port->disable_pull_up( m_n ); break;
         } // switch
 
         return {};
@@ -248,7 +252,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto enable_pull_up() noexcept -> Result<Void, Void>
     {
-        m_port->enable_pull_up( m_mask );
+        m_port->enable_pull_up( m_n );
 
         return {};
     }
@@ -260,7 +264,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto disable_pull_up() noexcept -> Result<Void, Void>
     {
-        m_port->disable_pull_up( m_mask );
+        m_port->disable_pull_up( m_n );
 
         return {};
     }
@@ -288,12 +292,17 @@ class Internally_Pulled_Up_Input_Pin {
     std::uint8_t m_mask{};
 
     /**
+     * \brief The pin number.
+     */
+    std::uint_fast8_t m_n{};
+
+    /**
      * \brief Disable the pin's internal pull-up resistor.
      */
     void disable() noexcept
     {
         if ( m_port ) {
-            m_port->disable_pull_up( m_mask );
+            m_port->disable_pull_up( m_n );
         } // if
     }
 };

@@ -298,6 +298,181 @@ class Internally_Pulled_Up_Input_Pin {
     }
 };
 
+/**
+ * \brief Open-drain Input/Output (I/O) pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement open-drain I/O pin
+ *         functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or
+ *         picolibrary::Microchip::megaAVR0::Peripheral::VPORT).
+ */
+template<typename Peripheral>
+class Open_Drain_IO_Pin {
+  public:
+    static_assert(
+        std::is_same_v<Peripheral, ::picolibrary::Microchip::megaAVR0::Peripheral::PORT> or std::is_same_v<Peripheral, ::picolibrary::Microchip::megaAVR0::Peripheral::VPORT> );
+
+    /**
+     * \brief Initial pin state.
+     */
+    using Initial_Pin_State = ::picolibrary::GPIO::Initial_Pin_State;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Open_Drain_IO_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] port The GPIO port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    constexpr Open_Drain_IO_Pin( Peripheral & port, std::uint8_t mask ) noexcept :
+        m_port{ &port },
+        m_mask{ mask }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Open_Drain_IO_Pin( Open_Drain_IO_Pin && source ) noexcept :
+        m_port{ source.m_port },
+        m_mask{ source.m_mask }
+    {
+        source.m_port = nullptr;
+        source.m_mask = 0;
+    }
+
+    Open_Drain_IO_Pin( Open_Drain_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Open_Drain_IO_Pin() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto & operator=( Open_Drain_IO_Pin && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_port = expression.m_port;
+            m_mask = expression.m_mask;
+
+            expression.m_port = nullptr;
+            expression.m_mask = 0;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Open_Drain_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \param[in] initial_pin_state The initial state of the pin.
+     *
+     * \return Success.
+     */
+    auto initialize( Initial_Pin_State initial_pin_state = Initial_Pin_State::LOW ) noexcept
+        -> Result<Void, Void>
+    {
+        m_port->configure_pin_as_open_drain_io( m_mask );
+
+        switch ( initial_pin_state ) {
+            case Initial_Pin_State::HIGH:
+                m_port->transition_open_drain_io_to_high( m_mask );
+                break;
+            case Initial_Pin_State::LOW:
+                m_port->transition_open_drain_io_to_low( m_mask );
+                break;
+        } // switch
+
+        return {};
+    }
+
+    /**
+     * \brief Get the state of the pin.
+     *
+     * \return High if the pin is high.
+     * \return Low if the pin is low.
+     */
+    auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
+    {
+        return static_cast<bool>( m_port->state( m_mask ) );
+    }
+
+    /**
+     * \brief Transition the pin to the high state.
+     *
+     * \return Success.
+     */
+    auto transition_to_high() noexcept -> Result<Void, Void>
+    {
+        m_port->transition_open_drain_io_to_high( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Transition the pin to the low state.
+     *
+     * \return Success.
+     */
+    auto transition_to_low() noexcept -> Result<Void, Void>
+    {
+        m_port->transition_open_drain_io_to_low( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Toggle the pin state.
+     *
+     * \return Success.
+     */
+    auto toggle() noexcept -> Result<Void, Void>
+    {
+        m_port->toggle_open_drain_io( m_mask );
+
+        return {};
+    }
+
+  private:
+    /**
+     * \brief The GPIO port the pin is a member of.
+     */
+    Peripheral * m_port{};
+
+    /**
+     * \brief The mask identifying the pin.
+     */
+    std::uint8_t m_mask{};
+
+    /**
+     * \brief Disable the pin.
+     */
+    void disable() noexcept
+    {
+        if ( m_port ) {
+            m_port->configure_pin_as_input( m_mask );
+        } // if
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::GPIO
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H

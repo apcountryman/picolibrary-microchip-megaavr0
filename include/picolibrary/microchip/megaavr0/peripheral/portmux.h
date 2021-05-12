@@ -37,6 +37,15 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 class PORTMUX {
   public:
     /**
+     * \brief USART routing configuration.
+     */
+    enum class USART_Route : std::uint_fast8_t {
+        DEFAULT   = 0x0, ///< Default route.
+        ALTERNATE = 0x1, ///< Alternate route.
+        NONE      = 0x3, ///< Not routed.
+    };
+
+    /**
      * \brief PORTMUX Control for Event System (EVSYSROUTEA) register.
      *
      * This register has the following fields:
@@ -216,6 +225,86 @@ class PORTMUX {
         auto operator=( USARTROUTEA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Get the USART0 routing configuration.
+         *
+         * \return The USART0 routing configuration.
+         */
+        auto usart0_route() const noexcept
+        {
+            return static_cast<USART_Route>( ( *this & Mask::USART0 ) >> Bit::USART0 );
+        }
+
+        /**
+         * \brief Set the USART0 routing configuration.
+         *
+         * \param[in] route The desired USART0 routing configuration.
+         */
+        void set_usart0_route( USART_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::USART0 ) | ( static_cast<std::uint8_t>( route ) << Bit::USART0 );
+        }
+
+        /**
+         * \brief Get the USART1 routing configuration.
+         *
+         * \return The USART1 routing configuration.
+         */
+        auto usart1_route() const noexcept
+        {
+            return static_cast<USART_Route>( ( *this & Mask::USART1 ) >> Bit::USART1 );
+        }
+
+        /**
+         * \brief Set the USART1 routing configuration.
+         *
+         * \param[in] route The desired USART1 routing configuration.
+         */
+        void set_usart1_route( USART_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::USART1 ) | ( static_cast<std::uint8_t>( route ) << Bit::USART1 );
+        }
+
+        /**
+         * \brief Get the USART2 routing configuration.
+         *
+         * \return The USART2 routing configuration.
+         */
+        auto usart2_route() const noexcept
+        {
+            return static_cast<USART_Route>( ( *this & Mask::USART2 ) >> Bit::USART2 );
+        }
+
+        /**
+         * \brief Set the USART2 routing configuration.
+         *
+         * \param[in] route The desired USART2 routing configuration.
+         */
+        void set_usart2_route( USART_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::USART2 ) | ( static_cast<std::uint8_t>( route ) << Bit::USART2 );
+        }
+
+        /**
+         * \brief Get the USART3 routing configuration.
+         *
+         * \return The USART3 routing configuration.
+         */
+        auto usart3_route() const noexcept
+        {
+            return static_cast<USART_Route>( ( *this & Mask::USART3 ) >> Bit::USART3 );
+        }
+
+        /**
+         * \brief Set the USART3 routing configuration.
+         *
+         * \param[in] route The desired USART3 routing configuration.
+         */
+        void set_usart3_route( USART_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::USART3 ) | ( static_cast<std::uint8_t>( route ) << Bit::USART3 );
+        }
     };
 
     /**
@@ -419,6 +508,86 @@ class PORTMUX {
     auto operator=( PORTMUX && ) = delete;
 
     auto operator=( PORTMUX const & ) = delete;
+
+    /**
+     * \brief Get the USART0 routing configuration.
+     *
+     * \return The USART0 routing configuration.
+     */
+    auto usart0_route() const noexcept
+    {
+        return usartroutea.usart0_route();
+    }
+
+    /**
+     * \brief Set the USART0 routing configuration.
+     *
+     * \param[in] route The desired USART0 routing configuration.
+     */
+    void set_usart0_route( USART_Route route ) noexcept
+    {
+        usartroutea.set_usart0_route( route );
+    }
+
+    /**
+     * \brief Get the USART1 routing configuration.
+     *
+     * \return The USART1 routing configuration.
+     */
+    auto usart1_route() const noexcept
+    {
+        return usartroutea.usart1_route();
+    }
+
+    /**
+     * \brief Set the USART1 routing configuration.
+     *
+     * \param[in] route The desired USART1 routing configuration.
+     */
+    void set_usart1_route( USART_Route route ) noexcept
+    {
+        usartroutea.set_usart1_route( route );
+    }
+
+    /**
+     * \brief Get the USART2 routing configuration.
+     *
+     * \return The USART2 routing configuration.
+     */
+    auto usart2_route() const noexcept
+    {
+        return usartroutea.usart2_route();
+    }
+
+    /**
+     * \brief Set the USART2 routing configuration.
+     *
+     * \param[in] route The desired USART2 routing configuration.
+     */
+    void set_usart2_route( USART_Route route ) noexcept
+    {
+        usartroutea.set_usart2_route( route );
+    }
+
+    /**
+     * \brief Get the USART3 routing configuration.
+     *
+     * \return The USART3 routing configuration.
+     */
+    auto usart3_route() const noexcept
+    {
+        return usartroutea.usart3_route();
+    }
+
+    /**
+     * \brief Set the USART3 routing configuration.
+     *
+     * \param[in] route The desired USART3 routing configuration.
+     */
+    void set_usart3_route( USART_Route route ) noexcept
+    {
+        usartroutea.set_usart3_route( route );
+    }
 };
 
 /**

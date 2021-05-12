@@ -17,18 +17,8 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals interface.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809
+ *        implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809.h"
-
-/**
- * \brief Microchip megaAVR 0-series multiplexed signals facilities.
- */
-namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
-} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H

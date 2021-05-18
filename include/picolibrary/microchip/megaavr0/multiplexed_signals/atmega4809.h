@@ -169,6 +169,8 @@ inline auto & xck_vport( Peripheral::USART const & usart ) noexcept
  */
 inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
@@ -264,6 +266,8 @@ inline auto xdir_vport( Peripheral::USART const & usart ) noexcept -> Peripheral
  */
 inline auto xdir_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
@@ -359,6 +363,8 @@ inline auto txd_vport( Peripheral::USART const & usart ) noexcept -> Peripheral:
  */
 inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
@@ -454,6 +460,8 @@ inline auto rxd_vport( Peripheral::USART const & usart ) noexcept -> Peripheral:
  */
 inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {

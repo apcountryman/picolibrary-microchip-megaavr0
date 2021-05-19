@@ -232,7 +232,7 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's XDIR pin port.
  */
-inline auto xdir_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & xdir_port( Peripheral::USART const & usart ) noexcept
 {
     return usart_port( usart );
 }
@@ -248,7 +248,7 @@ inline auto xdir_port( Peripheral::USART const & usart ) noexcept -> Peripheral:
  *
  * \return The USART peripheral's XDIR pin virtual port.
  */
-inline auto xdir_vport( Peripheral::USART const & usart ) noexcept -> Peripheral::VPORT &
+inline auto & xdir_vport( Peripheral::USART const & usart ) noexcept
 {
     return usart_vport( usart );
 }
@@ -329,7 +329,7 @@ inline auto xdir_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_
  *
  * \return The USART peripheral's TXD pin port.
  */
-inline auto txd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & txd_port( Peripheral::USART const & usart ) noexcept
 {
     return usart_port( usart );
 }
@@ -345,7 +345,7 @@ inline auto txd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::
  *
  * \return The USART peripheral's TXD pin virtual port.
  */
-inline auto txd_vport( Peripheral::USART const & usart ) noexcept -> Peripheral::VPORT &
+inline auto & txd_vport( Peripheral::USART const & usart ) noexcept
 {
     return usart_vport( usart );
 }
@@ -426,7 +426,7 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's RXD pin port.
  */
-inline auto rxd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto  &rxd_port( Peripheral::USART const & usart ) noexcept
 {
     return usart_port( usart );
 }
@@ -442,7 +442,7 @@ inline auto rxd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::
  *
  * \return The USART peripheral's RXD pin virtual port.
  */
-inline auto rxd_vport( Peripheral::USART const & usart ) noexcept -> Peripheral::VPORT &
+inline auto & rxd_vport( Peripheral::USART const & usart ) noexcept
 {
     return usart_vport( usart );
 }

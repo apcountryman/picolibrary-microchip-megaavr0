@@ -426,7 +426,7 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's RXD pin port.
  */
-inline auto  &rxd_port( Peripheral::USART const & usart ) noexcept
+inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
 {
     return usart_port( usart );
 }

@@ -37,6 +37,16 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  */
 class USART {
   public:
+    enum class Mode : std::uint8_t;
+
+    enum class Data_Bits : std::uint8_t;
+
+    enum class Parity : std::uint8_t;
+
+    enum class Stop_Bits : std::uint8_t;
+
+    enum class Operating_Speed : std::uint8_t;
+
     /**
      * \brief Receiver Data Register High Byte (RXDATAH) register.
      *
@@ -216,6 +226,36 @@ class USART {
         auto operator=( STATUS const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Check if the transmit buffer is empty.
+         *
+         * \return true if the transmit buffer is empty.
+         * \return false if the transmit buffer is not empty.
+         */
+        auto transmit_buffer_empty() const noexcept -> bool
+        {
+            return *this & Mask::DREIF;
+        }
+
+        /**
+         * \brief Check if transmission is complete.
+         *
+         * \return true if transmission is complete.
+         * \return false if transmission is not complete.
+         */
+        auto transmission_complete() const noexcept -> bool
+        {
+            return *this & Mask::TXCIF;
+        }
+
+        /**
+         * \clear the transmission complete flag.
+         */
+        void clear_transmission_complete() noexcept
+        {
+            *this |= Mask::TXCIF;
+        }
     };
 
     /**
@@ -351,6 +391,40 @@ class USART {
         auto operator=( CTRLB const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the USART for use as an asynchronous USART.
+         *
+         * \param[in] operating_speed The desired clock generator operating speed.
+         */
+        void configure_as_asynchronous_serial_usart( Operating_Speed operating_speed ) noexcept
+        {
+            *this = static_cast<std::uint8_t>( operating_speed );
+        }
+
+        /**
+         * \brief Enable the transmitter.
+         */
+        void enable_transmitter() noexcept
+        {
+            *this |= Mask::TXEN;
+        }
+
+        /**
+         * \brief Disable the transmitter.
+         */
+        void disable_transmitter() noexcept
+        {
+            *this &= ~Mask::TXEN;
+        }
+
+        /**
+         * \brief Disable the receiver and transmitter.
+         */
+        void disable() noexcept
+        {
+            *this &= static_cast<std::uint8_t>( ~( Mask::RXEN | Mask::TXEN ) );
+        }
     };
 
     /**
@@ -424,6 +498,15 @@ class USART {
         auto operator=( CTRLC const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the USART for use as an asynchronous USART.
+         *
+         * \param[in] data_bits The desired number of data bits.
+         * \param[in] parity The desired parity mode.
+         * \param[in] stop_bits The desired number of stop bits.
+         */
+        void configure_as_asynchronous_serial_usart( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept;
     };
 
     /**
@@ -615,6 +698,52 @@ class USART {
     };
 
     /**
+     * \brief USART mode.
+     */
+    enum class Mode : std::uint8_t {
+        ASYNCHRONOUS_USART = 0x0 << CTRLC::Bit::CMODE, ///< Asynchronous USART.
+        SYNCHRONOUS_USART  = 0x1 << CTRLC::Bit::CMODE, ///< Synchronous USART.
+        INFRARED           = 0x2 << CTRLC::Bit::CMODE, ///< Infrared.
+        SPI_CONTROLLER     = 0x3 << CTRLC::Bit::CMODE, ///< SPI controller.
+    };
+
+    /**
+     * \brief Data bits.
+     */
+    enum class Data_Bits : std::uint8_t {
+        _5 = 0x0 << CTRLC::Bit::CHSIZE, ///< 5.
+        _6 = 0x1 << CTRLC::Bit::CHSIZE, ///< 6.
+        _7 = 0x2 << CTRLC::Bit::CHSIZE, ///< 7.
+        _8 = 0x3 << CTRLC::Bit::CHSIZE, ///< 8.
+        _9 = 0x7 << CTRLC::Bit::CHSIZE, ///< 9.
+    };
+
+    /**
+     * \brief Parity mode.
+     */
+    enum class Parity : std::uint8_t {
+        NONE = 0x0 << CTRLC::Bit::PMODE, ///< None.
+        EVEN = 0x2 << CTRLC::Bit::PMODE, ///< Even.
+        ODD  = 0x3 << CTRLC::Bit::PMODE, ///< Odd.
+    };
+
+    /**
+     * \brief Stop bits.
+     */
+    enum class Stop_Bits : std::uint8_t {
+        _1 = 0x0 << CTRLC::Bit::SBMODE, ///< 1.
+        _2 = 0x1 << CTRLC::Bit::SBMODE, ///< 2.
+    };
+
+    /**
+     * \brief Clock generator operating speed.
+     */
+    enum class Operating_Speed : std::uint8_t {
+        NORMAL = 0x0 << CTRLB::Bit::RXMODE, ///< Normal.
+        DOUBLE = 0x1 << CTRLB::Bit::RXMODE, ///< Double.
+    };
+
+    /**
      * \brief Receiver Data Register Low Byte (RXDATAL) register.
      */
     Register<std::uint8_t> rxdatal;
@@ -695,7 +824,105 @@ class USART {
     auto operator=( USART && ) = delete;
 
     auto operator=( USART const & ) = delete;
+
+    /**
+     * \brief Configure the USART for use as an asynchronous USART.
+     *
+     * \param[in] data_bits The desired number of data bits.
+     * \param[in] parity The desired parity mode.
+     * \param[in] stop_bits The desired number of stop bits.
+     * \param[in] operating_speed The desired clock generator operating speed.
+     * \param[in] scaling_factor The desired clock generator scaling factor.
+     */
+    void configure_as_asynchronous_serial_usart(
+        Data_Bits       data_bits,
+        Parity          parity,
+        Stop_Bits       stop_bits,
+        Operating_Speed operating_speed,
+        std::uint16_t   scaling_factor ) noexcept
+    {
+        ctrlc.configure_as_asynchronous_serial_usart( data_bits, parity, stop_bits );
+        ctrlb.configure_as_asynchronous_serial_usart( operating_speed );
+
+        baud = scaling_factor;
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::enable_transmitter()
+     */
+    void enable_transmitter() noexcept
+    {
+        ctrlb.enable_transmitter();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::disable_transmitter()
+     */
+    void disable_transmitter() noexcept
+    {
+        ctrlb.disable_transmitter();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::disable()
+     */
+    void disable() noexcept
+    {
+        ctrlb.disable();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::transmit_buffer_empty()
+     */
+    auto transmit_buffer_empty() const noexcept
+    {
+        return status.transmit_buffer_empty();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::transmission_complete()
+     */
+    auto transmission_complete() const noexcept
+    {
+        return status.transmission_complete();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::clear_transmission_complete()
+     */
+    void clear_transmission_complete() noexcept
+    {
+        status.clear_transmission_complete();
+    }
+
+    /**
+     * \brief Write data to the transmit buffer.
+     *
+     * \param[in] data The data to write to the transmit buffer.
+     */
+    void transmit( std::uint8_t data ) noexcept
+    {
+        txdatal = data;
+    }
+
+    /**
+     * \brief Write data to the transmit buffer.
+     *
+     * \param[in] data The data to write to the transmit buffer.
+     */
+    void transmit( std::uint16_t data ) noexcept
+    {
+        txdatah = data >> 8;
+        txdatal = data;
+    }
 };
+
+inline void USART::CTRLC::configure_as_asynchronous_serial_usart( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept
+{
+    *this = static_cast<std::uint8_t>( Mode::ASYNCHRONOUS_USART )
+            | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
+            | static_cast<std::uint8_t>( stop_bits );
+}
 
 /**
  * \brief Microchip megaAVR 0-series Universal Synchronous and Asynchronous Receiver and

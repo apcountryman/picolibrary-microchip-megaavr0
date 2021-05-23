@@ -250,7 +250,7 @@ class USART {
         }
 
         /**
-         * \clear the transmission complete flag.
+         * \brief clear the transmission complete flag.
          */
         void clear_transmission_complete() noexcept
         {

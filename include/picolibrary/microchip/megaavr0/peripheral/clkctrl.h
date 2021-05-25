@@ -43,7 +43,7 @@ class CLKCTRL {
      * - Clock Select (CLKSEL)
      * - System Clock Out (CLKOUT)
      */
-    class MCLKCTRLA : public Register<std::uint8_t> {
+    class MCLKCTRLA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -84,7 +84,7 @@ class CLKCTRL {
 
         auto operator=( MCLKCTRLA const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -94,7 +94,7 @@ class CLKCTRL {
      * - Prescaler Enable (PEN)
      * - Prescaler Division (PDIV)
      */
-    class MCLKCTRLB : public Register<std::uint8_t> {
+    class MCLKCTRLB : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -135,7 +135,7 @@ class CLKCTRL {
 
         auto operator=( MCLKCTRLB const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -144,7 +144,7 @@ class CLKCTRL {
      * This register has the following fields:
      * - Lock Enable (LOCKEN)
      */
-    class MCLKLOCK : public Register<std::uint8_t> {
+    class MCLKLOCK : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -182,7 +182,7 @@ class CLKCTRL {
 
         auto operator=( MCLKLOCK const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -254,7 +254,7 @@ class CLKCTRL {
      * This register has the following fields:
      * - Run Standby (RUNSTDBY)
      */
-    class OSC20MCTRLA : public Register<std::uint8_t> {
+    class OSC20MCTRLA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -295,7 +295,7 @@ class CLKCTRL {
 
         auto operator=( OSC20MCTRLA const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -304,7 +304,7 @@ class CLKCTRL {
      * This register has the following fields:
      * - Calibration (CAL20M)
      */
-    class OSC20MCALIBA : public Register<std::uint8_t> {
+    class OSC20MCALIBA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -342,7 +342,7 @@ class CLKCTRL {
 
         auto operator=( OSC20MCALIBA const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -352,7 +352,7 @@ class CLKCTRL {
      * - Oscillator Temperature Coefficient Calibration (TEMPCAL20M)
      * - Oscillator Calibration Locked by Fuse (LOCK)
      */
-    class OSC20MCALIBB : public Register<std::uint8_t> {
+    class OSC20MCALIBB : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -393,7 +393,7 @@ class CLKCTRL {
 
         auto operator=( OSC20MCALIBB const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -402,7 +402,7 @@ class CLKCTRL {
      * This register has the following fields:
      * - Run Standby (RUNSTDBY)
      */
-    class OSC32KCTRLA : public Register<std::uint8_t> {
+    class OSC32KCTRLA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -443,7 +443,7 @@ class CLKCTRL {
 
         auto operator=( OSC32KCTRLA const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -455,7 +455,7 @@ class CLKCTRL {
      * - Source Select (SEL)
      * - Crystal Start-Up Time (CSUT)
      */
-    class XOSC32KCTRLA : public Register<std::uint8_t> {
+    class XOSC32KCTRLA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -505,7 +505,7 @@ class CLKCTRL {
 
         auto operator=( XOSC32KCTRLA const & ) = delete;
 
-        using Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**

@@ -23,10 +23,30 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
+
 /**
  * \brief Microchip megaAVR 0-series asynchronous serial facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial {
+
+/**
+ * \brief Microchip megaAVR 0-series asynchronous serial clock configuration.
+ */
+struct Clock_Configuration {
+    /**
+     * \brief The clock generator operating speed.
+     */
+    Peripheral::USART::Operating_Speed operating_speed;
+
+    /**
+     * \brief The clock generator scaling factor.
+     */
+    std::uint16_t scaling_factor;
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H

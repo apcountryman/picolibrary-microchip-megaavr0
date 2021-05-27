@@ -26,6 +26,7 @@
 #include <cstdint>
 #include <utility>
 
+#include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/gpio.h"
 #include "picolibrary/microchip/megaavr0/gpio.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
@@ -193,6 +194,18 @@ class Basic_Transmitter {
             m_usart->disable_transmitter();
         } // if
     }
+};
+
+/**
+ * \brief Microchip megaAVR 0-series asynchronous serial transmitter.
+ *
+ * \tparam Data_Type The integral type used to hold the data to be transmitted.
+ */
+template<typename Data_Type>
+class Transmitter :
+    public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
+  public:
+    using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial

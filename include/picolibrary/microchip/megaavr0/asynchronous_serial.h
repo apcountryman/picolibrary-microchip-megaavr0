@@ -208,6 +208,61 @@ class Transmitter :
     using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
 };
 
+/**
+ * \brief Microchip megaAVR 0-series asynchronous serial 8 data bits, no parity bit, 1
+ *        stop bit (8-N-1) transmitter.
+ */
+class Transmitter_8_N_1 : private Transmitter<std::uint8_t> {
+  public:
+    using Transmitter<std::uint8_t>::Data;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Transmitter_8_N_1() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the transmitter.
+     * \param[in] clock_configuration The desired clock generator configuration.
+     */
+    Transmitter_8_N_1( Peripheral::USART & usart, Clock_Configuration const & clock_configuration ) noexcept :
+        Transmitter<std::uint8_t>{ usart,
+                                   Peripheral::USART::Data_Bits::_8,
+                                   Peripheral::USART::Parity::NONE,
+                                   Peripheral::USART::Stop_Bits::_1,
+                                   clock_configuration }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Transmitter_8_N_1( Transmitter_8_N_1 && source ) noexcept = default;
+
+    Transmitter_8_N_1( Transmitter_8_N_1 const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Transmitter_8_N_1() noexcept = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto operator=( Transmitter_8_N_1 && expression ) noexcept -> Transmitter_8_N_1 & = default;
+
+    using Transmitter<std::uint8_t>::initialize;
+    using Transmitter<std::uint8_t>::transmit;
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H

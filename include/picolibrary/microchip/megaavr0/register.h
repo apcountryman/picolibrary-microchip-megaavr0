@@ -288,10 +288,10 @@ class Protected_Register {
             "out %[cpu_ccp_address], %[cpu_ccp_unlock_protected_io_registers] \n\t"
             "sts %[protected_register_address], %[protected_register_data]"
             :
-            : [cpu_ccp_address] "I"( CPU_CCP_ADDRESS ),
-              [cpu_ccp_unlock_protected_io_registers] "d"( CPU_CCP_UNLOCK_PROTECTED_IO_REGISTERS ),
-              [protected_register_address] "n"( &m_protected_register ),
-              [protected_register_data] "r"( data ) );
+            : [ cpu_ccp_address ] "I"( CPU_CCP_ADDRESS ),
+              [ cpu_ccp_unlock_protected_io_registers ] "d"( CPU_CCP_UNLOCK_PROTECTED_IO_REGISTERS ),
+              [ protected_register_address ] "n"( &m_protected_register ),
+              [ protected_register_data ] "r"( data ) );
     }
 };
 

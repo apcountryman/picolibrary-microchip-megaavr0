@@ -138,7 +138,7 @@ class CLKCTRL {
          */
         void enable_output() noexcept
         {
-            *this &= static_cast<std::uint8_t>( ~Mask::CLKOUT );
+            *this |= Mask::CLKOUT;
         }
 
         /**
@@ -146,7 +146,7 @@ class CLKCTRL {
          */
         void disable_output() noexcept
         {
-            *this |= Mask::CLKOUT;
+            *this &= static_cast<std::uint8_t>( ~Mask::CLKOUT );
         }
     };
 
@@ -428,7 +428,7 @@ class CLKCTRL {
          * \return true if the external clock is stable.
          * \return false if the external clock is not stable.
          */
-        auto external_clock_stable() const noexcept
+        auto external_clock_stable() const noexcept -> bool
         {
             return *this & Mask::EXTS;
         }
@@ -1196,7 +1196,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC32KCTRLA::set_external_32_768_khz_crystal_oscillator_mode()
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::set_external_32_768_khz_crystal_oscillator_mode()
      */
     void set_external_32_768_khz_crystal_oscillator_mode( External_32_768_kHz_Crystal_Oscillator_Mode mode ) noexcept
     {
@@ -1212,7 +1212,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC32KCTRLA::enable_external_32_768_khz_crystal_oscillator()
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::enable_external_32_768_khz_crystal_oscillator()
      */
     void enable_external_32_768_khz_crystal_oscillator() noexcept
     {
@@ -1220,7 +1220,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC32KCTRLA::disable_external_32_768_khz_crystal_oscillator()
+     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::disable_external_32_768_khz_crystal_oscillator()
      */
     void disable_external_32_768_khz_crystal_oscillator() noexcept
     {

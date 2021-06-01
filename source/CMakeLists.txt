@@ -46,6 +46,13 @@ set(
     "picolibrary"
 )
 
+if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
+    list(
+        APPEND PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
+        "picolibrary/testing/interactive/microchip/megaavr0.cc"
+    )
+endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
+
 add_library(
     picolibrary-microchip-megaavr0
     ${PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES}

@@ -831,78 +831,6 @@ class CLKCTRL {
     };
 
     /**
-     * \brief MCLKCTRLA.
-     */
-    MCLKCTRLA mclkctrla;
-
-    /**
-     * \brief MCLKCTRLB.
-     */
-    MCLKCTRLB mclkctrlb;
-
-    /**
-     * \brief MCLKLOCK.
-     */
-    MCLKLOCK mclklock;
-
-    /**
-     * \brief MCLKSTATUS.
-     */
-    MCLKSTATUS mclkstatus;
-
-    /**
-     * \brief Reserved registers (offset 0x04-0x0F).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x04_0x0F[ ( 0x0F - 0x04 ) + 1 ];
-
-    /**
-     * \brief OSC20MCTRLA.
-     */
-    OSC20MCTRLA osc20mctrla;
-
-    /**
-     * \brief OSC20MCALIBA.
-     */
-    OSC20MCALIBA osc20mcaliba;
-
-    /**
-     * \brief OSC20MCALIBB.
-     */
-    OSC20MCALIBB osc20mcalibb;
-
-    /**
-     * \brief Reserved registers (offset 0x13-0x17).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x13_0x17[ ( 0x17 - 0x13 ) + 1 ];
-
-    /**
-     * \brief OSC32KCTRLA.
-     */
-    OSC32KCTRLA osc32kctrla;
-
-    /**
-     * \brief Reserved registers (offset 0x19-0x1B).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x19_0x1B[ ( 0x1B - 0x19 ) + 1 ];
-
-    /**
-     * \brief XOSC32KCTRLA.
-     */
-    XOSC32KCTRLA xosc32kctrla;
-
-    CLKCTRL() = delete;
-
-    CLKCTRL( CLKCTRL && ) = delete;
-
-    CLKCTRL( CLKCTRL const & ) = delete;
-
-    ~CLKCTRL() = delete;
-
-    auto operator=( CLKCTRL && ) = delete;
-
-    auto operator=( CLKCTRL const & ) = delete;
-
-    /**
      * \brief Clock source.
      */
     enum class Source : std::uint8_t {
@@ -978,6 +906,78 @@ class CLKCTRL {
         NORMAL    = 0b0 << XOSC32KCTRLA::Bit::RUNSTDBY, ///< Normal.
         FORCED_ON = 0b1 << XOSC32KCTRLA::Bit::RUNSTDBY, ///< Forced on.
     };
+
+    /**
+     * \brief MCLKCTRLA.
+     */
+    MCLKCTRLA mclkctrla;
+
+    /**
+     * \brief MCLKCTRLB.
+     */
+    MCLKCTRLB mclkctrlb;
+
+    /**
+     * \brief MCLKLOCK.
+     */
+    MCLKLOCK mclklock;
+
+    /**
+     * \brief MCLKSTATUS.
+     */
+    MCLKSTATUS mclkstatus;
+
+    /**
+     * \brief Reserved registers (offset 0x04-0x0F).
+     */
+    Reserved_Register<std::uint8_t> const reserved_0x04_0x0F[ ( 0x0F - 0x04 ) + 1 ];
+
+    /**
+     * \brief OSC20MCTRLA.
+     */
+    OSC20MCTRLA osc20mctrla;
+
+    /**
+     * \brief OSC20MCALIBA.
+     */
+    OSC20MCALIBA osc20mcaliba;
+
+    /**
+     * \brief OSC20MCALIBB.
+     */
+    OSC20MCALIBB osc20mcalibb;
+
+    /**
+     * \brief Reserved registers (offset 0x13-0x17).
+     */
+    Reserved_Register<std::uint8_t> const reserved_0x13_0x17[ ( 0x17 - 0x13 ) + 1 ];
+
+    /**
+     * \brief OSC32KCTRLA.
+     */
+    OSC32KCTRLA osc32kctrla;
+
+    /**
+     * \brief Reserved registers (offset 0x19-0x1B).
+     */
+    Reserved_Register<std::uint8_t> const reserved_0x19_0x1B[ ( 0x1B - 0x19 ) + 1 ];
+
+    /**
+     * \brief XOSC32KCTRLA.
+     */
+    XOSC32KCTRLA xosc32kctrla;
+
+    CLKCTRL() = delete;
+
+    CLKCTRL( CLKCTRL && ) = delete;
+
+    CLKCTRL( CLKCTRL const & ) = delete;
+
+    ~CLKCTRL() = delete;
+
+    auto operator=( CLKCTRL && ) = delete;
+
+    auto operator=( CLKCTRL const & ) = delete;
 
     /**
      * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::source()

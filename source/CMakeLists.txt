@@ -27,6 +27,7 @@ set(
     "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr0/version.cc"
     "picolibrary/microchip/megaavr0.cc"
     "picolibrary/microchip/megaavr0/asynchronous_serial.cc"
+    "picolibrary/microchip/megaavr0/clock.cc"
     "picolibrary/microchip/megaavr0/gpio.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809.cc"

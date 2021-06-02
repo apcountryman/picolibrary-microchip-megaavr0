@@ -55,3 +55,5 @@ mark_as_advanced(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_RESET_ENABLED
     PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_VERIFY_FLASH
 )
+
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/asynchronous_serial/transmitter_8_n_1/hello_world/CMakeLists.txt" )

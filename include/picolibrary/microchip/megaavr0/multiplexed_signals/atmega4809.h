@@ -43,6 +43,11 @@ namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809 {
 inline namespace USART {
 
 /**
+ * \brief USART routing configuration.
+ */
+using USART_Route = Peripheral::PORTMUX::USART_Route;
+
+/**
  * \brief Set a USART peripheral's routing configuration.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
@@ -52,7 +57,7 @@ inline namespace USART {
  * \param[in] usart The USART peripheral whose routing configuration will be set.
  * \param[in] route The desired USART peripheral routing configuration.
  */
-inline void set_usart_route( Peripheral::USART const & usart, Peripheral::PORTMUX::USART_Route route ) noexcept
+inline void set_usart_route( Peripheral::USART const & usart, USART_Route route ) noexcept
 {
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
@@ -174,29 +179,29 @@ inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 2;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 6;
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 2;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 6;
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 2;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 6;
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 2;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 2;
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 2;
                 default: break;
             } // switch
             break;
@@ -271,29 +276,29 @@ inline auto xdir_number( Peripheral::USART const & usart ) noexcept -> std::uint
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 3;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 7;
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 7;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 3;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 7;
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 7;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 3;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 3;
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 3;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 3;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 3;
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 3;
                 default: break;
             } // switch
             break;
@@ -368,29 +373,29 @@ inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 0;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 4;
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 0;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 4;
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 0;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 4;
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 0;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 4;
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
                 default: break;
             } // switch
             break;
@@ -465,29 +470,29 @@ inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 1;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 5;
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 1;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 5;
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 1;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 5;
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
                 default: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
-                case Peripheral::PORTMUX::USART_Route::DEFAULT: return 1;
-                case Peripheral::PORTMUX::USART_Route::ALTERNATE: return 5;
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
                 default: break;
             } // switch
             break;

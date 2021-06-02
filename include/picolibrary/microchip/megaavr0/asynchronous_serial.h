@@ -196,6 +196,8 @@ class Basic_Transmitter {
     void disable() noexcept
     {
         if ( m_usart ) {
+            while ( not m_usart->transmission_complete() ) {}
+
             m_usart->disable_transmitter();
         } // if
     }

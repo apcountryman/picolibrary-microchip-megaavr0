@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/CMakeLists.txt
 # Description: picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream interactive
 #       tests CMake rules.
+
+# build the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world
+# interactive test
+add_subdirectory( hello_world )

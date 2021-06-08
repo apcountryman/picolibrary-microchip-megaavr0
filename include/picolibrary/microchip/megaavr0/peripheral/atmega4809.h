@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
@@ -200,6 +201,15 @@ using USART2 = USART_Instance<0x0840>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::USART3.
  */
 using USART3 = USART_Instance<0x0860>;
+
+/**
+ * \brief TWI0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::TWI0.
+ */
+using TWI0 = TWI_Instance<0x08A0>;
 
 /**
  * \brief SPI0.

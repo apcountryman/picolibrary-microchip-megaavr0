@@ -13,15 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr0/gpio/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR0::GPIO interactive tests CMake rules.
-
-# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin interactive tests
-add_subdirectory( input_pin )
-
-# build the picolibrary::Microchip::megaAVR0::GPIO::Internally_Pulled_Up_Input_Pin
-# interactive tests
-add_subdirectory( internally_pulled_up_input_pin )
-
-# build the picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin interactive tests
-add_subdirectory( open_drain_io_pin )
+# File: test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/CMakeLists.txt
+# Description: picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin interactive tests
+#       CMake rules.

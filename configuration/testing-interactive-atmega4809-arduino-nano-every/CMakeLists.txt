@@ -60,3 +60,4 @@ include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/asynchronous_se
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/asynchronous_serial/transmitter_8_n_1/hello_world/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/input_pin/state/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle/CMakeLists.txt" )

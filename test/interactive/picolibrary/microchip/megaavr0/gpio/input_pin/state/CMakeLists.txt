@@ -14,14 +14,14 @@
 # permissions and limitations under the License.
 
 # File: test/interactive/picolibrary/microchip/megaavr0/gpio/input_pin/state/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests
+# Description: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test
 #       CMake rules.
 
-# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests
+# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST
-        "picolibrary-microchip-megaavr0: enable the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests"
+        "picolibrary-microchip-megaavr0: enable the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test"
         OFF
     )
 
@@ -29,39 +29,39 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_CLOCK_PRESCALER_VALUE
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests clock prescaler value"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test clock prescaler value"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_CLOCK_PRESCALER_CONFIGURATION
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests clock prescaler configuration"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test clock prescaler configuration"
         )
 
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_TRANSMITTER_USART
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests transmitter USART"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test transmitter USART"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_TRANSMITTER_USART_ROUTE
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests transmitter USART route"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test transmitter USART route"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests transmitter clock generator operating speed"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test transmitter clock generator operating speed"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests transmitter clock generator scaling factor"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test transmitter clock generator scaling factor"
         )
 
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_PIN_PORT
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests pin PORT"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test pin PORT"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_PIN_VPORT
@@ -70,7 +70,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INPUT_PIN_STATE_INTERACTIVE_TEST_PIN_MASK
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests pin MASK"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test pin MASK"
         )
 
         add_executable(

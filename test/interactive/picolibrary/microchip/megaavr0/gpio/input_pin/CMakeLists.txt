@@ -17,5 +17,5 @@
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin interactive tests CMake
 #       rules.
 
-# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive tests
+# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test
 add_subdirectory( state )

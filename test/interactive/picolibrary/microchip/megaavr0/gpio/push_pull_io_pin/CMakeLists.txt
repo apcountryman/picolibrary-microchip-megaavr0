@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/gpio/push_pull_io_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin interactive tests
 #       CMake rules.
+
+# build the picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin toggle interactive
+# test
+add_subdirectory( toggle )

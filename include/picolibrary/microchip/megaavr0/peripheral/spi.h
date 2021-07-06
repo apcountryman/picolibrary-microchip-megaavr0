@@ -36,6 +36,14 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  */
 class SPI {
   public:
+    enum class Clock_Rate : std::uint8_t;
+
+    enum class Clock_Polarity : std::uint8_t;
+
+    enum class Clock_Phase : std::uint8_t;
+
+    enum class Bit_Order : std::uint8_t;
+
     /**
      * \brief Control A (CTRLA) register.
      *
@@ -100,6 +108,43 @@ class SPI {
         auto operator=( CTRLA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the SPI for use as an unbuffered SPI controller.
+         */
+        void configure_as_unbuffered_spi_controller() noexcept
+        {
+            *this = Mask::HOST;
+        }
+
+        /**
+         * \brief Enable the SPI.
+         */
+        void enable() noexcept
+        {
+            *this |= Mask::ENABLE;
+        }
+
+        /**
+         * \brief Disable the SPI.
+         */
+        void disable() noexcept
+        {
+            *this &= ~Mask::ENABLE;
+        }
+
+        /**
+         * \brief Configure SPI data exchange.
+         *
+         * \param[in] clock_rate The desired clock rate.
+         * \param[in] bit_order The desired data exchange bit order.
+         */
+        void configure( Clock_Rate clock_rate, Bit_Order bit_order ) noexcept
+        {
+            *this = ( *this & ~( Mask::PRESC | Mask::CLK2X | Mask::DORD ) )
+                    | static_cast<std::uint8_t>( clock_rate )
+                    | static_cast<std::uint8_t>( bit_order );
+        }
     };
 
     /**
@@ -159,6 +204,26 @@ class SPI {
         auto operator=( CTRLB const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the SPI for use as an unbuffered SPI controller.
+         */
+        void configure_as_unbuffered_spi_controller() noexcept
+        {
+            *this = Mask::CSD;
+        }
+
+        /**
+         * \brief Configure SPI data exchange.
+         *
+         * \param[in] clock_polarity The desired clock polarity.
+         * \param[in] clock_phase The desired clock phase.
+         */
+        void configure( Clock_Polarity clock_polarity, Clock_Phase clock_phase ) noexcept
+        {
+            *this = ( *this & ~Mask::MODE ) | static_cast<std::uint8_t>( clock_polarity )
+                    | static_cast<std::uint8_t>( clock_phase );
+        }
     };
 
     /**
@@ -299,6 +364,54 @@ class SPI {
         auto operator=( INTFLAGS const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Check if data exchange is complete.
+         *
+         * \return true if data exchange is complete.
+         * \return false if data exchange is not complete.
+         */
+        auto data_exchange_complete() const noexcept -> bool
+        {
+            return *this & Mask::IF;
+        }
+    };
+
+    /**
+     * \brief Clock rate.
+     */
+    enum class Clock_Rate : std::uint8_t {
+        FCLK_PER_2   = ( 0b1 << CTRLA::Bit::CLK2X ) | ( 0x0 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 2.
+        FCLK_PER_4   = ( 0b0 << CTRLA::Bit::CLK2X ) | ( 0x0 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 4.
+        FCLK_PER_8   = ( 0b1 << CTRLA::Bit::CLK2X ) | ( 0x1 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 8.
+        FCLK_PER_16  = ( 0b0 << CTRLA::Bit::CLK2X ) | ( 0x1 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 16.
+        FCLK_PER_32  = ( 0b1 << CTRLA::Bit::CLK2X ) | ( 0x2 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 32.
+        FCLK_PER_64  = ( 0b0 << CTRLA::Bit::CLK2X ) | ( 0x2 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 64.
+        FCLK_PER_128 = ( 0b0 << CTRLA::Bit::CLK2X ) | ( 0x3 << CTRLA::Bit::PRESC ), ///< Peripheral clock frequency / 128.
+    };
+
+    /**
+     * \brief Clock polarity.
+     */
+    enum class Clock_Polarity : std::uint8_t {
+        IDLE_LOW  = 0b00 << CTRLB::Bit::MODE, ///< Idle low.
+        IDLE_HIGH = 0b10 << CTRLB::Bit::MODE, ///< Idle high.
+    };
+
+    /**
+     * \brief Clock phase.
+     */
+    enum class Clock_Phase : std::uint8_t {
+        CAPTURE_IDLE_TO_ACTIVE = 0b00 << CTRLB::Bit::MODE, ///< Capture data on the idle-to-active clock transition.
+        CAPTURE_ACTIVE_TO_IDLE = 0b01 << CTRLB::Bit::MODE, ///< Capture data on the active-to-idle clock transition.
+    };
+
+    /**
+     * \brief Data exchange bit order.
+     */
+    enum class Bit_Order : std::uint8_t {
+        MSB_FIRST = 0b0 << CTRLA::Bit::DORD, ///< Exchange data MSB first.
+        LSB_FIRST = 0b1 << CTRLA::Bit::DORD, ///< Exchange data LSB first.
     };
 
     /**
@@ -337,6 +450,76 @@ class SPI {
     auto operator=( SPI && ) = delete;
 
     auto operator=( SPI const & ) = delete;
+
+    /**
+     * \brief Configure the SPI for use as an unbuffered SPI controller.
+     */
+    void configure_as_unbuffered_spi_controller() noexcept
+    {
+        ctrlb.configure_as_unbuffered_spi_controller();
+        ctrla.configure_as_unbuffered_spi_controller();
+    }
+
+    /**
+     * \brief Enable the SPI.
+     */
+    void enable() noexcept
+    {
+        ctrla.enable();
+    }
+
+    /**
+     * \brief Disable the SPI.
+     */
+    void disable() noexcept
+    {
+        ctrla.disable();
+    }
+
+    /**
+     * \brief Configure SPI data exchange.
+     *
+     * \param[in] clock_rate The desired clock rate.
+     * \param[in] clock_polarity The desired clock polarity.
+     * \param[in] clock_phase The desired clock phase.
+     * \param[in] bit_order The desired data exchange bit order.
+     */
+    void configure( Clock_Rate clock_rate, Clock_Polarity clock_polarity, Clock_Phase clock_phase, Bit_Order bit_order ) noexcept
+    {
+        ctrla.configure( clock_rate, bit_order );
+        ctrlb.configure( clock_polarity, clock_phase );
+    }
+
+    /**
+     * \brief Check if data exchange is complete.
+     *
+     * \return true if data exchange is complete.
+     * \return false if data exchange is not complete.
+     */
+    auto data_exchange_complete() const noexcept
+    {
+        return intflags.data_exchange_complete();
+    }
+
+    /**
+     * \brief Write data to the transmit buffer.
+     *
+     * \param[in] data_ The data to write to the transmit buffer.
+     */
+    void transmit( std::uint8_t data_ ) noexcept
+    {
+        data = data_;
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto receive() noexcept -> std::uint8_t
+    {
+        return data;
+    }
 };
 
 /**

@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/spi.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/usart.h"
 
 /**

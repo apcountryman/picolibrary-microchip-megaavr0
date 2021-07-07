@@ -45,6 +45,8 @@ class PORTMUX {
         NONE      = 0x3, ///< Not routed.
     };
 
+    enum class SPI_Route : std::uint8_t;
+
     /**
      * \brief PORTMUX Control for Event System (EVSYSROUTEA) register.
      *
@@ -359,6 +361,26 @@ class PORTMUX {
         auto operator=( TWISPIROUTEA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Get the SPI0 routing configuration.
+         *
+         * \return The SPI0 routing configuration.
+         */
+        auto spi0_route() const noexcept
+        {
+            return static_cast<SPI_Route>( *this & Mask::SPI0 );
+        }
+
+        /**
+         * \brief Set the SPI0 routing configuration.
+         *
+         * \param[in] route The desired SPI0 routing configuration.
+         */
+        void set_spi0_route( SPI_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::SPI0 ) | static_cast<std::uint8_t>( route );
+        }
     };
 
     /**
@@ -465,6 +487,16 @@ class PORTMUX {
         auto operator=( TCBROUTEA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+    };
+
+    /**
+     * \brief SPI routing configuration.
+     */
+    enum class SPI_Route : std::uint8_t {
+        DEFAULT     = 0x0 << TWISPIROUTEA::Bit::SPI0, ///< Default route.
+        ALTERNATE_1 = 0x1 << TWISPIROUTEA::Bit::SPI0, ///< Alternate route 1.
+        ALTERNATE_2 = 0x2 << TWISPIROUTEA::Bit::SPI0, ///< Alternate route 2.
+        NONE        = 0x3 << TWISPIROUTEA::Bit::SPI0, ///< Not routed.
     };
 
     /**

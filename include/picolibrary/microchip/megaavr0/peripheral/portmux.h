@@ -542,6 +542,26 @@ class PORTMUX {
     auto operator=( PORTMUX const & ) = delete;
 
     /**
+     * \brief Get the SPI0 routing configuration.
+     *
+     * \return The SPI0 routing configuration.
+     */
+    auto spi0_route() const noexcept
+    {
+        return twispiroutea.spi0_route();
+    }
+
+    /**
+     * \brief Set the SPI0 routing configuration.
+     *
+     * \param[in] route The desired SPI0 routing configuration.
+     */
+    void set_spi0_route( SPI_Route route ) noexcept
+    {
+        twispiroutea.set_spi0_route( route );
+    }
+
+    /**
      * \brief Get the USART0 routing configuration.
      *
      * \return The USART0 routing configuration.

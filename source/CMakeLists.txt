@@ -44,6 +44,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral/vport.cc"
     "picolibrary/microchip/megaavr0/register.cc"
+    "picolibrary/microchip/megaavr0/spi.cc"
 )
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_LINK_LIBRARIES

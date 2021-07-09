@@ -33,7 +33,7 @@ namespace picolibrary::Microchip::megaAVR0::SPI {
 /**
  * \brief SPI basic controller.
  *
- * \tparam Peripheral The type of peripheral used to implement SPI controller
+ * \tparam Peripheral The type of peripheral used to implement SPI basic controller
  *         functionality.
  */
 template<typename Peripheral>

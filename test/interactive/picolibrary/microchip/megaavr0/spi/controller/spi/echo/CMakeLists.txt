@@ -88,7 +88,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_BIT_ORDER
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::SPI::Controller<picolibrary::Microchip::megaAVR0::Peripheral::SPI> echo interactive test controller bit order"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::SPI::Controller<picolibrary::Microchip::megaAVR0::Peripheral::SPI> echo interactive test controller data exchange bit order"
         )
 
         add_executable(

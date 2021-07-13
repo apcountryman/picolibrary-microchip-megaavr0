@@ -239,6 +239,16 @@ class Basic_Controller<Peripheral::SPI> {
 template<typename Peripheral>
 class Fixed_Configuration_Basic_Controller;
 
+/**
+ * \brief Fixed configuration SPI controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement SPI controller
+ *         functionality.
+ */
+template<typename Peripheral>
+using Fixed_Configuration_Controller =
+    ::picolibrary::SPI::Controller<Fixed_Configuration_Basic_Controller<Peripheral>>;
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

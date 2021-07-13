@@ -15,3 +15,6 @@
 
 # File: test/interactive/picolibrary/microchip/mcp3008/CMakeLists.txt
 # Description: picolibrary::Microchip::MCP3008 interactive tests CMake rules.
+
+# build the picolibrary::Microchip::MCP3008 sample interactive test
+add_subdirectory( sample )

@@ -36,6 +36,22 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  */
 class TWI {
   public:
+    enum class SDA_Hold_Time : std::uint8_t;
+
+    enum class Fast_Mode_Plus : std::uint8_t;
+
+    enum class Quick_Command_Mode : std::uint8_t;
+
+    enum class Smart_Mode : std::uint8_t;
+
+    enum class Timeout : std::uint8_t;
+
+    enum class Bus_State : std::uint8_t;
+
+    enum class Command : std::uint8_t;
+
+    enum class Response : std::uint8_t;
+
     /**
      * \brief Control A (CTRLA) register.
      *
@@ -92,6 +108,18 @@ class TWI {
         auto operator=( CTRLA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the TWI for use as an I2C controller.
+         *
+         * \param[in] sda_hold_time The desired SDA hold time configuration.
+         * \param[in] fast_mode_plus The desired fast mode plus configuration.
+         */
+        void configure_as_i2c_controller( SDA_Hold_Time sda_hold_time, Fast_Mode_Plus fast_mode_plus ) noexcept
+        {
+            *this = static_cast<std::uint8_t>( sda_hold_time )
+                    | static_cast<std::uint8_t>( fast_mode_plus );
+        }
     };
 
     /**
@@ -261,6 +289,29 @@ class TWI {
         auto operator=( HCTRLA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the TWI for use as an I2C controller.
+         *
+         * \param[in] timeout The desired inactive bus timeout configuration.
+         */
+        void configure_as_i2c_controller( Timeout timeout ) noexcept;
+
+        /**
+         * \brief Enable the TWI.
+         */
+        void enable() noexcept
+        {
+            *this |= Mask::ENABLE;
+        }
+
+        /**
+         * \brief Disable the TWI.
+         */
+        void disable() noexcept
+        {
+            *this &= ~Mask::ENABLE;
+        }
     };
 
     /**
@@ -316,6 +367,23 @@ class TWI {
         auto operator=( HCTRLB const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Transmit a stop condition.
+         */
+        void stop() noexcept;
+
+        /**
+         * \brief Configure the response to be transmitted when data is received from a
+         *         device.
+         *
+         * \param[in] response The response to be transmitted when data is received from a
+         *            device.
+         */
+        void configure_read_response( Response response ) noexcept
+        {
+            *this = static_cast<std::uint8_t>( response );
+        }
     };
 
     /**
@@ -384,6 +452,87 @@ class TWI {
         auto operator=( HSTATUS const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Get the bus state.
+         *
+         * \return The bus state.
+         */
+        auto bus_state() const noexcept
+        {
+            return static_cast<Bus_State>( *this & Mask::BUSSTATE );
+        }
+
+        /**
+         * \brief Check if device addressing is complete.
+         *
+         * \return true if device addressing is complete.
+         * \return false if device addressing is not complete.
+         */
+        auto addressing_complete() const noexcept -> bool
+        {
+            return *this & Mask::WIF;
+        }
+
+        /**
+         * \brief Check if data received from a device is available.
+         *
+         * \return true if data received from a device is available.
+         * \return false if data received from a device is not available.
+         */
+        auto data_available() const noexcept -> bool
+        {
+            return *this & Mask::RIF;
+        }
+
+        /**
+         * \brief Check if data transmission is complete.
+         *
+         * \return true if data transmission is complete.
+         * \return false if data transmission is not complete.
+         */
+        auto transmission_complete() const noexcept -> bool
+        {
+            return *this & Mask::WIF;
+        }
+
+        /**
+         * \brief Check if a bus error occurred.
+         *
+         * \return true if a bus error occurred.
+         * \return false if a bus error has not occurred.
+         */
+        auto bus_error() const noexcept -> bool
+        {
+            return *this & Mask::BUSERR;
+        }
+
+        /**
+         * \brief Check if arbitration was lost.
+         *
+         * \return true if arbitration was lost.
+         * \return false if arbitration was not lost.
+         */
+        auto arbitration_lost() const noexcept -> bool
+        {
+            return *this & Mask::ARBLOST;
+        }
+
+        /**
+         * \brief Check if a NACK was received.
+         *
+         * \return true if a NACK was received.
+         * \return false if a NACK was not received.
+         */
+        auto nack_received() const noexcept -> bool
+        {
+            return *this & Mask::RXACK;
+        }
+
+        /**
+         * \brief Force the bus state to idle.
+         */
+        void force_bus_state_to_idle() noexcept;
     };
 
     /**
@@ -625,6 +774,76 @@ class TWI {
     };
 
     /**
+     * \brief SDA hold time configuration.
+     */
+    enum class SDA_Hold_Time : std::uint8_t {
+        OFF     = 0x0 << CTRLA::Bit::SDAHOLD, ///< Off.
+        _50_NS  = 0x1 << CTRLA::Bit::SDAHOLD, ///< 50 ns (short hold time).
+        _300_NS = 0x2 << CTRLA::Bit::SDAHOLD, ///< 300 ns (meets SMBus 2.0 specifications under typical conditions).
+        _500_NS = 0x3 << CTRLA::Bit::SDAHOLD, ///< 500 ns (meets SMBus 2.0 specifications across all corners).
+    };
+
+    /**
+     * \brief Fast mode plus configuration.
+     */
+    enum class Fast_Mode_Plus : std::uint8_t {
+        DISABLED = 0b0 << CTRLA::Bit::FMPEN, ///< Disabled.
+        ENABLED  = 0b1 << CTRLA::Bit::FMPEN, ///< Enabled.
+    };
+
+    /**
+     * \brief Quick command mode configuration.
+     */
+    enum class Quick_Command_Mode : std::uint8_t {
+        DISABLED = 0b0 << HCTRLA::Bit::QCEN, ///< Disabled.
+        ENABLED  = 0b1 << HCTRLA::Bit::QCEN, ///< Enabled.
+    };
+
+    /**
+     * \brief Smart mode configuration.
+     */
+    enum class Smart_Mode : std::uint8_t {
+        DISABLED = 0b0 << HCTRLA::Bit::SMEN, ///< Disabled.
+        ENABLED  = 0b1 << HCTRLA::Bit::SMEN, ///< Enabled.
+    };
+
+    /**
+     * \brief Inactive bus timeout configuration.
+     */
+    enum class Timeout : std::uint8_t {
+        DISABLED = 0x0 << HCTRLA::Bit::TIMEOUT, ///< Disabled (I2C).
+        _50_US   = 0x1 << HCTRLA::Bit::TIMEOUT, ///< 50 us (SMBus, assumes clock frequency is set to 100 kHz).
+        _100_US  = 0x2 << HCTRLA::Bit::TIMEOUT, ///< 100 us (assumes clock frequency is set to 100 kHz).
+        _200_US  = 0x3 << HCTRLA::Bit::TIMEOUT, ///< 200 us (assumes clock frequency is set to 100 kHz).
+    };
+
+    /**
+     * \brief Bus state.
+     */
+    enum class Bus_State : std::uint8_t {
+        UNKNOWN = 0x0 << HSTATUS::Bit::BUSSTATE, ///< Unknown.
+        IDLE    = 0x1 << HSTATUS::Bit::BUSSTATE, ///< Idle.
+        OWNER   = 0x2 << HSTATUS::Bit::BUSSTATE, ///< Owner.
+        BUSY    = 0x3 << HSTATUS::Bit::BUSSTATE, ///< Busy.
+    };
+
+    /**
+     * \brief Command.
+     */
+    enum class Command : std::uint8_t {
+        NONE = 0x0 << HCTRLB::Bit::HCMD, ///< None.
+        STOP = 0x3 << HCTRLB::Bit::HCMD, ///< Transmit a stop condition.
+    };
+
+    /**
+     * \brief Response.
+     */
+    enum class Response : std::uint8_t {
+        ACK  = 0b0 << HCTRLB::Bit::ACKACT, ///< ACK.
+        NACK = 0b1 << HCTRLB::Bit::ACKACT, ///< NACK.
+    };
+
+    /**
      * \brief CTRLA.
      */
     CTRLA ctrla;
@@ -710,7 +929,187 @@ class TWI {
     auto operator=( TWI && ) = delete;
 
     auto operator=( TWI const & ) = delete;
+
+    /**
+     * \brief Configure the TWI for use as an I2C controller.
+     *
+     * \param[in] sda_hold_time The desired SDA hold time configuration.
+     * \param[in] fast_mode_plus The desired fast mode plus configuration.
+     * \param[in] clock_scaling_factor The desired clock scaling factor.
+     * \param[in] timeout The desired inactive bus timeout configuration.
+     */
+    void configure_as_i2c_controller(
+        SDA_Hold_Time  sda_hold_time,
+        Fast_Mode_Plus fast_mode_plus,
+        std::uint8_t   clock_scaling_factor,
+        Timeout        timeout ) noexcept
+    {
+        ctrla.configure_as_i2c_controller( sda_hold_time, fast_mode_plus );
+        hbaud = clock_scaling_factor;
+        hctrla.configure_as_i2c_controller( timeout );
+    }
+
+    /**
+     * \brief Enable the TWI.
+     */
+    void enable() noexcept
+    {
+        hctrla.enable();
+        hstatus.force_bus_state_to_idle();
+    }
+
+    /**
+     * \brief Disable the TWI.
+     */
+    void disable() noexcept
+    {
+        hctrla.disable();
+    }
+
+    /**
+     * \brief Transmit a stop condition.
+     */
+    void stop() noexcept
+    {
+        hctrlb.stop();
+    }
+
+    /**
+     * \brief Get the bus state.
+     *
+     * \return The bus state.
+     */
+    auto bus_state() const noexcept
+    {
+        return hstatus.bus_state();
+    }
+
+    /**
+     * \brief Check if a bus error occurred.
+     *
+     * \return true if a bus error occurred.
+     * \return false if a bus error has not occurred.
+     */
+    auto bus_error() const noexcept
+    {
+        return hstatus.bus_error();
+    }
+
+    /**
+     * \brief Check if arbitration was lost.
+     *
+     * \return true if arbitration was lost.
+     * \return false if arbitration was not lost.
+     */
+    auto arbitration_lost() const noexcept
+    {
+        return hstatus.arbitration_lost();
+    }
+
+    /**
+     * \brief Check if a NACK was received.
+     *
+     * \return true if a NACK was received.
+     * \return false if a NACK was not received.
+     */
+    auto nack_received() const noexcept
+    {
+        return hstatus.nack_received();
+    }
+
+    /**
+     * \brief Address a device.
+     *
+     * \param[in] device_address_and_operation The address of the device to be addressed
+     *            and the operation to be performed.
+     */
+    void address( std::uint8_t device_address_and_operation ) noexcept
+    {
+        haddr = device_address_and_operation;
+    }
+
+    /**
+     * \brief Check if device addressing is complete.
+     *
+     * \return true if device addressing is complete.
+     * \return false if device addressing is not complete.
+     */
+    auto addressing_complete() const noexcept
+    {
+        return hstatus.addressing_complete();
+    }
+
+    /**
+     * \brief Configure the response to be transmitted when data is received from a
+     *        device.
+     *
+     * \param[in] response The response to be transmitted when data is received from a
+     *            device.
+     */
+    void configure_read_response( Response response ) noexcept
+    {
+        hctrlb.configure_read_response( response );
+    }
+
+    /**
+     * \brief Check if data received from a device is available.
+     *
+     * \return true if data received from a device is available.
+     * \return false if data received from a device is not available.
+     */
+    auto data_available() const noexcept
+    {
+        return hstatus.data_available();
+    }
+
+    /**
+     * \brief Read data received from a device.
+     *
+     * \return The data received from a device.
+     */
+    auto receive() noexcept -> std::uint8_t
+    {
+        return hdata;
+    }
+
+    /**
+     * \brief Transmit data to a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     */
+    void transmit( std::uint8_t data ) noexcept
+    {
+        hdata = data;
+    }
+
+    /**
+     * \brief Check if data transmission is complete.
+     *
+     * \return true if data transmission is complete.
+     * \return false if data transmission is not complete.
+     */
+    auto transmission_complete() const noexcept
+    {
+        return hstatus.transmission_complete();
+    }
 };
+
+inline void TWI::HCTRLA::configure_as_i2c_controller( Timeout timeout ) noexcept
+{
+    *this = static_cast<std::uint8_t>( Quick_Command_Mode::DISABLED )
+            | static_cast<std::uint8_t>( Smart_Mode::ENABLED )
+            | static_cast<std::uint8_t>( timeout );
+}
+
+inline void TWI::HCTRLB::stop() noexcept
+{
+    *this |= static_cast<std::uint8_t>( Command::STOP );
+}
+
+inline void TWI::HSTATUS::force_bus_state_to_idle() noexcept
+{
+    *this = static_cast<std::uint8_t>( Bus_State::IDLE );
+}
 
 /**
  * \brief Microchip megaAVR 0-series Two-Wire Interface (TWI) peripheral instance.

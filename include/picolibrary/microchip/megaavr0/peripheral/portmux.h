@@ -47,6 +47,8 @@ class PORTMUX {
 
     enum class SPI_Route : std::uint8_t;
 
+    enum class TWI_Route : std::uint8_t;
+
     /**
      * \brief PORTMUX Control for Event System (EVSYSROUTEA) register.
      *
@@ -381,6 +383,26 @@ class PORTMUX {
         {
             *this = ( *this & ~Mask::SPI0 ) | static_cast<std::uint8_t>( route );
         }
+
+        /**
+         * \brief Get the TWI0 routing configuration.
+         *
+         * \return The TWI0 routing configuration.
+         */
+        auto twi0_route() const noexcept
+        {
+            return static_cast<TWI_Route>( *this & Mask::TWI0 );
+        }
+
+        /**
+         * \brief Set the TWI0 routing configuration.
+         *
+         * \param[in] route The desired TWI0 routing configuration.
+         */
+        void set_twi0_route( TWI_Route route ) noexcept
+        {
+            *this = ( *this & ~Mask::TWI0 ) | static_cast<std::uint8_t>( route );
+        }
     };
 
     /**
@@ -500,6 +522,15 @@ class PORTMUX {
     };
 
     /**
+     * \brief TWI routing configuration.
+     */
+    enum class TWI_Route : std::uint8_t {
+        DEFAULT     = 0x0 << TWISPIROUTEA::Bit::TWI0, ///< Default route.
+        ALTERNATE_1 = 0x1 << TWISPIROUTEA::Bit::TWI0, ///< Alternate route 1.
+        ALTERNATE_2 = 0x2 << TWISPIROUTEA::Bit::TWI0, ///< Alternate route 2.
+    };
+
+    /**
      * \brief EVSYSROUTEA.
      */
     EVSYSROUTEA evsysroutea;
@@ -559,6 +590,26 @@ class PORTMUX {
     void set_spi0_route( SPI_Route route ) noexcept
     {
         twispiroutea.set_spi0_route( route );
+    }
+
+    /**
+     * \brief Get the TWI0 routing configuration.
+     *
+     * \return The TWI0 routing configuration.
+     */
+    auto twi0_route() const noexcept
+    {
+        return twispiroutea.twi0_route();
+    }
+
+    /**
+     * \brief Set the TWI0 routing configuration.
+     *
+     * \param[in] route The desired TWI0 routing configuration.
+     */
+    void set_twi0_route( TWI_Route route ) noexcept
+    {
+        twispiroutea.set_twi0_route( route );
     }
 
     /**

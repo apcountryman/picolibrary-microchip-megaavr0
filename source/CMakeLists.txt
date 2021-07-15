@@ -33,6 +33,7 @@ set(
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/spi.cc"
+    "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/twi.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral.cc"
     "picolibrary/microchip/megaavr0/peripheral/atmega4809.cc"

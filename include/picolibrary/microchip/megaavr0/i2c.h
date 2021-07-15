@@ -221,7 +221,7 @@ class Basic_Controller {
      * \return Nothing if the write succeeded.
      * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
      * \return picolibrary::Generic_Error::ARBITRATION_LOST if the controller lost
-     *         arbitration while attempting to address the device.
+     *         arbitration during the write.
      * \return picolibrary::Generic_Error::NONRESPONSIVE_DEVICE if the device did not
      *         acknowledge the write.
      */

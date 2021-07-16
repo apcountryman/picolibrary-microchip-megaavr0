@@ -52,19 +52,20 @@ class Basic_Controller {
      * \param[in] twi The TWI peripheral used by the I2C controller.
      * \param[in] sda_hold_time The desired SDA hold time configuration.
      * \param[in] fast_mode_plus The desired fast mode plus configuration.
-     * \param[in] clock_scaling_factor The desired clock scaling factor.
+     * \param[in] clock_generator_scaling_factor The desired clock generator scaling
+     *            factor.
      * \param[in] timeout The desired inactive bus timeout configuration.
      */
     Basic_Controller(
         Peripheral::TWI &               twi,
         Peripheral::TWI::SDA_Hold_Time  sda_hold_time,
         Peripheral::TWI::Fast_Mode_Plus fast_mode_plus,
-        std::uint8_t                    clock_scaling_factor,
+        std::uint8_t                    clock_generator_scaling_factor,
         Peripheral::TWI::Timeout        timeout ) noexcept :
         m_twi{ &twi }
     {
         m_twi->configure_as_i2c_controller(
-            sda_hold_time, fast_mode_plus, clock_scaling_factor, timeout );
+            sda_hold_time, fast_mode_plus, clock_generator_scaling_factor, timeout );
     }
 
     /**

@@ -935,17 +935,18 @@ class TWI {
      *
      * \param[in] sda_hold_time The desired SDA hold time configuration.
      * \param[in] fast_mode_plus The desired fast mode plus configuration.
-     * \param[in] clock_scaling_factor The desired clock scaling factor.
+     * \param[in] clock_generator_scaling_factor The desired clock generator scaling
+     *            factor.
      * \param[in] timeout The desired inactive bus timeout configuration.
      */
     void configure_as_i2c_controller(
         SDA_Hold_Time  sda_hold_time,
         Fast_Mode_Plus fast_mode_plus,
-        std::uint8_t   clock_scaling_factor,
+        std::uint8_t   clock_generator_scaling_factor,
         Timeout        timeout ) noexcept
     {
         ctrla.configure_as_i2c_controller( sda_hold_time, fast_mode_plus );
-        hbaud = clock_scaling_factor;
+        hbaud = clock_generator_scaling_factor;
         hctrla.configure_as_i2c_controller( timeout );
     }
 

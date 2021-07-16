@@ -71,7 +71,7 @@ int main()
         Controller{ CONTROLLER_TWI::instance(),
                     TWI::SDA_Hold_Time::CONTROLLER_SDA_HOLD_TIME,
                     TWI::Fast_Mode_Plus::DISABLED,
-                    CONTROLLER_CLOCK_SCALING_FACTOR,
+                    CONTROLLER_CLOCK_GENERATOR_SCALING_FACTOR,
                     TWI::Timeout::CONTROLLER_TIMEOUT } );
 
     for ( ;; ) {}

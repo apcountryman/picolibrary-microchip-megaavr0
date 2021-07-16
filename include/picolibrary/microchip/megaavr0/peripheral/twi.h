@@ -471,7 +471,7 @@ class TWI {
          */
         auto addressing_complete() const noexcept -> bool
         {
-            return *this & Mask::WIF;
+            return *this & ( Mask::WIF | Mask::RIF );
         }
 
         /**

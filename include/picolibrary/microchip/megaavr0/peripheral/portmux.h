@@ -31,6 +31,10 @@
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
+#ifdef PORTMUX
+#undef PORTMUX
+#endif // PORTMUX
+
 /**
  * \brief Microchip megaAVR 0-series Port Multiplexer (PORTMUX) peripheral.
  */
@@ -186,6 +190,22 @@ class PORTMUX {
      */
     class USARTROUTEA : public Register<std::uint8_t> {
       public:
+#ifdef USART0
+#undef USART0
+#endif // USART0
+
+#ifdef USART1
+#undef USART1
+#endif // USART1
+
+#ifdef USART2
+#undef USART2
+#endif // USART2
+
+#ifdef USART3
+#undef USART3
+#endif // USART3
+
         /**
          * \brief Field sizes.
          */
@@ -320,6 +340,14 @@ class PORTMUX {
      */
     class TWISPIROUTEA : public Register<std::uint8_t> {
       public:
+#ifdef SPI0
+#undef SPI0
+#endif // SPI0
+
+#ifdef TWI0
+#undef TWI0
+#endif // TWI0
+
         /**
          * \brief Field sizes.
          */
@@ -413,6 +441,10 @@ class PORTMUX {
      */
     class TCAROUTEA : public Register<std::uint8_t> {
       public:
+#ifdef TCA0
+#undef TCA0
+#endif // TCA0
+
         /**
          * \brief Field sizes.
          */
@@ -463,6 +495,22 @@ class PORTMUX {
      */
     class TCBROUTEA : public Register<std::uint8_t> {
       public:
+#ifdef TCB0
+#undef TCB0
+#endif // TCB0
+
+#ifdef TCB1
+#undef TCB1
+#endif // TCB1
+
+#ifdef TCB2
+#undef TCB2
+#endif // TCB2
+
+#ifdef TCB3
+#undef TCB3
+#endif // TCB3
+
         /**
          * \brief Field sizes.
          */

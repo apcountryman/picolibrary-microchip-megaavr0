@@ -15,6 +15,20 @@ SSH:
 git clone --recurse-submodules git@github.com:apcountryman/picolibrary-microchip-megaavr0.git
 ```
 
+## Usage (Dependency)
+To use this library as a dependency, simply add the subdirectory containing this
+repository to a CMake build, and link with the `picolibrary-microchip-megaavr0` static
+library.
+```cmake
+add_subdirectory( picolibrary-microchip-megaavr0 )
+```
+```cmake
+target_link_libraries(
+    foo
+    picolibrary-microchip-megaavr0
+)
+```
+
 ## Usage (Development)
 This repository's Git `pre-commit` hook script is the simplest way to configure, and build
 this project during development.

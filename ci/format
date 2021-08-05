@@ -64,10 +64,8 @@ function ensure_formatting_style_is_consistent()
 {
     local cpp_files; mapfile -t cpp_files < <( git -C "$repository" ls-files '*.h' '*.h.in' '*.cc' '*.cc.in' | xargs -r -d '\n' -I '{}' find "$repository/{}" ); readonly cpp_files
 
-    if [[ "${#cpp_files[@]}" -ne 0 ]]; then
-        if ! ( cd "$repository" && clang-format -i --verbose "${cpp_files[@]}" && git -C "$repository" diff --exit-code ); then
-            abort
-        fi
+    if ! ( cd "$repository" && clang-format -i --verbose "${cpp_files[@]}" && git -C "$repository" diff --exit-code ); then
+        abort
     fi
 }
 

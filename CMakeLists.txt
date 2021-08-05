@@ -31,7 +31,7 @@ option( PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_PICOLIBRARY "picolibra
 # load additional CMake modules
 list(
     APPEND CMAKE_MODULE_PATH
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/cmake-utilities"
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/apcountryman-cmake-utilities"
 )
 
 # configure compilation and linking

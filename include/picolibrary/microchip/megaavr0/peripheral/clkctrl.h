@@ -31,10 +31,6 @@
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
-#ifdef CLKCTRL
-#undef CLKCTRL
-#endif // CLKCTRL
-
 /**
  * \brief Microchip megaAVR 0-series Clock Controller (CLKCTRL) peripheral.
  */

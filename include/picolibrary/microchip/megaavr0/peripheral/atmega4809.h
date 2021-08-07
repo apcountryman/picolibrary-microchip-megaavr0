@@ -41,10 +41,6 @@
  */
 namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809 {
 
-#ifdef VPORTA
-#undef VPORTA
-#endif // VPORTA
-
 /**
  * \brief VPORTA.
  *
@@ -53,10 +49,6 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809 {
  *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTA.
  */
 using VPORTA = VPORT_Instance<0x0000>;
-
-#ifdef VPORTB
-#undef VPORTB
-#endif // VPORTB
 
 /**
  * \brief VPORTB.
@@ -67,10 +59,6 @@ using VPORTA = VPORT_Instance<0x0000>;
  */
 using VPORTB = VPORT_Instance<0x0004>;
 
-#ifdef VPORTC
-#undef VPORTC
-#endif // VPORTC
-
 /**
  * \brief VPORTC.
  *
@@ -79,10 +67,6 @@ using VPORTB = VPORT_Instance<0x0004>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTC.
  */
 using VPORTC = VPORT_Instance<0x0008>;
-
-#ifdef VPORTD
-#undef VPORTD
-#endif // VPORTD
 
 /**
  * \brief VPORTD.
@@ -93,10 +77,6 @@ using VPORTC = VPORT_Instance<0x0008>;
  */
 using VPORTD = VPORT_Instance<0x000C>;
 
-#ifdef VPORTE
-#undef VPORTE
-#endif // VPORTE
-
 /**
  * \brief VPORTE.
  *
@@ -105,10 +85,6 @@ using VPORTD = VPORT_Instance<0x000C>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::VPORTE.
  */
 using VPORTE = VPORT_Instance<0x0010>;
-
-#ifdef VPORTF
-#undef VPORTF
-#endif // VPORTF
 
 /**
  * \brief VPORTF.
@@ -128,10 +104,6 @@ using VPORTF = VPORT_Instance<0x0014>;
  */
 using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
 
-#ifdef PORTA
-#undef PORTA
-#endif // PORTA
-
 /**
  * \brief PORTA.
  *
@@ -140,10 +112,6 @@ using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::PORTA.
  */
 using PORTA = PORT_Instance<0x0400>;
-
-#ifdef PORTB
-#undef PORTB
-#endif // PORTB
 
 /**
  * \brief PORTB.
@@ -154,10 +122,6 @@ using PORTA = PORT_Instance<0x0400>;
  */
 using PORTB = PORT_Instance<0x0420>;
 
-#ifdef PORTC
-#undef PORTC
-#endif // PORTC
-
 /**
  * \brief PORTC.
  *
@@ -166,10 +130,6 @@ using PORTB = PORT_Instance<0x0420>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::PORTC.
  */
 using PORTC = PORT_Instance<0x0440>;
-
-#ifdef PORTD
-#undef PORTD
-#endif // PORTD
 
 /**
  * \brief PORTD.
@@ -180,10 +140,6 @@ using PORTC = PORT_Instance<0x0440>;
  */
 using PORTD = PORT_Instance<0x0460>;
 
-#ifdef PORTE
-#undef PORTE
-#endif // PORTE
-
 /**
  * \brief PORTE.
  *
@@ -192,10 +148,6 @@ using PORTD = PORT_Instance<0x0460>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::PORTE.
  */
 using PORTE = PORT_Instance<0x0480>;
-
-#ifdef PORTF
-#undef PORTF
-#endif // PORTF
 
 /**
  * \brief PORTF.
@@ -215,10 +167,6 @@ using PORTF = PORT_Instance<0x04A0>;
  */
 using PORTMUX0 = PORTMUX_Instance<0x05E0>;
 
-#ifdef USART0
-#undef USART0
-#endif // USART0
-
 /**
  * \brief USART0.
  *
@@ -227,10 +175,6 @@ using PORTMUX0 = PORTMUX_Instance<0x05E0>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::USART0.
  */
 using USART0 = USART_Instance<0x0800>;
-
-#ifdef USART1
-#undef USART1
-#endif // USART1
 
 /**
  * \brief USART1.
@@ -241,10 +185,6 @@ using USART0 = USART_Instance<0x0800>;
  */
 using USART1 = USART_Instance<0x0820>;
 
-#ifdef USART2
-#undef USART2
-#endif // USART2
-
 /**
  * \brief USART2.
  *
@@ -253,10 +193,6 @@ using USART1 = USART_Instance<0x0820>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::USART2.
  */
 using USART2 = USART_Instance<0x0840>;
-
-#ifdef USART3
-#undef USART3
-#endif // USART3
 
 /**
  * \brief USART3.

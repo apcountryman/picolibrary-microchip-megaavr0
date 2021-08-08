@@ -76,7 +76,7 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
     add_subdirectory( avr-libcpp )
 
     link_libraries( avr-libcpp )
-endif ( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
+endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
 
 if( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
     message( FATAL_ERROR "picolibrary-microchip-megaavr0 requires suppression of avr-libcpp SFR macros" )

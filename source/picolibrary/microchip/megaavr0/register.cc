@@ -21,3 +21,12 @@
  */
 
 #include "picolibrary/microchip/megaavr0/register.h"
+
+#include <cstdint>
+
+namespace picolibrary::Microchip::megaAVR0 {
+
+static_assert( sizeof( Register<std::uint8_t> ) == 1 );
+static_assert( sizeof( Register<std::uint16_t> ) == 2 );
+
+} // namespace picolibrary::Microchip::megaAVR0

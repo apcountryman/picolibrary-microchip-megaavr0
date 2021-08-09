@@ -32,4 +32,6 @@ static_assert( sizeof( Register<std::uint16_t> ) == 2 );
 static_assert( sizeof( Reserved_Register<std::uint8_t> ) == 1 );
 static_assert( sizeof( Reserved_Register<std::uint16_t> ) == 2 );
 
+static_assert( sizeof( Protected_Register<std::uint8_t> ) == 1 );
+
 } // namespace picolibrary::Microchip::megaAVR0

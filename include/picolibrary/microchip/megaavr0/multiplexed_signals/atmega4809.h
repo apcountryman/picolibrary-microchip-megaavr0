@@ -23,8 +23,6 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_H
 
-#include <cstdint>
-
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/spi.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/twi.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/usart.h"

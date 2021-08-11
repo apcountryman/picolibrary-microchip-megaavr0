@@ -266,6 +266,8 @@ class Transmitter_8_N_1 : private Transmitter<std::uint8_t> {
      */
     auto operator=( Transmitter_8_N_1 && expression ) noexcept -> Transmitter_8_N_1 & = default;
 
+    auto operator=( Transmitter_8_N_1 const & ) = delete;
+
     using Transmitter<std::uint8_t>::initialize;
     using Transmitter<std::uint8_t>::transmit;
 };

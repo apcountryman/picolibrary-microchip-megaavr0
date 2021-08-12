@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/testing/interactive/i2c.h"
 #include "picolibrary/testing/interactive/microchip/megaavr0/clock.h"
 
@@ -35,7 +36,6 @@ namespace {
 using namespace ::picolibrary::Microchip::megaAVR0::Peripheral;
 
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
-using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value;
@@ -45,6 +45,7 @@ using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::TWI_Route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Microchip::megaAVR0::Peripheral::TWI;
+using ::picolibrary::Microchip::megaAVR0::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::I2C::scan;
 using ::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock;
 
@@ -66,7 +67,7 @@ int main()
 
     scan<Unbuffered_Output_Stream>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_TWI::instance(),
                     TWI::SDA_Hold_Time::CONTROLLER_SDA_HOLD_TIME,

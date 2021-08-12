@@ -32,6 +32,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/spi.h"
 #include "picolibrary/spi.h"
 #include "picolibrary/testing/interactive/microchip/mcp3008.h"
@@ -45,7 +46,6 @@ using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
 using ::picolibrary::GPIO::Active_Low_IO_Pin;
 using ::picolibrary::Microchip::MCP3008::Channel;
 using ::picolibrary::Microchip::MCP3008::Channel_Pair;
-using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value;
@@ -58,6 +58,7 @@ using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI_Route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Microchip::megaAVR0::Peripheral::PORT;
 using ::picolibrary::Microchip::megaAVR0::Peripheral::SPI;
+using ::picolibrary::Microchip::megaAVR0::Peripheral::USART;
 using ::picolibrary::SPI::GPIO_Output_Pin_Device_Selector;
 using ::picolibrary::Testing::Interactive::Microchip::MCP3008::sample;
 using ::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock;
@@ -81,7 +82,7 @@ int main()
 
     sample<Unbuffered_Output_Stream>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Fixed_Configuration_Controller{ CONTROLLER_SPI::instance(),
                                         SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,

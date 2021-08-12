@@ -29,6 +29,7 @@
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/spi.h"
 #include "picolibrary/testing/interactive/microchip/megaavr0/clock.h"
 #include "picolibrary/testing/interactive/spi.h"
@@ -38,7 +39,6 @@ namespace {
 using namespace ::picolibrary::Microchip::megaAVR0::Peripheral;
 
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
-using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler;
 using ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value;
@@ -47,6 +47,7 @@ using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI_Route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Microchip::megaAVR0::Peripheral::SPI;
+using ::picolibrary::Microchip::megaAVR0::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock;
 using ::picolibrary::Testing::Interactive::SPI::echo;
 
@@ -71,7 +72,7 @@ int main()
 
     echo<Unbuffered_Output_Stream>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_SPI::instance() },
         { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,

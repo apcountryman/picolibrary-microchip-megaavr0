@@ -65,7 +65,7 @@ class Interrupt_Guard<Restore_Interrupt_Enable_State> {
     /**
      * \brief CPU peripheral address.
      */
-    static constexpr auto CPU_ADDRESS = std::uint16_t{ 0x0030 };
+    static constexpr auto CPU_ADDRESS = std::uintptr_t{ 0x0030 };
 
     /**
      * \brief CPU peripheral SREG register offset.
@@ -75,7 +75,7 @@ class Interrupt_Guard<Restore_Interrupt_Enable_State> {
     /**
      * \brief CPU peripheral SREG register address.
      */
-    static constexpr auto CPU_SREG_ADDRESS = std::uint16_t{ CPU_ADDRESS + CPU_SREG_OFFSET };
+    static constexpr auto CPU_SREG_ADDRESS = std::uintptr_t{ CPU_ADDRESS + CPU_SREG_OFFSET };
 
     /**
      * \brief The state of the CPU peripheral's SREG register when the interrupt guard

@@ -848,7 +848,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::enable_transmitter()
+     * \brief Enable the transmitter.
      */
     void enable_transmitter() noexcept
     {
@@ -856,7 +856,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::disable_transmitter()
+     * \brief Disable the transmitter.
      */
     void disable_transmitter() noexcept
     {
@@ -864,7 +864,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLB::disable()
+     * \brief Disable the receiver and transmitter.
      */
     void disable() noexcept
     {
@@ -872,7 +872,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::transmit_buffer_empty()
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
      */
     auto transmit_buffer_empty() const noexcept
     {
@@ -880,7 +883,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::transmission_complete()
+     * \brief Check if transmission is complete.
+     *
+     * \return true if transmission is complete.
+     * \return false if transmission is not complete.
      */
     auto transmission_complete() const noexcept
     {
@@ -888,7 +894,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::USART::STATUS::clear_transmission_complete()
+     * \brief Clear the transmission complete flag.
      */
     void clear_transmission_complete() noexcept
     {

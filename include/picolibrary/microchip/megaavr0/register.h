@@ -255,7 +255,7 @@ class Protected_Register {
     /**
      * \brief CPU peripheral address.
      */
-    static constexpr auto CPU_ADDRESS = std::uint16_t{ 0x0030 };
+    static constexpr auto CPU_ADDRESS = std::uintptr_t{ 0x0030 };
 
     /**
      * \brief CPU peripheral CCP register offset.
@@ -265,7 +265,7 @@ class Protected_Register {
     /**
      * \brief CPU peripheral CCP register address.
      */
-    static constexpr auto CPU_CCP_ADDRESS = std::uint16_t{ CPU_ADDRESS + CPU_CCP_OFFSET };
+    static constexpr auto CPU_CCP_ADDRESS = std::uintptr_t{ CPU_ADDRESS + CPU_CCP_OFFSET };
 
     /**
      * \brief CPU peripheral CCP register unlock protected I/O registers signature.

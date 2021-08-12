@@ -233,7 +233,7 @@ class CLKCTRL {
         }
 
         /**
-         * \brief Enable the prescaler.
+         * \brief Enable the clock prescaler.
          */
         void enable_prescaler() noexcept
         {
@@ -241,7 +241,7 @@ class CLKCTRL {
         }
 
         /**
-         * \brief Enable the prescaler.
+         * \brief Enable the clock prescaler.
          */
         void disable_prescaler() noexcept
         {
@@ -980,7 +980,9 @@ class CLKCTRL {
     auto operator=( CLKCTRL const & ) = delete;
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::source()
+     * \brief Get the clock source.
+     *
+     * \return The clock source.
      */
     auto source() const noexcept
     {
@@ -988,7 +990,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::set_source()
+     * \brief Set the clock source.
+     *
+     * \param[in] source The desired clock source.
      */
     void set_source( Source source ) noexcept
     {
@@ -996,7 +1000,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::output_enabled()
+     * \brief Check if clock output is enabled.
+     *
+     * \return true if clock output is enabled.
+     * \return false if clock output is not enabled.
      */
     auto output_enabled() const noexcept
     {
@@ -1004,7 +1011,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::enable_output()
+     * \brief Enable clock output.
      */
     void enable_output() noexcept
     {
@@ -1012,7 +1019,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLA::disable_output()
+     * \brief Disable clock output.
      */
     void disable_output() noexcept
     {
@@ -1020,7 +1027,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLB::prescaler_enabled()
+     * \brief Check if the clock prescaler is enabled.
+     *
+     * \return true if the clock prescaler is enabled.
+     * \return false if the clock prescaler is not enabled.
      */
     auto prescaler_enabled() const noexcept
     {
@@ -1028,7 +1038,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLB::prescaler_value()
+     * \brief Get the clock prescaler value.
+     *
+     * \return The clock prescaler value.
      */
     auto prescaler_value() const noexcept
     {
@@ -1036,7 +1048,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLB::configure_prescaler()
+     * \brief Configure the clock prescaler.
+     *
+     * \param[in] value The desired clock prescaler value.
+     * \param[in] configuration The desired clock prescaler configuration.
      */
     void configure_prescaler( Prescaler_Value value, Prescaler configuration ) noexcept
     {
@@ -1044,7 +1059,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLB::enable_prescaler()
+     * \brief Enable the clock prescaler.
      */
     void enable_prescaler() noexcept
     {
@@ -1052,7 +1067,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKCTRLB::disable_prescaler()
+     * \brief Disable the clock prescaler.
      */
     void disable_prescaler() noexcept
     {
@@ -1060,7 +1075,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKLOCK::configuration_locked()
+     * \brief Check if the clock configuration is locked.
+     *
+     * \return true if the clock configuration is locked.
+     * \return false if the clock configuration is not locked.
      */
     auto configuration_locked() const noexcept
     {
@@ -1068,7 +1086,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKLOCK::lock_configuration()
+     * \brief Lock the clock configuration.
      */
     void lock_configuration() noexcept
     {
@@ -1076,7 +1094,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKSTATUS::source_changing()
+     * \brief Check if the clock source is changing.
+     *
+     * \return true if the clock source is changing.
+     * \return false if the clock source is not changing.
      */
     auto source_changing() const noexcept
     {
@@ -1084,7 +1105,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKSTATUS::internal_16_20_mhz_oscillator_stable()
+     * \brief Check if the internal 16/20 MHz oscillator is stable.
+     *
+     * \return true if the internal 16/20 MHz oscillator is stable.
+     * \return false if the internal 16/20 MHz oscillator is not stable.
      */
     auto internal_16_20_mhz_oscillator_stable() const noexcept
     {
@@ -1092,7 +1116,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC20MCTRLA::internal_16_20_mhz_oscillator_mode()
+     * \brief Get the internal 16/20 MHz oscillator mode.
+     *
+     * \return The internal 16/20 MHz oscillator mode.
      */
     auto internal_16_20_mhz_oscillator_mode() const noexcept
     {
@@ -1100,7 +1126,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC20MCTRLA::set_internal_16_20_mhz_oscillator_mode()
+     * \brief Set the internal 16/20 MHz oscillator mode.
+     *
+     * \param[in] mode The desired internal 16/20 MHz oscillator mode.
      */
     void set_internal_16_20_mhz_oscillator_mode( Internal_16_20_MHz_Oscillator_Mode mode ) noexcept
     {
@@ -1108,7 +1136,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC20MCALIBB::internal_16_20_mhz_oscillator_calibration_locked()
+     * \brief Check if the internal 16/20 MHz oscillator calibration is locked.
+     *
+     * \return true if the internal 16/20 MHz oscillator calibration is locked.
+     * \return false if the internal 16/20 MHz oscillator calibration is not locked.
      */
     auto internal_16_20_mhz_oscillator_calibration_locked() const noexcept
     {
@@ -1129,7 +1160,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKSTATUS::internal_32_768_khz_ultra_low_power_oscillator_stable()
+     * \brief Check if the internal 32.768 kHz ultra low-power oscillator is stable.
+     *
+     * \return true if the internal 32.768 kHz ultra low-power oscillator is stable.
+     * \return false if the internal 32.768 kHz ultra low-power oscillator is not stable.
      */
     auto internal_32_768_khz_ultra_low_power_oscillator_stable() const noexcept
     {
@@ -1137,7 +1171,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC32KCTRLA::internal_32_768_khz_ultra_low_power_oscillator_mode()
+     * \brief Get the internal 32.768 kHz ultra low-power oscillator mode.
+     *
+     * \return The internal 32.768 kHz ultra low-power oscillator mode.
      */
     auto internal_32_768_khz_ultra_low_power_oscillator_mode() const noexcept
     {
@@ -1145,7 +1181,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::OSC32KCTRLA::set_internal_32_768_khz_ultra_low_power_oscillator_mode()
+     * \brief Set the internal 32.768 kHz ultra low-power oscillator mode.
+     *
+     * \param[in] mode The desired internal 32.768 kHz ultra low-power oscillator mode.
      */
     void set_internal_32_768_khz_ultra_low_power_oscillator_mode( Internal_32_768_kHz_Ultra_Low_Power_Oscillator_Mode mode ) noexcept
     {
@@ -1153,7 +1191,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKSTATUS::external_32_768_khz_crystal_oscillator_stable()
+     * \brief Check if the external 32.768 kHz crystal oscillator is stable.
+     *
+     * \return true if the external 32.768 kHz crystal oscillator is stable.
+     * \return false if the external 32.768 kHz crystal oscillator is not stable.
      */
     auto external_32_768_khz_crystal_oscillator_stable() const noexcept
     {
@@ -1161,7 +1202,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::external_32_768_khz_crystal_oscillator_source()
+     * \brief Get the external 32.768 kHz crystal oscillator source.
+     *
+     * \return The external 32.768 kHz crystal oscillator source.
      */
     auto external_32_768_khz_crystal_oscillator_source() const noexcept
     {
@@ -1169,7 +1212,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::external_32_768_khz_crystal_oscillator_start_up_time()
+     * \brief Get the external 32.768 kHz crystal oscillator start-up time.
+     *
+     * \return The external 32.768 kHz crystal oscillator start-up time.
      */
     auto external_32_768_khz_crystal_oscillator_start_up_time() const noexcept
     {
@@ -1177,7 +1222,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::external_32_768_khz_crystal_oscillator_mode()
+     * \brief Get the external 32.768 kHz crystal oscillator mode.
+     *
+     * \return The external 32.768 kHz crystal oscillator mode.
      */
     auto external_32_768_khz_crystal_oscillator_mode() const noexcept
     {
@@ -1185,7 +1232,11 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::configure_external_32_768_khz_crystal_oscillator()
+     * \brief Configure the external 32.768 kHz crystal oscillator.
+     *
+     * \param[in] source The desired external 32.768 kHz crystal oscillator source.
+     * \param[in] start_up_time The external 32.768 kHz crystal oscillator start-up time.
+     * \param[in] mode The desired external 32.768 kHz crystal oscillator mode.
      */
     void configure_external_32_768_khz_crystal_oscillator(
         External_32_768_kHz_Crystal_Oscillator_Source        source,
@@ -1196,7 +1247,9 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::set_external_32_768_khz_crystal_oscillator_mode()
+     * \brief Set the external 32.768 kHz crystal oscillator mode.
+     *
+     * \param[in] mode The desired external 32.768 kHz crystal oscillator mode.
      */
     void set_external_32_768_khz_crystal_oscillator_mode( External_32_768_kHz_Crystal_Oscillator_Mode mode ) noexcept
     {
@@ -1204,7 +1257,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::external_32_768_khz_crystal_oscillator_enabled()
+     * \brief Check if the external 32.768 kHz crystal oscillator is enabled.
+     *
+     * \return true if the external 32.768 kHz crystal oscillator is enabled.
+     * \return false if the external 32.768 kHz crystal oscillator is not enabled.
      */
     auto external_32_768_khz_crystal_oscillator_enabled() const noexcept
     {
@@ -1212,7 +1268,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::enable_external_32_768_khz_crystal_oscillator()
+     * \brief Enable the external 32.768 kHz crystal oscillator.
      */
     void enable_external_32_768_khz_crystal_oscillator() noexcept
     {
@@ -1220,7 +1276,7 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::XOSC32KCTRLA::disable_external_32_768_khz_crystal_oscillator()
+     * \brief Disable the external 32.768 kHz crystal oscillator.
      */
     void disable_external_32_768_khz_crystal_oscillator() noexcept
     {
@@ -1228,7 +1284,10 @@ class CLKCTRL {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL::MCLKSTATUS::external_clock_stable()
+     * \brief Check if the external clock is stable.
+     *
+     * \return true if the external clock is stable.
+     * \return false if the external clock is not stable.
      */
     auto external_clock_stable() const noexcept
     {

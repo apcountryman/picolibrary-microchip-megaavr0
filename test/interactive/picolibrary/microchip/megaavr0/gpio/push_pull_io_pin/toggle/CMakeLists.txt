@@ -91,6 +91,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         )
         target_link_libraries(
             test-interactive-picolibrary-microchip-megaavr0-gpio-push_pull_io_pin-port-toggle
+            picolibrary-fatal_error
             picolibrary-microchip-megaavr0
         )
         add_avrdude_programming_targets(
@@ -120,6 +121,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         )
         target_link_libraries(
             test-interactive-picolibrary-microchip-megaavr0-gpio-push_pull_io_pin-vport-toggle
+            picolibrary-fatal_error
             picolibrary-microchip-megaavr0
         )
         add_avrdude_programming_targets(

@@ -26,6 +26,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
@@ -51,9 +52,13 @@ using SPI_Route = Peripheral::PORTMUX::SPI_Route;
  */
 inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexcept
 {
-    static_cast<void>( spi );
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            Peripheral::ATmega4809::PORTMUX0::instance().set_spi0_route( route );
+            return;
+    } // switch
 
-    Peripheral::ATmega4809::PORTMUX0::instance().set_spi0_route( route );
+    trap_fatal_error();
 }
 
 /**
@@ -69,16 +74,20 @@ inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexce
  */
 inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
-        case SPI_Route::ALTERNATE_1: return Peripheral::ATmega4809::PORTC::instance();
-        case SPI_Route::ALTERNATE_2: return Peripheral::ATmega4809::PORTE::instance();
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
+                case SPI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::PORTC::instance();
+                case SPI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::PORTE::instance();
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -94,16 +103,21 @@ inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT
  */
 inline auto spi_vport( Peripheral::SPI const & spi ) noexcept -> Peripheral::VPORT &
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return Peripheral::ATmega4809::VPORTA::instance();
-        case SPI_Route::ALTERNATE_1: return Peripheral::ATmega4809::VPORTC::instance();
-        case SPI_Route::ALTERNATE_2: return Peripheral::ATmega4809::VPORTE::instance();
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT:
+                    return Peripheral::ATmega4809::VPORTA::instance();
+                case SPI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::VPORTC::instance();
+                case SPI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::VPORTE::instance();
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::VPORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -151,16 +165,18 @@ inline auto & ds_vport( Peripheral::SPI const & spi ) noexcept
  */
 inline auto ds_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return 7;
-        case SPI_Route::ALTERNATE_1: return 3;
-        case SPI_Route::ALTERNATE_2: return 3;
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return 7;
+                case SPI_Route::ALTERNATE_1: return 3;
+                case SPI_Route::ALTERNATE_2: return 3;
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -224,16 +240,18 @@ inline auto & sck_vport( Peripheral::SPI const & spi ) noexcept
  */
 inline auto sck_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return 6;
-        case SPI_Route::ALTERNATE_1: return 2;
-        case SPI_Route::ALTERNATE_2: return 2;
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return 6;
+                case SPI_Route::ALTERNATE_1: return 2;
+                case SPI_Route::ALTERNATE_2: return 2;
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -297,16 +315,18 @@ inline auto & codi_vport( Peripheral::SPI const & spi ) noexcept
  */
 inline auto codi_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return 4;
-        case SPI_Route::ALTERNATE_1: return 0;
-        case SPI_Route::ALTERNATE_2: return 0;
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return 4;
+                case SPI_Route::ALTERNATE_1: return 0;
+                case SPI_Route::ALTERNATE_2: return 0;
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -370,16 +390,18 @@ inline auto & cido_vport( Peripheral::SPI const & spi ) noexcept
  */
 inline auto cido_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( spi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-        case SPI_Route::DEFAULT: return 5;
-        case SPI_Route::ALTERNATE_1: return 1;
-        case SPI_Route::ALTERNATE_2: return 1;
-        case SPI_Route::NONE: break;
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega4809::SPI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return 5;
+                case SPI_Route::ALTERNATE_1: return 1;
+                case SPI_Route::ALTERNATE_2: return 1;
+                case SPI_Route::NONE: break;
+            } // switch
+            break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**

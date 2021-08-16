@@ -26,6 +26,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
@@ -51,9 +52,13 @@ using TWI_Route = Peripheral::PORTMUX::TWI_Route;
  */
 inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexcept
 {
-    static_cast<void>( twi );
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            Peripheral::ATmega4809::PORTMUX0::instance().set_twi0_route( route );
+            return;
+    } // switch
 
-    Peripheral::ATmega4809::PORTMUX0::instance().set_twi0_route( route );
+    trap_fatal_error();
 }
 
 /**
@@ -67,11 +72,19 @@ inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexce
  *
  * \return The TWI peripheral's SCL pin number.
  */
-constexpr auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
+inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( twi );
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return 3;
+                case TWI_Route::ALTERNATE_1: return 3;
+                case TWI_Route::ALTERNATE_2: return 3;
+            } // switch
+            break;
+    } // switch
 
-    return 3;
+    trap_fatal_error();
 }
 
 /**
@@ -85,7 +98,7 @@ constexpr auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_f
  *
  * \return The TWI peripheral's SCL pin mask.
  */
-constexpr auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
+inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return 1 << scl_number( twi );
 }
@@ -101,11 +114,19 @@ constexpr auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
  *
  * \return The TWI peripheral's SDA pin number.
  */
-constexpr auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
+inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
-    static_cast<void>( twi );
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return 2;
+                case TWI_Route::ALTERNATE_1: return 2;
+                case TWI_Route::ALTERNATE_2: return 2;
+            } // switch
+            break;
+    } // switch
 
-    return 2;
+    trap_fatal_error();
 }
 
 /**
@@ -119,7 +140,7 @@ constexpr auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_f
  *
  * \return The TWI peripheral's SDA pin mask.
  */
-constexpr auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
+inline auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return 1 << sda_number( twi );
 }
@@ -137,15 +158,19 @@ constexpr auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
  */
 inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
-    static_cast<void>( twi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-        case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
-        case TWI_Route::ALTERNATE_1: return Peripheral::ATmega4809::PORTA::instance();
-        case TWI_Route::ALTERNATE_2: return Peripheral::ATmega4809::PORTC::instance();
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
+                case TWI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::PORTA::instance();
+                case TWI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::PORTC::instance();
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -162,15 +187,20 @@ inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Perip
  */
 inline auto twi_controller_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
-    static_cast<void>( twi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-        case TWI_Route::DEFAULT: return Peripheral::ATmega4809::VPORTA::instance();
-        case TWI_Route::ALTERNATE_1: return Peripheral::ATmega4809::VPORTA::instance();
-        case TWI_Route::ALTERNATE_2: return Peripheral::ATmega4809::VPORTC::instance();
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT:
+                    return Peripheral::ATmega4809::VPORTA::instance();
+                case TWI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::VPORTA::instance();
+                case TWI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::VPORTC::instance();
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::VPORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -217,7 +247,7 @@ inline auto & controller_scl_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SCL pin number.
  */
-constexpr auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
 {
     return scl_number( twi );
 }
@@ -233,7 +263,7 @@ constexpr auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SCL pin mask.
  */
-constexpr auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept
 {
     return scl_mask( twi );
 }
@@ -282,7 +312,7 @@ inline auto & controller_sda_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SDA pin number.
  */
-constexpr auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
 {
     return sda_number( twi );
 }
@@ -298,7 +328,7 @@ constexpr auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SDA pin mask.
  */
-constexpr auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
 {
     return sda_mask( twi );
 }
@@ -316,15 +346,19 @@ constexpr auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
  */
 inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
-    static_cast<void>( twi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-        case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTC::instance();
-        case TWI_Route::ALTERNATE_1: return Peripheral::ATmega4809::PORTF::instance();
-        case TWI_Route::ALTERNATE_2: return Peripheral::ATmega4809::PORTF::instance();
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTC::instance();
+                case TWI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::PORTF::instance();
+                case TWI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::PORTF::instance();
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -340,15 +374,20 @@ inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Periphera
  */
 inline auto twi_device_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
-    static_cast<void>( twi );
-
-    switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-        case TWI_Route::DEFAULT: return Peripheral::ATmega4809::VPORTC::instance();
-        case TWI_Route::ALTERNATE_1: return Peripheral::ATmega4809::VPORTF::instance();
-        case TWI_Route::ALTERNATE_2: return Peripheral::ATmega4809::VPORTF::instance();
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega4809::TWI0::ADDRESS:
+            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT:
+                    return Peripheral::ATmega4809::VPORTC::instance();
+                case TWI_Route::ALTERNATE_1:
+                    return Peripheral::ATmega4809::VPORTF::instance();
+                case TWI_Route::ALTERNATE_2:
+                    return Peripheral::ATmega4809::VPORTF::instance();
+            } // switch
+            break;
     } // switch
 
-    return *static_cast<Peripheral::VPORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -394,7 +433,7 @@ inline auto & device_scl_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SCL pin number.
  */
-constexpr auto device_scl_number( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_number( Peripheral::TWI const & twi ) noexcept
 {
     return scl_number( twi );
 }
@@ -410,7 +449,7 @@ constexpr auto device_scl_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SCL pin mask.
  */
-constexpr auto device_scl_mask( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_mask( Peripheral::TWI const & twi ) noexcept
 {
     return scl_mask( twi );
 }
@@ -458,7 +497,7 @@ inline auto & device_sda_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SDA pin number.
  */
-constexpr auto device_sda_number( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_number( Peripheral::TWI const & twi ) noexcept
 {
     return sda_number( twi );
 }
@@ -474,7 +513,7 @@ constexpr auto device_sda_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SDA pin mask.
  */
-constexpr auto device_sda_mask( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_mask( Peripheral::TWI const & twi ) noexcept
 {
     return sda_mask( twi );
 }

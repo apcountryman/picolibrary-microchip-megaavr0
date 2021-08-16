@@ -79,6 +79,8 @@ class SIGROW {
         auto operator=( OSCCAL16M0 && ) = delete;
 
         auto operator=( OSCCAL16M0 const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -126,6 +128,8 @@ class SIGROW {
         auto operator=( OSCCAL16M1 && ) = delete;
 
         auto operator=( OSCCAL16M1 const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -171,6 +175,8 @@ class SIGROW {
         auto operator=( OSCCAL20M0 && ) = delete;
 
         auto operator=( OSCCAL20M0 const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -218,6 +224,8 @@ class SIGROW {
         auto operator=( OSCCAL20M1 && ) = delete;
 
         auto operator=( OSCCAL20M1 const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
     };
 
     /**

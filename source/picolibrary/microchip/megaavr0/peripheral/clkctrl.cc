@@ -26,11 +26,11 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( CLKCTRL ) == 0x1C + 1 );
 static_assert( CLKCTRL::MCLKCTRLA::Bit::CLKOUT == 7 );
-static_assert( CLKCTRL::MCLKCTRLB::Bit::RESERVED == 5 );
-static_assert( CLKCTRL::MCLKLOCK::Bit::RESERVED == 1 );
+static_assert( CLKCTRL::MCLKCTRLB::Bit::RESERVED5 == 5 );
+static_assert( CLKCTRL::MCLKLOCK::Bit::RESERVED1 == 1 );
 static_assert( CLKCTRL::MCLKSTATUS::Bit::EXTS == 7 );
 static_assert( CLKCTRL::OSC20MCTRLA::Bit::RESERVED2 == 2 );
-static_assert( CLKCTRL::OSC20MCALIBA::Bit::RESERVED == 7 );
+static_assert( CLKCTRL::OSC20MCALIBA::Bit::RESERVED7 == 7 );
 static_assert( CLKCTRL::OSC20MCALIBB::Bit::LOCK == 7 );
 static_assert( CLKCTRL::OSC32KCTRLA::Bit::RESERVED2 == 2 );
 static_assert( CLKCTRL::XOSC32KCTRLA::Bit::RESERVED6 == 6 );

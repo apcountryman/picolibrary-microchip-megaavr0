@@ -26,7 +26,7 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( USART ) == 0x0E + 1 );
 static_assert( USART::RXDATAH::Bit::RXCIF == 7 );
-static_assert( USART::TXDATAH::Bit::RESERVED == 1 );
+static_assert( USART::TXDATAH::Bit::RESERVED1 == 1 );
 static_assert( USART::STATUS::Bit::RXCIF == 7 );
 static_assert( USART::CTRLA::Bit::RXCIE == 7 );
 static_assert( USART::CTRLB::Bit::RXEN == 7 );
@@ -35,8 +35,8 @@ static_assert(
     == USART::CTRLC::Bit::RESERVED3 + USART::CTRLC::Size::RESERVED3 );
 static_assert( USART::CTRLC::Bit::CMODE == 6 );
 static_assert( USART::CTRLD::Bit::ABW == 6 );
-static_assert( USART::DBGCTRL::Bit::RESERVED == 1 );
-static_assert( USART::EVCTRL::Bit::RESERVED == 1 );
-static_assert( USART::RXPLCTRL::Bit::RESERVED == 7 );
+static_assert( USART::DBGCTRL::Bit::RESERVED1 == 1 );
+static_assert( USART::EVCTRL::Bit::RESERVED1 == 1 );
+static_assert( USART::RXPLCTRL::Bit::RESERVED7 == 7 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

@@ -25,7 +25,7 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( PORT ) == 0x17 + 1 );
-static_assert( PORT::PORTCTRL::Bit::RESERVED == 1 );
+static_assert( PORT::PORTCTRL::Bit::RESERVED1 == 1 );
 static_assert( PORT::PINCTRL::Bit::INVEN == 7 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

@@ -66,13 +66,13 @@ class PORTMUX {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto EVOUTA   = std::uint_fast8_t{ 1 }; ///< EVOUTA.
-            static constexpr auto EVOUTB   = std::uint_fast8_t{ 1 }; ///< EVOUTB.
-            static constexpr auto EVOUTC   = std::uint_fast8_t{ 1 }; ///< EVOUTC.
-            static constexpr auto EVOUTD   = std::uint_fast8_t{ 1 }; ///< EVOUTD.
-            static constexpr auto EVOUTE   = std::uint_fast8_t{ 1 }; ///< EVOUTE.
-            static constexpr auto EVOUTF   = std::uint_fast8_t{ 1 }; ///< EVOUTF.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 2 }; ///< Reserved.
+            static constexpr auto EVOUTA    = std::uint_fast8_t{ 1 }; ///< EVOUTA.
+            static constexpr auto EVOUTB    = std::uint_fast8_t{ 1 }; ///< EVOUTB.
+            static constexpr auto EVOUTC    = std::uint_fast8_t{ 1 }; ///< EVOUTC.
+            static constexpr auto EVOUTD    = std::uint_fast8_t{ 1 }; ///< EVOUTD.
+            static constexpr auto EVOUTE    = std::uint_fast8_t{ 1 }; ///< EVOUTE.
+            static constexpr auto EVOUTF    = std::uint_fast8_t{ 1 }; ///< EVOUTF.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ 2 }; ///< RESERVED6.
         };
 
         /**
@@ -85,7 +85,7 @@ class PORTMUX {
             static constexpr auto EVOUTD = std::uint_fast8_t{ EVOUTC + Size::EVOUTC }; ///< EVOUTD.
             static constexpr auto EVOUTE = std::uint_fast8_t{ EVOUTD + Size::EVOUTD }; ///< EVOUTE.
             static constexpr auto EVOUTF = std::uint_fast8_t{ EVOUTE + Size::EVOUTE }; ///< EVOUTF.
-            static constexpr auto RESERVED = std::uint_fast8_t{ EVOUTF + Size::EVOUTF }; ///< Reserved.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ EVOUTF + Size::EVOUTF }; ///< RESERVED6.
         };
 
         /**
@@ -98,7 +98,7 @@ class PORTMUX {
             static constexpr auto EVOUTD = mask<std::uint8_t>( Size::EVOUTD, Bit::EVOUTD ); ///< EVOUTD.
             static constexpr auto EVOUTE = mask<std::uint8_t>( Size::EVOUTE, Bit::EVOUTE ); ///< EVOUTE.
             static constexpr auto EVOUTF = mask<std::uint8_t>( Size::EVOUTF, Bit::EVOUTF ); ///< EVOUTF.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
         EVSYSROUTEA() = delete;
@@ -131,11 +131,11 @@ class PORTMUX {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto LUT0     = std::uint_fast8_t{ 1 }; ///< LUT0.
-            static constexpr auto LUT1     = std::uint_fast8_t{ 1 }; ///< LUT1.
-            static constexpr auto LUT2     = std::uint_fast8_t{ 1 }; ///< LUT2.
-            static constexpr auto LUT3     = std::uint_fast8_t{ 1 }; ///< LUT3.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 4 }; ///< Reserved.
+            static constexpr auto LUT0      = std::uint_fast8_t{ 1 }; ///< LUT0.
+            static constexpr auto LUT1      = std::uint_fast8_t{ 1 }; ///< LUT1.
+            static constexpr auto LUT2      = std::uint_fast8_t{ 1 }; ///< LUT2.
+            static constexpr auto LUT3      = std::uint_fast8_t{ 1 }; ///< LUT3.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
         };
 
         /**
@@ -146,7 +146,7 @@ class PORTMUX {
             static constexpr auto LUT1 = std::uint_fast8_t{ LUT0 + Size::LUT0 }; ///< LUT1.
             static constexpr auto LUT2 = std::uint_fast8_t{ LUT1 + Size::LUT1 }; ///< LUT2.
             static constexpr auto LUT3 = std::uint_fast8_t{ LUT2 + Size::LUT2 }; ///< LUT3.
-            static constexpr auto RESERVED = std::uint_fast8_t{ LUT3 + Size::LUT3 }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ LUT3 + Size::LUT3 }; ///< RESERVED4.
         };
 
         /**
@@ -157,7 +157,7 @@ class PORTMUX {
             static constexpr auto LUT1 = mask<std::uint8_t>( Size::LUT1, Bit::LUT1 ); ///< LUT1.
             static constexpr auto LUT2 = mask<std::uint8_t>( Size::LUT2, Bit::LUT2 ); ///< LUT2.
             static constexpr auto LUT3 = mask<std::uint8_t>( Size::LUT3, Bit::LUT3 ); ///< LUT3.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
         };
 
         CCLROUTEA() = delete;
@@ -325,9 +325,9 @@ class PORTMUX {
          */
         struct Size {
             static constexpr auto SPI0      = std::uint_fast8_t{ 2 }; ///< SPI0.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ 2 }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 2 }; ///< RESERVED2.
             static constexpr auto TWI0      = std::uint_fast8_t{ 2 }; ///< TWI0.
-            static constexpr auto RESERVED6 = std::uint_fast8_t{ 2 }; ///< Reserved.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ 2 }; ///< RESERVED6.
         };
 
         /**
@@ -335,9 +335,9 @@ class PORTMUX {
          */
         struct Bit {
             static constexpr auto SPI0 = std::uint_fast8_t{}; ///< SPI0.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ SPI0 + Size::SPI0 }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ SPI0 + Size::SPI0 }; ///< RESERVED2.
             static constexpr auto TWI0 = std::uint_fast8_t{ RESERVED2 + Size::RESERVED2 }; ///< TWI0.
-            static constexpr auto RESERVED6 = std::uint_fast8_t{ TWI0 + Size::TWI0 }; ///< Reserved.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ TWI0 + Size::TWI0 }; ///< RESERVED6.
         };
 
         /**
@@ -345,9 +345,9 @@ class PORTMUX {
          */
         struct Mask {
             static constexpr auto SPI0 = mask<std::uint8_t>( Size::SPI0, Bit::SPI0 ); ///< SPI0.
-            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
             static constexpr auto TWI0 = mask<std::uint8_t>( Size::TWI0, Bit::TWI0 ); ///< TWI0.
-            static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< Reserved.
+            static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
         TWISPIROUTEA() = delete;
@@ -417,8 +417,8 @@ class PORTMUX {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto TCA0     = std::uint_fast8_t{ 3 }; ///< TCA0.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 5 }; ///< Reserved.
+            static constexpr auto TCA0      = std::uint_fast8_t{ 3 }; ///< TCA0.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 5 }; ///< RESERVED3.
         };
 
         /**
@@ -426,7 +426,7 @@ class PORTMUX {
          */
         struct Bit {
             static constexpr auto TCA0 = std::uint_fast8_t{}; ///< TCA0.
-            static constexpr auto RESERVED = std::uint_fast8_t{ TCA0 + Size::TCA0 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ TCA0 + Size::TCA0 }; ///< RESERVED3.
         };
 
         /**
@@ -434,7 +434,7 @@ class PORTMUX {
          */
         struct Mask {
             static constexpr auto TCA0 = mask<std::uint8_t>( Size::TCA0, Bit::TCA0 ); ///< TCA0.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
         };
 
         TCAROUTEA() = delete;
@@ -467,11 +467,11 @@ class PORTMUX {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto TCB0     = std::uint_fast8_t{ 1 }; ///< TCB0.
-            static constexpr auto TCB1     = std::uint_fast8_t{ 1 }; ///< TCB1.
-            static constexpr auto TCB2     = std::uint_fast8_t{ 1 }; ///< TCB2.
-            static constexpr auto TCB3     = std::uint_fast8_t{ 1 }; ///< TCB3.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 4 }; ///< Reserved.
+            static constexpr auto TCB0      = std::uint_fast8_t{ 1 }; ///< TCB0.
+            static constexpr auto TCB1      = std::uint_fast8_t{ 1 }; ///< TCB1.
+            static constexpr auto TCB2      = std::uint_fast8_t{ 1 }; ///< TCB2.
+            static constexpr auto TCB3      = std::uint_fast8_t{ 1 }; ///< TCB3.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
         };
 
         /**
@@ -482,7 +482,7 @@ class PORTMUX {
             static constexpr auto TCB1 = std::uint_fast8_t{ TCB0 + Size::TCB0 }; ///< TCB1.
             static constexpr auto TCB2 = std::uint_fast8_t{ TCB1 + Size::TCB1 }; ///< TCB2.
             static constexpr auto TCB3 = std::uint_fast8_t{ TCB2 + Size::TCB2 }; ///< TCB3.
-            static constexpr auto RESERVED = std::uint_fast8_t{ TCB3 + Size::TCB3 }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ TCB3 + Size::TCB3 }; ///< RESERVED4.
         };
 
         /**
@@ -493,7 +493,7 @@ class PORTMUX {
             static constexpr auto TCB1 = mask<std::uint8_t>( Size::TCB1, Bit::TCB1 ); ///< TCB1.
             static constexpr auto TCB2 = mask<std::uint8_t>( Size::TCB2, Bit::TCB2 ); ///< TCB2.
             static constexpr auto TCB3 = mask<std::uint8_t>( Size::TCB3, Bit::TCB3 ); ///< TCB3.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
         };
 
         TCBROUTEA() = delete;

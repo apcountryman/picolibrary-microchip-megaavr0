@@ -49,8 +49,8 @@ class PORT {
          * \brief Field Sizes.
          */
         struct Size {
-            static constexpr auto SRL      = std::uint_fast8_t{ 1 }; ///< SRL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto SRL       = std::uint_fast8_t{ 1 }; ///< SRL.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -58,7 +58,7 @@ class PORT {
          */
         struct Bit {
             static constexpr auto SRL = std::uint_fast8_t{}; ///< SRL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ SRL + Size::SRL }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ SRL + Size::SRL }; ///< RESERVED1.
         };
 
         /**
@@ -66,7 +66,7 @@ class PORT {
          */
         struct Mask {
             static constexpr auto SRL = mask<std::uint8_t>( Size::SRL, Bit::SRL ); ///< SRL.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         PORTCTRL() = delete;
@@ -98,10 +98,10 @@ class PORT {
          * \brief Field Sizes.
          */
         struct Size {
-            static constexpr auto ISC      = std::uint_fast8_t{ 3 }; ///< ISC.
-            static constexpr auto PULLUPEN = std::uint_fast8_t{ 1 }; ///< PULLUPEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 3 }; ///< Reserved.
-            static constexpr auto INVEN    = std::uint_fast8_t{ 1 }; ///< INVEN.
+            static constexpr auto ISC       = std::uint_fast8_t{ 3 }; ///< ISC.
+            static constexpr auto PULLUPEN  = std::uint_fast8_t{ 1 }; ///< PULLUPEN.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 3 }; ///< RESERVED4.
+            static constexpr auto INVEN     = std::uint_fast8_t{ 1 }; ///< INVEN.
         };
 
         /**
@@ -110,8 +110,8 @@ class PORT {
         struct Bit {
             static constexpr auto ISC = std::uint_fast8_t{}; ///< ISC.
             static constexpr auto PULLUPEN = std::uint_fast8_t{ ISC + Size::ISC }; ///< PULLUPEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ PULLUPEN + Size::PULLUPEN }; ///< Reserved.
-            static constexpr auto INVEN = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< INVEN.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ PULLUPEN + Size::PULLUPEN }; ///< RESERVED4.
+            static constexpr auto INVEN = std::uint_fast8_t{ RESERVED4 + Size::RESERVED4 }; ///< INVEN.
         };
 
         /**
@@ -120,7 +120,7 @@ class PORT {
         struct Mask {
             static constexpr auto ISC = mask<std::uint8_t>( Size::ISC, Bit::ISC ); ///< ISC.
             static constexpr auto PULLUPEN = mask<std::uint8_t>( Size::PULLUPEN, Bit::PULLUPEN ); ///< PULLUPEN.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
             static constexpr auto INVEN = mask<std::uint8_t>( Size::INVEN, Bit::INVEN ); ///< INVEN.
         };
 

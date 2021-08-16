@@ -66,33 +66,33 @@ class TWI {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
             static constexpr auto FMPEN     = std::uint_fast8_t{ 1 }; ///< FMPEN.
             static constexpr auto SDAHOLD   = std::uint_fast8_t{ 2 }; ///< SDAHOLD.
             static constexpr auto SDASETUP  = std::uint_fast8_t{ 1 }; ///< SDASETUP.
-            static constexpr auto RESERVED5 = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ 3 }; ///< RESERVED5.
         };
 
         /**
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
             static constexpr auto FMPEN = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< FMPEN.
             static constexpr auto SDAHOLD = std::uint_fast8_t{ FMPEN + Size::FMPEN }; ///< SDAHOLD.
             static constexpr auto SDASETUP = std::uint_fast8_t{ SDAHOLD + Size::SDAHOLD }; ///< SDASETUP.
-            static constexpr auto RESERVED5 = std::uint_fast8_t{ SDASETUP + Size::SDASETUP }; ///< Reserved.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ SDASETUP + Size::SDASETUP }; ///< RESERVED5.
         };
 
         /**
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto FMPEN = mask<std::uint8_t>( Size::FMPEN, Bit::FMPEN ); ///< FMPEN.
             static constexpr auto SDAHOLD = mask<std::uint8_t>( Size::SDAHOLD, Bit::SDAHOLD ); ///< SDAHOLD.
             static constexpr auto SDASETUP = mask<std::uint8_t>( Size::SDASETUP, Bit::SDASETUP ); ///< SDASETUP.
-            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< Reserved.
+            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< RESERVED5.
         };
 
         CTRLA() = delete;
@@ -139,7 +139,7 @@ class TWI {
             static constexpr auto ENABLE    = std::uint_fast8_t{ 1 }; ///< ENABLE.
             static constexpr auto FMPEN     = std::uint_fast8_t{ 1 }; ///< FMPEN.
             static constexpr auto SDAHOLD   = std::uint_fast8_t{ 2 }; ///< SDAHOLD.
-            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
         };
 
         /**
@@ -149,7 +149,7 @@ class TWI {
             static constexpr auto ENABLE = std::uint_fast8_t{}; ///< ENABLE.
             static constexpr auto FMPEN = std::uint_fast8_t{ ENABLE + Size::ENABLE }; ///< FMPEN.
             static constexpr auto SDAHOLD = std::uint_fast8_t{ FMPEN + Size::FMPEN }; ///< SDAHOLD.
-            static constexpr auto RESERVED4 = std::uint_fast8_t{ SDAHOLD + Size::SDAHOLD }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ SDAHOLD + Size::SDAHOLD }; ///< RESERVED4.
         };
 
         /**
@@ -159,7 +159,7 @@ class TWI {
             static constexpr auto ENABLE = mask<std::uint8_t>( Size::ENABLE, Bit::ENABLE ); ///< ENABLE.
             static constexpr auto FMPEN = mask<std::uint8_t>( Size::FMPEN, Bit::FMPEN ); ///< FMPEN.
             static constexpr auto SDAHOLD = mask<std::uint8_t>( Size::SDAHOLD, Bit::SDAHOLD ); ///< SDAHOLD.
-            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
         };
 
         DUALCTRL() = delete;
@@ -190,7 +190,7 @@ class TWI {
          */
         struct Size {
             static constexpr auto DBGRUN    = std::uint_fast8_t{ 1 }; ///< DBGRUN.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -198,7 +198,7 @@ class TWI {
          */
         struct Bit {
             static constexpr auto DBGRUN = std::uint_fast8_t{}; ///< DBGRUN.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ DBGRUN + Size::DBGRUN }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ DBGRUN + Size::DBGRUN }; ///< RESERVED1.
         };
 
         /**
@@ -206,7 +206,7 @@ class TWI {
          */
         struct Mask {
             static constexpr auto DBGRUN = mask<std::uint8_t>( Size::DBGRUN, Bit::DBGRUN ); ///< DBGRUN.
-            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         DBGCTRL() = delete;
@@ -245,7 +245,7 @@ class TWI {
             static constexpr auto SMEN      = std::uint_fast8_t{ 1 }; ///< SMEN.
             static constexpr auto TIMEOUT   = std::uint_fast8_t{ 2 }; ///< TIMEOUT.
             static constexpr auto QCEN      = std::uint_fast8_t{ 1 }; ///< QCEN.
-            static constexpr auto RESERVED5 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ 1 }; ///< RESERVED5.
             static constexpr auto WIEN      = std::uint_fast8_t{ 1 }; ///< WIEN.
             static constexpr auto RIEN      = std::uint_fast8_t{ 1 }; ///< RIEN.
         };
@@ -258,7 +258,7 @@ class TWI {
             static constexpr auto SMEN = std::uint_fast8_t{ ENABLE + Size::ENABLE }; ///< SMEN.
             static constexpr auto TIMEOUT = std::uint_fast8_t{ SMEN + Size::SMEN }; ///< TIMEOUT.
             static constexpr auto QCEN = std::uint_fast8_t{ TIMEOUT + Size::TIMEOUT }; ///< QCEN.
-            static constexpr auto RESERVED5 = std::uint_fast8_t{ QCEN + Size::QCEN }; ///< Reserved.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ QCEN + Size::QCEN }; ///< RESERVED5.
             static constexpr auto WIEN = std::uint_fast8_t{ RESERVED5 + Size::RESERVED5 }; ///< WIEN.
             static constexpr auto RIEN = std::uint_fast8_t{ WIEN + Size::WIEN }; ///< RIEN.
         };
@@ -271,7 +271,7 @@ class TWI {
             static constexpr auto SMEN = mask<std::uint8_t>( Size::SMEN, Bit::SMEN ); ///< SMEN.
             static constexpr auto TIMEOUT = mask<std::uint8_t>( Size::TIMEOUT, Bit::TIMEOUT ); ///< TIMEOUT.
             static constexpr auto QCEN = mask<std::uint8_t>( Size::QCEN, Bit::QCEN ); ///< QCEN.
-            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< Reserved.
+            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< RESERVED5.
             static constexpr auto WIEN = mask<std::uint8_t>( Size::WIEN, Bit::WIEN ); ///< WIEN.
             static constexpr auto RIEN = mask<std::uint8_t>( Size::RIEN, Bit::RIEN ); ///< RIEN.
         };
@@ -331,7 +331,7 @@ class TWI {
             static constexpr auto HCMD      = std::uint_fast8_t{ 2 }; ///< HCMD.
             static constexpr auto ACKACT    = std::uint_fast8_t{ 1 }; ///< ACKACT.
             static constexpr auto FLUSH     = std::uint_fast8_t{ 1 }; ///< FLUSH.
-            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
         };
 
         /**
@@ -341,7 +341,7 @@ class TWI {
             static constexpr auto HCMD = std::uint_fast8_t{}; ///< HCMD.
             static constexpr auto ACKACT = std::uint_fast8_t{ HCMD + Size::HCMD }; ///< ACKACT.
             static constexpr auto FLUSH = std::uint_fast8_t{ ACKACT + Size::ACKACT }; ///< FLUSH.
-            static constexpr auto RESERVED4 = std::uint_fast8_t{ FLUSH + Size::FLUSH }; ///< Reserved.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ FLUSH + Size::FLUSH }; ///< RESERVED4.
         };
 
         /**
@@ -351,7 +351,7 @@ class TWI {
             static constexpr auto HCMD = mask<std::uint8_t>( Size::HCMD, Bit::HCMD ); ///< HCMD.
             static constexpr auto ACKACT = mask<std::uint8_t>( Size::ACKACT, Bit::ACKACT ); ///< ACKACT.
             static constexpr auto FLUSH = mask<std::uint8_t>( Size::FLUSH, Bit::FLUSH ); ///< FLUSH.
-            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
         };
 
         HCTRLB() = delete;
@@ -555,7 +555,7 @@ class TWI {
             static constexpr auto ENABLE    = std::uint_fast8_t{ 1 }; ///< ENABLE.
             static constexpr auto SMEN      = std::uint_fast8_t{ 1 }; ///< SMEN.
             static constexpr auto PMEN      = std::uint_fast8_t{ 1 }; ///< PMEN.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 2 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 2 }; ///< RESERVED3.
             static constexpr auto PIEN      = std::uint_fast8_t{ 1 }; ///< PIEN.
             static constexpr auto APIEN     = std::uint_fast8_t{ 1 }; ///< APIEN.
             static constexpr auto DIEN      = std::uint_fast8_t{ 1 }; ///< DIEN.
@@ -568,7 +568,7 @@ class TWI {
             static constexpr auto ENABLE = std::uint_fast8_t{}; ///< ENABLE.
             static constexpr auto SMEN = std::uint_fast8_t{ ENABLE + Size::ENABLE }; ///< SMEN.
             static constexpr auto PMEN = std::uint_fast8_t{ SMEN + Size::SMEN }; ///< PMEN.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ PMEN + Size::PMEN }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ PMEN + Size::PMEN }; ///< RESERVED3.
             static constexpr auto PIEN = std::uint_fast8_t{ RESERVED3 + Size::RESERVED3 }; ///< PIEN.
             static constexpr auto APIEN = std::uint_fast8_t{ PIEN + Size::PIEN }; ///< APIEN.
             static constexpr auto DIEN = std::uint_fast8_t{ APIEN + Size::APIEN }; ///< DIEN.
@@ -581,7 +581,7 @@ class TWI {
             static constexpr auto ENABLE = mask<std::uint8_t>( Size::ENABLE, Bit::ENABLE ); ///< ENABLE.
             static constexpr auto SMEN = mask<std::uint8_t>( Size::SMEN, Bit::SMEN ); ///< SMEN.
             static constexpr auto PMEN = mask<std::uint8_t>( Size::PMEN, Bit::PMEN ); ///< PMEN.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto PIEN = mask<std::uint8_t>( Size::PIEN, Bit::PIEN ); ///< PIEN.
             static constexpr auto APIEN = mask<std::uint8_t>( Size::APIEN, Bit::APIEN ); ///< APIEN.
             static constexpr auto DIEN = mask<std::uint8_t>( Size::DIEN, Bit::DIEN ); ///< DIEN.
@@ -617,7 +617,7 @@ class TWI {
         struct Size {
             static constexpr auto CCMD      = std::uint_fast8_t{ 2 }; ///< CCMD.
             static constexpr auto ACKACT    = std::uint_fast8_t{ 1 }; ///< ACKACT.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 5 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 5 }; ///< RESERVED3.
         };
 
         /**
@@ -626,7 +626,7 @@ class TWI {
         struct Bit {
             static constexpr auto CCMD = std::uint_fast8_t{}; ///< CCMD.
             static constexpr auto ACKACT = std::uint_fast8_t{ CCMD + Size::CCMD }; ///< ACKACT.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ ACKACT + Size::ACKACT }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ ACKACT + Size::ACKACT }; ///< RESERVED3.
         };
 
         /**
@@ -635,7 +635,7 @@ class TWI {
         struct Mask {
             static constexpr auto CCMD = mask<std::uint8_t>( Size::CCMD, Bit::CCMD ); ///< CCMD.
             static constexpr auto ACKACT = mask<std::uint8_t>( Size::ACKACT, Bit::ACKACT ); ///< ACKACT.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
         };
 
         CCTRLB() = delete;

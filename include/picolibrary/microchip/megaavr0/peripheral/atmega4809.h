@@ -26,6 +26,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
@@ -229,6 +230,15 @@ using SPI0 = SPI_Instance<0x08C0>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::SYSCFG0.
  */
 using SYSCFG0 = SYSCFG_Instance<0x0F00>;
+
+/**
+ * \brief SIGROW0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::SIGROW0.
+ */
+using SIGROW0 = SIGROW_Instance<0x1100>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral::ATmega4809
 

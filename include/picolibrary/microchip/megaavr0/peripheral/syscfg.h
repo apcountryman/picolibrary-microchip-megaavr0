@@ -48,6 +48,16 @@ class SYSCFG {
      * \brief Device Revision ID (REVID) register.
      */
     Register<std::uint8_t> revid;
+
+    /**
+     * \brief Get the device revision.
+     *
+     * \return The device revision.
+     */
+    auto device_revision() const noexcept -> char
+    {
+        return 'A' + revid;
+    }
 };
 
 /**

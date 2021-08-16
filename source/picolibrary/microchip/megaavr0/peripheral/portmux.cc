@@ -25,11 +25,11 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( PORTMUX ) == 0x05 + 1 );
-static_assert( PORTMUX::EVSYSROUTEA::Bit::RESERVED == 6 );
-static_assert( PORTMUX::CCLROUTEA::Bit::RESERVED == 4 );
+static_assert( PORTMUX::EVSYSROUTEA::Bit::RESERVED6 == 6 );
+static_assert( PORTMUX::CCLROUTEA::Bit::RESERVED4 == 4 );
 static_assert( PORTMUX::USARTROUTEA::Bit::USART3 == 6 );
 static_assert( PORTMUX::TWISPIROUTEA::Bit::RESERVED6 == 6 );
-static_assert( PORTMUX::TCAROUTEA::Bit::RESERVED == 3 );
-static_assert( PORTMUX::TCBROUTEA::Bit::RESERVED == 4 );
+static_assert( PORTMUX::TCAROUTEA::Bit::RESERVED3 == 3 );
+static_assert( PORTMUX::TCBROUTEA::Bit::RESERVED4 == 4 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

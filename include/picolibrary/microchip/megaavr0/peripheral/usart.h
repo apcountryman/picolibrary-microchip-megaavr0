@@ -63,12 +63,12 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto DATA8    = std::uint_fast8_t{ 1 }; ///< DATA8.
-            static constexpr auto PERR     = std::uint_fast8_t{ 1 }; ///< PERR.
-            static constexpr auto FERR     = std::uint_fast8_t{ 1 }; ///< FERR.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 3 }; ///< Reserved.
-            static constexpr auto BUFOVF   = std::uint_fast8_t{ 1 }; ///< BUFOVF.
-            static constexpr auto RXCIF    = std::uint_fast8_t{ 1 }; ///< RXCIF.
+            static constexpr auto DATA8     = std::uint_fast8_t{ 1 }; ///< DATA8.
+            static constexpr auto PERR      = std::uint_fast8_t{ 1 }; ///< PERR.
+            static constexpr auto FERR      = std::uint_fast8_t{ 1 }; ///< FERR.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 3 }; ///< RESERVED3.
+            static constexpr auto BUFOVF    = std::uint_fast8_t{ 1 }; ///< BUFOVF.
+            static constexpr auto RXCIF     = std::uint_fast8_t{ 1 }; ///< RXCIF.
         };
 
         /**
@@ -78,8 +78,8 @@ class USART {
             static constexpr auto DATA8 = std::uint_fast8_t{}; ///< DATA8.
             static constexpr auto PERR = std::uint_fast8_t{ DATA8 + Size::DATA8 }; ///< PERR.
             static constexpr auto FERR = std::uint_fast8_t{ PERR + Size::PERR }; ///< FERR.
-            static constexpr auto RESERVED = std::uint_fast8_t{ FERR + Size::FERR }; ///< Reserved.
-            static constexpr auto BUFOVF = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< BUFOVF.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ FERR + Size::FERR }; ///< RESERVED3.
+            static constexpr auto BUFOVF = std::uint_fast8_t{ RESERVED3 + Size::RESERVED3 }; ///< BUFOVF.
             static constexpr auto RXCIF = std::uint_fast8_t{ BUFOVF + Size::BUFOVF }; ///< RXCIF.
         };
 
@@ -90,7 +90,7 @@ class USART {
             static constexpr auto DATA8 = mask<std::uint8_t>( Size::DATA8, Bit::DATA8 ); ///< DATA8.
             static constexpr auto PERR = mask<std::uint8_t>( Size::PERR, Bit::PERR ); ///< PERR.
             static constexpr auto FERR = mask<std::uint8_t>( Size::FERR, Bit::FERR ); ///< FERR.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto BUFOVF = mask<std::uint8_t>( Size::BUFOVF, Bit::BUFOVF ); ///< BUFOVF.
             static constexpr auto RXCIF = mask<std::uint8_t>( Size::RXCIF, Bit::RXCIF ); ///< RXCIF.
         };
@@ -122,8 +122,8 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto DATA8    = std::uint_fast8_t{ 1 }; ///< DATA8.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto DATA8     = std::uint_fast8_t{ 1 }; ///< DATA8.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -131,7 +131,7 @@ class USART {
          */
         struct Bit {
             static constexpr auto DATA8 = std::uint_fast8_t{}; ///< DATA8.
-            static constexpr auto RESERVED = std::uint_fast8_t{ DATA8 + Size::DATA8 }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ DATA8 + Size::DATA8 }; ///< RESERVED1.
         };
 
         /**
@@ -139,7 +139,7 @@ class USART {
          */
         struct Mask {
             static constexpr auto DATA8 = mask<std::uint8_t>( Size::DATA8, Bit::DATA8 ); ///< DATA8.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         TXDATAH() = delete;
@@ -175,14 +175,14 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto WFB      = std::uint_fast8_t{ 1 }; ///< WFB.
-            static constexpr auto BDF      = std::uint_fast8_t{ 1 }; ///< BDF.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
-            static constexpr auto ISFIF    = std::uint_fast8_t{ 1 }; ///< ISFIF.
-            static constexpr auto RXSIF    = std::uint_fast8_t{ 1 }; ///< RXSIF.
-            static constexpr auto DREIF    = std::uint_fast8_t{ 1 }; ///< DREIF.
-            static constexpr auto TXCIF    = std::uint_fast8_t{ 1 }; ///< TXCIF.
-            static constexpr auto RXCIF    = std::uint_fast8_t{ 1 }; ///< RXCIF.
+            static constexpr auto WFB       = std::uint_fast8_t{ 1 }; ///< WFB.
+            static constexpr auto BDF       = std::uint_fast8_t{ 1 }; ///< BDF.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 1 }; ///< RESERVED2.
+            static constexpr auto ISFIF     = std::uint_fast8_t{ 1 }; ///< ISFIF.
+            static constexpr auto RXSIF     = std::uint_fast8_t{ 1 }; ///< RXSIF.
+            static constexpr auto DREIF     = std::uint_fast8_t{ 1 }; ///< DREIF.
+            static constexpr auto TXCIF     = std::uint_fast8_t{ 1 }; ///< TXCIF.
+            static constexpr auto RXCIF     = std::uint_fast8_t{ 1 }; ///< RXCIF.
         };
 
         /**
@@ -191,8 +191,8 @@ class USART {
         struct Bit {
             static constexpr auto WFB = std::uint_fast8_t{};                  ///< WFB.
             static constexpr auto BDF = std::uint_fast8_t{ WFB + Size::WFB }; ///< BDF.
-            static constexpr auto RESERVED = std::uint_fast8_t{ BDF + Size::BDF }; ///< Reserved.
-            static constexpr auto ISFIF = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< ISFIF.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ BDF + Size::BDF }; ///< RESERVED2.
+            static constexpr auto ISFIF = std::uint_fast8_t{ RESERVED2 + Size::RESERVED2 }; ///< ISFIF.
             static constexpr auto RXSIF = std::uint_fast8_t{ ISFIF + Size::ISFIF }; ///< RXSIF.
             static constexpr auto DREIF = std::uint_fast8_t{ RXSIF + Size::RXSIF }; ///< DREIF.
             static constexpr auto TXCIF = std::uint_fast8_t{ DREIF + Size::DREIF }; ///< TXCIF.
@@ -205,7 +205,7 @@ class USART {
         struct Mask {
             static constexpr auto WFB = mask<std::uint8_t>( Size::WFB, Bit::WFB ); ///< WFB.
             static constexpr auto BDF = mask<std::uint8_t>( Size::BDF, Bit::BDF ); ///< BDF.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
             static constexpr auto ISFIF = mask<std::uint8_t>( Size::ISFIF, Bit::ISFIF ); ///< ISFIF.
             static constexpr auto RXSIF = mask<std::uint8_t>( Size::RXSIF, Bit::RXSIF ); ///< RXSIF.
             static constexpr auto DREIF = mask<std::uint8_t>( Size::DREIF, Bit::DREIF ); ///< DREIF.
@@ -343,13 +343,13 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto MPCM     = std::uint_fast8_t{ 1 }; ///< MPCM.
-            static constexpr auto RXMODE   = std::uint_fast8_t{ 2 }; ///< RXMODE.
-            static constexpr auto ODME     = std::uint_fast8_t{ 1 }; ///< ODME.
-            static constexpr auto SFDEN    = std::uint_fast8_t{ 1 }; ///< SFDEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
-            static constexpr auto TXEN     = std::uint_fast8_t{ 1 }; ///< TXEN.
-            static constexpr auto RXEN     = std::uint_fast8_t{ 1 }; ///< RXEN.
+            static constexpr auto MPCM      = std::uint_fast8_t{ 1 }; ///< MPCM.
+            static constexpr auto RXMODE    = std::uint_fast8_t{ 2 }; ///< RXMODE.
+            static constexpr auto ODME      = std::uint_fast8_t{ 1 }; ///< ODME.
+            static constexpr auto SFDEN     = std::uint_fast8_t{ 1 }; ///< SFDEN.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ 1 }; ///< RESERVED5.
+            static constexpr auto TXEN      = std::uint_fast8_t{ 1 }; ///< TXEN.
+            static constexpr auto RXEN      = std::uint_fast8_t{ 1 }; ///< RXEN.
         };
 
         /**
@@ -360,8 +360,8 @@ class USART {
             static constexpr auto RXMODE = std::uint_fast8_t{ MPCM + Size::MPCM }; ///< RXMODE.
             static constexpr auto ODME = std::uint_fast8_t{ RXMODE + Size::RXMODE }; ///< ODME.
             static constexpr auto SFDEN = std::uint_fast8_t{ ODME + Size::ODME }; ///< SFDEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ SFDEN + Size::SFDEN }; ///< Reserved.
-            static constexpr auto TXEN = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< TXEN.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ SFDEN + Size::SFDEN }; ///< RESERVED5.
+            static constexpr auto TXEN = std::uint_fast8_t{ RESERVED5 + Size::RESERVED5 }; ///< TXEN.
             static constexpr auto RXEN = std::uint_fast8_t{ TXEN + Size::TXEN }; ///< RXEN.
         };
 
@@ -373,7 +373,7 @@ class USART {
             static constexpr auto RXMODE = mask<std::uint8_t>( Size::RXMODE, Bit::RXMODE ); ///< RXMODE.
             static constexpr auto ODME = mask<std::uint8_t>( Size::ODME, Bit::ODME ); ///< ODME.
             static constexpr auto SFDEN = mask<std::uint8_t>( Size::SFDEN, Bit::SFDEN ); ///< SFDEN.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< RESERVED5.
             static constexpr auto TXEN = mask<std::uint8_t>( Size::TXEN, Bit::TXEN ); ///< TXEN.
             static constexpr auto RXEN = mask<std::uint8_t>( Size::RXEN, Bit::RXEN ); ///< RXEN.
         };
@@ -449,10 +449,10 @@ class USART {
             static constexpr auto PMODE  = std::uint_fast8_t{ 2 }; ///< PMODE.
             static constexpr auto CMODE  = std::uint_fast8_t{ 2 }; ///< CMODE.
 
-            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
             static constexpr auto UCPHA     = std::uint_fast8_t{ 1 }; ///< UCPHA.
             static constexpr auto UDORD     = std::uint_fast8_t{ 1 }; ///< UDORD.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 3 }; ///< RESERVED3.
         };
 
         /**
@@ -464,10 +464,10 @@ class USART {
             static constexpr auto PMODE = std::uint_fast8_t{ SBMODE + Size::SBMODE }; ///< PMODE.
             static constexpr auto CMODE = std::uint_fast8_t{ PMODE + Size::PMODE }; ///< CMODE.
 
-            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
             static constexpr auto UCPHA = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< UCPHA.
             static constexpr auto UDORD = std::uint_fast8_t{ UCPHA + Size::UCPHA }; ///< UDORD.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ UDORD + Size::UDORD }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ UDORD + Size::UDORD }; ///< RESERVED3.
         };
 
         /**
@@ -479,10 +479,10 @@ class USART {
             static constexpr auto PMODE = mask<std::uint8_t>( Size::PMODE, Bit::PMODE ); ///< PMODE.
             static constexpr auto CMODE = mask<std::uint8_t>( Size::CMODE, Bit::CMODE ); ///< CMODE.
 
-            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto UCPHA = mask<std::uint8_t>( Size::UCPHA, Bit::UCPHA ); ///< UCPHA.
             static constexpr auto UDORD = mask<std::uint8_t>( Size::UDORD, Bit::UDORD ); ///< UDORD.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
         };
 
         CTRLC() = delete;
@@ -521,23 +521,23 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RESERVED = std::uint_fast8_t{ 6 }; ///< Reserved.
-            static constexpr auto ABW      = std::uint_fast8_t{ 2 }; ///< ABW.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 6 }; ///< RESERVED0.
+            static constexpr auto ABW       = std::uint_fast8_t{ 2 }; ///< ABW.
         };
 
         /**
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED = std::uint_fast8_t{}; ///< Reserved.
-            static constexpr auto ABW = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< ABW.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
+            static constexpr auto ABW = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< ABW.
         };
 
         /**
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto ABW = mask<std::uint8_t>( Size::ABW, Bit::ABW ); ///< ABW.
         };
 
@@ -568,8 +568,8 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto DBGRUN   = std::uint_fast8_t{ 1 }; ///< DBGRUN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto DBGRUN    = std::uint_fast8_t{ 1 }; ///< DBGRUN.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -577,7 +577,7 @@ class USART {
          */
         struct Bit {
             static constexpr auto DBGRUN = std::uint_fast8_t{}; ///< DBGRUN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ DBGRUN + Size::DBGRUN }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ DBGRUN + Size::DBGRUN }; ///< RESERVED1.
         };
 
         /**
@@ -585,7 +585,7 @@ class USART {
          */
         struct Mask {
             static constexpr auto DBGRUN = mask<std::uint8_t>( Size::DBGRUN, Bit::DBGRUN ); ///< DBGRUN.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         DBGCTRL() = delete;
@@ -615,8 +615,8 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto IREI     = std::uint_fast8_t{ 1 }; ///< IREI.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto IREI      = std::uint_fast8_t{ 1 }; ///< IREI.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -624,7 +624,7 @@ class USART {
          */
         struct Bit {
             static constexpr auto IREI = std::uint_fast8_t{}; ///< IREI.
-            static constexpr auto RESERVED = std::uint_fast8_t{ IREI + Size::IREI }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ IREI + Size::IREI }; ///< RESERVED1.
         };
 
         /**
@@ -632,7 +632,7 @@ class USART {
          */
         struct Mask {
             static constexpr auto IREI = mask<std::uint8_t>( Size::IREI, Bit::IREI ); ///< IREI.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         EVCTRL() = delete;
@@ -662,8 +662,8 @@ class USART {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RXPL     = std::uint_fast8_t{ 7 }; ///< RXPL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RXPL      = std::uint_fast8_t{ 7 }; ///< RXPL.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ 1 }; ///< RESERVED7.
         };
 
         /**
@@ -671,7 +671,7 @@ class USART {
          */
         struct Bit {
             static constexpr auto RXPL = std::uint_fast8_t{}; ///< RXPL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ RXPL + Size::RXPL }; ///< Reserved.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ RXPL + Size::RXPL }; ///< RESERVED7.
         };
 
         /**
@@ -679,7 +679,7 @@ class USART {
          */
         struct Mask {
             static constexpr auto RXPL = mask<std::uint8_t>( Size::RXPL, Bit::RXPL ); ///< RXPL.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED7 = mask<std::uint8_t>( Size::RESERVED7, Bit::RESERVED7 ); ///< RESERVED7.
         };
 
         RXPLCTRL() = delete;

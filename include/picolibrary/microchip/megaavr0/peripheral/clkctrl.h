@@ -65,9 +65,9 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto CLKSEL   = std::uint_fast8_t{ 2 }; ///< CLKSEL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 5 }; ///< Reserved.
-            static constexpr auto CLKOUT   = std::uint_fast8_t{ 1 }; ///< CLKOUT.
+            static constexpr auto CLKSEL    = std::uint_fast8_t{ 2 }; ///< CLKSEL.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 5 }; ///< RESERVED2.
+            static constexpr auto CLKOUT    = std::uint_fast8_t{ 1 }; ///< CLKOUT.
         };
 
         /**
@@ -75,8 +75,8 @@ class CLKCTRL {
          */
         struct Bit {
             static constexpr auto CLKSEL = std::uint_fast8_t{}; ///< CLKSEL.
-            static constexpr auto RESERVED = std::uint_fast8_t{ CLKSEL + Size::CLKSEL }; ///< Reserved.
-            static constexpr auto CLKOUT = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< CLKOUT.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ CLKSEL + Size::CLKSEL }; ///< RESERVED2.
+            static constexpr auto CLKOUT = std::uint_fast8_t{ RESERVED2 + Size::RESERVED2 }; ///< CLKOUT.
         };
 
         /**
@@ -84,7 +84,7 @@ class CLKCTRL {
          */
         struct Mask {
             static constexpr auto CLKSEL = mask<std::uint8_t>( Size::CLKSEL, Bit::CLKSEL ); ///< CLKSEL.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
             static constexpr auto CLKOUT = mask<std::uint8_t>( Size::CLKOUT, Bit::CLKOUT ); ///< CLKOUT.
         };
 
@@ -163,9 +163,9 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto PEN      = std::uint_fast8_t{ 1 }; ///< PEN.
-            static constexpr auto PDIV     = std::uint_fast8_t{ 4 }; ///< PDIV.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto PEN       = std::uint_fast8_t{ 1 }; ///< PEN.
+            static constexpr auto PDIV      = std::uint_fast8_t{ 4 }; ///< PDIV.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ 3 }; ///< RESERVED5.
         };
 
         /**
@@ -174,7 +174,7 @@ class CLKCTRL {
         struct Bit {
             static constexpr auto PEN  = std::uint_fast8_t{};                  ///< PEN.
             static constexpr auto PDIV = std::uint_fast8_t{ PEN + Size::PEN }; ///< PDIV.
-            static constexpr auto RESERVED = std::uint_fast8_t{ PDIV + Size::PDIV }; ///< Reserved.
+            static constexpr auto RESERVED5 = std::uint_fast8_t{ PDIV + Size::PDIV }; ///< RESERVED5.
         };
 
         /**
@@ -183,7 +183,7 @@ class CLKCTRL {
         struct Mask {
             static constexpr auto PEN = mask<std::uint8_t>( Size::PEN, Bit::PEN ); ///< PEN.
             static constexpr auto PDIV = mask<std::uint8_t>( Size::PDIV, Bit::PDIV ); ///< PDIV.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< RESERVED5.
         };
 
         MCLKCTRLB() = delete;
@@ -261,8 +261,8 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto LOCKEN   = std::uint_fast8_t{ 1 }; ///< LOCKEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 7 }; ///< Reserved.
+            static constexpr auto LOCKEN    = std::uint_fast8_t{ 1 }; ///< LOCKEN.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
         };
 
         /**
@@ -270,7 +270,7 @@ class CLKCTRL {
          */
         struct Bit {
             static constexpr auto LOCKEN = std::uint_fast8_t{}; ///< LOCKEN.
-            static constexpr auto RESERVED = std::uint_fast8_t{ LOCKEN + Size::LOCKEN }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ LOCKEN + Size::LOCKEN }; ///< RESERVED1.
         };
 
         /**
@@ -278,7 +278,7 @@ class CLKCTRL {
          */
         struct Mask {
             static constexpr auto LOCKEN = mask<std::uint8_t>( Size::LOCKEN, Bit::LOCKEN ); ///< LOCKEN.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
         };
 
         MCLKLOCK() = delete;
@@ -331,12 +331,12 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto SOSC     = std::uint_fast8_t{ 1 }; ///< SOSC.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 3 }; ///< Reserved.
-            static constexpr auto OSC20MS  = std::uint_fast8_t{ 1 }; ///< OSC20MS.
-            static constexpr auto OSC32KS  = std::uint_fast8_t{ 1 }; ///< OSC32KS.
-            static constexpr auto XOSC32KS = std::uint_fast8_t{ 1 }; ///< XOSC32KS.
-            static constexpr auto EXTS     = std::uint_fast8_t{ 1 }; ///< EXTS.
+            static constexpr auto SOSC      = std::uint_fast8_t{ 1 }; ///< SOSC.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 3 }; ///< RESERVED1.
+            static constexpr auto OSC20MS   = std::uint_fast8_t{ 1 }; ///< OSC20MS.
+            static constexpr auto OSC32KS   = std::uint_fast8_t{ 1 }; ///< OSC32KS.
+            static constexpr auto XOSC32KS  = std::uint_fast8_t{ 1 }; ///< XOSC32KS.
+            static constexpr auto EXTS      = std::uint_fast8_t{ 1 }; ///< EXTS.
         };
 
         /**
@@ -344,8 +344,8 @@ class CLKCTRL {
          */
         struct Bit {
             static constexpr auto SOSC = std::uint_fast8_t{}; ///< SOSC.
-            static constexpr auto RESERVED = std::uint_fast8_t{ SOSC + Size::SOSC }; ///< Reserved.
-            static constexpr auto OSC20MS = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< OSC20MS.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ SOSC + Size::SOSC }; ///< RESERVED1.
+            static constexpr auto OSC20MS = std::uint_fast8_t{ RESERVED1 + Size::RESERVED1 }; ///< OSC20MS.
             static constexpr auto OSC32KS = std::uint_fast8_t{ OSC20MS + Size::OSC20MS }; ///< OSC32KS.
             static constexpr auto XOSC32KS = std::uint_fast8_t{ OSC32KS + Size::OSC32KS }; ///< XOSC32KS.
             static constexpr auto EXTS = std::uint_fast8_t{ XOSC32KS + Size::XOSC32KS }; ///< EXTS.
@@ -356,7 +356,7 @@ class CLKCTRL {
          */
         struct Mask {
             static constexpr auto SOSC = mask<std::uint8_t>( Size::SOSC, Bit::SOSC ); ///< SOSC.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
             static constexpr auto OSC20MS = mask<std::uint8_t>( Size::OSC20MS, Bit::OSC20MS ); ///< OSC20MS.
             static constexpr auto OSC32KS = mask<std::uint8_t>( Size::OSC32KS, Bit::OSC32KS ); ///< OSC32KS.
             static constexpr auto XOSC32KS = mask<std::uint8_t>( Size::XOSC32KS, Bit::XOSC32KS ); ///< XOSC32KS.
@@ -446,27 +446,27 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
             static constexpr auto RUNSTDBY  = std::uint_fast8_t{ 1 }; ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ 6 }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 6 }; ///< RESERVED2.
         };
 
         /**
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
             static constexpr auto RUNSTDBY = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ RUNSTDBY + Size::RUNSTDBY }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ RUNSTDBY + Size::RUNSTDBY }; ///< RESERVED2.
         };
 
         /**
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto RUNSTDBY = mask<std::uint8_t>( Size::RUNSTDBY, Bit::RUNSTDBY ); ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
         };
 
         OSC20MCTRLA() = delete;
@@ -516,8 +516,8 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto CAL20M   = std::uint_fast8_t{ 7 }; ///< CAL20M.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto CAL20M    = std::uint_fast8_t{ 7 }; ///< CAL20M.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ 1 }; ///< RESERVED7.
         };
 
         /**
@@ -525,7 +525,7 @@ class CLKCTRL {
          */
         struct Bit {
             static constexpr auto CAL20M = std::uint_fast8_t{}; ///< CAL20M.
-            static constexpr auto RESERVED = std::uint_fast8_t{ CAL20M + Size::CAL20M }; ///< Reserved.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ CAL20M + Size::CAL20M }; ///< RESERVED7.
         };
 
         /**
@@ -533,7 +533,7 @@ class CLKCTRL {
          */
         struct Mask {
             static constexpr auto CAL20M = mask<std::uint8_t>( Size::CAL20M, Bit::CAL20M ); ///< CAL20M.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED7 = mask<std::uint8_t>( Size::RESERVED7, Bit::RESERVED7 ); ///< RESERVED7.
         };
 
         OSC20MCALIBA() = delete;
@@ -565,7 +565,7 @@ class CLKCTRL {
          */
         struct Size {
             static constexpr auto TEMPCAL20M = std::uint_fast8_t{ 4 }; ///< TEMPCAL20M.
-            static constexpr auto RESERVED   = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED4  = std::uint_fast8_t{ 3 }; ///< RESERVED4.
             static constexpr auto LOCK       = std::uint_fast8_t{ 1 }; ///< LOCK.
         };
 
@@ -574,8 +574,8 @@ class CLKCTRL {
          */
         struct Bit {
             static constexpr auto TEMPCAL20M = std::uint_fast8_t{}; ///< TEMPCAL20M.
-            static constexpr auto RESERVED = std::uint_fast8_t{ TEMPCAL20M + Size::TEMPCAL20M }; ///< Reserved.
-            static constexpr auto LOCK = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< LOCK.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ TEMPCAL20M + Size::TEMPCAL20M }; ///< RESERVED4.
+            static constexpr auto LOCK = std::uint_fast8_t{ RESERVED4 + Size::RESERVED4 }; ///< LOCK.
         };
 
         /**
@@ -583,7 +583,7 @@ class CLKCTRL {
          */
         struct Mask {
             static constexpr auto TEMPCAL20M = mask<std::uint8_t>( Size::TEMPCAL20M, Bit::TEMPCAL20M ); ///< TEMPCAL20M.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
             static constexpr auto LOCK = mask<std::uint8_t>( Size::LOCK, Bit::LOCK ); ///< LOCK.
         };
 
@@ -625,27 +625,27 @@ class CLKCTRL {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
             static constexpr auto RUNSTDBY  = std::uint_fast8_t{ 1 }; ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ 6 }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 6 }; ///< RESERVED2.
         };
 
         /**
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
             static constexpr auto RUNSTDBY = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ RUNSTDBY + Size::RUNSTDBY }; ///< Reserved.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ RUNSTDBY + Size::RUNSTDBY }; ///< RESERVED2.
         };
 
         /**
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto RUNSTDBY = mask<std::uint8_t>( Size::RUNSTDBY, Bit::RUNSTDBY ); ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
         };
 
         OSC32KCTRLA() = delete;
@@ -702,9 +702,9 @@ class CLKCTRL {
             static constexpr auto ENABLE    = std::uint_fast8_t{ 1 }; ///< ENABLE.
             static constexpr auto RUNSTDBY  = std::uint_fast8_t{ 1 }; ///< RUNSTDBY.
             static constexpr auto SEL       = std::uint_fast8_t{ 1 }; ///< SEL.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 1 }; ///< RESERVED3.
             static constexpr auto CSUT      = std::uint_fast8_t{ 2 }; ///< CSUT.
-            static constexpr auto RESERVED6 = std::uint_fast8_t{ 2 }; ///< Reserved.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ 2 }; ///< RESERVED6.
         };
 
         /**
@@ -714,9 +714,9 @@ class CLKCTRL {
             static constexpr auto ENABLE = std::uint_fast8_t{}; ///< ENABLE.
             static constexpr auto RUNSTDBY = std::uint_fast8_t{ ENABLE + Size::ENABLE }; ///< RUNSTDBY.
             static constexpr auto SEL = std::uint_fast8_t{ RUNSTDBY + Size::RUNSTDBY }; ///< SEL.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ SEL + Size::SEL }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ SEL + Size::SEL }; ///< RESERVED3.
             static constexpr auto CSUT = std::uint_fast8_t{ RESERVED3 + Size::RESERVED3 }; ///< CSUT.
-            static constexpr auto RESERVED6 = std::uint_fast8_t{ CSUT + Size::CSUT }; ///< Reserved.
+            static constexpr auto RESERVED6 = std::uint_fast8_t{ CSUT + Size::CSUT }; ///< RESERVED6.
         };
 
         /**
@@ -726,9 +726,9 @@ class CLKCTRL {
             static constexpr auto ENABLE = mask<std::uint8_t>( Size::ENABLE, Bit::ENABLE ); ///< ENABLE.
             static constexpr auto RUNSTDBY = mask<std::uint8_t>( Size::RUNSTDBY, Bit::RUNSTDBY ); ///< RUNSTDBY.
             static constexpr auto SEL = mask<std::uint8_t>( Size::SEL, Bit::SEL ); ///< SEL.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto CSUT = mask<std::uint8_t>( Size::CSUT, Bit::CSUT ); ///< CSUT.
-            static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< Reserved.
+            static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
         XOSC32KCTRLA() = delete;

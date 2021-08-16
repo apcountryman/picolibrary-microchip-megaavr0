@@ -62,11 +62,11 @@ class SPI {
         struct Size {
             static constexpr auto ENABLE    = std::uint_fast8_t{ 1 }; ///< ENABLE.
             static constexpr auto PRESC     = std::uint_fast8_t{ 2 }; ///< PRESC.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 1 }; ///< RESERVED3.
             static constexpr auto CLK2X     = std::uint_fast8_t{ 1 }; ///< CLK2X.
             static constexpr auto HOST      = std::uint_fast8_t{ 1 }; ///< HOST.
             static constexpr auto DORD      = std::uint_fast8_t{ 1 }; ///< DORD.
-            static constexpr auto RESERVED7 = std::uint_fast8_t{ 1 }; ///< Reserved.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ 1 }; ///< RESERVED7.
         };
 
         /**
@@ -75,11 +75,11 @@ class SPI {
         struct Bit {
             static constexpr auto ENABLE = std::uint_fast8_t{}; ///< ENABLE.
             static constexpr auto PRESC = std::uint_fast8_t{ ENABLE + Size::ENABLE }; ///< PRESC.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ PRESC + Size::PRESC }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ PRESC + Size::PRESC }; ///< RESERVED3.
             static constexpr auto CLK2X = std::uint_fast8_t{ RESERVED3 + Size::RESERVED3 }; ///< CLK2X.
             static constexpr auto HOST = std::uint_fast8_t{ CLK2X + Size::CLK2X }; ///< HOST.
             static constexpr auto DORD = std::uint_fast8_t{ HOST + Size::HOST }; ///< DORD.
-            static constexpr auto RESERVED7 = std::uint_fast8_t{ DORD + Size::DORD }; ///< Reserved.
+            static constexpr auto RESERVED7 = std::uint_fast8_t{ DORD + Size::DORD }; ///< RESERVED7.
         };
 
         /**
@@ -88,11 +88,11 @@ class SPI {
         struct Mask {
             static constexpr auto ENABLE = mask<std::uint8_t>( Size::ENABLE, Bit::ENABLE ); ///< ENABLE.
             static constexpr auto PRESC = mask<std::uint8_t>( Size::PRESC, Bit::PRESC ); ///< PRESC.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto CLK2X = mask<std::uint8_t>( Size::CLK2X, Bit::CLK2X ); ///< CLK2X.
             static constexpr auto HOST = mask<std::uint8_t>( Size::HOST, Bit::HOST ); ///< HOST.
             static constexpr auto DORD = mask<std::uint8_t>( Size::DORD, Bit::DORD ); ///< DORD.
-            static constexpr auto RESERVED7 = mask<std::uint8_t>( Size::RESERVED7, Bit::RESERVED7 ); ///< Reserved.
+            static constexpr auto RESERVED7 = mask<std::uint8_t>( Size::RESERVED7, Bit::RESERVED7 ); ///< RESERVED7.
         };
 
         CTRLA() = delete;
@@ -164,7 +164,7 @@ class SPI {
         struct Size {
             static constexpr auto MODE      = std::uint_fast8_t{ 2 }; ///< MODE.
             static constexpr auto CSD       = std::uint_fast8_t{ 1 }; ///< CSD.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ 3 }; ///< RESERVED3.
             static constexpr auto BUFWR     = std::uint_fast8_t{ 1 }; ///< BUFWR.
             static constexpr auto BUFEN     = std::uint_fast8_t{ 1 }; ///< BUFEN.
         };
@@ -175,7 +175,7 @@ class SPI {
         struct Bit {
             static constexpr auto MODE = std::uint_fast8_t{}; ///< MODE.
             static constexpr auto CSD  = std::uint_fast8_t{ MODE + Size::MODE }; ///< CSD.
-            static constexpr auto RESERVED3 = std::uint_fast8_t{ CSD + Size::CSD }; ///< Reserved.
+            static constexpr auto RESERVED3 = std::uint_fast8_t{ CSD + Size::CSD }; ///< RESERVED3.
             static constexpr auto BUFWR = std::uint_fast8_t{ RESERVED3 + Size::RESERVED3 }; ///< BUFWR.
             static constexpr auto BUFEN = std::uint_fast8_t{ BUFWR + Size::BUFWR }; ///< BUFEN.
         };
@@ -186,7 +186,7 @@ class SPI {
         struct Mask {
             static constexpr auto MODE = mask<std::uint8_t>( Size::MODE, Bit::MODE ); ///< MODE.
             static constexpr auto CSD = mask<std::uint8_t>( Size::CSD, Bit::CSD ); ///< CSD.
-            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< Reserved.
+            static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto BUFWR = mask<std::uint8_t>( Size::BUFWR, Bit::BUFWR ); ///< BUFWR.
             static constexpr auto BUFEN = mask<std::uint8_t>( Size::BUFEN, Bit::BUFEN ); ///< BUFEN.
         };
@@ -243,7 +243,7 @@ class SPI {
          */
         struct Size {
             static constexpr auto IE        = std::uint_fast8_t{ 1 }; ///< IE.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 3 }; ///< RESERVED1.
             static constexpr auto CSIE      = std::uint_fast8_t{ 1 }; ///< CSIE.
             static constexpr auto DREIE     = std::uint_fast8_t{ 1 }; ///< DREIE.
             static constexpr auto TXCIE     = std::uint_fast8_t{ 1 }; ///< TXCIE.
@@ -255,7 +255,7 @@ class SPI {
          */
         struct Bit {
             static constexpr auto IE        = std::uint_fast8_t{};                ///< IE.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ IE + Size::IE }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ IE + Size::IE }; ///< RESERVED1.
             static constexpr auto CSIE = std::uint_fast8_t{ RESERVED1 + Size::RESERVED1 }; ///< CSIE.
             static constexpr auto DREIE = std::uint_fast8_t{ CSIE + Size::CSIE }; ///< DREIE.
             static constexpr auto TXCIE = std::uint_fast8_t{ DREIE + Size::DREIE }; ///< TXCIE.
@@ -267,7 +267,7 @@ class SPI {
          */
         struct Mask {
             static constexpr auto IE = mask<std::uint8_t>( Size::IE, Bit::IE ); ///< IE.
-            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
             static constexpr auto CSIE = mask<std::uint8_t>( Size::CSIE, Bit::CSIE ); ///< CSIE.
             static constexpr auto DREIE = mask<std::uint8_t>( Size::DREIE, Bit::DREIE ); ///< DREIE.
             static constexpr auto TXCIE = mask<std::uint8_t>( Size::TXCIE, Bit::TXCIE ); ///< TXCIE.
@@ -307,12 +307,12 @@ class SPI {
          * \brief Field Sizes.
          */
         struct Size {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{ 6 }; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 6 }; ///< RESERVED0.
             static constexpr auto WRCOL     = std::uint_fast8_t{ 1 }; ///< WRCOL.
             static constexpr auto IF        = std::uint_fast8_t{ 1 }; ///< IF.
 
             static constexpr auto BUFOVF    = std::uint_fast8_t{ 1 }; ///< BUFOVF.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ 3 }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 3 }; ///< RESERVED1.
             static constexpr auto CSIF      = std::uint_fast8_t{ 1 }; ///< CSIF.
             static constexpr auto DREIF     = std::uint_fast8_t{ 1 }; ///< DREIF.
             static constexpr auto TXCIF     = std::uint_fast8_t{ 1 }; ///< TXCIF.
@@ -323,12 +323,12 @@ class SPI {
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< Reserved.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
             static constexpr auto WRCOL = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< WRCOL.
             static constexpr auto IF = std::uint_fast8_t{ WRCOL + Size::WRCOL }; ///< IF.
 
             static constexpr auto BUFOVF = std::uint_fast8_t{}; ///< BUFOVF.
-            static constexpr auto RESERVED1 = std::uint_fast8_t{ BUFOVF + Size::BUFOVF }; ///< Reserved.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ BUFOVF + Size::BUFOVF }; ///< RESERVED1.
             static constexpr auto CSIF = std::uint_fast8_t{ RESERVED1 + Size::RESERVED1 }; ///< CSIF.
             static constexpr auto DREIF = std::uint_fast8_t{ CSIF + Size::CSIF }; ///< DREIF.
             static constexpr auto TXCIF = std::uint_fast8_t{ DREIF + Size::DREIF }; ///< TXCIF.
@@ -339,12 +339,12 @@ class SPI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto WRCOL = mask<std::uint8_t>( Size::WRCOL, Bit::WRCOL ); ///< WRCOL.
             static constexpr auto IF = mask<std::uint8_t>( Size::IF, Bit::IF ); ///< IF.
 
             static constexpr auto BUFOVF = mask<std::uint8_t>( Size::BUFOVF, Bit::BUFOVF ); ///< BUFOVF.
-            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
             static constexpr auto CSIF = mask<std::uint8_t>( Size::CSIF, Bit::CSIF ); ///< CSIF.
             static constexpr auto DREIF = mask<std::uint8_t>( Size::DREIF, Bit::DREIF ); ///< DREIF.
             static constexpr auto TXCIF = mask<std::uint8_t>( Size::TXCIF, Bit::TXCIF ); ///< TXCIF.

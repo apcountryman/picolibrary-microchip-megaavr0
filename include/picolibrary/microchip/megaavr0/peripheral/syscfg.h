@@ -30,10 +30,6 @@
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
-#ifdef SYSCFG
-#undef SYSCFG
-#endif // SYSCFG
-
 /**
  * \brief Microchip megaAVR 0-series System Configuration (SYSCFG) peripheral.
  */

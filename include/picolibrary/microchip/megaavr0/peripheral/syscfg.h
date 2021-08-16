@@ -49,6 +49,18 @@ class SYSCFG {
      */
     Register<std::uint8_t> revid;
 
+    SYSCFG() = delete;
+
+    SYSCFG( SYSCFG && ) = delete;
+
+    SYSCFG( SYSCFG const & ) = delete;
+
+    ~SYSCFG() = delete;
+
+    auto operator=( SYSCFG && ) = delete;
+
+    auto operator=( SYSCFG const & ) = delete;
+
     /**
      * \brief Get the device revision.
      *

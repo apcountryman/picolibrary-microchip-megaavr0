@@ -41,6 +41,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/instance.cc"
     "picolibrary/microchip/megaavr0/peripheral/port.cc"
     "picolibrary/microchip/megaavr0/peripheral/portmux.cc"
+    "picolibrary/microchip/megaavr0/peripheral/sigrow.cc"
     "picolibrary/microchip/megaavr0/peripheral/spi.cc"
     "picolibrary/microchip/megaavr0/peripheral/twi.cc"
     "picolibrary/microchip/megaavr0/peripheral/usart.cc"

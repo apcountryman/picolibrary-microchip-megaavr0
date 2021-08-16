@@ -26,6 +26,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
@@ -54,17 +55,19 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega4809::USART0::ADDRESS:
             Peripheral::ATmega4809::PORTMUX0::instance().set_usart0_route( route );
-            break;
+            return;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             Peripheral::ATmega4809::PORTMUX0::instance().set_usart1_route( route );
-            break;
+            return;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             Peripheral::ATmega4809::PORTMUX0::instance().set_usart2_route( route );
-            break;
+            return;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             Peripheral::ATmega4809::PORTMUX0::instance().set_usart3_route( route );
-            break;
+            return;
     } // switch
+
+    trap_fatal_error();
 }
 
 /**
@@ -91,7 +94,7 @@ inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral
             return Peripheral::ATmega4809::PORTB::instance();
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -118,7 +121,7 @@ inline auto usart_vport( Peripheral::USART const & usart ) noexcept -> Periphera
             return Peripheral::ATmega4809::VPORTB::instance();
     } // switch
 
-    return *static_cast<Peripheral::VPORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -173,33 +176,33 @@ inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 2;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -270,33 +273,33 @@ inline auto xdir_number( Peripheral::USART const & usart ) noexcept -> std::uint
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 7;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 7;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 3;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 3;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -367,33 +370,33 @@ inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -464,33 +467,33 @@ inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART1::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART2::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
         case Peripheral::ATmega4809::USART3::ADDRESS:
             switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
-                default: break;
+                case USART_Route::NONE: break;
             } // switch
             break;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**

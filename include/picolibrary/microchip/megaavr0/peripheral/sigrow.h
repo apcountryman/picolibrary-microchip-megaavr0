@@ -26,6 +26,7 @@
 #include <cstdint>
 
 #include "picolibrary/bit_manipulation.h"
+#include "picolibrary/fixed_size_array.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/register.h"
 
@@ -49,6 +50,11 @@ class SIGROW {
         ATmega4808 = 0x1E9650, ///< ATmega4808.
         ATmega4809 = 0x1E9651, ///< ATmega4808.
     };
+
+    /**
+     * \brief Device serial number.
+     */
+    using Device_Serial_Number = Fixed_Size_Array<std::uint8_t, ( 0x0C - 0x03 ) + 1>;
 
     /**
      * \brief 16 MHz Internal Oscillator Calibration (OSCCAL16M0) register.
@@ -333,6 +339,19 @@ class SIGROW {
                 << ( 1 * std::numeric_limits<std::uint8_t>::digits ) )
             | ( static_cast<std::uint24_t>( deviceid[ 2 ] )
                 << ( 0 * std::numeric_limits<std::uint8_t>::digits ) ) );
+    }
+
+    /**
+     * \brief Get the device serial number.
+     *
+     * \return The device serial number.
+     */
+    auto device_serial_number() const noexcept
+    {
+        return Device_Serial_Number{
+            sernum[ 0 ], sernum[ 1 ], sernum[ 2 ], sernum[ 3 ], sernum[ 4 ],
+            sernum[ 5 ], sernum[ 6 ], sernum[ 7 ], sernum[ 8 ], sernum[ 9 ],
+        };
     }
 };
 

@@ -38,9 +38,9 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 class SIGROW {
   public:
     /**
-     * \brief Device.
+     * \brief Device type.
      */
-    enum class Device : std::uint24_t {
+    enum class Device_Type : std::uint24_t {
         ATmega808  = 0x1E9326, ///< ATmega808.
         ATmega809  = 0x1E932A, ///< ATmega809.
         ATmega1608 = 0x1E9427, ///< ATmega1608.
@@ -326,13 +326,13 @@ class SIGROW {
     auto operator=( SIGROW const & ) = delete;
 
     /**
-     * \brief Get the device.
+     * \brief Get the device type.
      *
-     * \return The device.
+     * \return The device type.
      */
-    auto device() const noexcept
+    auto device_type() const noexcept
     {
-        return static_cast<Device>(
+        return static_cast<Device_Type>(
             ( static_cast<std::uint24_t>( deviceid[ 0 ] )
               << ( 2 * std::numeric_limits<std::uint8_t>::digits ) )
             | ( static_cast<std::uint24_t>( deviceid[ 1 ] )

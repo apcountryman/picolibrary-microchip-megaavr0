@@ -37,6 +37,20 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 class SIGROW {
   public:
     /**
+     * \brief Device.
+     */
+    enum class Device : std::uint24_t {
+        ATmega808  = 0x1E9326, ///< ATmega808.
+        ATmega809  = 0x1E932A, ///< ATmega809.
+        ATmega1608 = 0x1E9427, ///< ATmega1608.
+        ATmega1609 = 0x1E9426, ///< ATmega1608.
+        ATmega3208 = 0x1E9530, ///< ATmega3208.
+        ATmega3209 = 0x1E9531, ///< ATmega3208.
+        ATmega4808 = 0x1E9650, ///< ATmega4808.
+        ATmega4809 = 0x1E9651, ///< ATmega4808.
+    };
+
+    /**
      * \brief 16 MHz Internal Oscillator Calibration (OSCCAL16M0) register.
      *
      * This register has the following fields:
@@ -304,6 +318,22 @@ class SIGROW {
     auto operator=( SIGROW && ) = delete;
 
     auto operator=( SIGROW const & ) = delete;
+
+    /**
+     * \brief Get the device.
+     *
+     * \return The device.
+     */
+    auto device() const noexcept
+    {
+        return static_cast<Device>(
+            ( static_cast<std::uint24_t>( deviceid[ 0 ] )
+              << ( 2 * std::numeric_limits<std::uint8_t>::digits ) )
+            | ( static_cast<std::uint24_t>( deviceid[ 1 ] )
+                << ( 1 * std::numeric_limits<std::uint8_t>::digits ) )
+            | ( static_cast<std::uint24_t>( deviceid[ 2 ] )
+                << ( 0 * std::numeric_limits<std::uint8_t>::digits ) ) );
+    }
 };
 
 /**

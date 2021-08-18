@@ -54,6 +54,16 @@ inline auto device_type() noexcept
 }
 
 /**
+ * \brief Get the device revision.
+ *
+ * \return The device revision.
+ */
+inline auto device_revision() noexcept
+{
+    return Peripheral::SYSCFG0::instance().device_revision();
+}
+
+/**
  * \brief Device serial number.
  */
 class Device_Serial_Number {

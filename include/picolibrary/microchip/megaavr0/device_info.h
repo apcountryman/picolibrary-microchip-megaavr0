@@ -143,6 +143,16 @@ class Device_Serial_Number {
     Array m_array{};
 };
 
+/**
+ * \brief Get the device serial number.
+ *
+ * \return The device serial number.
+ */
+inline auto device_serial_number() noexcept
+{
+    return Device_Serial_Number{ Peripheral::SIGROW0::instance().device_serial_number() };
+}
+
 } // namespace picolibrary::Microchip::megaAVR0::Device_Info
 
 namespace picolibrary {

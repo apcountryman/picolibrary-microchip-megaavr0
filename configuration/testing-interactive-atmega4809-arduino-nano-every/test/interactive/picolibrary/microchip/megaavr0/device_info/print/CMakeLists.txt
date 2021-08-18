@@ -1,0 +1,36 @@
+# picolibrary-microchip-megaavr0
+#
+# Copyright 2021, Andrew Countryman <apcountryman@gmail.com> and the
+# picolibrary-microchip-megaavr0 contributors
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+# file except in compliance with the License. You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the specific language governing
+# permissions and limitations under the License.
+
+# File: configuration/testing-interactive-atmega4809-arduino-nano-every/test/interactive/picolibrary/microchip/megaavr0/device_info/print/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
+#       picolibrary::Microchip::megaAVR0::Device_Info print interactive test
+#       configuration.
+
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_ENABLE_PRINT_INTERACTIVE_TEST                                      ON          CACHE BOOL   "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_CLOCK_PRESCALER_VALUE                       "_2"        CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_CLOCK_PRESCALER_CONFIGURATION               "DISABLED"  CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_USART                           "USART3"    CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_USART_ROUTE                     "ALTERNATE" CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED "NORMAL"    CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR  "556"       CACHE STRING "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_ENABLE_PRINT_INTERACTIVE_TEST
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_CLOCK_PRESCALER_VALUE
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_CLOCK_PRESCALER_CONFIGURATION
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_USART
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_USART_ROUTE
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_PRINT_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR
+)

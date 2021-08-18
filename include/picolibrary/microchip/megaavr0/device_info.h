@@ -23,6 +23,10 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_H
 
+#include <cstdint>
+#include <limits>
+
+#include "picolibrary/fixed_size_array.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/result.h"
 #include "picolibrary/stream.h"
@@ -37,6 +41,86 @@ namespace picolibrary::Microchip::megaAVR0::Device_Info {
  * \brief Device type.
  */
 using Device_Type = Peripheral::SIGROW::Device_Type;
+
+/**
+ * \brief Device serial number.
+ */
+class Device_Serial_Number {
+  public:
+    /**
+     * \brief Device serial number array.
+     */
+    using Array = Peripheral::SIGROW::Device_Serial_Number;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Device_Serial_Number() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] array The device serial number array.
+     */
+    constexpr Device_Serial_Number( Array const & array ) noexcept : m_array{ array }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Device_Serial_Number( Device_Serial_Number && source ) noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] original The original to copy.
+     */
+    constexpr Device_Serial_Number( Device_Serial_Number const & original ) noexcept = default;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Device_Serial_Number() noexcept = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator       =( Device_Serial_Number && expression ) noexcept
+        -> Device_Serial_Number & = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator       =( Device_Serial_Number const & expression ) noexcept
+        -> Device_Serial_Number & = default;
+
+    /**
+     * \brief Access the device serial number array.
+     *
+     * \return The device serial number array.
+     */
+    auto const & array() const noexcept
+    {
+        return m_array;
+    }
+
+  private:
+    /**
+     * \brief The device serial number array.
+     */
+    Peripheral::SIGROW::Device_Serial_Number m_array{};
+};
 
 } // namespace picolibrary::Microchip::megaAVR0::Device_Info
 
@@ -120,6 +204,82 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
         } // switch
 
         return "unknown device type";
+    }
+};
+
+/**
+ * \brief Microchip megaAVR 0-series device serial number output formatter.
+ *
+ * Microchip megaAVR 0-series device serial numbers only support the default format
+ * specification ("{}").
+ */
+template<>
+class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
+  public:
+    /**
+     * \brief Device type.
+     */
+    using Device_Serial_Number = Microchip::megaAVR0::Device_Info::Device_Serial_Number;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Output_Formatter() noexcept = default;
+
+    Output_Formatter( Output_Formatter && ) = delete;
+
+    Output_Formatter( Output_Formatter const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Output_Formatter() noexcept = default;
+
+    /**
+     * \brief Parse the format specification for the device serial number to be formatted.
+     *
+     * \param[in] format The format specification for the device serial number to be
+     *            formatted.
+     *
+     * \return format.
+     */
+    constexpr auto parse( char const * format ) noexcept -> Result<char const *, Void>
+    {
+        return format;
+    }
+
+    /**
+     * \brief Write the device serial number to the stream.
+     *
+     * \param[in] stream The stream to write the device serial number to.
+     * \param[in] device_type The device serial number to write to the stream.
+     *
+     * \return Nothing if the write succeeded.
+     * \return An error code if the write failed.
+     */
+    auto print( Output_Stream & stream, Device_Serial_Number const & device_serial_number ) noexcept
+    {
+        constexpr auto byte_nibbles = std::numeric_limits<Device_Serial_Number::Array::Value>::digits / 4;
+        constexpr auto device_serial_number_nibbles = fixed_size_array_size_v<Device_Serial_Number::Array> * byte_nibbles;
+
+        Fixed_Size_Array<char, 2 + device_serial_number_nibbles> hexadecimal;
+
+        auto i = hexadecimal.rbegin();
+        for ( auto byte : device_serial_number.array() ) {
+            for ( auto byte_nibble = 0; byte_nibble < byte_nibbles; ++byte_nibble ) {
+                auto const n = byte & 0x0F;
+
+                *i = n < 0xA ? n + '0' : n - 0xA + 'A';
+
+                ++i;
+                byte >>= 4;
+            } // for
+        }     // for
+        *i = 'x';
+        ++i;
+        *i = '0';
+
+        return stream.put( hexadecimal.begin(), hexadecimal.end() );
     }
 };
 

@@ -27,6 +27,7 @@
 #include <limits>
 
 #include "picolibrary/fixed_size_array.h"
+#include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/result.h"
 #include "picolibrary/stream.h"
@@ -41,6 +42,16 @@ namespace picolibrary::Microchip::megaAVR0::Device_Info {
  * \brief Device type.
  */
 using Device_Type = Peripheral::SIGROW::Device_Type;
+
+/**
+ * \brief Get the device type.
+ *
+ * \return The device type.
+ */
+inline auto device_type() noexcept
+{
+    return Peripheral::SIGROW0::instance().device_type();
+}
 
 /**
  * \brief Device serial number.

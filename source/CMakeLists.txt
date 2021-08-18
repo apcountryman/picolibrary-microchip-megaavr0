@@ -61,6 +61,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         APPEND PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
         "picolibrary/testing/interactive/microchip/megaavr0.cc"
         "picolibrary/testing/interactive/microchip/megaavr0/clock.cc"
+        "picolibrary/testing/interactive/microchip/megaavr0/device_info.cc"
     )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
 

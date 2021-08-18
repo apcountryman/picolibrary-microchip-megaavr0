@@ -119,7 +119,7 @@ class Device_Serial_Number {
     /**
      * \brief The device serial number array.
      */
-    Peripheral::SIGROW::Device_Serial_Number m_array{};
+    Array m_array{};
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::Device_Info
@@ -217,7 +217,7 @@ template<>
 class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
   public:
     /**
-     * \brief Device type.
+     * \brief Device serial number.
      */
     using Device_Serial_Number = Microchip::megaAVR0::Device_Info::Device_Serial_Number;
 

@@ -16,3 +16,6 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/device_info/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::Device_Info interactive tests CMake
 #       rules.
+
+# build the picolibrary::Microchip::megaAVR0::Device_Info print interactive test
+add_subdirectory( print )

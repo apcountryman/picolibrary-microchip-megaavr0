@@ -92,7 +92,7 @@ class WDT {
         /**
          * \brief Enable the watchdog timer in normal mode.
          *
-         * \param[in] period The watchdog timer period.
+         * \param[in] period The watchdog timer time-out period.
          */
         void enable( Period period ) noexcept
         {
@@ -102,8 +102,8 @@ class WDT {
         /**
          * \brief Enable the watchdog timer in window mode.
          *
-         * \param[in] closed_period The watchdog timer closed period.
-         * \param[in] open_period The watchdog timer open period.
+         * \param[in] closed_period The watchdog timer window closed period.
+         * \param[in] open_period The watchdog timer window open period.
          */
         void enable( Closed_Period closed_period, Open_Period open_period ) noexcept
         {
@@ -171,10 +171,10 @@ class WDT {
         using Protected_Register<std::uint8_t>::operator=;
 
         /**
-         * \brief Check if a configuration change is in progress.
+         * \brief Check if a watchdog timer configuration change is in progress.
          *
-         * \return true if a configuration change is in progress.
-         * \return false if a configuration change is in not progress.
+         * \return true if a watchdog timer configuration change is in progress.
+         * \return false if a watchdog timer configuration change is not in progress.
          */
         auto configuration_change_in_progress() const noexcept
         {
@@ -219,7 +219,7 @@ class WDT {
     };
 
     /**
-     * \brief Window mode closed period.
+     * \brief Window mode window closed period.
      */
     enum class Closed_Period : std::uint8_t {
         _8_CLK_PERIODS = 0x1 << CTRLA::Bit::WINDOW, ///< 8 1.024 kHz clock periods (8 ms).
@@ -247,7 +247,7 @@ class WDT {
     };
 
     /**
-     * \brief Window mode open period.
+     * \brief Window mode window open period.
      */
     enum class Open_Period : std::uint8_t {
         _8_CLK_PERIODS = 0x1 << CTRLA::Bit::PERIOD, ///< 8 1.024 kHz clock periods (8 ms).
@@ -299,7 +299,7 @@ class WDT {
     /**
      * \brief Enable the watchdog timer in normal mode.
      *
-     * \param[in] period The watchdog timer period.
+     * \param[in] period The watchdog timer time-out period.
      */
     void enable( Period period ) noexcept
     {
@@ -309,8 +309,8 @@ class WDT {
     /**
      * \brief Enable the watchdog timer in window mode.
      *
-     * \param[in] closed_period The watchdog timer closed period.
-     * \param[in] open_period The watchdog timer open period.
+     * \param[in] closed_period The watchdog timer window closed period.
+     * \param[in] open_period The watchdog timer window open period.
      */
     void enable( Closed_Period closed_period, Open_Period open_period ) noexcept
     {
@@ -326,10 +326,10 @@ class WDT {
     }
 
     /**
-     * \brief Check if a configuration change is in progress.
+     * \brief Check if a watchdog timer configuration change is in progress.
      *
-     * \return true if a configuration change is in progress.
-     * \return false if a configuration change is in not progress.
+     * \return true if a watchdog timer configuration change is in progress.
+     * \return false if a watchdog timer configuration change is not in progress.
      */
     auto configuration_change_in_progress() const noexcept
     {

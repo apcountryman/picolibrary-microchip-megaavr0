@@ -80,6 +80,8 @@ class WDT {
         auto operator=( CTRLA && ) = delete;
 
         auto operator=( CTRLA const & ) = delete;
+
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**
@@ -129,6 +131,8 @@ class WDT {
         auto operator=( STATUS && ) = delete;
 
         auto operator=( STATUS const & ) = delete;
+
+        using Protected_Register<std::uint8_t>::operator=;
     };
 
     /**

@@ -32,6 +32,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
+#include "picolibrary/microchip/megaavr0/peripheral/wdt.h"
 
 /**
  * \brief Microchip megaAVR 0-series ATmega4809 peripherals.
@@ -104,6 +105,15 @@ using VPORTF = VPORT_Instance<0x0014>;
  *            picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0.
  */
 using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
+
+/**
+ * \brief WDT0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega4809` and use
+ *            picolibrary::Microchip::megaAVR0::Peripheral::WDT0.
+ */
+using WDT0 = WDT_Instance<0x0100>;
 
 /**
  * \brief PORTA.

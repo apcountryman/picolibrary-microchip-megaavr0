@@ -51,6 +51,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/wdt.cc"
     "picolibrary/microchip/megaavr0/register.cc"
     "picolibrary/microchip/megaavr0/spi.cc"
+    "picolibrary/microchip/megaavr0/watchdog_timer.cc"
 )
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_LINK_LIBRARIES

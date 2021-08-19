@@ -24,7 +24,7 @@
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
-static_assert( sizeof( WDT ) == 2 );
+static_assert( sizeof( WDT ) == 0x01 + 1 );
 static_assert( WDT::CTRLA::Bit::WINDOW == 4 );
 static_assert( WDT::STATUS::Bit::LOCK == 7 );
 

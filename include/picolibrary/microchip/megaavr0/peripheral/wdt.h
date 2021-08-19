@@ -36,6 +36,12 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  */
 class WDT {
   public:
+    enum class Period : std::uint8_t;
+
+    enum class Closed_Period : std::uint8_t;
+
+    enum class Open_Period : std::uint8_t;
+
     /**
      * \brief Control A (CTRLA) register.
      *
@@ -82,6 +88,36 @@ class WDT {
         auto operator=( CTRLA const & ) = delete;
 
         using Protected_Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Enable the watchdog timer in normal mode.
+         *
+         * \param[in] period The watchdog timer period.
+         */
+        void enable( Period period ) noexcept
+        {
+            *this = static_cast<std::uint8_t>( period );
+        }
+
+        /**
+         * \brief Enable the watchdog timer in window mode.
+         *
+         * \param[in] closed_period The watchdog timer closed period.
+         * \param[in] open_period The watchdog timer open period.
+         */
+        void enable( Closed_Period closed_period, Open_Period open_period ) noexcept
+        {
+            *this = static_cast<std::uint8_t>( closed_period )
+                    | static_cast<std::uint8_t>( open_period );
+        }
+
+        /**
+         * \brief Disable the watchdog timer.
+         */
+        void disable() noexcept
+        {
+            *this = 0;
+        }
     };
 
     /**
@@ -133,6 +169,109 @@ class WDT {
         auto operator=( STATUS const & ) = delete;
 
         using Protected_Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Check if a configuration change is in progress.
+         *
+         * \return true if a configuration change is in progress.
+         * \return false if a configuration change is in not progress.
+         */
+        auto configuration_change_in_progress() const noexcept
+        {
+            return static_cast<bool>( *this & Mask::SYNCBUSY );
+        }
+
+        /**
+         * \brief Lock the watchdog timer configuration.
+         */
+        void lock_configuration() noexcept
+        {
+            *this = Mask::LOCK;
+        }
+    };
+
+    /**
+     * \brief Normal mode time-out period.
+     */
+    enum class Period : std::uint8_t {
+        _8_CLK_PERIODS = 0x1 << CTRLA::Bit::PERIOD, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_CLK_PERIODS = 0x2 << CTRLA::Bit::PERIOD, ///< 16 1.024 kHz clock periods (16 ms).
+        _32_CLK_PERIODS = 0x3 << CTRLA::Bit::PERIOD, ///< 32 1.024 kHz clock periods (31 ms).
+        _64_CLK_PERIODS = 0x4 << CTRLA::Bit::PERIOD, ///< 64 1.024 kHz clock periods (63 ms).
+        _128_CLK_PERIODS = 0x5 << CTRLA::Bit::PERIOD, ///< 128 1.024 kHz clock periods (125 ms).
+        _256_CLK_PERIODS = 0x6 << CTRLA::Bit::PERIOD, ///< 256 1.024 kHz clock periods (250 ms).
+        _512_CLK_PERIODS = 0x7 << CTRLA::Bit::PERIOD, ///< 512 1.024 kHz clock periods (500 ms).
+        _1K_CLK_PERIODS = 0x8 << CTRLA::Bit::PERIOD, ///< 1k 1.024 kHz clock periods (1 s).
+        _2K_CLK_PERIODS = 0x9 << CTRLA::Bit::PERIOD, ///< 2k 1.024 kHz clock periods (2 s).
+        _4K_CLK_PERIODS = 0xA << CTRLA::Bit::PERIOD, ///< 4k 1.024 kHz clock periods (4 s).
+        _8K_CLK_PERIODS = 0xB << CTRLA::Bit::PERIOD, ///< 8k 1.024 kHz clock periods (8 s).
+        _8_MS   = 0x1 << CTRLA::Bit::PERIOD, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_MS  = 0x2 << CTRLA::Bit::PERIOD, ///< 16 1.024 kHz clock periods (16 ms).
+        _31_MS  = 0x3 << CTRLA::Bit::PERIOD, ///< 32 1.024 kHz clock periods (31 ms).
+        _63_MS  = 0x4 << CTRLA::Bit::PERIOD, ///< 64 1.024 kHz clock periods (63 ms).
+        _125_MS = 0x5 << CTRLA::Bit::PERIOD, ///< 128 1.024 kHz clock periods (125 ms).
+        _250_MS = 0x6 << CTRLA::Bit::PERIOD, ///< 256 1.024 kHz clock periods (250 ms).
+        _500_MS = 0x7 << CTRLA::Bit::PERIOD, ///< 512 1.024 kHz clock periods (500 ms).
+        _1_S    = 0x8 << CTRLA::Bit::PERIOD, ///< 1k 1.024 kHz clock periods (1 s).
+        _2_S    = 0x9 << CTRLA::Bit::PERIOD, ///< 2k 1.024 kHz clock periods (2 s).
+        _4_S    = 0xA << CTRLA::Bit::PERIOD, ///< 4k 1.024 kHz clock periods (4 s).
+        _8_S    = 0xB << CTRLA::Bit::PERIOD, ///< 8k 1.024 kHz clock periods (8 s).
+    };
+
+    /**
+     * \brief Window mode closed period.
+     */
+    enum class Closed_Period : std::uint8_t {
+        _8_CLK_PERIODS = 0x1 << CTRLA::Bit::WINDOW, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_CLK_PERIODS = 0x2 << CTRLA::Bit::WINDOW, ///< 16 1.024 kHz clock periods (16 ms).
+        _32_CLK_PERIODS = 0x3 << CTRLA::Bit::WINDOW, ///< 32 1.024 kHz clock periods (31 ms).
+        _64_CLK_PERIODS = 0x4 << CTRLA::Bit::WINDOW, ///< 64 1.024 kHz clock periods (63 ms).
+        _128_CLK_PERIODS = 0x5 << CTRLA::Bit::WINDOW, ///< 128 1.024 kHz clock periods (125 ms).
+        _256_CLK_PERIODS = 0x6 << CTRLA::Bit::WINDOW, ///< 256 1.024 kHz clock periods (250 ms).
+        _512_CLK_PERIODS = 0x7 << CTRLA::Bit::WINDOW, ///< 512 1.024 kHz clock periods (500 ms).
+        _1K_CLK_PERIODS = 0x8 << CTRLA::Bit::WINDOW, ///< 1k 1.024 kHz clock periods (1 s).
+        _2K_CLK_PERIODS = 0x9 << CTRLA::Bit::WINDOW, ///< 2k 1.024 kHz clock periods (2 s).
+        _4K_CLK_PERIODS = 0xA << CTRLA::Bit::WINDOW, ///< 4k 1.024 kHz clock periods (4 s).
+        _8K_CLK_PERIODS = 0xB << CTRLA::Bit::WINDOW, ///< 8k 1.024 kHz clock periods (8 s).
+        _8_MS   = 0x1 << CTRLA::Bit::WINDOW, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_MS  = 0x2 << CTRLA::Bit::WINDOW, ///< 16 1.024 kHz clock periods (16 ms).
+        _31_MS  = 0x3 << CTRLA::Bit::WINDOW, ///< 32 1.024 kHz clock periods (31 ms).
+        _63_MS  = 0x4 << CTRLA::Bit::WINDOW, ///< 64 1.024 kHz clock periods (63 ms).
+        _125_MS = 0x5 << CTRLA::Bit::WINDOW, ///< 128 1.024 kHz clock periods (125 ms).
+        _250_MS = 0x6 << CTRLA::Bit::WINDOW, ///< 256 1.024 kHz clock periods (250 ms).
+        _500_MS = 0x7 << CTRLA::Bit::WINDOW, ///< 512 1.024 kHz clock periods (500 ms).
+        _1_S    = 0x8 << CTRLA::Bit::WINDOW, ///< 1k 1.024 kHz clock periods (1 s).
+        _2_S    = 0x9 << CTRLA::Bit::WINDOW, ///< 2k 1.024 kHz clock periods (2 s).
+        _4_S    = 0xA << CTRLA::Bit::WINDOW, ///< 4k 1.024 kHz clock periods (4 s).
+        _8_S    = 0xB << CTRLA::Bit::WINDOW, ///< 8k 1.024 kHz clock periods (8 s).
+    };
+
+    /**
+     * \brief Window mode open period.
+     */
+    enum class Open_Period : std::uint8_t {
+        _8_CLK_PERIODS = 0x1 << CTRLA::Bit::PERIOD, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_CLK_PERIODS = 0x2 << CTRLA::Bit::PERIOD, ///< 16 1.024 kHz clock periods (16 ms).
+        _32_CLK_PERIODS = 0x3 << CTRLA::Bit::PERIOD, ///< 32 1.024 kHz clock periods (31 ms).
+        _64_CLK_PERIODS = 0x4 << CTRLA::Bit::PERIOD, ///< 64 1.024 kHz clock periods (63 ms).
+        _128_CLK_PERIODS = 0x5 << CTRLA::Bit::PERIOD, ///< 128 1.024 kHz clock periods (125 ms).
+        _256_CLK_PERIODS = 0x6 << CTRLA::Bit::PERIOD, ///< 256 1.024 kHz clock periods (250 ms).
+        _512_CLK_PERIODS = 0x7 << CTRLA::Bit::PERIOD, ///< 512 1.024 kHz clock periods (500 ms).
+        _1K_CLK_PERIODS = 0x8 << CTRLA::Bit::PERIOD, ///< 1k 1.024 kHz clock periods (1 s).
+        _2K_CLK_PERIODS = 0x9 << CTRLA::Bit::PERIOD, ///< 2k 1.024 kHz clock periods (2 s).
+        _4K_CLK_PERIODS = 0xA << CTRLA::Bit::PERIOD, ///< 4k 1.024 kHz clock periods (4 s).
+        _8K_CLK_PERIODS = 0xB << CTRLA::Bit::PERIOD, ///< 8k 1.024 kHz clock periods (8 s).
+        _8_MS   = 0x1 << CTRLA::Bit::PERIOD, ///< 8 1.024 kHz clock periods (8 ms).
+        _16_MS  = 0x2 << CTRLA::Bit::PERIOD, ///< 16 1.024 kHz clock periods (16 ms).
+        _31_MS  = 0x3 << CTRLA::Bit::PERIOD, ///< 32 1.024 kHz clock periods (31 ms).
+        _63_MS  = 0x4 << CTRLA::Bit::PERIOD, ///< 64 1.024 kHz clock periods (63 ms).
+        _125_MS = 0x5 << CTRLA::Bit::PERIOD, ///< 128 1.024 kHz clock periods (125 ms).
+        _250_MS = 0x6 << CTRLA::Bit::PERIOD, ///< 256 1.024 kHz clock periods (250 ms).
+        _500_MS = 0x7 << CTRLA::Bit::PERIOD, ///< 512 1.024 kHz clock periods (500 ms).
+        _1_S    = 0x8 << CTRLA::Bit::PERIOD, ///< 1k 1.024 kHz clock periods (1 s).
+        _2_S    = 0x9 << CTRLA::Bit::PERIOD, ///< 2k 1.024 kHz clock periods (2 s).
+        _4_S    = 0xA << CTRLA::Bit::PERIOD, ///< 4k 1.024 kHz clock periods (4 s).
+        _8_S    = 0xB << CTRLA::Bit::PERIOD, ///< 8k 1.024 kHz clock periods (8 s).
     };
 
     /**
@@ -156,6 +295,54 @@ class WDT {
     auto operator=( WDT && ) = delete;
 
     auto operator=( WDT const & ) = delete;
+
+    /**
+     * \brief Enable the watchdog timer in normal mode.
+     *
+     * \param[in] period The watchdog timer period.
+     */
+    void enable( Period period ) noexcept
+    {
+        ctrla.enable( period );
+    }
+
+    /**
+     * \brief Enable the watchdog timer in window mode.
+     *
+     * \param[in] closed_period The watchdog timer closed period.
+     * \param[in] open_period The watchdog timer open period.
+     */
+    void enable( Closed_Period closed_period, Open_Period open_period ) noexcept
+    {
+        ctrla.enable( closed_period, open_period );
+    }
+
+    /**
+     * \brief Disable the watchdog timer.
+     */
+    void disable() noexcept
+    {
+        ctrla.disable();
+    }
+
+    /**
+     * \brief Check if a configuration change is in progress.
+     *
+     * \return true if a configuration change is in progress.
+     * \return false if a configuration change is in not progress.
+     */
+    auto configuration_change_in_progress() const noexcept
+    {
+        return status.configuration_change_in_progress();
+    }
+
+    /**
+     * \brief Lock the watchdog timer configuration.
+     */
+    void lock_configuration() noexcept
+    {
+        status.lock_configuration();
+    }
 };
 
 /**

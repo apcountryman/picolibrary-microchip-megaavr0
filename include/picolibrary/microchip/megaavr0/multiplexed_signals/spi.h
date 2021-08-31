@@ -17,23 +17,22 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809::SPI
- *        interface.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_SPI_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_SPI_H
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_SPI_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_SPI_H
 
 #include <cstdint>
 
 #include "picolibrary/fatal_error.h"
-#include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
+#include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
-namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809 {
+namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
 
 /**
  * \brief SPI routing configuration.
@@ -43,18 +42,14 @@ using SPI_Route = Peripheral::PORTMUX::SPI_Route;
 /**
  * \brief Set an SPI peripheral's routing configuration.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_spi_route().
- *
  * \param[in] spi The SPI peripheral whose routing configuration will be set.
  * \param[in] route The desired SPI peripheral routing configuration.
  */
 inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexcept
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_spi0_route( route );
+        case Peripheral::SPI0::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_spi0_route( route );
             return;
     } // switch
 
@@ -64,10 +59,6 @@ inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexce
 /**
  * \brief Lookup an SPI peripheral's pins port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::spi_port().
- *
  * \param[in] spi The SPI peripheral whose pins port is to be looked up.
  *
  * \return The SPI peripheral's pins port.
@@ -75,13 +66,11 @@ inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexce
 inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-                case SPI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
-                case SPI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::PORTC::instance();
-                case SPI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::PORTE::instance();
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return Peripheral::PORTA::instance();
+                case SPI_Route::ALTERNATE_1: return Peripheral::PORTC::instance();
+                case SPI_Route::ALTERNATE_2: return Peripheral::PORTE::instance();
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -93,10 +82,6 @@ inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT
 /**
  * \brief Lookup an SPI peripheral's pins virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::spi_vport().
- *
  * \param[in] spi The SPI peripheral whose pins virtual port is to be looked up.
  *
  * \return The SPI peripheral's pins virtual port.
@@ -104,14 +89,11 @@ inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT
 inline auto spi_vport( Peripheral::SPI const & spi ) noexcept -> Peripheral::VPORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
-                case SPI_Route::DEFAULT:
-                    return Peripheral::ATmega4809::VPORTA::instance();
-                case SPI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::VPORTC::instance();
-                case SPI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::VPORTE::instance();
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
+                case SPI_Route::DEFAULT: return Peripheral::VPORTA::instance();
+                case SPI_Route::ALTERNATE_1: return Peripheral::VPORTC::instance();
+                case SPI_Route::ALTERNATE_2: return Peripheral::VPORTE::instance();
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -122,10 +104,6 @@ inline auto spi_vport( Peripheral::SPI const & spi ) noexcept -> Peripheral::VPO
 
 /**
  * \brief Lookup an SPI peripheral's DS pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ds_port().
  *
  * \param[in] spi The SPI peripheral whose DS pin port is to be looked up.
  *
@@ -139,10 +117,6 @@ inline auto & ds_port( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's DS pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ds_vport().
- *
  * \param[in] spi The SPI peripheral whose DS pin virtual port is to be looked up.
  *
  * \return The SPI peripheral's DS pin virtual port.
@@ -155,10 +129,6 @@ inline auto & ds_vport( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's DS pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ds_number().
- *
  * \param[in] spi The SPI peripheral whose DS pin number is to be looked up.
  *
  * \return The SPI peripheral's DS pin number.
@@ -166,8 +136,8 @@ inline auto & ds_vport( Peripheral::SPI const & spi ) noexcept
 inline auto ds_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
                 case SPI_Route::DEFAULT: return 7;
                 case SPI_Route::ALTERNATE_1: return 3;
                 case SPI_Route::ALTERNATE_2: return 3;
@@ -182,10 +152,6 @@ inline auto ds_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8
 /**
  * \brief Lookup an SPI peripheral's DS pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ds_mask().
- *
  * \param[in] spi The SPI peripheral whose DS pin mask is to be looked up.
  *
  * \return The SPI peripheral's DS pin mask.
@@ -197,10 +163,6 @@ inline auto ds_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 
 /**
  * \brief Lookup an SPI peripheral's SCK pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sck_port().
  *
  * \param[in] spi The SPI peripheral whose SCK pin port is to be looked up.
  *
@@ -214,10 +176,6 @@ inline auto & sck_port( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's SCK pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sck_vport().
- *
  * \param[in] spi The SPI peripheral whose SCK pin virtual port is to be looked up.
  *
  * \return The SPI peripheral's SCK pin virtual port.
@@ -230,10 +188,6 @@ inline auto & sck_vport( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's SCK pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sck_number().
- *
  * \param[in] spi The SPI peripheral whose SCK pin number is to be looked up.
  *
  * \return The SPI peripheral's SCK pin number.
@@ -241,8 +195,8 @@ inline auto & sck_vport( Peripheral::SPI const & spi ) noexcept
 inline auto sck_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
                 case SPI_Route::DEFAULT: return 6;
                 case SPI_Route::ALTERNATE_1: return 2;
                 case SPI_Route::ALTERNATE_2: return 2;
@@ -257,10 +211,6 @@ inline auto sck_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast
 /**
  * \brief Lookup an SPI peripheral's SCK pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sck_mask().
- *
  * \param[in] spi The SPI peripheral whose SCK pin mask is to be looked up.
  *
  * \return The SPI peripheral's SCK pin mask.
@@ -272,10 +222,6 @@ inline auto sck_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 
 /**
  * \brief Lookup an SPI peripheral's CODI pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::codi_port().
  *
  * \param[in] spi The SPI peripheral whose CODI pin port is to be looked up.
  *
@@ -289,10 +235,6 @@ inline auto & codi_port( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's CODI pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::codi_vport().
- *
  * \param[in] spi The SPI peripheral whose CODI pin virtual port is to be looked up.
  *
  * \return The SPI peripheral's CODI pin virtual port.
@@ -305,10 +247,6 @@ inline auto & codi_vport( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's CODI pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::codi_number().
- *
  * \param[in] spi The SPI peripheral whose CODI pin number is to be looked up.
  *
  * \return The SPI peripheral's CODI pin number.
@@ -316,8 +254,8 @@ inline auto & codi_vport( Peripheral::SPI const & spi ) noexcept
 inline auto codi_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
                 case SPI_Route::DEFAULT: return 4;
                 case SPI_Route::ALTERNATE_1: return 0;
                 case SPI_Route::ALTERNATE_2: return 0;
@@ -332,10 +270,6 @@ inline auto codi_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fas
 /**
  * \brief Lookup an SPI peripheral's CODI pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::codi_mask().
- *
  * \param[in] spi The SPI peripheral whose CODI pin mask is to be looked up.
  *
  * \return The SPI peripheral's CODI pin mask.
@@ -347,10 +281,6 @@ inline auto codi_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 
 /**
  * \brief Lookup an SPI peripheral's CIDO pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::cido_port().
  *
  * \param[in] spi The SPI peripheral whose CIDO pin port is to be looked up.
  *
@@ -364,10 +294,6 @@ inline auto & cido_port( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's CIDO pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::cido_vport().
- *
  * \param[in] spi The SPI peripheral whose CIDO pin virtual port is to be looked up.
  *
  * \return The SPI peripheral's CIDO pin virtual port.
@@ -380,10 +306,6 @@ inline auto & cido_vport( Peripheral::SPI const & spi ) noexcept
 /**
  * \brief Lookup an SPI peripheral's CIDO pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::cido_number().
- *
  * \param[in] spi The SPI peripheral whose CIDO pin number is to be looked up.
  *
  * \return The SPI peripheral's CIDO pin number.
@@ -391,8 +313,8 @@ inline auto & cido_vport( Peripheral::SPI const & spi ) noexcept
 inline auto cido_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega4809::SPI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().spi0_route() ) {
+        case Peripheral::SPI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().spi0_route() ) {
                 case SPI_Route::DEFAULT: return 5;
                 case SPI_Route::ALTERNATE_1: return 1;
                 case SPI_Route::ALTERNATE_2: return 1;
@@ -407,10 +329,6 @@ inline auto cido_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fas
 /**
  * \brief Lookup an SPI peripheral's CIDO pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::cido_mask().
- *
  * \param[in] spi The SPI peripheral whose CIDO pin mask is to be looked up.
  *
  * \return The SPI peripheral's CIDO pin mask.
@@ -420,6 +338,6 @@ inline auto cido_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
     return 1 << cido_number( spi );
 }
 
-} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809
+} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_SPI_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_SPI_H

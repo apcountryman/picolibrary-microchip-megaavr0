@@ -23,7 +23,9 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 
-#include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/spi.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/twi.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/usart.h"
 
 /**
  * \brief Microchip megaAVR 0-series multiplexed signals facilities.

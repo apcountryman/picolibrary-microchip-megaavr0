@@ -17,23 +17,22 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809::TWI
- *        interface.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::TWI interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_TWI_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_TWI_H
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_TWI_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_TWI_H
 
 #include <cstdint>
 
 #include "picolibrary/fatal_error.h"
-#include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
+#include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
-namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809 {
+namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
 
 /**
  * \brief TWI routing configuration.
@@ -43,18 +42,14 @@ using TWI_Route = Peripheral::PORTMUX::TWI_Route;
 /**
  * \brief Set a TWI peripheral's routing configuration.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_twi_route().
- *
  * \param[in] twi The TWI peripheral whose routing configuration will be set.
  * \param[in] route The desired TWI peripheral routing configuration.
  */
 inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexcept
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_twi0_route( route );
+        case Peripheral::TWI0::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_twi0_route( route );
             return;
     } // switch
 
@@ -64,10 +59,6 @@ inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexce
 /**
  * \brief Lookup a TWI peripheral's SCL pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::scl_number().
- *
  * \param[in] twi The TWI peripheral whose SCL pin number is to be looked up.
  *
  * \return The TWI peripheral's SCL pin number.
@@ -75,8 +66,8 @@ inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexce
 inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
                 case TWI_Route::DEFAULT: return 3;
                 case TWI_Route::ALTERNATE_1: return 3;
                 case TWI_Route::ALTERNATE_2: return 3;
@@ -90,10 +81,6 @@ inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast
 /**
  * \brief Lookup a TWI peripheral's SCL pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::scl_mask().
- *
  * \param[in] twi The TWI peripheral whose SCL pin mask is to be looked up.
  *
  * \return The TWI peripheral's SCL pin mask.
@@ -106,10 +93,6 @@ inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 /**
  * \brief Lookup a TWI peripheral's SDA pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sda_number().
- *
  * \param[in] twi The TWI peripheral whose SDA pin number is to be looked up.
  *
  * \return The TWI peripheral's SDA pin number.
@@ -117,8 +100,8 @@ inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
                 case TWI_Route::DEFAULT: return 2;
                 case TWI_Route::ALTERNATE_1: return 2;
                 case TWI_Route::ALTERNATE_2: return 2;
@@ -132,10 +115,6 @@ inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast
 /**
  * \brief Lookup a TWI peripheral's SDA pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::sda_mask().
- *
  * \param[in] twi The TWI peripheral whose SDA pin mask is to be looked up.
  *
  * \return The TWI peripheral's SDA pin mask.
@@ -148,10 +127,6 @@ inline auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 /**
  * \brief Lookup a TWI peripheral's controller pins port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::twi_controller_port().
- *
  * \param[in] twi The TWI peripheral whose controller pins port is to be looked up.
  *
  * \return The TWI peripheral's controller pins port.
@@ -159,13 +134,11 @@ inline auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-                case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTA::instance();
-                case TWI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::PORTA::instance();
-                case TWI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::PORTC::instance();
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::PORTA::instance();
+                case TWI_Route::ALTERNATE_1: return Peripheral::PORTA::instance();
+                case TWI_Route::ALTERNATE_2: return Peripheral::PORTC::instance();
             } // switch
             break;
     } // switch
@@ -176,10 +149,6 @@ inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Perip
 /**
  * \brief Lookup a TWI peripheral's controller pins virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::twi_controller_vport().
- *
  * \param[in] twi The TWI peripheral whose controller pins virtual port is to be looked
  *            up.
  *
@@ -188,14 +157,11 @@ inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Perip
 inline auto twi_controller_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-                case TWI_Route::DEFAULT:
-                    return Peripheral::ATmega4809::VPORTA::instance();
-                case TWI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::VPORTA::instance();
-                case TWI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::VPORTC::instance();
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::VPORTA::instance();
+                case TWI_Route::ALTERNATE_1: return Peripheral::VPORTA::instance();
+                case TWI_Route::ALTERNATE_2: return Peripheral::VPORTC::instance();
             } // switch
             break;
     } // switch
@@ -205,10 +171,6 @@ inline auto twi_controller_vport( Peripheral::TWI const & twi ) noexcept -> Peri
 
 /**
  * \brief Lookup a TWI peripheral's controller SCL pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_scl_port().
  *
  * \param[in] twi The TWI peripheral whose controller SCL pin port is to be looked up.
  *
@@ -221,10 +183,6 @@ inline auto & controller_scl_port( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's controller SCL pin virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_scl_vport().
  *
  * \param[in] twi The TWI peripheral whose controller SCL pin virtual port is to be looked
  *            up.
@@ -239,10 +197,6 @@ inline auto & controller_scl_vport( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's controller SCL pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_scl_number().
- *
  * \param[in] twi The TWI peripheral whose controller SCL pin number is to be looked up.
  *
  * \return The TWI peripheral's controller SCL pin number.
@@ -254,10 +208,6 @@ inline auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's controller SCL pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_scl_mask().
  *
  * \param[in] twi The TWI peripheral whose controller SCL pin mask is to be looked up.
  *
@@ -271,10 +221,6 @@ inline auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's controller SDA pin port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_sda_port().
- *
  * \param[in] twi The TWI peripheral whose controller SDA pin port is to be looked up.
  *
  * \return The TWI peripheral's controller SDA pin port.
@@ -286,10 +232,6 @@ inline auto & controller_sda_port( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's controller SDA pin virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_sda_vport().
  *
  * \param[in] twi The TWI peripheral whose controller SDA pin virtual port is to be looked
  *            up.
@@ -304,10 +246,6 @@ inline auto & controller_sda_vport( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's controller SDA pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_sda_number().
- *
  * \param[in] twi The TWI peripheral whose controller SDA pin number is to be looked up.
  *
  * \return The TWI peripheral's controller SDA pin number.
@@ -319,10 +257,6 @@ inline auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's controller SDA pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::controller_sda_mask().
  *
  * \param[in] twi The TWI peripheral whose controller SDA pin mask is to be looked up.
  *
@@ -336,10 +270,6 @@ inline auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's device pins port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::twi_device_port().
- *
  * \param[in] twi The TWI peripheral whose device pins port is to be looked up.
  *
  * \return The TWI peripheral's device pins port.
@@ -347,13 +277,11 @@ inline auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
 inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-                case TWI_Route::DEFAULT: return Peripheral::ATmega4809::PORTC::instance();
-                case TWI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::PORTF::instance();
-                case TWI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::PORTF::instance();
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::PORTC::instance();
+                case TWI_Route::ALTERNATE_1: return Peripheral::PORTF::instance();
+                case TWI_Route::ALTERNATE_2: return Peripheral::PORTF::instance();
             } // switch
             break;
     } // switch
@@ -364,10 +292,6 @@ inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Periphera
 /**
  * \brief Lookup a TWI peripheral's device pins virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::twi_device_vport().
- *
  * \param[in] twi The TWI peripheral whose device pins virtual port is to be looked up.
  *
  * \return The TWI peripheral's device pins virtual port.
@@ -375,14 +299,11 @@ inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Periphera
 inline auto twi_device_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega4809::TWI0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().twi0_route() ) {
-                case TWI_Route::DEFAULT:
-                    return Peripheral::ATmega4809::VPORTC::instance();
-                case TWI_Route::ALTERNATE_1:
-                    return Peripheral::ATmega4809::VPORTF::instance();
-                case TWI_Route::ALTERNATE_2:
-                    return Peripheral::ATmega4809::VPORTF::instance();
+        case Peripheral::TWI0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().twi0_route() ) {
+                case TWI_Route::DEFAULT: return Peripheral::VPORTC::instance();
+                case TWI_Route::ALTERNATE_1: return Peripheral::VPORTF::instance();
+                case TWI_Route::ALTERNATE_2: return Peripheral::VPORTF::instance();
             } // switch
             break;
     } // switch
@@ -392,10 +313,6 @@ inline auto twi_device_vport( Peripheral::TWI const & twi ) noexcept -> Peripher
 
 /**
  * \brief Lookup a TWI peripheral's device SCL pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_scl_port().
  *
  * \param[in] twi The TWI peripheral whose device SCL pin port is to be looked up.
  *
@@ -409,10 +326,6 @@ inline auto & device_scl_port( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's device SCL pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_scl_vport().
- *
  * \param[in] twi The TWI peripheral whose device SCL pin virtual port is to be looked up.
  *
  * \return The TWI peripheral's device SCL pin virtual port.
@@ -424,10 +337,6 @@ inline auto & device_scl_vport( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's device SCL pin number.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_scl_number().
  *
  * \param[in] twi The TWI peripheral whose device SCL pin number is to be looked up.
  *
@@ -441,10 +350,6 @@ inline auto device_scl_number( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's device SCL pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_scl_mask().
- *
  * \param[in] twi The TWI peripheral whose device SCL pin mask is to be looked up.
  *
  * \return The TWI peripheral's device SCL pin mask.
@@ -456,10 +361,6 @@ inline auto device_scl_mask( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's device SDA pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_sda_port().
  *
  * \param[in] twi The TWI peripheral whose device SDA pin port is to be looked up.
  *
@@ -473,10 +374,6 @@ inline auto & device_sda_port( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's device SDA pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_sda_vport().
- *
  * \param[in] twi The TWI peripheral whose device SDA pin virtual port is to be looked up.
  *
  * \return The TWI peripheral's device SDA pin virtual port.
@@ -488,10 +385,6 @@ inline auto & device_sda_vport( Peripheral::TWI const & twi ) noexcept
 
 /**
  * \brief Lookup a TWI peripheral's device SDA pin number.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_sda_number().
  *
  * \param[in] twi The TWI peripheral whose device SDA pin number is to be looked up.
  *
@@ -505,10 +398,6 @@ inline auto device_sda_number( Peripheral::TWI const & twi ) noexcept
 /**
  * \brief Lookup a TWI peripheral's device SDA pin mask.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::device_sda_mask().
- *
  * \param[in] twi The TWI peripheral whose device SDA pin mask is to be looked up.
  *
  * \return The TWI peripheral's device SDA pin mask.
@@ -518,6 +407,6 @@ inline auto device_sda_mask( Peripheral::TWI const & twi ) noexcept
     return sda_mask( twi );
 }
 
-} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809
+} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_TWI_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_TWI_H

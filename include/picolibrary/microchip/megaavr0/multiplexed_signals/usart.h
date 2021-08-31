@@ -17,23 +17,22 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809::USART
- *        interface.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_USART_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_USART_H
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_USART_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_USART_H
 
 #include <cstdint>
 
 #include "picolibrary/fatal_error.h"
-#include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
+#include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
-namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809 {
+namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
 
 /**
  * \brief USART routing configuration.
@@ -43,39 +42,34 @@ using USART_Route = Peripheral::PORTMUX::USART_Route;
 /**
  * \brief Set a USART peripheral's routing configuration.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route().
- *
  * \param[in] usart The USART peripheral whose routing configuration will be set.
  * \param[in] route The desired USART peripheral routing configuration.
  */
 inline void set_usart_route( Peripheral::USART const & usart, USART_Route route ) noexcept
 {
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_usart0_route( route );
+        case Peripheral::USART0::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_usart0_route( route );
             return;
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_usart1_route( route );
+        case Peripheral::USART1::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_usart1_route( route );
             return;
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_usart2_route( route );
+        case Peripheral::USART2::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_usart2_route( route );
             return;
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            Peripheral::ATmega4809::PORTMUX0::instance().set_usart3_route( route );
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            Peripheral::PORTMUX0::instance().set_usart3_route( route );
             return;
-    } // switch
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's pins port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::usart_port().
  *
  * \param[in] usart The USART peripheral whose pins port is to be looked up.
  *
@@ -84,25 +78,20 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
 inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            return Peripheral::ATmega4809::PORTA::instance();
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            return Peripheral::ATmega4809::PORTC::instance();
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            return Peripheral::ATmega4809::PORTF::instance();
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            return Peripheral::ATmega4809::PORTB::instance();
-    } // switch
+        case Peripheral::USART0::ADDRESS: return Peripheral::PORTA::instance();
+        case Peripheral::USART1::ADDRESS: return Peripheral::PORTC::instance();
+        case Peripheral::USART2::ADDRESS: return Peripheral::PORTF::instance();
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS: return Peripheral::PORTB::instance();
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's pins virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::usart_vport().
  *
  * \param[in] usart The USART peripheral whose pins virtual port is to be looked up.
  *
@@ -111,25 +100,20 @@ inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral
 inline auto usart_vport( Peripheral::USART const & usart ) noexcept -> Peripheral::VPORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            return Peripheral::ATmega4809::VPORTA::instance();
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            return Peripheral::ATmega4809::VPORTC::instance();
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            return Peripheral::ATmega4809::VPORTF::instance();
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            return Peripheral::ATmega4809::VPORTB::instance();
-    } // switch
+        case Peripheral::USART0::ADDRESS: return Peripheral::VPORTA::instance();
+        case Peripheral::USART1::ADDRESS: return Peripheral::VPORTC::instance();
+        case Peripheral::USART2::ADDRESS: return Peripheral::VPORTF::instance();
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS: return Peripheral::VPORTB::instance();
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's XCK pin port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xck_port().
  *
  * \param[in] usart The USART peripheral whose XCK pin port is to be looked up.
  *
@@ -143,10 +127,6 @@ inline auto & xck_port( Peripheral::USART const & usart ) noexcept
 /**
  * \brief Lookup a USART peripheral's XCK pin virtual port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xck_vport().
- *
  * \param[in] usart The USART peripheral whose XCK pin virtual port is to be looked up.
  *
  * \return The USART peripheral's XCK pin virtual port.
@@ -159,10 +139,6 @@ inline auto & xck_vport( Peripheral::USART const & usart ) noexcept
 /**
  * \brief Lookup a USART peripheral's XCK pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xck_number().
- *
  * \param[in] usart The USART peripheral whose XCK pin number is to be looked up.
  *
  * \return The USART peripheral's XCK pin number.
@@ -172,45 +148,44 @@ inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     // #lizard forgives the length
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
+        case Peripheral::USART1::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
+        case Peripheral::USART2::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 6;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 2;
                 case USART_Route::ALTERNATE: return 2;
                 case USART_Route::NONE: break;
             } // switch
             break;
-    } // switch
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's XCK pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xck_mask().
  *
  * \param[in] usart The USART peripheral whose XCK pin mask is to be looked up.
  *
@@ -224,10 +199,6 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
 /**
  * \brief Lookup a USART peripheral's XDIR pin port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xdir_port().
- *
  * \param[in] usart The USART peripheral whose XDIR pin port is to be looked up.
  *
  * \return The USART peripheral's XDIR pin port.
@@ -239,10 +210,6 @@ inline auto & xdir_port( Peripheral::USART const & usart ) noexcept
 
 /**
  * \brief Lookup a USART peripheral's XDIR pin virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xdir_vport().
  *
  * \param[in] usart The USART peripheral whose XDIR pin virtual port is to be looked up.
  *
@@ -256,10 +223,6 @@ inline auto & xdir_vport( Peripheral::USART const & usart ) noexcept
 /**
  * \brief Lookup a USART peripheral's XDIR pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xdir_number().
- *
  * \param[in] usart The USART peripheral whose XDIR pin number is to be looked up.
  *
  * \return The USART peripheral's XDIR pin number.
@@ -269,45 +232,44 @@ inline auto xdir_number( Peripheral::USART const & usart ) noexcept -> std::uint
     // #lizard forgives the length
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 7;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
+        case Peripheral::USART1::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 7;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
+        case Peripheral::USART2::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 3;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 3;
                 case USART_Route::ALTERNATE: return 3;
                 case USART_Route::NONE: break;
             } // switch
             break;
-    } // switch
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's XDIR pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::xdir_mask().
  *
  * \param[in] usart The USART peripheral whose XDIR pin mask is to be looked up.
  *
@@ -321,10 +283,6 @@ inline auto xdir_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_
 /**
  * \brief Lookup a USART peripheral's TXD pin port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::txd_port().
- *
  * \param[in] usart The USART peripheral whose TXD pin port is to be looked up.
  *
  * \return The USART peripheral's TXD pin port.
@@ -336,10 +294,6 @@ inline auto & txd_port( Peripheral::USART const & usart ) noexcept
 
 /**
  * \brief Lookup a USART peripheral's TXD pin virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::txd_vport().
  *
  * \param[in] usart The USART peripheral whose TXD pin virtual port is to be looked up.
  *
@@ -353,10 +307,6 @@ inline auto & txd_vport( Peripheral::USART const & usart ) noexcept
 /**
  * \brief Lookup a USART peripheral's TXD pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::txd_number().
- *
  * \param[in] usart The USART peripheral whose TXD pin number is to be looked up.
  *
  * \return The USART peripheral's TXD pin number.
@@ -366,45 +316,44 @@ inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     // #lizard forgives the length
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
+        case Peripheral::USART1::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
+        case Peripheral::USART2::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 0;
                 case USART_Route::ALTERNATE: return 4;
                 case USART_Route::NONE: break;
             } // switch
             break;
-    } // switch
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's TXD pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::txd_mask().
  *
  * \param[in] usart The USART peripheral whose TXD pin mask is to be looked up.
  *
@@ -418,10 +367,6 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
 /**
  * \brief Lookup a USART peripheral's RXD pin port.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::rxd_port().
- *
  * \param[in] usart The USART peripheral whose RXD pin port is to be looked up.
  *
  * \return The USART peripheral's RXD pin port.
@@ -433,10 +378,6 @@ inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
 
 /**
  * \brief Lookup a USART peripheral's RXD pin virtual port.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::rxd_vport().
  *
  * \param[in] usart The USART peripheral whose RXD pin virtual port is to be looked up.
  *
@@ -450,10 +391,6 @@ inline auto & rxd_vport( Peripheral::USART const & usart ) noexcept
 /**
  * \brief Lookup a USART peripheral's RXD pin number.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::rxd_number().
- *
  * \param[in] usart The USART peripheral whose RXD pin number is to be looked up.
  *
  * \return The USART peripheral's RXD pin number.
@@ -463,45 +400,44 @@ inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
     // #lizard forgives the length
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega4809::USART0::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart0_route() ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart0_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART1::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart1_route() ) {
+        case Peripheral::USART1::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart1_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART2::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart2_route() ) {
+        case Peripheral::USART2::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart2_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
                 case USART_Route::NONE: break;
             } // switch
             break;
-        case Peripheral::ATmega4809::USART3::ADDRESS:
-            switch ( Peripheral::ATmega4809::PORTMUX0::instance().usart3_route() ) {
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( Peripheral::PORTMUX0::instance().usart3_route() ) {
                 case USART_Route::DEFAULT: return 1;
                 case USART_Route::ALTERNATE: return 5;
                 case USART_Route::NONE: break;
             } // switch
             break;
-    } // switch
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     trap_fatal_error();
 }
 
 /**
  * \brief Lookup a USART peripheral's RXD pin mask.
- *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega4809` and call
- *            picolibrary::Microchip::megaAVR0::Multiplexed_Signals::rxd_mask().
  *
  * \param[in] usart The USART peripheral whose RXD pin mask is to be looked up.
  *
@@ -512,6 +448,6 @@ inline auto rxd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
     return 1 << rxd_number( usart );
 }
 
-} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809
+} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_ATMEGA4809_USART_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_USART_H

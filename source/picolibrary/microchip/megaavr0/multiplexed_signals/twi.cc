@@ -17,8 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809::SPI
- *        implementation.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::TWI implementation.
  */
 
-#include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/spi.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/twi.h"

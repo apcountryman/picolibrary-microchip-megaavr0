@@ -23,12 +23,152 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
-#include "picolibrary/microchip/megaavr0/peripheral/atmega4809.h"
+#include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/port.h"
+#include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
+#include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
+#include "picolibrary/microchip/megaavr0/peripheral/twi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
+#include "picolibrary/microchip/megaavr0/peripheral/vport.h"
+#include "picolibrary/microchip/megaavr0/peripheral/wdt.h"
 
 /**
  * \brief Microchip megaAVR 0-series peripheral facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
+
+/**
+ * \brief VPORTA.
+ */
+using VPORTA = VPORT_Instance<0x0000>;
+
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+/**
+ * \brief VPORTB.
+ */
+using VPORTB = VPORT_Instance<0x0004>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief VPORTC.
+ */
+using VPORTC = VPORT_Instance<0x0008>;
+
+/**
+ * \brief VPORTD.
+ */
+using VPORTD = VPORT_Instance<0x000C>;
+
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+/**
+ * \brief VPORTE.
+ */
+using VPORTE = VPORT_Instance<0x0010>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief VPORTF.
+ */
+using VPORTF = VPORT_Instance<0x0014>;
+
+/**
+ * \brief CLKCTRL0.
+ */
+using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
+
+/**
+ * \brief WDT0.
+ */
+using WDT0 = WDT_Instance<0x0100>;
+
+/**
+ * \brief PORTA.
+ */
+using PORTA = PORT_Instance<0x0400>;
+
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+/**
+ * \brief PORTB.
+ */
+using PORTB = PORT_Instance<0x0420>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief PORTC.
+ */
+using PORTC = PORT_Instance<0x0440>;
+
+/**
+ * \brief PORTD.
+ */
+using PORTD = PORT_Instance<0x0460>;
+
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+/**
+ * \brief PORTE.
+ */
+using PORTE = PORT_Instance<0x0480>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief PORTF.
+ */
+using PORTF = PORT_Instance<0x04A0>;
+
+/**
+ * \brief PORTMUX0.
+ */
+using PORTMUX0 = PORTMUX_Instance<0x05E0>;
+
+/**
+ * \brief USART0.
+ */
+using USART0 = USART_Instance<0x0800>;
+
+/**
+ * \brief USART1.
+ */
+using USART1 = USART_Instance<0x0820>;
+
+/**
+ * \brief USART2.
+ */
+using USART2 = USART_Instance<0x0840>;
+
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+/**
+ * \brief USART3.
+ */
+using USART3 = USART_Instance<0x0860>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief TWI0.
+ */
+using TWI0 = TWI_Instance<0x08A0>;
+
+/**
+ * \brief SPI0.
+ */
+using SPI0 = SPI_Instance<0x08C0>;
+
+/**
+ * \brief SYSCFG0.
+ */
+using SYSCFG0 = SYSCFG_Instance<0x0F00>;
+
+/**
+ * \brief SIGROW0.
+ */
+using SIGROW0 = SIGROW_Instance<0x1100>;
+
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H

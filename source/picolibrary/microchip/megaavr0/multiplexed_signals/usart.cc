@@ -17,8 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::ATmega4809::USART
- *        implementation.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART implementation.
  */
 
-#include "picolibrary/microchip/megaavr0/multiplexed_signals/atmega4809/usart.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/usart.h"

@@ -62,10 +62,13 @@ using VPORTC = VPORT_Instance<0x0008>;
  */
 using VPORTD = VPORT_Instance<0x000C>;
 
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief VPORTE.
  */
 using VPORTE = VPORT_Instance<0x0010>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief VPORTF.
@@ -105,10 +108,13 @@ using PORTC = PORT_Instance<0x0440>;
  */
 using PORTD = PORT_Instance<0x0460>;
 
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief PORTE.
  */
 using PORTE = PORT_Instance<0x0480>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief PORTF.

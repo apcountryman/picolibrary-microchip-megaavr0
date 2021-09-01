@@ -195,6 +195,14 @@ function ensure_no_release_atmega1609_build_errors_are_present()
     ensure_no_build_errors_are_present "$build_type" "$ellipsis"
 }
 
+function ensure_no_release_atmega3208_build_errors_are_present()
+{
+    local -r build_type="release-atmega3208"
+    local -r ellipsis=".................................."
+
+    ensure_no_build_errors_are_present "$build_type" "$ellipsis"
+}
+
 function ensure_no_release_atmega4809_build_errors_are_present()
 {
     local -r build_type="release-atmega4809"
@@ -270,6 +278,7 @@ function main()
     ensure_no_release_atmega809_build_errors_are_present
     ensure_no_release_atmega1608_build_errors_are_present
     ensure_no_release_atmega1609_build_errors_are_present
+    ensure_no_release_atmega3208_build_errors_are_present
     ensure_no_release_atmega4809_build_errors_are_present
     ensure_no_testing_interactive_atmega4809_arduino_nano_every_build_errors_are_present
 }

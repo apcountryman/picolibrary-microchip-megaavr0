@@ -49,6 +49,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/vport.cc"
     "picolibrary/microchip/megaavr0/peripheral/wdt.cc"
     "picolibrary/microchip/megaavr0/register.cc"
+    "picolibrary/microchip/megaavr0/reset_controller.cc"
     "picolibrary/microchip/megaavr0/spi.cc"
     "picolibrary/microchip/megaavr0/watchdog_timer.cc"
 )

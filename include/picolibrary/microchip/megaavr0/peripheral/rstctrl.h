@@ -88,6 +88,22 @@ class RSTCTRL {
             static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
+        /**
+         * \brief Reset source masks.
+         */
+        struct Reset_Source {
+            static constexpr auto POWER_SUPPLY_POWER_ON_RESET = Mask::PORF; ///< Power supply power-on reset.
+            static constexpr auto POWER_SUPPLY_BROWN_OUT_RESET = Mask::BORF; ///< Power supply brown-out reset.
+            static constexpr auto EXTERNAL_RESET = Mask::EXTRF;      ///< External reset.
+            static constexpr auto WATCHDOG_TIMER_RESET = Mask::WDRF; ///< Watchdog timer reset.
+            static constexpr auto SOFTWARE_RESET = Mask::SWRF;       ///< Software reset.
+            static constexpr auto UPDI_RESET     = Mask::UPDIRF; ///< UPDI reset.
+
+            static constexpr auto ALL = std::uint8_t{ POWER_SUPPLY_POWER_ON_RESET | POWER_SUPPLY_BROWN_OUT_RESET
+                                                      | EXTERNAL_RESET | WATCHDOG_TIMER_RESET
+                                                      | SOFTWARE_RESET | UPDI_RESET }; ///< All.
+        };
+
         RSTFR() = delete;
 
         RSTFR( RSTFR && ) = delete;
@@ -101,6 +117,27 @@ class RSTCTRL {
         auto operator=( RSTFR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Get the source of a reset or the source(s) of a series of resets.
+         *
+         * \return A mask identifying the source of the reset or the source(s) of the
+         *         series of resets.
+         */
+        auto reset_sources() const noexcept -> std::uint8_t
+        {
+            return *this;
+        }
+
+        /**
+         * \brief Clear the source of a reset or the source(s) of a series of resets.
+         *
+         * \param[in] reset_sources The mask identifying the reset source(s) to clear.
+         */
+        void clear_reset_sources( std::uint8_t reset_sources = Reset_Source::ALL ) noexcept
+        {
+            *this = reset_sources;
+        }
     };
 
     /**
@@ -148,7 +185,22 @@ class RSTCTRL {
         auto operator=( SWRR const & ) = delete;
 
         using Protected_Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Perform a software reset.
+         */
+        [[noreturn]] void reset() noexcept
+        {
+            *this = Mask::SWRE;
+
+            for ( ;; ) {} // for
+        }
     };
+
+    /**
+     * \brief Reset source masks.
+     */
+    using Reset_Source = RSTFR::Reset_Source;
 
     /**
      * \brief RSTFR.
@@ -171,6 +223,35 @@ class RSTCTRL {
     auto operator=( RSTCTRL && ) = delete;
 
     auto operator=( RSTCTRL const & ) = delete;
+
+    /**
+     * \brief Get the source of a reset or the source(s) of a series of resets.
+     *
+     * \return A mask identifying the source of the reset or the source(s) of the series
+     *         of resets.
+     */
+    auto reset_sources() const noexcept
+    {
+        return rstfr.reset_sources();
+    }
+
+    /**
+     * \brief Clear the source of a reset or the source(s) of a series of resets.
+     *
+     * \param[in] reset_sources The mask identifying the reset source(s) to clear.
+     */
+    void clear_reset_sources( std::uint8_t reset_sources = Reset_Source::ALL ) noexcept
+    {
+        rstfr.clear_reset_sources( reset_sources );
+    }
+
+    /**
+     * \brief Perform a software reset.
+     */
+    [[noreturn]] void reset() noexcept
+    {
+        swrr.reset();
+    }
 };
 
 /**

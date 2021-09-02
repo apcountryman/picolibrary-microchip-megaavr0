@@ -26,6 +26,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
@@ -68,6 +69,11 @@ using VPORTE = VPORT_Instance<0x0010>;
  * \brief VPORTF.
  */
 using VPORTF = VPORT_Instance<0x0014>;
+
+/**
+ * \brief RSTCTRL0.
+ */
+using RSTCTRL0 = RSTCTRL_Instance<0x0040>;
 
 /**
  * \brief CLKCTRL0.

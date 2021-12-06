@@ -25,8 +25,8 @@
 
 #include <cstdint>
 
+#include "picolibrary/array.h"
 #include "picolibrary/bit_manipulation.h"
-#include "picolibrary/fixed_size_array.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/register.h"
 
@@ -54,7 +54,7 @@ class SIGROW {
     /**
      * \brief Device serial number.
      */
-    using Device_Serial_Number = Fixed_Size_Array<std::uint8_t, ( 0x0C - 0x03 ) + 1>;
+    using Device_Serial_Number = Array<std::uint8_t, ( 0x0C - 0x03 ) + 1>;
 
     /**
      * \brief 16 MHz Internal Oscillator Calibration (OSCCAL16M0) register.

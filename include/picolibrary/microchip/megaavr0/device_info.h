@@ -26,7 +26,7 @@
 #include <cstdint>
 #include <limits>
 
-#include "picolibrary/fixed_size_array.h"
+#include "picolibrary/array.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/result.h"
@@ -291,9 +291,9 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
     auto print( Output_Stream & stream, Device_Serial_Number const & device_serial_number ) noexcept
     {
         constexpr auto byte_nibbles = std::numeric_limits<Device_Serial_Number::Array::Value>::digits / 4;
-        constexpr auto device_serial_number_nibbles = fixed_size_array_size_v<Device_Serial_Number::Array> * byte_nibbles;
+        constexpr auto device_serial_number_nibbles = array_size_v<Device_Serial_Number::Array> * byte_nibbles;
 
-        Fixed_Size_Array<char, 2 + device_serial_number_nibbles> hexadecimal;
+        Array<char, 2 + device_serial_number_nibbles> hexadecimal;
 
         auto i = hexadecimal.rbegin();
         for ( auto byte : device_serial_number.array() ) {

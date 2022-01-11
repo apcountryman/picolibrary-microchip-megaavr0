@@ -25,32 +25,6 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
     "picolibrary/microchip/megaavr0.cc"
-    "picolibrary/microchip/megaavr0/asynchronous_serial.cc"
-    "picolibrary/microchip/megaavr0/clock.cc"
-    "picolibrary/microchip/megaavr0/device_info.cc"
-    "picolibrary/microchip/megaavr0/gpio.cc"
-    "picolibrary/microchip/megaavr0/i2c.cc"
-    "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
-    "picolibrary/microchip/megaavr0/multiplexed_signals/spi.cc"
-    "picolibrary/microchip/megaavr0/multiplexed_signals/twi.cc"
-    "picolibrary/microchip/megaavr0/multiplexed_signals/usart.cc"
-    "picolibrary/microchip/megaavr0/peripheral.cc"
-    "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
-    "picolibrary/microchip/megaavr0/peripheral/instance.cc"
-    "picolibrary/microchip/megaavr0/peripheral/port.cc"
-    "picolibrary/microchip/megaavr0/peripheral/portmux.cc"
-    "picolibrary/microchip/megaavr0/peripheral/rstctrl.cc"
-    "picolibrary/microchip/megaavr0/peripheral/sigrow.cc"
-    "picolibrary/microchip/megaavr0/peripheral/spi.cc"
-    "picolibrary/microchip/megaavr0/peripheral/syscfg.cc"
-    "picolibrary/microchip/megaavr0/peripheral/twi.cc"
-    "picolibrary/microchip/megaavr0/peripheral/usart.cc"
-    "picolibrary/microchip/megaavr0/peripheral/vport.cc"
-    "picolibrary/microchip/megaavr0/peripheral/wdt.cc"
-    "picolibrary/microchip/megaavr0/register.cc"
-    "picolibrary/microchip/megaavr0/reset_controller.cc"
-    "picolibrary/microchip/megaavr0/spi.cc"
-    "picolibrary/microchip/megaavr0/watchdog_timer.cc"
 )
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_LINK_LIBRARIES
@@ -61,8 +35,6 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
     list(
         APPEND PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
         "picolibrary/testing/interactive/microchip/megaavr0.cc"
-        "picolibrary/testing/interactive/microchip/megaavr0/clock.cc"
-        "picolibrary/testing/interactive/microchip/megaavr0/device_info.cc"
     )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
 

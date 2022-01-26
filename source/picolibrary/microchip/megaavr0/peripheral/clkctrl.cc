@@ -17,24 +17,22 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 
-/**
- * \brief Microchip megaAVR 0-series peripheral facilities.
- */
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
-/**
- * \brief CLKCTRL0.
- */
-using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
+static_assert( sizeof( CLKCTRL ) == 0x1C + 1 );
+static_assert( CLKCTRL::MCLKCTRLA::Bit::CLKOUT == 7 );
+static_assert( CLKCTRL::MCLKCTRLB::Bit::RESERVED5 == 5 );
+static_assert( CLKCTRL::MCLKLOCK::Bit::RESERVED1 == 1 );
+static_assert( CLKCTRL::MCLKSTATUS::Bit::EXTS == 7 );
+static_assert( CLKCTRL::OSC20MCTRLA::Bit::RESERVED2 == 2 );
+static_assert( CLKCTRL::OSC20MCALIBA::Bit::RESERVED7 == 7 );
+static_assert( CLKCTRL::OSC20MCALIBB::Bit::LOCK == 7 );
+static_assert( CLKCTRL::OSC32KCTRLA::Bit::RESERVED2 == 2 );
+static_assert( CLKCTRL::XOSC32KCTRLA::Bit::RESERVED6 == 6 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H

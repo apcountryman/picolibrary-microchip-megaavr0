@@ -249,7 +249,7 @@ class CLKCTRL {
     };
 
     /**
-     * \brief 16/20 MHz Oscillator Control A () register.
+     * \brief 16/20 MHz Oscillator Control A (OSC20MCTRLA) register.
      *
      * This register has the following fields:
      * - Run Standby (RUNSTDBY)
@@ -262,7 +262,7 @@ class CLKCTRL {
         struct Size {
             static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
             static constexpr auto RUNSTDBY  = std::uint_fast8_t{ 1 }; ///< RUNSTDBY.
-            static constexpr auto RESERVED2 = std::uint_fast8_t{ 1 }; ///< RESERVED2.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 6 }; ///< RESERVED2.
         };
 
         /**
@@ -603,7 +603,7 @@ class CLKCTRL {
     /**
      * \brief MCLKSTATUS.
      */
-    MCLKSTATUS mclkstatus;
+    MCLKSTATUS const mclkstatus;
 
     /**
      * \brief Reserved registers (offset 0x04-0x0F).

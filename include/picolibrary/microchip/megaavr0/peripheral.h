@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
@@ -115,6 +116,29 @@ using PORTF = Instance<PORT, 0x04A0>;
  * \brief PORTMUX0.
  */
 using PORTMUX0 = Instance<PORTMUX, 0x05E0>;
+
+/**
+ * \brief USART0.
+ */
+using USART0 = Instance<USART, 0x800>;
+
+/**
+ * \brief USART1.
+ */
+using USART1 = Instance<USART, 0x820>;
+
+/**
+ * \brief USART2.
+ */
+using USART2 = Instance<USART, 0x840>;
+
+#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
+    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+/**
+ * \brief USART3.
+ */
+using USART3 = Instance<USART, 0x860>;
+#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

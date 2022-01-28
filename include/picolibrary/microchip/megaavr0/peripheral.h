@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 
 /**
@@ -35,6 +36,42 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  * \brief CLKCTRL0.
  */
 using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
+
+/**
+ * \brief PORTA.
+ */
+using PORTA = PORT_Instance<0x0400>;
+
+#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
+    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+/**
+ * \brief PORTB.
+ */
+using PORTB = PORT_Instance<0x0420>;
+#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+
+/**
+ * \brief PORTC.
+ */
+using PORTC = PORT_Instance<0x0440>;
+
+/**
+ * \brief PORTD.
+ */
+using PORTD = PORT_Instance<0x0460>;
+
+#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
+    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+/**
+ * \brief PORTE.
+ */
+using PORTE = PORT_Instance<0x0480>;
+#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+
+/**
+ * \brief PORTF.
+ */
+using PORTF = PORT_Instance<0x04A0>;
 
 /**
  * \brief PORTMUX0.

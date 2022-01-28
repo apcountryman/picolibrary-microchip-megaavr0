@@ -26,7 +26,6 @@
 #include <cstdint>
 
 #include "picolibrary/bit_manipulation.h"
-#include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/register.h"
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
@@ -484,14 +483,6 @@ class PORTMUX {
 
     auto operator=( PORTMUX const & ) = delete;
 };
-
-/**
- * \brief Microchip megaAVR 0-series Port Multiplexer (PORTMUX) peripheral instance.
- *
- * \tparam INSTANCE_ADDRESS The address of the PORTMUX peripheral instance.
- */
-template<std::uintptr_t INSTANCE_ADDRESS>
-using PORTMUX_Instance = Instance<PORTMUX, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

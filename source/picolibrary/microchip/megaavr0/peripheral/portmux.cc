@@ -17,30 +17,19 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX implementation.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
-
-#include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 
-/**
- * \brief Microchip megaAVR 0-series peripheral facilities.
- */
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
-/**
- * \brief CLKCTRL0.
- */
-using CLKCTRL0 = CLKCTRL_Instance<0x0060>;
-
-/**
- * \brief PORTMUX0.
- */
-using PORTMUX0 = PORTMUX_Instance<0x05E0>;
+static_assert( sizeof( PORTMUX ) == 0x05 + 1 );
+static_assert( PORTMUX::EVSYSROUTEA::Bit::RESERVED6 == 6 );
+static_assert( PORTMUX::CCLROUTEA::Bit::RESERVED4 == 4 );
+static_assert( PORTMUX::USARTROUTEA::Bit::USART3 == 6 );
+static_assert( PORTMUX::TWISPIROUTEA::Bit::RESERVED6 == 6 );
+static_assert( PORTMUX::TCAROUTEA::Bit::RESERVED3 == 3 );
+static_assert( PORTMUX::TCBROUTEA::Bit::RESERVED4 == 4 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H

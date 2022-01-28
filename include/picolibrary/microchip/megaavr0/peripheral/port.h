@@ -138,18 +138,6 @@ class PORT {
     };
 
     /**
-     * \brief Input/sense configuration.
-     */
-    enum class Input_Sense_Configuration : std::uint8_t {
-        INPUT_ENABLED_INTERRUPT_DISABLED   = 0x0 << PINCTRL::Bit::ISC, ///< Input buffer enabled, interrupt disabled.
-        INPUT_ENABLED_INTERRUPT_BOTH_EDGES = 0x1 << PINCTRL::Bit::ISC, ///< Input buffer enabled, interrupt sense on both edges.
-        INPUT_ENABLED_INTERRUPT_RISING     = 0x2 << PINCTRL::Bit::ISC, ///< Input buffer enabled, interrupt sense on rising edge.
-        INPUT_ENABLED_INTERRUPT_FALLING    = 0x3 << PINCTRL::Bit::ISC, ///< Input buffer enabled, interrupt sense on falling edge.
-        INPUT_DISABLED_INTERRUPT_DISABLED  = 0x4 << PINCTRL::Bit::ISC, ///< Input buffer disabled, interrupt disabled.
-        INPUT_ENABLED_INTERRUPT_LOW_LEVEL  = 0x5 << PINCTRL::Bit::ISC, ///< Input buffer enabled, interrupt sense on low level.
-    };
-
-    /**
      * \brief Data Direction (DIR) register.
      */
     Register<std::uint8_t> dir;

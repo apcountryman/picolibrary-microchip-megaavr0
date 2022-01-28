@@ -35,11 +35,6 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief CLKCTRL0.
- */
-using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
-
-/**
  * \brief VPORTA.
  */
 using VPORTA = Instance<VPORT, 0x0000>;
@@ -74,6 +69,11 @@ using VPORTE = Instance<VPORT, 0x0010>;
  * \brief VPORTF.
  */
 using VPORTF = Instance<VPORT, 0x0014>;
+
+/**
+ * \brief CLKCTRL0.
+ */
+using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
 
 /**
  * \brief PORTA.

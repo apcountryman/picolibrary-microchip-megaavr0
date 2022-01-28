@@ -87,6 +87,51 @@ class PORTMUX {
             static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
+        /**
+         * \brief EVOUTA.
+         */
+        enum EVOUTA : std::uint8_t {
+            EVOUTA_DEFAULT = 0x0 << Bit::EVOUTA, ///< EVOUTA on PA2.
+            EVOUTA_ALT1    = 0x1 << Bit::EVOUTA, ///< EVOUTA on PA7.
+        };
+
+        /**
+         * \brief EVOUTB.
+         */
+        enum EVOUTB : std::uint8_t {
+            EVOUTB_DEFAULT = 0x0 << Bit::EVOUTB, ///< EVOUTB on PB2.
+        };
+
+        /**
+         * \brief EVOUTC.
+         */
+        enum EVOUTC : std::uint8_t {
+            EVOUTC_DEFAULT = 0x0 << Bit::EVOUTC, ///< EVOUTC on PC2.
+            EVOUTC_ALT1    = 0x1 << Bit::EVOUTC, ///< EVOUTC on PC7.
+        };
+
+        /**
+         * \brief EVOUTD.
+         */
+        enum EVOUTD : std::uint8_t {
+            EVOUTD_DEFAULT = 0x0 << Bit::EVOUTD, ///< EVOUTD on PD2.
+            EVOUTD_ALT1    = 0x1 << Bit::EVOUTD, ///< EVOUTD on PD7.
+        };
+
+        /**
+         * \brief EVOUTE.
+         */
+        enum EVOUTE : std::uint8_t {
+            EVOUTE_DEFAULT = 0x0 << Bit::EVOUTE, ///< EVOUTE on PE2.
+        };
+
+        /**
+         * \brief EVOUTF.
+         */
+        enum EVOUTF : std::uint8_t {
+            EVOUTF_DEFAULT = 0x0 << Bit::EVOUTF, ///< EVOUTF on PF2.
+        };
+
         EVSYSROUTEA() = delete;
 
         EVSYSROUTEA( EVSYSROUTEA && ) = delete;
@@ -146,6 +191,38 @@ class PORTMUX {
             static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
         };
 
+        /**
+         * \brief LUT0.
+         */
+        enum LUT0 : std::uint8_t {
+            LUT0_DEFAULT = 0x0 << Bit::LUT0, ///< CCL LUT0 on PA[3].
+            LUT0_ALT1    = 0x1 << Bit::LUT0, ///< CCL LUT0 on PA[6].
+        };
+
+        /**
+         * \brief LUT1.
+         */
+        enum LUT1 : std::uint8_t {
+            LUT1_DEFAULT = 0x0 << Bit::LUT1, ///< CCL LUT1 on PC[3].
+            LUT1_ALT1    = 0x1 << Bit::LUT1, ///< CCL LUT1 on PC[6].
+        };
+
+        /**
+         * \brief LUT2.
+         */
+        enum LUT2 : std::uint8_t {
+            LUT2_DEFAULT = 0x0 << Bit::LUT2, ///< CCL LUT2 on PD[3].
+            LUT2_ALT1    = 0x1 << Bit::LUT2, ///< CCL LUT2 on PD[6].
+        };
+
+        /**
+         * \brief LUT3.
+         */
+        enum LUT3 : std::uint8_t {
+            LUT3_DEFAULT = 0x0 << Bit::LUT3, ///< CCL LUT3 on PF[3].
+            LUT3_ALT1    = 0x1 << Bit::LUT3, ///< CCL LUT3 on PF[6].
+        };
+
         CCLROUTEA() = delete;
 
         CCLROUTEA( CCLROUTEA && ) = delete;
@@ -202,6 +279,42 @@ class PORTMUX {
             static constexpr auto USART3 = mask<std::uint8_t>( Size::USART3, Bit::USART3 ); ///< USART3.
         };
 
+        /**
+         * \brief USART0.
+         */
+        enum USART0 : std::uint8_t {
+            USART0_DEFAULT = 0x0 << Bit::USART0, ///< USART0 on PA[3:0].
+            USART0_ALT1    = 0x1 << Bit::USART0, ///< USART0 on PA[7:4].
+            USART0_NONE    = 0x3 << Bit::USART0, ///< Not connected to any pins.
+        };
+
+        /**
+         * \brief USART1.
+         */
+        enum USART1 : std::uint8_t {
+            USART1_DEFAULT = 0x0 << Bit::USART1, ///< USART1 on PC[3:0].
+            USART1_ALT1    = 0x1 << Bit::USART1, ///< USART1 on PC[7:4].
+            USART1_NONE    = 0x3 << Bit::USART1, ///< Not connected to any pins.
+        };
+
+        /**
+         * \brief USART2.
+         */
+        enum USART2 : std::uint8_t {
+            USART2_DEFAULT = 0x0 << Bit::USART2, ///< USART2 on PF[3:0].
+            USART2_ALT1    = 0x1 << Bit::USART2, ///< USART2 on PF[6:4].
+            USART2_NONE    = 0x3 << Bit::USART2, ///< Not connected to any pins.
+        };
+
+        /**
+         * \brief USART3.
+         */
+        enum USART3 : std::uint8_t {
+            USART3_DEFAULT = 0x0 << Bit::USART3, ///< USART3 on PB[3:0].
+            USART3_ALT1    = 0x1 << Bit::USART3, ///< USART3 on PB[5:4].
+            USART3_NONE    = 0x3 << Bit::USART3, ///< Not connected to any pins.
+        };
+
         USARTROUTEA() = delete;
 
         USARTROUTEA( USARTROUTEA && ) = delete;
@@ -256,6 +369,25 @@ class PORTMUX {
             static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
         };
 
+        /**
+         * \brief SPI0.
+         */
+        enum SPI0 : std::uint8_t {
+            SPI0_DEFAULT = 0x0 << Bit::SPI0, ///< SPI on PA[7:4].
+            SPI0_ALT1    = 0x1 << Bit::SPI0, ///< SPI on PC[3:0].
+            SPI0_ALT2    = 0x2 << Bit::SPI0, ///< SPI on PE[3:0].
+            SPI0_NONE    = 0x3 << Bit::SPI0, ///< Not connected to any pins.
+        };
+
+        /**
+         * \brief TWI0.
+         */
+        enum TWI0 : std::uint8_t {
+            TWI0_DEFAULT = 0x0 << Bit::TWI0, ///< SCL/SDA on PA[3:2], client mode on PC[3:2] in dual TWI mode.
+            TWI0_ALT1    = 0x1 << Bit::TWI0, ///< SCL/SDA on PA[3:2], client mode on PF[3:2] in dual TWI mode.
+            TWI0_ALT2    = 0x2 << Bit::TWI0, ///< SCL/SDA on PC[3:2], client mode on PF[3:2] in dual TWI mode.
+        };
+
         TWISPIROUTEA() = delete;
 
         TWISPIROUTEA( TWISPIROUTEA && ) = delete;
@@ -301,6 +433,18 @@ class PORTMUX {
         struct Mask {
             static constexpr auto TCA0 = mask<std::uint8_t>( Size::TCA0, Bit::TCA0 ); ///< TCA0.
             static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
+        };
+
+        /**
+         * \brief TCA0.
+         */
+        enum TCA0 : std::uint8_t {
+            TCA0_PORTA = 0x0 << Bit::TCA0, ///< TCA0 pins on PA[5:0].
+            TCA0_PORTB = 0x1 << Bit::TCA0, ///< TCA0 pins on PB[5:0].
+            TCA0_PORTC = 0x2 << Bit::TCA0, ///< TCA0 pins on PC[5:0].
+            TCA0_PORTD = 0x3 << Bit::TCA0, ///< TCA0 pins on PD[5:0].
+            TCA0_PORTE = 0x4 << Bit::TCA0, ///< TCA0 pins on PE[5:0].
+            TCA0_PORTF = 0x5 << Bit::TCA0, ///< TCA0 pins on PF[5:0].
         };
 
         TCAROUTEA() = delete;
@@ -360,6 +504,38 @@ class PORTMUX {
             static constexpr auto TCB2 = mask<std::uint8_t>( Size::TCB2, Bit::TCB2 ); ///< TCB2.
             static constexpr auto TCB3 = mask<std::uint8_t>( Size::TCB3, Bit::TCB3 ); ///< TCB3.
             static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
+        };
+
+        /**
+         * \brief TCB0.
+         */
+        enum TCB0 : std::uint8_t {
+            TCB0_DEFAULT = 0x0 << Bit::TCB0, ///< TCB0 on PA2.
+            TCB0_ALT1    = 0x1 << Bit::TCB0, ///< TCB0 on PF4.
+        };
+
+        /**
+         * \brief TCB1.
+         */
+        enum TCB1 : std::uint8_t {
+            TCB1_DEFAULT = 0x0 << Bit::TCB1, ///< TCB1 on PA3.
+            TCB1_ALT1    = 0x1 << Bit::TCB1, ///< TCB1 on PF5.
+        };
+
+        /**
+         * \brief TCB2.
+         */
+        enum TCB2 : std::uint8_t {
+            TCB2_DEFAULT = 0x0 << Bit::TCB2, ///< TCB2 on PC0.
+            TCB2_ALT1    = 0x1 << Bit::TCB2, ///< TCB2 on PB4.
+        };
+
+        /**
+         * \brief TCB3.
+         */
+        enum TCB3 : std::uint8_t {
+            TCB3_DEFAULT = 0x0 << Bit::TCB3, ///< TCB3 on PB5.
+            TCB3_ALT1    = 0x1 << Bit::TCB3, ///< TCB3 on PC1.
         };
 
         TCBROUTEA() = delete;

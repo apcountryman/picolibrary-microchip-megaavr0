@@ -71,6 +71,16 @@ class CLKCTRL {
             static constexpr auto CLKOUT = mask<std::uint8_t>( Size::CLKOUT, Bit::CLKOUT ); ///< CLKOUT.
         };
 
+        /**
+         * \brief CLKSEL.
+         */
+        enum CLKSEL : std::uint8_t {
+            CLKSEL_OSC20M    = 0x0 << Bit::CLKSEL, ///< 16/20 MHz internal oscillator.
+            CLKSEL_OSCULP32K = 0x1 << Bit::CLKSEL, ///< 32.768 kHz internal ultra low-power oscillator.
+            CLKSEL_XOSC32K = 0x2 << Bit::CLKSEL, ///< 32.768 kHz external crystal oscillator.
+            CLKSEL_EXTCLK = 0x3 << Bit::CLKSEL, ///< External clock.
+        };
+
         MCLKCTRLA() = delete;
 
         MCLKCTRLA( MCLKCTRLA && ) = delete;
@@ -120,6 +130,23 @@ class CLKCTRL {
             static constexpr auto PEN = mask<std::uint8_t>( Size::PEN, Bit::PEN ); ///< PEN.
             static constexpr auto PDIV = mask<std::uint8_t>( Size::PDIV, Bit::PDIV ); ///< PDIV.
             static constexpr auto RESERVED5 = mask<std::uint8_t>( Size::RESERVED5, Bit::RESERVED5 ); ///< RESERVED5.
+        };
+
+        /**
+         * \brief PDIV.
+         */
+        enum PDIV : std::uint8_t {
+            PDIV_DIV2  = 0x0 << Bit::PDIV, ///< CLK_MAIN divided by 2.
+            PDIV_DIV4  = 0x1 << Bit::PDIV, ///< CLK_MAIN divided by 4.
+            PDIV_DIV8  = 0x2 << Bit::PDIV, ///< CLK_MAIN divided by 8.
+            PDIV_DIV16 = 0x3 << Bit::PDIV, ///< CLK_MAIN divided by 16.
+            PDIV_DIV32 = 0x4 << Bit::PDIV, ///< CLK_MAIN divided by 32.
+            PDIV_DIV64 = 0x5 << Bit::PDIV, ///< CLK_MAIN divided by 64.
+            PDIV_DIV6  = 0x8 << Bit::PDIV, ///< CLK_MAIN divided by 6.
+            PDIV_DIV10 = 0x9 << Bit::PDIV, ///< CLK_MAIN divided by 10.
+            PDIV_DIV12 = 0xA << Bit::PDIV, ///< CLK_MAIN divided by 12.
+            PDIV_DIV24 = 0xB << Bit::PDIV, ///< CLK_MAIN divided by 24.
+            PDIV_DIV48 = 0xC << Bit::PDIV, ///< CLK_MAIN divided by 48.
         };
 
         MCLKCTRLB() = delete;
@@ -490,6 +517,16 @@ class CLKCTRL {
             static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
             static constexpr auto CSUT = mask<std::uint8_t>( Size::CSUT, Bit::CSUT ); ///< CSUT.
             static constexpr auto RESERVED6 = mask<std::uint8_t>( Size::RESERVED6, Bit::RESERVED6 ); ///< RESERVED6.
+        };
+
+        /**
+         * \brief CSUT.
+         */
+        enum CSUT : std::uint8_t {
+            CSUT_1K  = 0x0 << Bit::CSUT, ///< 1k cycles.
+            CSUT_16K = 0x1 << Bit::CSUT, ///< 16k cycles.
+            CSUT_32K = 0x2 << Bit::CSUT, ///< 32k cycles.
+            CSUT_64K = 0x3 << Bit::CSUT, ///< 64k cycles.
         };
 
         XOSC32KCTRLA() = delete;

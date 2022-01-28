@@ -122,6 +122,18 @@ class PORT {
             static constexpr auto INVEN = mask<std::uint8_t>( Size::INVEN, Bit::INVEN ); ///< INVEN.
         };
 
+        /**
+         * \brief ISC.
+         */
+        enum ISC : std::uint8_t {
+            ISC_INTDISABLE = 0x0 << Bit::ISC, ///< Interrupt disabled but input buffer enabled.
+            ISC_BOTHEDGES = 0x1 << Bit::ISC, ///< Interrupt enabled with sense on both edges.
+            ISC_RISING = 0x2 << Bit::ISC, ///< Interrupt enabled with sense on rising edge.
+            ISC_FALLING = 0x3 << Bit::ISC, ///< Interrupt enabled with sense on falling edge.
+            ISC_INPUT_DISABLE = 0x4 << Bit::ISC, ///< Interrupt and digital input buffer disabled.
+            ISC_LEVEL = 0x5 << Bit::ISC, ///< Interrupt enabled with sense on low level.
+        };
+
         PINCTRL() = delete;
 
         PINCTRL( PINCTRL && ) = delete;

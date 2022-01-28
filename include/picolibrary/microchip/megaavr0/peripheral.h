@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
  * \brief Microchip megaAVR 0-series peripheral facilities.
@@ -37,6 +38,42 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  * \brief CLKCTRL0.
  */
 using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
+
+/**
+ * \brief VPORTA.
+ */
+using VPORTA = Instance<VPORT, 0x0000>;
+
+#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
+    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+/**
+ * \brief VPORTB.
+ */
+using VPORTB = Instance<VPORT, 0x0004>;
+#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+
+/**
+ * \brief VPORTC.
+ */
+using VPORTC = Instance<VPORT, 0x0008>;
+
+/**
+ * \brief VPORTD.
+ */
+using VPORTD = Instance<VPORT, 0x000C>;
+
+#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
+    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+/**
+ * \brief VPORTE.
+ */
+using VPORTE = Instance<VPORT, 0x0010>;
+#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+
+/**
+ * \brief VPORTF.
+ */
+using VPORTF = Instance<VPORT, 0x0014>;
 
 /**
  * \brief PORTA.

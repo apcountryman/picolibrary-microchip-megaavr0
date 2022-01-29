@@ -24,7 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 
 /**
- * \brief Microchip megaAVR 0-series multiplexed signals facilities
+ * \brief Microchip megaAVR 0-series multiplexed signals facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
 } // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals

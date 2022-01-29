@@ -224,7 +224,7 @@ class USART {
      * - RS-485 Mode (RS485)
      * - Auto-Baud Error Interrupt Enable (ABEIE)
      * - Loop-Back Mode Enable (LBME)
-     * - Receiver Start Frame Interrupt Enabled (RXSIE)
+     * - Receiver Start Frame Interrupt Enable (RXSIE)
      * - Data Register Empty Interrupt Enable (DREIE)
      * - Transmit Complete Interrupt Enable (TXCIE)
      * - Receive Complete Interrupt Enable (RXCIE)
@@ -416,7 +416,7 @@ class USART {
             static constexpr auto UDORD = std::uint_fast8_t{ UCPHA + Size::UCPHA }; ///< UDORD.
             static constexpr auto RESERVED3 = std::uint_fast8_t{ UDORD + Size::UDORD }; ///< RESERVED3.
 
-            static constexpr auto CMODE = std::uint_fast8_t{ PMODE + Size::PMODE }; ///< CMODE.
+            static constexpr auto CMODE = std::uint_fast8_t{ 6 }; ///< CMODE.
         };
 
         /**
@@ -682,15 +682,15 @@ class USART {
     /**
      * \brief Receiver Data Low Byte (RXDATAL) register.
      */
-    Register<std::uint8_t> rxdatal;
+    Register<std::uint8_t> const rxdatal;
 
     /**
      * \brief RXDATAH.
      */
-    RXDATAH rxdatah;
+    RXDATAH const rxdatah;
 
     /**
-     * \brief Transmit Data Low Byte (TXDATAL) register.
+     * \brief Transmitter Data Low Byte (TXDATAL) register.
      */
     Register<std::uint8_t> txdatal;
 

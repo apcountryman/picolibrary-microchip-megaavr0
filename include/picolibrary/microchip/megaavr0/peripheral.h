@@ -40,13 +40,13 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
  */
 using VPORTA = Instance<VPORT, 0x0000>;
 
-#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
-    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief VPORTB.
  */
 using VPORTB = Instance<VPORT, 0x0004>;
-#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief VPORTC.
@@ -58,13 +58,13 @@ using VPORTC = Instance<VPORT, 0x0008>;
  */
 using VPORTD = Instance<VPORT, 0x000C>;
 
-#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
-    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief VPORTE.
  */
 using VPORTE = Instance<VPORT, 0x0010>;
-#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief VPORTF.
@@ -81,13 +81,13 @@ using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
  */
 using PORTA = Instance<PORT, 0x0400>;
 
-#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
-    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief PORTB.
  */
 using PORTB = Instance<PORT, 0x0420>;
-#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief PORTC.
@@ -99,13 +99,13 @@ using PORTC = Instance<PORT, 0x0440>;
  */
 using PORTD = Instance<PORT, 0x0460>;
 
-#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
-    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief PORTE.
  */
 using PORTE = Instance<PORT, 0x0480>;
-#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief PORTF.
@@ -132,13 +132,13 @@ using USART1 = Instance<USART, 0x820>;
  */
 using USART2 = Instance<USART, 0x840>;
 
-#if defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) \
-    || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief USART3.
  */
 using USART3 = Instance<USART, 0x860>;
-#endif // defined( __AVR_ATmega809 ) || defined( __AVR_ATmega1609 ) || defined( __AVR_ATmega3209 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

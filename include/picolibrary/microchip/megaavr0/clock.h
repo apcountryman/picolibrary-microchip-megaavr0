@@ -366,7 +366,7 @@ enum class External_32_768_kHz_Crystal_Oscillator_Source : std::uint8_t {
  * \brief External 32.768 kHz crystal oscillator start-up time.
  */
 enum class External_32_768_kHz_Crystal_Oscillator_Start_Up_Time : std::uint8_t {
-    _1k  = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_1K, ///< 1k cycles.
+    _1k  = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_1K,  ///< 1k cycles.
     _16k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_16K, ///< 16k cycles.
     _32k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_32K, ///< 32k cycles.
     _64k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_64K, ///< 64k cycles.

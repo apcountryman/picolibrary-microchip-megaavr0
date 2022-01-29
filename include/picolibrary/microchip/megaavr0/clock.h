@@ -36,7 +36,7 @@ namespace picolibrary::Microchip::megaAVR0::Clock {
 /**
  * \brief Clock source.
  */
-enum class Source :  std::uint8_t {
+enum class Source : std::uint8_t {
     INTERNAL_16_20_MHz_OSCILLATOR                  = Peripheral::CLKCTRL::MCLKCTRLA::CLKSEL_OSC20M, ///< Internal 16/20 MHz oscillator.
     INTERNAL_32_768_kHz_ULTRA_LOW_POWER_OSCILLATOR = Peripheral::CLKCTRL::MCLKCTRLA::CLKSEL_OSCULP32K, ///< Internal 32.768 kHz ultra low-power oscillator.
     EXTERNAL_32_768_kHz_CRYSTAL_OSCILLATOR         = Peripheral::CLKCTRL::MCLKCTRLA::CLKSEL_XOSC32K, ///< External 32.768 kHz crystal oscillator.

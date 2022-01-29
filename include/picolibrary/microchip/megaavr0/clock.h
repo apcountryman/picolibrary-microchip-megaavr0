@@ -157,7 +157,7 @@ inline auto prescaler_enabled() noexcept -> bool
  *
  * \return The clock prescaler configuration.
  */
-inline auto prescaler() noexcept
+inline auto prescaler_configuration() noexcept
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -180,7 +180,7 @@ inline auto prescaler_value() noexcept
  * \brief Configure the clock prescaler.
  *
  * \param[in] value The desired clock prescaler value.
- * \param[in] configuration The desired clock configuration.
+ * \param[in] configuration The desired clock prescaler configuration.
  */
 inline void configure_prescaler( Prescaler_Value value, Prescaler configuration ) noexcept
 {
@@ -366,10 +366,10 @@ enum class External_32_768_kHz_Crystal_Oscillator_Source : std::uint8_t {
  * \brief External 32.768 kHz crystal oscillator start-up time.
  */
 enum class External_32_768_kHz_Crystal_Oscillator_Start_Up_Time : std::uint8_t {
-    _1k  = 0x0 << Peripheral::CLKCTRL::XOSC32KCTRLA::Bit::CSUT, ///< 1k cycles.
-    _16k = 0x1 << Peripheral::CLKCTRL::XOSC32KCTRLA::Bit::CSUT, ///< 16k cycles.
-    _32k = 0x2 << Peripheral::CLKCTRL::XOSC32KCTRLA::Bit::CSUT, ///< 32k cycles.
-    _64k = 0x3 << Peripheral::CLKCTRL::XOSC32KCTRLA::Bit::CSUT, ///< 64k cycles.
+    _1k  = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_1K, ///< 1k cycles.
+    _16k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_16K, ///< 16k cycles.
+    _32k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_32K, ///< 32k cycles.
+    _64k = Peripheral::CLKCTRL::XOSC32KCTRLA::CSUT_64K, ///< 64k cycles.
 };
 
 /**
@@ -390,7 +390,7 @@ inline auto external_32_768_kHz_crystal_oscillator_stable() noexcept -> bool
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
-    return clkctrl.mclkstatus & Peripheral::CLKCTRL::MCLKSTATUS::Mask::OSC32KS;
+    return clkctrl.mclkstatus & Peripheral::CLKCTRL::MCLKSTATUS::Mask::XOSC32KS;
 }
 
 /**

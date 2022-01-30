@@ -46,6 +46,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
     list(
         APPEND PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
         "picolibrary/testing/interactive/microchip/megaavr0.cc"
+        "picolibrary/testing/interactive/microchip/megaavr0/clock.cc"
     )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
 
@@ -61,6 +62,25 @@ target_link_libraries(
     picolibrary-microchip-megaavr0
     ${PICOLIBRARY_MICROCHIP_MEGAAVR0_LINK_LIBRARIES}
 )
+
+if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_VALUE
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr0: picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock() clock prescaler value"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_CONFIGURATION
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr0: picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock() clock prescaler configuration"
+    )
+
+    target_compile_definitions(
+        picolibrary-microchip-megaavr0
+        PUBLIC "$<IF:$<BOOL:${PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_VALUE}>,PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_VALUE=${PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_VALUE},>"
+        PUBLIC "$<IF:$<BOOL:${PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_VALUE}>,PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_CONFIGURATION=${PICOLIBRARY_MICROCHIP_MEGAAVR0_TESTING_INTERACTIVE_CLOCK_PRESCALER_CONFIGURATION},>"
+    )
+endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
 
 add_library(
     picolibrary-microchip-megaavr0-version

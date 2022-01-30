@@ -31,22 +31,23 @@ namespace picolibrary::Testing::Interactive::Microchip::megaAVR0 {
  * \brief Configure the clock to use the internal 16/20 MHz oscillator with the provided
  *        clock prescaler settings.
  *
- * \param[in] value The desired clock prescaler value.
- * \param[in] configuration The desired clock prescaler configuration.
+ * \param[in] clock_prescaler_value The desired clock prescaler value.
+ * \param[in] clock_prescaler_configuration The desired clock prescaler configuration.
  */
 inline void configure_clock(
-    ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value value,
-    ::picolibrary::Microchip::megaAVR0::Clock::Prescaler       configuration ) noexcept
+    ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value clock_prescaler_value,
+    ::picolibrary::Microchip::megaAVR0::Clock::Prescaler clock_prescaler_configuration ) noexcept
 {
     ::picolibrary::Microchip::megaAVR0::Clock::set_source(
         ::picolibrary::Microchip::megaAVR0::Clock::Source::INTERNAL_16_20_MHz_OSCILLATOR );
-    ::picolibrary::Microchip::megaAVR0::Clock::configure_prescaler( value, configuration );
+    ::picolibrary::Microchip::megaAVR0::Clock::configure_prescaler(
+        clock_prescaler_value, clock_prescaler_configuration );
 
     while ( ::picolibrary::Microchip::megaAVR0::Clock::source_changing() ) {} // while
 }
 
-#if defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_VALUE ) \
-    && defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_CONFIGURATION )
+#if defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_VALUE ) \
+    && defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_CONFIGURATION )
 /**
  * \brief Configure the clock to use the internal 16/20 MHz oscillator with the
  *        pre-provided clock prescaler settings.
@@ -54,10 +55,11 @@ inline void configure_clock(
 inline void configure_clock() noexcept
 {
     configure_clock(
-        ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_VALUE,
-        ::picolibrary::Microchip::megaAVR0::Clock::Prescaler::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_CONFIGURATION );
+        ::picolibrary::Microchip::megaAVR0::Clock::Prescaler_Value::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_VALUE,
+        ::picolibrary::Microchip::megaAVR0::Clock::Prescaler::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_CONFIGURATION );
 }
-#endif // defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_VALUE ) && defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CLOCK_PRESCALER_CONFIGURATION )
+#endif // defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_VALUE
+       // ) && defined( PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_CONFIGURE_CLOCK_CLOCK_PRESCALER_CONFIGURATION )
 
 } // namespace picolibrary::Testing::Interactive::Microchip::megaAVR0
 

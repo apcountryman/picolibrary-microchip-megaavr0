@@ -27,6 +27,7 @@ set(
     "picolibrary/microchip/megaavr0.cc"
     "picolibrary/microchip/megaavr0/clock.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
+    "picolibrary/microchip/megaavr0/multiplexed_signals/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral.cc"
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/instance.cc"

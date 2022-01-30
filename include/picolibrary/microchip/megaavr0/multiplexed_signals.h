@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 
+#include "picolibrary/microchip/megaavr0/multiplexed_signals/usart.h"
+
 /**
  * \brief Microchip megaAVR 0-series multiplexed signals facilities.
  */

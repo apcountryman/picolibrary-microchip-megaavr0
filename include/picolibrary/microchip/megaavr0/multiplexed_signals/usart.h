@@ -53,6 +53,8 @@ enum class USART_Route : std::uint_fast8_t {
  */
 inline auto usart_route( Peripheral::USART const & usart ) noexcept -> USART_Route
 {
+    // #lizard forgives the length
+
     auto const & portmux = Peripheral::PORTMUX0::instance();
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
@@ -88,6 +90,8 @@ inline auto usart_route( Peripheral::USART const & usart ) noexcept -> USART_Rou
  */
 inline void set_usart_route( Peripheral::USART const & usart, USART_Route route ) noexcept
 {
+    // #lizard forgives the length
+
     auto & portmux = Peripheral::PORTMUX0::instance();
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
@@ -252,6 +256,8 @@ inline auto & xck_vport( Peripheral::USART const & usart ) noexcept
  */
 constexpr auto xck_number( std::uintptr_t usart_address, USART_Route route ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( route ) {
         case USART_Route::DEFAULT:
             switch ( usart_address ) {
@@ -406,6 +412,8 @@ inline auto & xdir_vport( Peripheral::USART const & usart ) noexcept
  */
 constexpr auto xdir_number( std::uintptr_t usart_address, USART_Route route ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( route ) {
         case USART_Route::DEFAULT:
             switch ( usart_address ) {
@@ -560,6 +568,8 @@ inline auto & txd_vport( Peripheral::USART const & usart ) noexcept
  */
 constexpr auto txd_number( std::uintptr_t usart_address, USART_Route route ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( route ) {
         case USART_Route::DEFAULT:
             switch ( usart_address ) {
@@ -714,6 +724,8 @@ inline auto & rxd_vport( Peripheral::USART const & usart ) noexcept
  */
 constexpr auto rxd_number( std::uintptr_t usart_address, USART_Route route ) noexcept -> std::uint_fast8_t
 {
+    // #lizard forgives the length
+
     switch ( route ) {
         case USART_Route::DEFAULT:
             switch ( usart_address ) {

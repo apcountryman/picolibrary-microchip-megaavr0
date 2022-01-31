@@ -116,3 +116,15 @@ target_include_directories(
     picolibrary-microchip-megaavr0-version
     PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
+
+if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
+    add_library(
+        picolibrary-microchip-megaavr0-testing-interactive-fatal_error STATIC
+        "picolibrary/testing/interactive/microchip/megaavr0/fatal_error.cc"
+    )
+    target_link_libraries(
+        picolibrary-microchip-megaavr0-testing-interactive-fatal_error
+        picolibrary
+        picolibrary-microchip-megaavr0
+    )
+endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )

@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::GPIO implementation.
+ * \brief picolibrary::Microchip::megaAVR0::Peripheral implementation.
  */
 
-#include "picolibrary/microchip/megaavr0/gpio.h"
+#include "picolibrary/microchip/megaavr0/peripheral.h"

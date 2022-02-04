@@ -17,7 +17,16 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::GPIO implementation.
+ * \brief picolibrary::Microchip::megaAVR0::GPIO interface.
  */
 
-#include "picolibrary/microchip/megaavr0/gpio.h"
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H
+
+/**
+ * \brief Microchip megaAVR 0-series General Purpose Input/Output (GPIO) facilities.
+ */
+namespace picolibrary::Microchip::megaAVR0::GPIO {
+} // namespace picolibrary::Microchip::megaAVR0::GPIO
+
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H

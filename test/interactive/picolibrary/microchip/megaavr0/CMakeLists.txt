@@ -16,5 +16,5 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0 interactive tests CMake rules.
 
-# build the picolibrary::Microchip::megaAVR0::GPIO interactive test
+# build the picolibrary::Microchip::megaAVR0::GPIO interactive tests
 add_subdirectory( gpio )

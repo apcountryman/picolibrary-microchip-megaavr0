@@ -331,7 +331,7 @@ class Input_Pin {
      */
     void initialize() noexcept
     {
-        m_pin.configure_as_input_pin();
+        m_pin.configure_pin_as_input();
     }
 
     /**

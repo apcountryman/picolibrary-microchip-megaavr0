@@ -16,3 +16,6 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/gpio/input_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Input_Pin interactive tests CMake
 #       rules.
+
+# build the picolibrary::Microchip::megaAVR0::GPIO::Input_Pin state interactive test
+add_subdirectory( state )

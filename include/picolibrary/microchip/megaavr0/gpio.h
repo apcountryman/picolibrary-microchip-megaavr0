@@ -281,6 +281,10 @@ class Pin<Peripheral::VPORT> {
 
 /**
  * \brief Input pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement input pin functionality
+ *         (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or
+ *         picolibrary::Microchip::megaAVR0::Peripheral::VPORT).
  */
 template<typename Peripheral>
 class Input_Pin {

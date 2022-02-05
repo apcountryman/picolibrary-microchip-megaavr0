@@ -80,6 +80,8 @@ inline auto usart_route( Peripheral::USART const & usart ) noexcept -> USART_Rou
     }  // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return USART_Route::NONE; // unreachable
 }
 
 /**
@@ -144,6 +146,8 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
     };
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -180,6 +184,8 @@ constexpr auto usart_vport_address( std::uintptr_t usart_address ) noexcept -> s
     };
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -285,6 +291,8 @@ constexpr auto xck_number( std::uintptr_t usart_address, USART_Route route ) noe
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -441,6 +449,8 @@ constexpr auto xdir_number( std::uintptr_t usart_address, USART_Route route ) no
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -597,6 +607,8 @@ constexpr auto txd_number( std::uintptr_t usart_address, USART_Route route ) noe
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -753,6 +765,8 @@ constexpr auto rxd_number( std::uintptr_t usart_address, USART_Route route ) noe
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**

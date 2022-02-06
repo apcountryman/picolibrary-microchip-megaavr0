@@ -459,7 +459,7 @@ class Internally_Pulled_Up_Input_Pin {
     /**
      * \brief Constructor.
      *
-     * \param[in] port The GPIO port or virtual port the pin is a member of.
+     * \param[in] port The GPIO port the pin is a member of.
      * \param[in] mask The mask identifying the pin.
      */
     constexpr Internally_Pulled_Up_Input_Pin( Peripheral & port, std::uint8_t mask ) noexcept :

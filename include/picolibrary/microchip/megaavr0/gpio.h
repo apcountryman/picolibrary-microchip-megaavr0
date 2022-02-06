@@ -24,7 +24,9 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_H
 
 #include <cstdint>
+#include <utility>
 
+#include "picolibrary/gpio.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
@@ -125,6 +127,79 @@ class Pin<Peripheral::PORT> {
     void configure_pin_as_input() noexcept
     {
         m_port->dirclr = m_mask;
+    }
+
+    /**
+     * \brief Configure the pin to act as an internally pulled-up input.
+     */
+    void configure_pin_as_internally_pulled_up_input() noexcept
+    {
+        m_port->dirclr = m_mask;
+    }
+
+    /**
+     * \brief Check if an internally pulled-up input pin's internal pull-up resistor is
+     *        disabled.
+     *
+     * \return true if the internally pulled-up input pin's internal pull-up resistor is
+     *         disabled.
+     * \return false if the internally pulled-up input pin's internal pull-up resistor is
+     *         not disabled.
+     */
+    auto pull_up_is_disabled() const noexcept
+    {
+        return not pull_up_is_enabled();
+    }
+
+    /**
+     * \brief Check if an internally pulled-up input pin's internal pull-up resistor is
+     *        enabled.
+     *
+     * \return true if the internally pulled-up input pin's internal pull-up resistor is
+     *         enabled.
+     * \return false if the internally pulled-up input pin's internal pull-up resistor is
+     *         not enabled.
+     */
+    auto pull_up_is_enabled() const noexcept -> bool
+    {
+        auto mask = m_mask;
+        auto i    = std::uint_fast8_t{};
+        for ( ; mask; mask >>= 1, ++i ) {
+            if ( ( mask & 0x01 )
+                 and ( m_port->pinctrl[ i ] & Peripheral::PORT::PINCTRL::Mask::PULLUPEN ) ) {
+                return true;
+            } // if
+        }     // for
+
+        return false;
+    }
+
+    /**
+     * \brief Disable an internally pulled-up input pin's internal pull-up resistor.
+     */
+    void disable_pull_up() noexcept
+    {
+        auto mask = m_mask;
+        auto i    = std::uint_fast8_t{};
+        for ( ; mask; mask >>= 1, ++i ) {
+            if ( mask & 0x01 ) {
+                m_port->pinctrl[ i ] &= ~Peripheral::PORT::PINCTRL::Mask::PULLUPEN;
+            } // if
+        }     // for
+    }
+
+    /**
+     * \brief Enable an internally pulled-up input pin's internal pull-up resistor.
+     */
+    void enable_pull_up() noexcept
+    {
+        auto mask = m_mask;
+        auto i    = std::uint_fast8_t{};
+        for ( ; mask; mask >>= 1, ++i ) {
+            if ( mask & 0x01 ) {
+                m_port->pinctrl[ i ] |= Peripheral::PORT::PINCTRL::Mask::PULLUPEN;
+            } // if
+        }     // for
     }
 
     /**
@@ -365,6 +440,165 @@ class Input_Pin {
      * \brief The pin.
      */
     Pin<Peripheral> m_pin{};
+};
+
+/**
+ * \brief Internally pulled-up input pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement internally pulled-up input
+ *         pin functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT).
+ */
+template<typename Peripheral>
+class Internally_Pulled_Up_Input_Pin {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] port The GPIO port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin( Peripheral & port, std::uint8_t mask ) noexcept :
+        m_pin{ port, mask }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin && source ) noexcept = default;
+
+    Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Internally_Pulled_Up_Input_Pin() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_pin = std::move( expression.m_pin );
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Internally_Pulled_Up_Input_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \pawram[in] initial_pull_up_state The initial state of the pin's internal pull-up
+     *             resistor.
+     */
+    void initialize( ::picolibrary::GPIO::Initial_Pull_Up_State initial_pull_up_state = ::picolibrary::GPIO::Initial_Pull_Up_State::DISABLED ) noexcept
+    {
+        m_pin.configure_pin_as_internally_pulled_up_input();
+
+        switch ( initial_pull_up_state ) {
+            case ::picolibrary::GPIO::Initial_Pull_Up_State::DISABLED:
+                m_pin.disable_pull_up();
+                break;
+            case ::picolibrary::GPIO::Initial_Pull_Up_State::ENABLED:
+                m_pin.enable_pull_up();
+                break;
+        } // switch
+    }
+
+    /**
+     * \brief Check if the pin's internal pull-up resistor is disabled.
+     *
+     * \return true if the pin's internal pull-up resistor is disabled.
+     * \return false if the pin's internal pull-up resistor is not disabled.
+     */
+    auto pull_up_is_disabled() const noexcept
+    {
+        return m_pin.pull_up_is_disabled();
+    }
+
+    /**
+     * \brief Check if the pin's internal pull-up resistor is enabled.
+     *
+     * \return true if the pin's internal pull-up resistor is enabled.
+     * \return false if the pin's internal pull-up resistor is not enabled.
+     */
+    auto pull_up_is_enabled() const noexcept
+    {
+        return m_pin.pull_up_is_enabled();
+    }
+
+    /**
+     * \brief Disable the pin's internal pull-up resistor.
+     */
+    void disable_pull_up() noexcept
+    {
+        m_pin.disable_pull_up();
+    }
+
+    /**
+     * \brief Enable the pin's internal pull-up resistor.
+     */
+    void enable_pull_up() noexcept
+    {
+        m_pin.enable_pull_up();
+    }
+
+    /**
+     * \brief Check if the pin is in the low state.
+     *
+     * \return true if the pin is in the low state.
+     * \return false if the pin is not in the low state.
+     */
+    auto is_low() const noexcept
+    {
+        return m_pin.is_low();
+    }
+
+    /**
+     * \brief Check if the pin is in the high state.
+     *
+     * \return true if the pin is in the high state.
+     * \return false if the pin is not in the high state.
+     */
+    auto is_high() const noexcept
+    {
+        return m_pin.is_high();
+    }
+
+  private:
+    /**
+     * \brief The pin.
+     */
+    Pin<Peripheral> m_pin{};
+
+    /**
+     * \brief Disable the pin.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_pin ) {
+            m_pin.disable_pull_up();
+        } // if
+    }
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::GPIO

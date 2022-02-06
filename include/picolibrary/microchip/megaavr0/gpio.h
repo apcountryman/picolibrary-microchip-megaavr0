@@ -138,6 +138,14 @@ class Pin<Peripheral::PORT> {
     }
 
     /**
+     * \brief Configure the pin to act as an open-drain I/O pin.
+     */
+    void configure_pin_as_open_drain_io() noexcept
+    {
+        m_port->outclr = m_mask;
+    }
+
+    /**
      * \brief Check if an internally pulled-up input pin's internal pull-up resistor is
      *        disabled.
      *
@@ -222,6 +230,30 @@ class Pin<Peripheral::PORT> {
     auto is_high() const noexcept -> bool
     {
         return m_port->in & m_mask;
+    }
+
+    /**
+     * \brief Transition an open-drain I/O pin to the low state.
+     */
+    void transition_open_drain_io_to_low() noexcept
+    {
+        m_port->dirset = m_mask;
+    }
+
+    /**
+     * \brief Transition an open-drain I/O pin to the high state.
+     */
+    void transition_open_drain_io_to_high() noexcept
+    {
+        m_port->dirclr = m_mask;
+    }
+
+    /**
+     * \brief Toggle the state of an open-drain I/O pin.
+     */
+    void toggle_open_drain_io() noexcept
+    {
+        m_port->dirtgl = m_mask;
     }
 
   private:
@@ -321,6 +353,14 @@ class Pin<Peripheral::VPORT> {
     }
 
     /**
+     * \brief Configure the pin to act as an open-drain I/O pin.
+     */
+    void configure_pin_as_open_drain_io() noexcept
+    {
+        m_vport->out &= ~m_mask;
+    }
+
+    /**
      * \brief Check if the pin is in the low state.
      *
      * \return true if the pin is in the low state.
@@ -340,6 +380,30 @@ class Pin<Peripheral::VPORT> {
     auto is_high() const noexcept -> bool
     {
         return m_vport->in & m_mask;
+    }
+
+    /**
+     * \brief Transition an open-drain I/O pin to the low state.
+     */
+    void transition_open_drain_io_to_low() noexcept
+    {
+        m_vport->dir |= m_mask;
+    }
+
+    /**
+     * \brief Transition an open-drain I/O pin to the high state.
+     */
+    void transition_open_drain_io_to_high() noexcept
+    {
+        m_vport->dir &= ~m_mask;
+    }
+
+    /**
+     * \brief Toggle the state of an open-drain I/O pin.
+     */
+    void toggle_open_drain_io() noexcept
+    {
+        m_vport->dir ^= m_mask;
     }
 
   private:
@@ -597,6 +661,151 @@ class Internally_Pulled_Up_Input_Pin {
     {
         if ( m_pin ) {
             m_pin.disable_pull_up();
+        } // if
+    }
+};
+
+/**
+ * \brief Open-drain Input/Output (I/O) pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement open-drain I/O pin
+ *         functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or
+ *         picolibrary::Microchip::megaAVR0::Peripheral::VPORT).
+ */
+template<typename Peripheral>
+class Open_Drain_IO_Pin {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Open_Drain_IO_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] port The GPIO port or virtual port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    constexpr Open_Drain_IO_Pin( Peripheral & port, std::uint8_t mask ) noexcept :
+        m_pin{ port, mask }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Open_Drain_IO_Pin( Open_Drain_IO_Pin && source ) noexcept = default;
+
+    Open_Drain_IO_Pin( Open_Drain_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Open_Drain_IO_Pin() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Open_Drain_IO_Pin && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_pin = std::move( expression.m_pin );
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Open_Drain_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \param[in] initial_pin_state The initial state of the pin.
+     */
+    void initialize( ::picolibrary::GPIO::Initial_Pin_State initial_pin_state = ::picolibrary::GPIO::Initial_Pin_State::LOW ) noexcept
+    {
+        m_pin.configure_pin_as_open_drain_io();
+
+        switch ( initial_pin_state ) {
+            case ::picolibrary::GPIO::Initial_Pin_State::LOW:
+                m_pin.transition_open_drain_io_to_low();
+                break;
+            case ::picolibrary::GPIO::Initial_Pin_State::HIGH:
+                m_pin.transition_open_drain_io_to_high();
+                break;
+        } // switch
+    }
+
+    /**
+     * \brief Check if the pin is in the low state.
+     *
+     * \return true if the pin is in the low state.
+     * \return false if the pin is not in the low state.
+     */
+    auto is_low() const noexcept
+    {
+        return m_pin.is_low();
+    }
+
+    /**
+     * \brief Check if the pin is in the high state.
+     *
+     * \return true if the pin is in the high state.
+     * \return false if the pin is not in the high state.
+     */
+    auto is_high() const noexcept
+    {
+        return m_pin.is_high();
+    }
+
+    /**
+     * \brief Transition the pin to the low state.
+     */
+    void transition_to_low() noexcept
+    {
+        m_pin.transition_open_drain_io_to_low();
+    }
+
+    /**
+     * \brief Transition the pin to the high state.
+     */
+    void transition_to_high() noexcept
+    {
+        m_pin.transition_open_drain_io_to_high();
+    }
+
+    /**
+     * \brief Toggle the pin state.
+     */
+    void toggle() noexcept
+    {
+        m_pin.toggle_open_drain_io();
+    }
+
+  private:
+    /**
+     * \brief The pin.
+     */
+    Pin<Peripheral> m_pin{};
+
+    /**
+     * \brief Disable the pin.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_pin ) {
+            m_pin.configure_pin_as_input();
         } // if
     }
 };

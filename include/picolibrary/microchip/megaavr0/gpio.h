@@ -146,6 +146,14 @@ class Pin<Peripheral::PORT> {
     }
 
     /**
+     * \brief Configure the pin to act as a push-pull I/O pin.
+     */
+    void configure_pin_as_push_pull_io() noexcept
+    {
+        m_port->dirset = m_mask;
+    }
+
+    /**
      * \brief Check if an internally pulled-up input pin's internal pull-up resistor is
      *        disabled.
      *
@@ -241,6 +249,14 @@ class Pin<Peripheral::PORT> {
     }
 
     /**
+     * \brief Transition a push-pull I/O pin to the low state.
+     */
+    void transition_push_pull_io_to_low() noexcept
+    {
+        m_port->outclr = m_mask;
+    }
+
+    /**
      * \brief Transition an open-drain I/O pin to the high state.
      */
     void transition_open_drain_io_to_high() noexcept
@@ -249,11 +265,27 @@ class Pin<Peripheral::PORT> {
     }
 
     /**
+     * \brief Transition a push-pull I/O pin to the high state.
+     */
+    void transition_push_pull_io_to_high() noexcept
+    {
+        m_port->outset = m_mask;
+    }
+
+    /**
      * \brief Toggle the state of an open-drain I/O pin.
      */
     void toggle_open_drain_io() noexcept
     {
         m_port->dirtgl = m_mask;
+    }
+
+    /**
+     * \brief Toggle the state of a push-pull I/O pin.
+     */
+    void toggle_push_pull_io() noexcept
+    {
+        m_port->outtgl = m_mask;
     }
 
   private:
@@ -361,6 +393,14 @@ class Pin<Peripheral::VPORT> {
     }
 
     /**
+     * \brief Configure the pin to act as a push-pull I/O pin.
+     */
+    void configure_pin_as_push_pull_io() noexcept
+    {
+        m_vport->dir |= m_mask;
+    }
+
+    /**
      * \brief Check if the pin is in the low state.
      *
      * \return true if the pin is in the low state.
@@ -391,6 +431,14 @@ class Pin<Peripheral::VPORT> {
     }
 
     /**
+     * \brief Transition a push-pull I/O pin to the low state.
+     */
+    void transition_push_pull_io_to_low() noexcept
+    {
+        m_vport->out &= ~m_mask;
+    }
+
+    /**
      * \brief Transition an open-drain I/O pin to the high state.
      */
     void transition_open_drain_io_to_high() noexcept
@@ -399,11 +447,27 @@ class Pin<Peripheral::VPORT> {
     }
 
     /**
+     * \brief Transition a push-pull I/O pin to the high state.
+     */
+    void transition_push_pull_io_to_high() noexcept
+    {
+        m_vport->out |= m_mask;
+    }
+
+    /**
      * \brief Toggle the state of an open-drain I/O pin.
      */
     void toggle_open_drain_io() noexcept
     {
         m_vport->dir ^= m_mask;
+    }
+
+    /**
+     * \brief Toggle the state of a push-pull I/O pin.
+     */
+    void toggle_push_pull_io() noexcept
+    {
+        m_vport->out ^= m_mask;
     }
 
   private:
@@ -791,6 +855,151 @@ class Open_Drain_IO_Pin {
     void toggle() noexcept
     {
         m_pin.toggle_open_drain_io();
+    }
+
+  private:
+    /**
+     * \brief The pin.
+     */
+    Pin<Peripheral> m_pin{};
+
+    /**
+     * \brief Disable the pin.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_pin ) {
+            m_pin.configure_pin_as_input();
+        } // if
+    }
+};
+
+/**
+ * \brief Push-pull Input/Output (I/O) pin.
+ *
+ * \tparam Peripheral The type of peripheral used to implement push-pull I/O pin
+ *         functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or
+ *         picolibrary::Microchip::megaAVR0::Peripheral::VPORT).
+ */
+template<typename Peripheral>
+class Push_Pull_IO_Pin {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Push_Pull_IO_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] port The GPIO port or virtual port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    constexpr Push_Pull_IO_Pin( Peripheral & port, std::uint8_t mask ) noexcept :
+        m_pin{ port, mask }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Push_Pull_IO_Pin( Push_Pull_IO_Pin && source ) noexcept = default;
+
+    Push_Pull_IO_Pin( Push_Pull_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Push_Pull_IO_Pin() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Push_Pull_IO_Pin && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_pin = std::move( expression.m_pin );
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Push_Pull_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \param[in] initial_pin_state The initial state of the pin.
+     */
+    void initialize( ::picolibrary::GPIO::Initial_Pin_State initial_pin_state = ::picolibrary::GPIO::Initial_Pin_State::LOW ) noexcept
+    {
+        switch ( initial_pin_state ) {
+            case ::picolibrary::GPIO::Initial_Pin_State::LOW:
+                m_pin.transition_push_pull_io_to_low();
+                break;
+            case ::picolibrary::GPIO::Initial_Pin_State::HIGH:
+                m_pin.transition_push_pull_io_to_high();
+                break;
+        } // switch
+
+        m_pin.configure_pin_as_push_pull_io();
+    }
+
+    /**
+     * \brief Check if the pin is in the low state.
+     *
+     * \return true if the pin is in the low state.
+     * \return false if the pin is not in the low state.
+     */
+    auto is_low() const noexcept
+    {
+        return m_pin.is_low();
+    }
+
+    /**
+     * \brief Check if the pin is in the high state.
+     *
+     * \return true if the pin is in the high state.
+     * \return false if the pin is not in the high state.
+     */
+    auto is_high() const noexcept
+    {
+        return m_pin.is_high();
+    }
+
+    /**
+     * \brief Transition the pin to the low state.
+     */
+    void transition_to_low() noexcept
+    {
+        m_pin.transition_push_pull_io_to_low();
+    }
+
+    /**
+     * \brief Transition the pin to the high state.
+     */
+    void transition_to_high() noexcept
+    {
+        m_pin.transition_push_pull_io_to_high();
+    }
+
+    /**
+     * \brief Toggle the pin state.
+     */
+    void toggle() noexcept
+    {
+        m_pin.toggle_push_pull_io();
     }
 
   private:

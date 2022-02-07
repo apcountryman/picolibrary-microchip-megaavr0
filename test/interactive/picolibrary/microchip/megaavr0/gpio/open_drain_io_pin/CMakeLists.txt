@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin interactive tests
 #       CMake rules.
+
+# build the picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin toggle interactive
+# test
+add_subdirectory( toggle )

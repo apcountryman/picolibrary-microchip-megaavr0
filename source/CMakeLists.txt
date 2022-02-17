@@ -25,6 +25,7 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR0_SOURCE_FILES
     "picolibrary/microchip/megaavr0.cc"
+    "picolibrary/microchip/megaavr0/asynchronous_serial.cc"
     "picolibrary/microchip/megaavr0/clock.cc"
     "picolibrary/microchip/megaavr0/gpio.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"

@@ -13,11 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr0/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR0 interactive tests CMake rules.
-
-# build the picolibrary::Microchip::megaAVR0::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
-# build the picolibrary::Microchip::megaAVR0::GPIO interactive tests
-add_subdirectory( gpio )
+# File: test/interactive/picolibrary/microchip/megaavr0/asynchronous_serial/CMakeLists.txt
+# Description: picolibrary::Microchip::megaAVR0::Asynchronous_Serial interactive tests
+#       CMake rules.

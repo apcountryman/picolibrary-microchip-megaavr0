@@ -43,6 +43,15 @@ enum class USART_Data_Bits : std::uint8_t {
     _9 = Peripheral::USART::CTRLC::CHSIZE_9BITH, ///< 9.
 };
 
+/**
+ * \brief USART parity configuration.
+ */
+enum class USART_Parity : std::uint8_t {
+    NONE = Peripheral::USART::CTRLC::PMODE_DISABLED, ///< None.
+    EVEN = Peripheral::USART::CTRLC::PMODE_EVEN,     ///< Even.
+    ODD  = Peripheral::USART::CTRLC::PMODE_ODD,      ///< Odd.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H

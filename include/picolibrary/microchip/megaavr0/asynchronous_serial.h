@@ -52,6 +52,14 @@ enum class USART_Parity : std::uint8_t {
     ODD  = Peripheral::USART::CTRLC::PMODE_ODD,      ///< Odd.
 };
 
+/**
+ * \brief USART stop bits configuration.
+ */
+enum class USART_Stop_Bits : std::uint8_t {
+    _1 = 0b0 << Peripheral::USART::CTRLC::Bit::SBMODE, ///< 1.
+    _2 = 0b1 << Peripheral::USART::CTRLC::Bit::SBMODE, ///< 2.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H

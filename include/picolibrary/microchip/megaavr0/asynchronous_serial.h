@@ -23,10 +23,26 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
+
 /**
  * \brief Microchip megaAVR 0-series asynchronous serial facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial {
+
+/**
+ * \brief USART data bits configuration.
+ */
+enum class USART_Data_Bits : std::uint8_t {
+    _5 = Peripheral::USART::CTRLC::CHSIZE_5BIT,  ///< 5.
+    _6 = Peripheral::USART::CTRLC::CHSIZE_6BIT,  ///< 6.
+    _7 = Peripheral::USART::CTRLC::CHSIZE_7BIT,  ///< 7.
+    _8 = Peripheral::USART::CTRLC::CHSIZE_8BIT,  ///< 8.
+    _9 = Peripheral::USART::CTRLC::CHSIZE_9BITH, ///< 9.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_ASYNCHRONOUS_SERIAL_H

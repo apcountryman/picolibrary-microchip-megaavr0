@@ -222,10 +222,6 @@ class Basic_Transmitter {
                          | static_cast<std::uint8_t>( usart_data_bits )
                          | static_cast<std::uint8_t>( usart_parity )
                          | static_cast<std::uint8_t>( usart_stop_bits );
-        m_usart->status = Peripheral::USART::STATUS::Mask::TXCIF
-                          | Peripheral::USART::STATUS::Mask::RXSIF
-                          | Peripheral::USART::STATUS::Mask::ISFIF
-                          | Peripheral::USART::STATUS::Mask::BDF;
         m_usart->baud = usart_clock_generator_scaling_factor;
     }
 
@@ -246,7 +242,11 @@ class Basic_Transmitter {
      */
     void configure_txd_pin_as_output() noexcept
     {
-        Multiplexed_Signals::txd_port( *m_usart ).dirset = Multiplexed_Signals::txd_mask( *m_usart );
+        auto &     txd_port = Multiplexed_Signals::txd_port( *m_usart );
+        auto const txd_mask = Multiplexed_Signals::txd_mask( *m_usart );
+
+        txd_port.outset = txd_mask;
+        txd_port.dirset = txd_mask;
     }
 
     /**

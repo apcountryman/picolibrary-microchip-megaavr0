@@ -27,6 +27,7 @@
 #include <limits>
 #include <type_traits>
 
+#include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 
@@ -288,6 +289,19 @@ class Basic_Transmitter {
         m_usart->txdatah = data >> std::numeric_limits<std::uint8_t>::digits;
         m_usart->txdatal = data;
     }
+};
+
+/**
+ * \brief Transmitter.
+ *
+ * \tparam Data_Type The integral type used to hold the data to be transmitted (must be
+ *         std::uint8_t or std::uint16_t).
+ */
+template<typename Data_Type>
+class Transmitter :
+    public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
+  public:
+    using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::Asynchronous_Serial

@@ -113,6 +113,8 @@ class Basic_Transmitter {
         std::uint16_t usart_clock_generator_scaling_factor ) noexcept :
         m_usart{ &usart }
     {
+        // #lizard forgives the parameter count
+
         configure_transmitter(
             usart_data_bits, usart_parity, usart_stop_bits, usart_clock_generator_operating_speed, usart_clock_generator_scaling_factor );
     }

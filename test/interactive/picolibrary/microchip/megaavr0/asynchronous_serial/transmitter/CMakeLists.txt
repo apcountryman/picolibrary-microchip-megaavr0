@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/asynchronous_serial/transmitter/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter
 #       interactive tests CMake rules.
+
+# build the picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter hello world
+# interactive test
+add_subdirectory( hello_world )

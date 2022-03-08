@@ -17,19 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals interface.
+ * \brief picolibrary::Microchip::megaAVR0::Multiplexed_Signals TWI implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H
 
 #include "picolibrary/microchip/megaavr0/multiplexed_signals/twi.h"
-#include "picolibrary/microchip/megaavr0/multiplexed_signals/usart.h"
-
-/**
- * \brief Microchip megaAVR 0-series multiplexed signals facilities.
- */
-namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
-} // namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_MULTIPLEXED_SIGNALS_H

@@ -130,18 +130,46 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
  *
  * \param[in] usart_address The address of the USART peripheral whose pins PORT peripheral
  *            address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's pins PORT peripheral address.
  */
-constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
+constexpr auto usart_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
+    -> std::uintptr_t
 {
+    // #lizard forgives the length
+
     switch ( usart_address ) {
-        case Peripheral::USART0::ADDRESS: return Peripheral::PORTA::ADDRESS;
-        case Peripheral::USART1::ADDRESS: return Peripheral::PORTC::ADDRESS;
-        case Peripheral::USART2::ADDRESS: return Peripheral::PORTF::ADDRESS;
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::PORTA::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::PORTA::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::PORTC::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::PORTC::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::PORTF::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::PORTF::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
     || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-        case Peripheral::USART3::ADDRESS: return Peripheral::PORTB::ADDRESS;
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::PORTB::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::PORTB::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     };
 
@@ -154,13 +182,26 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
  * \brief Lookup a USART peripheral's pins PORT peripheral.
  *
  * \param[in] usart The USART peripheral whose pins PORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's pins PORT peripheral.
+ */
+inline auto & usart_port( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return *reinterpret_cast<Peripheral::PORT *>(
+        usart_port_address( reinterpret_cast<std::uintptr_t>( &usart ), route ) );
+}
+
+/**
+ * \brief Lookup a USART peripheral's pins PORT peripheral.
+ *
+ * \param[in] usart The USART peripheral whose pins PORT peripheral is to be looked up.
  *
  * \return The USART peripheral's pins PORT peripheral.
  */
 inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 {
-    return *reinterpret_cast<Peripheral::PORT *>(
-        usart_port_address( reinterpret_cast<std::uintptr_t>( &usart ) ) );
+    return usart_port( usart, usart_route( usart ) );
 }
 
 /**
@@ -168,18 +209,46 @@ inline auto & usart_port( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose pins VPORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's pins VPORT peripheral address.
  */
-constexpr auto usart_vport_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
+constexpr auto usart_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
+    -> std::uintptr_t
 {
+    // #lizard forgives the length
+
     switch ( usart_address ) {
-        case Peripheral::USART0::ADDRESS: return Peripheral::VPORTA::ADDRESS;
-        case Peripheral::USART1::ADDRESS: return Peripheral::VPORTC::ADDRESS;
-        case Peripheral::USART2::ADDRESS: return Peripheral::VPORTF::ADDRESS;
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::VPORTA::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::VPORTA::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::VPORTC::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::VPORTC::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::VPORTF::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::VPORTF::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
     || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-        case Peripheral::USART3::ADDRESS: return Peripheral::VPORTB::ADDRESS;
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return Peripheral::VPORTB::ADDRESS;
+                case USART_Route::ALTERNATE: return Peripheral::VPORTB::ADDRESS;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     };
 
@@ -192,13 +261,26 @@ constexpr auto usart_vport_address( std::uintptr_t usart_address ) noexcept -> s
  * \brief Lookup a USART peripheral's pins VPORT peripheral.
  *
  * \param[in] usart The USART peripheral whose pins VPORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's pins VPORT peripheral.
+ */
+inline auto & usart_vport( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return *reinterpret_cast<Peripheral::VPORT *>(
+        usart_vport_address( reinterpret_cast<std::uintptr_t>( &usart ), route ) );
+}
+
+/**
+ * \brief Lookup a USART peripheral's pins VPORT peripheral.
+ *
+ * \param[in] usart The USART peripheral whose pins VPORT peripheral is to be looked up.
  *
  * \return The USART peripheral's pins VPORT peripheral.
  */
 inline auto & usart_vport( Peripheral::USART const & usart ) noexcept
 {
-    return *reinterpret_cast<Peripheral::VPORT *>(
-        usart_vport_address( reinterpret_cast<std::uintptr_t>( &usart ) ) );
+    return usart_vport( usart, usart_route( usart ) );
 }
 
 /**
@@ -206,12 +288,26 @@ inline auto & usart_vport( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose XCK pin PORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XCK pin PORT peripheral address.
  */
-constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto xck_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_port_address( usart_address );
+    return usart_port_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's XCK pin PORT peripheral.
+ *
+ * \param[in] usart The USART whose XCK pin PORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's XCK pin PORT peripheral.
+ */
+inline auto & xck_port( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_port( usart, route );
 }
 
 /**
@@ -231,12 +327,26 @@ inline auto & xck_port( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose XCK pin VPORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XCK pin VPORT peripheral address.
  */
-constexpr auto xck_vport_address( std::uintptr_t usart_address ) noexcept
+constexpr auto xck_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_vport_address( usart_address );
+    return usart_vport_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's XCK pin VPORT peripheral.
+ *
+ * \param[in] usart The USART whose XCK pin VPORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's XCK pin VPORT peripheral.
+ */
+inline auto & xck_vport( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_vport( usart, route );
 }
 
 /**
@@ -372,12 +482,26 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose XDIR pin PORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XDIR pin PORT peripheral address.
  */
-constexpr auto xdir_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto xdir_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_port_address( usart_address );
+    return usart_port_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's XDIR pin PORT peripheral.
+ *
+ * \param[in] usart The USART whose XDIR pin PORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's XDIR pin PORT peripheral.
+ */
+inline auto & xdir_port( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_port( usart, route );
 }
 
 /**
@@ -397,12 +521,26 @@ inline auto & xdir_port( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose XDIR pin VPORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XDIR pin VPORT peripheral address.
  */
-constexpr auto xdir_vport_address( std::uintptr_t usart_address ) noexcept
+constexpr auto xdir_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_vport_address( usart_address );
+    return usart_vport_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's XDIR pin VPORT peripheral.
+ *
+ * \param[in] usart The USART whose XDIR pin VPORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's XDIR pin VPORT peripheral.
+ */
+inline auto & xdir_vport( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_vport( usart, route );
 }
 
 /**
@@ -538,12 +676,26 @@ inline auto xdir_mask( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose TXD pin PORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's TXD pin PORT peripheral address.
  */
-constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto txd_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_port_address( usart_address );
+    return usart_port_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's TXD pin PORT peripheral.
+ *
+ * \param[in] usart The USART whose TXD pin PORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's TXD pin PORT peripheral.
+ */
+inline auto & txd_port( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_port( usart, route );
 }
 
 /**
@@ -563,12 +715,26 @@ inline auto & txd_port( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose TXD pin VPORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's TXD pin VPORT peripheral address.
  */
-constexpr auto txd_vport_address( std::uintptr_t usart_address ) noexcept
+constexpr auto txd_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_vport_address( usart_address );
+    return usart_vport_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's TXD pin VPORT peripheral.
+ *
+ * \param[in] usart The USART whose TXD pin VPORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's TXD pin VPORT peripheral.
+ */
+inline auto & txd_vport( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_vport( usart, route );
 }
 
 /**
@@ -704,12 +870,26 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose RXD pin PORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's RXD pin PORT peripheral address.
  */
-constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto rxd_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_port_address( usart_address );
+    return usart_port_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's RXD pin PORT peripheral.
+ *
+ * \param[in] usart The USART whose RXD pin PORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's RXD pin PORT peripheral.
+ */
+inline auto & rxd_port( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_port( usart, route );
 }
 
 /**
@@ -729,12 +909,26 @@ inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
  *
  * \param[in] usart_address The address of the USART peripheral whose RXD pin VPORT
  *            peripheral address is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's RXD pin VPORT peripheral address.
  */
-constexpr auto rxd_vport_address( std::uintptr_t usart_address ) noexcept
+constexpr auto rxd_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
 {
-    return usart_vport_address( usart_address );
+    return usart_vport_address( usart_address, route );
+}
+
+/**
+ * \brief Lookup a USART peripheral's RXD pin VPORT peripheral.
+ *
+ * \param[in] usart The USART whose RXD pin VPORT peripheral is to be looked up.
+ * \param[in] route The USART peripheral's routing configuration.
+ *
+ * \return The USART peripheral's RXD pin VPORT peripheral.
+ */
+inline auto & rxd_vport( Peripheral::USART const & usart, USART_Route route ) noexcept
+{
+    return usart_vport( usart, route );
 }
 
 /**

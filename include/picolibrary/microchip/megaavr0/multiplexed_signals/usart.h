@@ -98,24 +98,24 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
 
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::USART0::ADDRESS:
-            portmux.usartroutea = ( portmux.usartroutea & Peripheral::PORTMUX::USARTROUTEA::Mask::USART0 )
+            portmux.usartroutea = ( portmux.usartroutea & ~Peripheral::PORTMUX::USARTROUTEA::Mask::USART0 )
                                   | ( static_cast<std::uint8_t>( route )
                                       << Peripheral::PORTMUX::USARTROUTEA::Bit::USART0 );
             return;
         case Peripheral::USART1::ADDRESS:
-            portmux.usartroutea = ( portmux.usartroutea & Peripheral::PORTMUX::USARTROUTEA::Mask::USART1 )
+            portmux.usartroutea = ( portmux.usartroutea & ~Peripheral::PORTMUX::USARTROUTEA::Mask::USART1 )
                                   | ( static_cast<std::uint8_t>( route )
                                       << Peripheral::PORTMUX::USARTROUTEA::Bit::USART1 );
             return;
         case Peripheral::USART2::ADDRESS:
-            portmux.usartroutea = ( portmux.usartroutea & Peripheral::PORTMUX::USARTROUTEA::Mask::USART2 )
+            portmux.usartroutea = ( portmux.usartroutea & ~Peripheral::PORTMUX::USARTROUTEA::Mask::USART2 )
                                   | ( static_cast<std::uint8_t>( route )
                                       << Peripheral::PORTMUX::USARTROUTEA::Bit::USART2 );
             return;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
     || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
         case Peripheral::USART3::ADDRESS:
-            portmux.usartroutea = ( portmux.usartroutea & Peripheral::PORTMUX::USARTROUTEA::Mask::USART3 )
+            portmux.usartroutea = ( portmux.usartroutea & ~Peripheral::PORTMUX::USARTROUTEA::Mask::USART3 )
                                   | ( static_cast<std::uint8_t>( route )
                                       << Peripheral::PORTMUX::USARTROUTEA::Bit::USART3 );
             return;

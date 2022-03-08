@@ -264,31 +264,39 @@ constexpr auto xck_number( std::uintptr_t usart_address, USART_Route route ) noe
 {
     // #lizard forgives the length
 
-    switch ( route ) {
-        case USART_Route::DEFAULT:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 2;
-                case Peripheral::USART1::ADDRESS: return 2;
-                case Peripheral::USART2::ADDRESS: return 2;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 2;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    switch ( usart_address ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::ALTERNATE:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 6;
-                case Peripheral::USART1::ADDRESS: return 6;
-                case Peripheral::USART2::ADDRESS: return 6;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: break;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::NONE: break;
-    } // switch
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: return 6;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 2;
+                case USART_Route::ALTERNATE: break;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
 
@@ -422,31 +430,39 @@ constexpr auto xdir_number( std::uintptr_t usart_address, USART_Route route ) no
 {
     // #lizard forgives the length
 
-    switch ( route ) {
-        case USART_Route::DEFAULT:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 3;
-                case Peripheral::USART1::ADDRESS: return 3;
-                case Peripheral::USART2::ADDRESS: return 3;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 3;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    switch ( usart_address ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 7;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::ALTERNATE:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 7;
-                case Peripheral::USART1::ADDRESS: return 7;
-                case Peripheral::USART2::ADDRESS: break;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: break;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: return 7;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::NONE: break;
-    } // switch
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: break;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 3;
+                case USART_Route::ALTERNATE: break;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
 
@@ -580,31 +596,39 @@ constexpr auto txd_number( std::uintptr_t usart_address, USART_Route route ) noe
 {
     // #lizard forgives the length
 
-    switch ( route ) {
-        case USART_Route::DEFAULT:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 0;
-                case Peripheral::USART1::ADDRESS: return 0;
-                case Peripheral::USART2::ADDRESS: return 0;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 0;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    switch ( usart_address ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::ALTERNATE:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 4;
-                case Peripheral::USART1::ADDRESS: return 4;
-                case Peripheral::USART2::ADDRESS: return 4;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 4;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::NONE: break;
-    } // switch
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 0;
+                case USART_Route::ALTERNATE: return 4;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
 
@@ -738,31 +762,39 @@ constexpr auto rxd_number( std::uintptr_t usart_address, USART_Route route ) noe
 {
     // #lizard forgives the length
 
-    switch ( route ) {
-        case USART_Route::DEFAULT:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 1;
-                case Peripheral::USART1::ADDRESS: return 1;
-                case Peripheral::USART2::ADDRESS: return 1;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 1;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    switch ( usart_address ) {
+        case Peripheral::USART0::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::ALTERNATE:
-            switch ( usart_address ) {
-                case Peripheral::USART0::ADDRESS: return 5;
-                case Peripheral::USART1::ADDRESS: return 5;
-                case Peripheral::USART2::ADDRESS: return 5;
-#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
-                case Peripheral::USART3::ADDRESS: return 5;
-#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART1::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
+                case USART_Route::NONE: break;
             } // switch
             break;
-        case USART_Route::NONE: break;
-    } // switch
+        case Peripheral::USART2::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+        case Peripheral::USART3::ADDRESS:
+            switch ( route ) {
+                case USART_Route::DEFAULT: return 1;
+                case USART_Route::ALTERNATE: return 5;
+                case USART_Route::NONE: break;
+            } // switch
+            break;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    }  // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
 

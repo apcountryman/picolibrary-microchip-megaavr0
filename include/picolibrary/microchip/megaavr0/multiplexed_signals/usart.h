@@ -137,6 +137,8 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
 constexpr auto usart_port_address( std::uintptr_t usart_address, USART_Route route ) noexcept
     -> std::uintptr_t
 {
+    // #lizard forgives the length
+
     switch ( usart_address ) {
         case Peripheral::USART0::ADDRESS:
             switch ( route ) {
@@ -214,6 +216,8 @@ inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 constexpr auto usart_vport_address( std::uintptr_t usart_address, USART_Route route ) noexcept
     -> std::uintptr_t
 {
+    // #lizard forgives the length
+
     switch ( usart_address ) {
         case Peripheral::USART0::ADDRESS:
             switch ( route ) {

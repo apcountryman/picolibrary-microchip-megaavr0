@@ -353,7 +353,7 @@ class TWI {
          */
         enum MCMD : std::uint8_t {
             MCMD_NOACT     = 0x0 << Bit::MCMD, ///< Reserved.
-            MCMD_REPSTART   = 0x1 << Bit::MCMD, ///< Execute Acknowledge Action followed by repeated start condition.
+            MCMD_REPSTART  = 0x1 << Bit::MCMD, ///< Execute Acknowledge Action followed by repeated start condition.
             MCMD_RECVTRANS = 0x2 << Bit::MCMD, ///< See datasheet.
             MCMD_STOP      = 0x3 << Bit::MCMD, ///< Execute Acknowledge Action followed by issuing a stop condition.
         };

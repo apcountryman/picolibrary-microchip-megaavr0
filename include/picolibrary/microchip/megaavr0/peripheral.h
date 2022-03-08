@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
@@ -139,6 +140,11 @@ using USART2 = Instance<USART, 0x840>;
  */
 using USART3 = Instance<USART, 0x860>;
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+
+/**
+ * \brief TWI0.
+ */
+using TWI0 = Instance<TWI, 0x08A0>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

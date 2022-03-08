@@ -282,7 +282,7 @@ class TWI {
             TIMEOUT_DISABLED = 0x0 << Bit::TIMEOUT, ///< Bus time-out disabled - I2C.
             TIMEOUT_50US     = 0x1 << Bit::TIMEOUT, ///< 50 us - SMBus (assume the baud rate is set to 100 kHz).
             TIMEOUT_100US = 0x2 << Bit::TIMEOUT, ///< 100 us (assume the baud rate is set to 100 kHz).
-            TIMEOUT_200US = 0x2 << Bit::TIMEOUT, ///< 200 us (assume the baud rate is set to 100 kHz).
+            TIMEOUT_200US = 0x3 << Bit::TIMEOUT, ///< 200 us (assume the baud rate is set to 100 kHz).
         };
 
         MCTRLA() = delete;
@@ -353,7 +353,7 @@ class TWI {
          */
         enum MCMD : std::uint8_t {
             MCMD_NOACT     = 0x0 << Bit::MCMD, ///< Reserved.
-            MCMD_RESTART   = 0x1 << Bit::MCMD, ///< Execute Acknowledge Action followed by repeated start condition.
+            MCMD_REPSTART   = 0x1 << Bit::MCMD, ///< Execute Acknowledge Action followed by repeated start condition.
             MCMD_RECVTRANS = 0x2 << Bit::MCMD, ///< See datasheet.
             MCMD_STOP      = 0x3 << Bit::MCMD, ///< Execute Acknowledge Action followed by issuing a stop condition.
         };
@@ -519,7 +519,7 @@ class TWI {
     };
 
     /**
-     * \brief (SCTRLB) register.
+     * \brief Client Control B (SCTRLB) register.
      *
      * This register has the following fields:
      * - Command (SCMD)
@@ -670,8 +670,8 @@ class TWI {
      * \brief Client Address Mask (SADDRMASK) register.
      *
      * This register has the following fields:
-     * - (ADDREN)
-     * - (ADDRMASK)
+     * - Address Mask Enable (ADDREN)
+     * - Address Mask (ADDRMASK)
      */
     class SADDRMASK : public Register<std::uint8_t> {
       public:
@@ -847,7 +847,7 @@ class TWI {
     SSTATUS sstatus;
 
     /**
-     * \brief Client Address (SADDR).
+     * \brief Client Address (SADDR) register.
      */
     Register<std::uint8_t> saddr;
 

@@ -326,7 +326,7 @@ class Basic_Controller {
      */
     void transmit_stop() noexcept
     {
-        m_twi->mctrlb = Peripheral::TWI::MCTRLB::MCMD_STOP;
+        m_twi->mctrlb |= Peripheral::TWI::MCTRLB::MCMD_STOP;
     }
 
     /**

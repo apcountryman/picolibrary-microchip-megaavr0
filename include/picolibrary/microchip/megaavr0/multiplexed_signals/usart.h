@@ -300,7 +300,7 @@ constexpr auto xck_port_address( std::uintptr_t usart_address, USART_Route route
 /**
  * \brief Lookup a USART peripheral's XCK pin PORT peripheral.
  *
- * \param[in] usart The USART whose XCK pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XCK pin PORT peripheral is to be looked up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XCK pin PORT peripheral.
@@ -313,7 +313,7 @@ inline auto & xck_port( Peripheral::USART const & usart, USART_Route route ) noe
 /**
  * \brief Lookup a USART peripheral's XCK pin PORT peripheral.
  *
- * \param[in] usart The USART whose XCK pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XCK pin PORT peripheral is to be looked up.
  *
  * \return The USART peripheral's XCK pin PORT peripheral.
  */
@@ -339,7 +339,8 @@ constexpr auto xck_vport_address( std::uintptr_t usart_address, USART_Route rout
 /**
  * \brief Lookup a USART peripheral's XCK pin VPORT peripheral.
  *
- * \param[in] usart The USART whose XCK pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XCK pin VPORT peripheral is to be looked
+ *            up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XCK pin VPORT peripheral.
@@ -352,7 +353,8 @@ inline auto & xck_vport( Peripheral::USART const & usart, USART_Route route ) no
 /**
  * \brief Lookup a USART peripheral's XCK pin VPORT peripheral.
  *
- * \param[in] usart The USART whose XCK pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XCK pin VPORT peripheral is to be looked
+ *            up.
  *
  * \return The USART peripheral's XCK pin VPORT peripheral.
  */
@@ -494,7 +496,8 @@ constexpr auto xdir_port_address( std::uintptr_t usart_address, USART_Route rout
 /**
  * \brief Lookup a USART peripheral's XDIR pin PORT peripheral.
  *
- * \param[in] usart The USART whose XDIR pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XDIR pin PORT peripheral is to be looked
+ *            up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XDIR pin PORT peripheral.
@@ -507,7 +510,8 @@ inline auto & xdir_port( Peripheral::USART const & usart, USART_Route route ) no
 /**
  * \brief Lookup a USART peripheral's XDIR pin PORT peripheral.
  *
- * \param[in] usart The USART whose XDIR pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XDIR pin PORT peripheral is to be looked
+ *            up.
  *
  * \return The USART peripheral's XDIR pin PORT peripheral.
  */
@@ -533,7 +537,8 @@ constexpr auto xdir_vport_address( std::uintptr_t usart_address, USART_Route rou
 /**
  * \brief Lookup a USART peripheral's XDIR pin VPORT peripheral.
  *
- * \param[in] usart The USART whose XDIR pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XDIR pin VPORT peripheral is to be looked
+ *            up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's XDIR pin VPORT peripheral.
@@ -546,7 +551,8 @@ inline auto & xdir_vport( Peripheral::USART const & usart, USART_Route route ) n
 /**
  * \brief Lookup a USART peripheral's XDIR pin VPORT peripheral.
  *
- * \param[in] usart The USART whose XDIR pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XDIR pin VPORT peripheral is to be looked
+ *            up.
  *
  * \return The USART peripheral's XDIR pin VPORT peripheral.
  */
@@ -688,7 +694,7 @@ constexpr auto txd_port_address( std::uintptr_t usart_address, USART_Route route
 /**
  * \brief Lookup a USART peripheral's TXD pin PORT peripheral.
  *
- * \param[in] usart The USART whose TXD pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose TXD pin PORT peripheral is to be looked up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's TXD pin PORT peripheral.
@@ -701,7 +707,7 @@ inline auto & txd_port( Peripheral::USART const & usart, USART_Route route ) noe
 /**
  * \brief Lookup a USART peripheral's TXD pin PORT peripheral.
  *
- * \param[in] usart The USART whose TXD pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose TXD pin PORT peripheral is to be looked up.
  *
  * \return The USART peripheral's TXD pin PORT peripheral.
  */
@@ -727,7 +733,8 @@ constexpr auto txd_vport_address( std::uintptr_t usart_address, USART_Route rout
 /**
  * \brief Lookup a USART peripheral's TXD pin VPORT peripheral.
  *
- * \param[in] usart The USART whose TXD pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose TXD pin VPORT peripheral is to be looked
+ *            up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's TXD pin VPORT peripheral.
@@ -740,7 +747,8 @@ inline auto & txd_vport( Peripheral::USART const & usart, USART_Route route ) no
 /**
  * \brief Lookup a USART peripheral's TXD pin VPORT peripheral.
  *
- * \param[in] usart The USART whose TXD pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose TXD pin VPORT peripheral is to be looked
+ *            up.
  *
  * \return The USART peripheral's TXD pin VPORT peripheral.
  */
@@ -882,7 +890,7 @@ constexpr auto rxd_port_address( std::uintptr_t usart_address, USART_Route route
 /**
  * \brief Lookup a USART peripheral's RXD pin PORT peripheral.
  *
- * \param[in] usart The USART whose RXD pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose RXD pin PORT peripheral is to be looked up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's RXD pin PORT peripheral.
@@ -895,7 +903,7 @@ inline auto & rxd_port( Peripheral::USART const & usart, USART_Route route ) noe
 /**
  * \brief Lookup a USART peripheral's RXD pin PORT peripheral.
  *
- * \param[in] usart The USART whose RXD pin PORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose RXD pin PORT peripheral is to be looked up.
  *
  * \return The USART peripheral's RXD pin PORT peripheral.
  */
@@ -921,7 +929,8 @@ constexpr auto rxd_vport_address( std::uintptr_t usart_address, USART_Route rout
 /**
  * \brief Lookup a USART peripheral's RXD pin VPORT peripheral.
  *
- * \param[in] usart The USART whose RXD pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose RXD pin VPORT peripheral is to be looked
+ *            up.
  * \param[in] route The USART peripheral's routing configuration.
  *
  * \return The USART peripheral's RXD pin VPORT peripheral.
@@ -934,7 +943,8 @@ inline auto & rxd_vport( Peripheral::USART const & usart, USART_Route route ) no
 /**
  * \brief Lookup a USART peripheral's RXD pin VPORT peripheral.
  *
- * \param[in] usart The USART whose RXD pin VPORT peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose RXD pin VPORT peripheral is to be looked
+ *            up.
  *
  * \return The USART peripheral's RXD pin VPORT peripheral.
  */

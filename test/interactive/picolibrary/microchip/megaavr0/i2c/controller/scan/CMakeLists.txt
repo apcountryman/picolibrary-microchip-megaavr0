@@ -39,7 +39,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_CONTROLLER_SCAN_INTERACTIVE_TEST_CONTROLLER_TWI_BUS_SPEED
             "" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::I2C::Controller scan interactive test controller TWI bus speed configuration"
+            "picolibrary-microchip-megaavr0: picolibrary::Microchip::megaAVR0::I2C::Controller scan interactive test controller TWI bus speed"
         )
         set(
             PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_CONTROLLER_SCAN_INTERACTIVE_TEST_CONTROLLER_TWI_CLOCK_GENERATOR_SCALING_FACTOR

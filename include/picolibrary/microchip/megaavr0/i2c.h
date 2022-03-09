@@ -42,6 +42,15 @@ enum class TWI_SDA_Hold_Time : std::uint8_t {
     _500_NS = Peripheral::TWI::CTRLA::SDAHOLD_500NS, ///< 500 ns (meets the SMBus 2.0 specifications across all corners).
 };
 
+/**
+ * \brief TWI bus speed configuration.
+ */
+enum class TWI_Bus_Speed : std::uint8_t {
+    STANDARD  = 0b0 << Peripheral::TWI::CTRLA::Bit::FMPEN, ///< Standard mode.
+    FAST      = 0b0 << Peripheral::TWI::CTRLA::Bit::FMPEN, ///< Fast mode.
+    FAST_PLUS = 0b1 << Peripheral::TWI::CTRLA::Bit::FMPEN, ///< Fast mode plus.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H

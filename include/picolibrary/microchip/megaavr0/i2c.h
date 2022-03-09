@@ -430,6 +430,11 @@ class Basic_Controller {
     }
 };
 
+/**
+ * \brief Controller.
+ */
+using Controller = ::picolibrary::I2C::Controller<Basic_Controller>;
+
 } // namespace picolibrary::Microchip::megaAVR0::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H

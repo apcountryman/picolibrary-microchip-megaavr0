@@ -28,6 +28,7 @@ set(
     "picolibrary/microchip/megaavr0/asynchronous_serial.cc"
     "picolibrary/microchip/megaavr0/clock.cc"
     "picolibrary/microchip/megaavr0/gpio.cc"
+    "picolibrary/microchip/megaavr0/i2c.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/twi.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/usart.cc"

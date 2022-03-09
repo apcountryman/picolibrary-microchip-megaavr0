@@ -51,6 +51,16 @@ enum class TWI_Bus_Speed : std::uint8_t {
     FAST_PLUS = 0b1 << Peripheral::TWI::CTRLA::Bit::FMPEN, ///< Fast mode plus.
 };
 
+/**
+ * \brief TWI inactive bus time-out.
+ */
+enum class TWI_Inactive_Bus_Time_Out : std::uint8_t {
+    DISABLED = Peripheral::TWI::MCTRLA::TIMEOUT_DISABLED, ///< Disabled.
+    _50_US   = Peripheral::TWI::MCTRLA::TIMEOUT_50US, ///< 50 us (SMBus, assumes clock frequency is set to 100 kHz).
+    _100_US  = Peripheral::TWI::MCTRLA::TIMEOUT_100US, ///< 100 us (assumes clock frequency is set to 100 kHz).
+    _200_US  = Peripheral::TWI::MCTRLA::TIMEOUT_200US, ///< 200 us (assumes clock frequency is set to 100 kHz).
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H

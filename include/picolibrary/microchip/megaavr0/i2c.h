@@ -213,8 +213,6 @@ class Basic_Controller {
      *
      * \param[in] response The response to transmit once the data has been read.
      *
-     * \post data has been transmitted and a response has been received
-     *
      * \return The data read from the device.
      */
     auto read( ::picolibrary::I2C::Response response ) noexcept
@@ -231,6 +229,8 @@ class Basic_Controller {
      *
      * \param[in] data The data to write to the device.
      *
+     * \post data has been transmitted and a response has been received
+     *
      * \return picolibrary::I2C::Response::ACK if an ACK response is received.
      * \return picolibrary::I2C::Response::NACK if a NACK response is received.
      */
@@ -238,7 +238,7 @@ class Basic_Controller {
     {
         initiate_write( data );
 
-        while ( not write_complete() ) {} // if
+        while ( not write_complete() ) {} // while
 
         ensure( not controller_bus_error_present(), Generic_Error::BUS_ERROR );
 

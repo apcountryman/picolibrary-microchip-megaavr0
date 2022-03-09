@@ -23,10 +23,25 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr0/peripheral/twi.h"
+
 /**
  * \brief Microchip megaAVR 0-series Inter-Integrated Circuit (I2C) facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::I2C {
+
+/**
+ * \brief TWI SDA hold time.
+ */
+enum class TWI_SDA_Hold_Time : std::uint8_t {
+    OFF     = Peripheral::TWI::CTRLA::SDAHOLD_OFF,  ///< Off.
+    _50_NS  = Peripheral::TWI::CTRLA::SDAHOLD_50NS, ///< 50 ns (short hold time).
+    _300_NS = Peripheral::TWI::CTRLA::SDAHOLD_300NS, ///< 300 ns (meets the SMBus 2.0 specifications under typical conditions).
+    _500_NS = Peripheral::TWI::CTRLA::SDAHOLD_500NS, ///< 500 ns (meets the SMBus 2.0 specifications across all corners).
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_I2C_H

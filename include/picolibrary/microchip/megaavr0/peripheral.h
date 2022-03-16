@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
+#include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
@@ -145,6 +146,11 @@ using USART3 = Instance<USART, 0x860>;
  * \brief TWI0.
  */
 using TWI0 = Instance<TWI, 0x08A0>;
+
+/**
+ * \brief SPI0.
+ */
+using SPI0 = Instance<SPI, 0x08C0>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

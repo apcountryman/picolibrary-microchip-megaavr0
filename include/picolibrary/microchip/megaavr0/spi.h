@@ -68,6 +68,14 @@ enum class SPI_Clock_Phase : std::uint8_t {
     CAPTURE_ACTIVE_TO_IDLE = 0b01 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Capture data on the active-to-idle clock transition.
 };
 
+/**
+ * \brief SPI bit order.
+ */
+enum class SPI_Bit_Order : std::uint8_t {
+    MSB_FIRST = 0b0 << Peripheral::SPI::CTRLA::Bit::DORD, ///< MSB first.
+    LSB_FIRST = 0b1 << Peripheral::SPI::CTRLA::Bit::DORD, ///< LSB first.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

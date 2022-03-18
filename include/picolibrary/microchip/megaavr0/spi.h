@@ -52,6 +52,14 @@ enum class SPI_Clock_Rate : std::uint8_t {
                   | Peripheral::SPI::CTRLA::PRESC_DIV128, ///< Peripheral clock frequency / 128.
 };
 
+/**
+ * \brief SPI clock polarity.
+ */
+enum class SPI_Clock_Polarity : std::uint8_t {
+    IDLE_LOW  = 0b00 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Idle low.
+    IDLE_HIGH = 0b10 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Idle high.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

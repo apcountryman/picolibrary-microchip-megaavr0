@@ -42,9 +42,9 @@ enum class SPI_Route : std::uint8_t {
     DEFAULT     = Peripheral::PORTMUX::TWISPIROUTEA::SPI0_DEFAULT, ///< Default route (SPI on PA[7:4]).
     ALTERNATE_1 = Peripheral::PORTMUX::TWISPIROUTEA::SPI0_ALT1, ///< Alternate route 1 (SPI on PC[3:0]).
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
-    ALTERNATE_2 = Peripheral::PORTMUX::TWISPIROUTEA::SPI0_ALT2, ///< Alternate route 1 (SPI on PE[3:0]).
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
+    ALTERNATE_2 = Peripheral::PORTMUX::TWISPIROUTEA::SPI0_ALT2, ///< Alternate route 2 (SPI on PE[3:0]).
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     NONE = Peripheral::PORTMUX::TWISPIROUTEA::SPI0_NONE, ///< Not routed.
 };
 
@@ -108,9 +108,9 @@ constexpr auto spi_port_address( std::uintptr_t spi_address, SPI_Route route ) n
                 case SPI_Route::DEFAULT: return Peripheral::PORTA::ADDRESS;
                 case SPI_Route::ALTERNATE_1: return Peripheral::PORTC::ADDRESS;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return Peripheral::PORTE::ADDRESS;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -164,9 +164,9 @@ constexpr auto spi_vport_address( std::uintptr_t spi_address, SPI_Route route ) 
                 case SPI_Route::DEFAULT: return Peripheral::VPORTA::ADDRESS;
                 case SPI_Route::ALTERNATE_1: return Peripheral::VPORTC::ADDRESS;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return Peripheral::VPORTE::ADDRESS;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -292,17 +292,15 @@ inline auto & ss_vport( Peripheral::SPI const & spi ) noexcept
  */
 constexpr auto ss_number( std::uintptr_t spi_address, SPI_Route route ) noexcept -> std::uint_fast8_t
 {
-    // #lizard forgives the length
-
     switch ( spi_address ) {
         case Peripheral::SPI0::ADDRESS:
             switch ( route ) {
                 case SPI_Route::DEFAULT: return 7;
                 case SPI_Route::ALTERNATE_1: return 3;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return 3;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -466,17 +464,15 @@ inline auto & sck_vport( Peripheral::SPI const & spi ) noexcept
  */
 constexpr auto sck_number( std::uintptr_t spi_address, SPI_Route route ) noexcept -> std::uint_fast8_t
 {
-    // #lizard forgives the length
-
     switch ( spi_address ) {
         case Peripheral::SPI0::ADDRESS:
             switch ( route ) {
                 case SPI_Route::DEFAULT: return 6;
                 case SPI_Route::ALTERNATE_1: return 2;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return 2;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -640,17 +636,15 @@ inline auto & mosi_vport( Peripheral::SPI const & spi ) noexcept
  */
 constexpr auto mosi_number( std::uintptr_t spi_address, SPI_Route route ) noexcept -> std::uint_fast8_t
 {
-    // #lizard forgives the length
-
     switch ( spi_address ) {
         case Peripheral::SPI0::ADDRESS:
             switch ( route ) {
                 case SPI_Route::DEFAULT: return 4;
                 case SPI_Route::ALTERNATE_1: return 0;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return 0;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;
@@ -814,17 +808,15 @@ inline auto & miso_vport( Peripheral::SPI const & spi ) noexcept
  */
 constexpr auto miso_number( std::uintptr_t spi_address, SPI_Route route ) noexcept -> std::uint_fast8_t
 {
-    // #lizard forgives the length
-
     switch ( spi_address ) {
         case Peripheral::SPI0::ADDRESS:
             switch ( route ) {
                 case SPI_Route::DEFAULT: return 5;
                 case SPI_Route::ALTERNATE_1: return 1;
 #if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
-    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::ALTERNATE_2: return 1;
-#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809 )
+#endif // defined ( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
                 case SPI_Route::NONE: break;
             } // switch
             break;

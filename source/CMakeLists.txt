@@ -30,6 +30,7 @@ set(
     "picolibrary/microchip/megaavr0/gpio.cc"
     "picolibrary/microchip/megaavr0/i2c.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals.cc"
+    "picolibrary/microchip/megaavr0/multiplexed_signals/spi.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/twi.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral.cc"

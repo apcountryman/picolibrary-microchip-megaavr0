@@ -60,6 +60,14 @@ enum class SPI_Clock_Polarity : std::uint8_t {
     IDLE_HIGH = 0b10 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Idle high.
 };
 
+/**
+ * \brief SPI clock phase.
+ */
+enum class SPI_Clock_Phase : std::uint8_t {
+    CAPTURE_IDLE_TO_ACTIVE = 0b00 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Capture data on the idle-to-active clock transition.
+    CAPTURE_ACTIVE_TO_IDLE = 0b01 << Peripheral::SPI::CTRLB::Bit::MODE, ///< Capture data on the active-to-idle clock transition.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

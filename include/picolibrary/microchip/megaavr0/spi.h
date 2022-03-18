@@ -189,6 +189,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
                             Multiplexed_Signals::sck_mask( spi, spi_route )
                             | Multiplexed_Signals::mosi_mask( spi, spi_route ) ) }
     {
+        // #lizard forgives the parameter count
+
         configure_controller( spi_clock_rate, spi_clock_polarity, spi_clock_phase, spi_bit_order );
     }
 

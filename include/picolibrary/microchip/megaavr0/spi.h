@@ -27,6 +27,7 @@
 
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 
 /**
  * \brief Microchip megaAVR 0-series Serial Peripheral Interface (SPI) facilities.
@@ -83,6 +84,14 @@ enum class SPI_Bit_Order : std::uint8_t {
 enum class USART_Clock_Polarity : std::uint8_t {
     IDLE_LOW  = 0b0 << Peripheral::PORT::PINCTRL::Bit::INVEN, ///< Idle low.
     IDLE_HIGH = 0b1 << Peripheral::PORT::PINCTRL::Bit::INVEN, ///< Idle high.
+};
+
+/**
+ * \brief USART clock phase.
+ */
+enum class USART_Clock_Phase : std::uint8_t {
+    CAPTURE_IDLE_TO_ACTIVE = 0b0 << Peripheral::USART::CTRLC::Bit::UCPHA, ///< Capture data on the idle-to-active clock transition.
+    CAPTURE_ACTIVE_TO_IDLE = 0b1 << Peripheral::USART::CTRLC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::SPI

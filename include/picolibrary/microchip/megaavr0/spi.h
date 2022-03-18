@@ -23,10 +23,35 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+
 /**
  * \brief Microchip megaAVR 0-series Serial Peripheral Interface (SPI) facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::SPI {
+
+/**
+ * \brief SPI clock rate.
+ */
+enum class SPI_Clock_Rate : std::uint8_t {
+    CLK_PER_2 = ( 0b1 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                | Peripheral::SPI::CTRLA::PRESC_DIV4, ///< Peripheral clock frequency / 2.
+    CLK_PER_4 = ( 0b0 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                | Peripheral::SPI::CTRLA::PRESC_DIV4, ///< Peripheral clock frequency / 4.
+    CLK_PER_8 = ( 0b1 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                | Peripheral::SPI::CTRLA::PRESC_DIV16, ///< Peripheral clock frequency / 8.
+    CLK_PER_16 = ( 0b0 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                 | Peripheral::SPI::CTRLA::PRESC_DIV16, ///< Peripheral clock frequency / 16.
+    CLK_PER_32 = ( 0b1 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                 | Peripheral::SPI::CTRLA::PRESC_DIV64, ///< Peripheral clock frequency / 32.
+    CLK_PER_64 = ( 0b0 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                 | Peripheral::SPI::CTRLA::PRESC_DIV64, ///< Peripheral clock frequency / 64.
+    CLK_PER_128 = ( 0b0 << Peripheral::SPI::CTRLA::Bit::CLK2X )
+                  | Peripheral::SPI::CTRLA::PRESC_DIV128, ///< Peripheral clock frequency / 128.
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

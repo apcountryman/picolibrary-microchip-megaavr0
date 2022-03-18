@@ -16,3 +16,8 @@
 # File: test/interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-spi/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::SPI>
 #       interactive tests CMake rules.
+
+# build the
+# picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::SPI>
+# echo interactive test
+add_subdirectory( echo )

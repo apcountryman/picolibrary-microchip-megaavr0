@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 
 /**
@@ -74,6 +75,14 @@ enum class SPI_Clock_Phase : std::uint8_t {
 enum class SPI_Bit_Order : std::uint8_t {
     MSB_FIRST = 0b0 << Peripheral::SPI::CTRLA::Bit::DORD, ///< MSB first.
     LSB_FIRST = 0b1 << Peripheral::SPI::CTRLA::Bit::DORD, ///< LSB first.
+};
+
+/**
+ * \brief USART clock polarity.
+ */
+enum class USART_Clock_Polarity : std::uint8_t {
+    IDLE_LOW  = 0b0 << Peripheral::PORT::PINCTRL::Bit::INVEN, ///< Idle low.
+    IDLE_HIGH = 0b1 << Peripheral::PORT::PINCTRL::Bit::INVEN, ///< Idle high.
 };
 
 } // namespace picolibrary::Microchip::megaAVR0::SPI

@@ -463,7 +463,7 @@ class USART {
             CMODE_ASYNCHRONOUS = 0x0 << Bit::CMODE, ///< Asynchronous USART.
             CMODE_SYNCHRONOUS  = 0x1 << Bit::CMODE, ///< Synchronous USART.
             CMODE_IRCOM        = 0x2 << Bit::CMODE, ///< Infrared communication.
-            CMODE_HSPI         = 0x3 << Bit::CMODE, ///< Host SPI.
+            CMODE_MSPI         = 0x3 << Bit::CMODE, ///< Host SPI.
         };
 
         CTRLC() = delete;

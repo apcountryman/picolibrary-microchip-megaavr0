@@ -369,6 +369,300 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     }
 };
 
+/**
+ * \brief USART peripheral based fixed configuration basic controller.
+ */
+template<>
+class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase) and data exchange bit order
+     *        configuration.
+     */
+    struct Configuration {
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Fixed_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (BAUD register value).
+     * \param[in] usart_clock_polarity The desired USART clock polarity.
+     * \param[in] usart_clock_phase The desired USART clock phase.
+     * \param[in] usart_bit_order The desired USART bit order.
+     */
+    Fixed_Configuration_Basic_Controller(
+        Peripheral::USART &  usart,
+        std::uint16_t        usart_clock_generator_scaling_factor,
+        USART_Clock_Polarity usart_clock_polarity,
+        USART_Clock_Phase    usart_clock_phase,
+        USART_Bit_Order      usart_bit_order ) noexcept :
+        m_usart{ &usart },
+        m_usart_xck_txd_port{ &Multiplexed_Signals::usart_port( usart ) },
+        m_usart_xck_txd_mask{ static_cast<std::uint8_t>(
+            Multiplexed_Signals::xck_mask( usart ) | Multiplexed_Signals::txd_mask( usart ) ) },
+        m_usart_xck_number{ Multiplexed_Signals::xck_number( usart ) }
+    {
+        configure_controller(
+            usart_clock_generator_scaling_factor, usart_clock_polarity, usart_clock_phase, usart_bit_order );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (BAUD register value).
+     * \param[in] usart_clock_polarity The desired USART clock polarity.
+     * \param[in] usart_clock_phase The desired USART clock phase.
+     * \param[in] usart_bit_order The desired USART bit order.
+     * \param[in] usart_route The USART's routing configuration.
+     */
+    Fixed_Configuration_Basic_Controller(
+        Peripheral::USART &              usart,
+        std::uint16_t                    usart_clock_generator_scaling_factor,
+        USART_Clock_Polarity             usart_clock_polarity,
+        USART_Clock_Phase                usart_clock_phase,
+        USART_Bit_Order                  usart_bit_order,
+        Multiplexed_Signals::USART_Route usart_route ) noexcept :
+        m_usart{ &usart },
+        m_usart_xck_txd_port{ &Multiplexed_Signals::usart_port( usart, usart_route ) },
+        m_usart_xck_txd_mask{ static_cast<std::uint8_t>(
+            Multiplexed_Signals::xck_mask( usart, usart_route )
+            | Multiplexed_Signals::txd_mask( usart, usart_route ) ) },
+        m_usart_xck_number{ Multiplexed_Signals::xck_number( usart, usart_route ) }
+    {
+        // #lizard forgives the parameter count
+
+        configure_controller(
+            usart_clock_generator_scaling_factor, usart_clock_polarity, usart_clock_phase, usart_bit_order );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller && source ) noexcept :
+        m_usart{ source.m_usart },
+        m_usart_xck_txd_port{ source.m_usart_xck_txd_port },
+        m_usart_xck_txd_mask{ source.m_usart_xck_txd_mask },
+        m_usart_xck_number{ source.m_usart_xck_number }
+    {
+        source.m_usart              = nullptr;
+        source.m_usart_xck_txd_port = nullptr;
+        source.m_usart_xck_txd_mask = 0;
+    }
+
+    Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Fixed_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_usart              = expression.m_usart;
+            m_usart_xck_txd_port = expression.m_usart_xck_txd_port;
+            m_usart_xck_txd_mask = expression.m_usart_xck_txd_mask;
+            m_usart_xck_number   = expression.m_usart_xck_number;
+
+            expression.m_usart              = nullptr;
+            expression.m_usart_xck_txd_port = nullptr;
+            expression.m_usart_xck_txd_mask = 0;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     */
+    void initialize() noexcept
+    {
+        enable_controller();
+    }
+
+    /**
+     * \brief Configure the controller's clock and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     */
+    void configure( Configuration configuration ) noexcept
+    {
+        static_cast<void>( configuration );
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     *
+     * \return The data received from the device.
+     */
+    auto exchange( std::uint8_t data ) noexcept
+    {
+        while ( not transmit_buffer_is_empty() ) {} // while
+
+        load_transmit_buffer( data );
+
+        while ( not received_data_is_available() ) {} // while
+
+        return read_receive_buffer();
+    }
+
+  private:
+    /**
+     * \brief The USART used by the controller.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief The USART's XCK and TXD pins PORT.
+     */
+    Peripheral::PORT * m_usart_xck_txd_port{};
+
+    /**
+     * \brief The USART's XCK and TXD pins mask.
+     */
+    std::uint8_t m_usart_xck_txd_mask{};
+
+    /**
+     * \brief The USART's XCK pin number.
+     */
+    std::uint_fast8_t m_usart_xck_number{};
+
+    /**
+     * \brief Disable the controller.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_usart ) {
+            disable_controller();
+        } // if
+    }
+
+    /**
+     * \brief Configure the controller.
+     *
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (BAUD register value).
+     * \param[in] usart_clock_polarity The desired USART clock polarity.
+     * \param[in] usart_clock_phase The desired USART clock phase.
+     * \param[in] usart_bit_order The desired USART bit order.
+     */
+    void configure_controller(
+        std::uint16_t        usart_clock_generator_scaling_factor,
+        USART_Clock_Polarity usart_clock_polarity,
+        USART_Clock_Phase    usart_clock_phase,
+        USART_Bit_Order      usart_bit_order ) noexcept
+    {
+        m_usart->ctrlb = 0;
+        m_usart->ctrla = 0;
+        m_usart->ctrlc = Peripheral::USART::CTRLC::CMODE_MSPI
+                         | static_cast<std::uint8_t>( usart_clock_phase )
+                         | static_cast<std::uint8_t>( usart_bit_order );
+        m_usart->baud = usart_clock_generator_scaling_factor;
+
+        m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ] =
+            ( m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ]
+              & ~Peripheral::PORT::PINCTRL::Mask::INVEN )
+            | static_cast<std::uint8_t>( usart_clock_polarity );
+    }
+
+    /**
+     * \brief Disable the controller.
+     */
+    void disable_controller() noexcept
+    {
+        m_usart->ctrlb = 0;
+
+        // Silicon errata workaround ("TXD Pin Override Not Released When Disabling the
+        // Transmitter")
+        m_usart->status = 0;
+
+        m_usart_xck_txd_port->dirclr = m_usart_xck_txd_mask;
+        m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ] &= static_cast<std::uint8_t>(
+            ~Peripheral::PORT::PINCTRL::Mask::INVEN );
+    }
+
+    /**
+     * \brief Enable the controller.
+     */
+    void enable_controller() noexcept
+    {
+        m_usart_xck_txd_port->dirset = m_usart_xck_txd_mask;
+
+        m_usart->ctrlb = Peripheral::USART::CTRLB::Mask::TXEN | Peripheral::USART::CTRLB::Mask::RXEN;
+    }
+
+    /**
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
+     */
+    auto transmit_buffer_is_empty() const noexcept -> bool
+    {
+        return m_usart->status & Peripheral::USART::STATUS::Mask::DREIF;
+    }
+
+    /**
+     * \brief Load data into the transmit buffer.
+     *
+     * \param[in] data The data to load into the transmit buffer.
+     */
+    void load_transmit_buffer( std::uint8_t data ) noexcept
+    {
+        m_usart->txdatal = data;
+    }
+
+    /**
+     * \brief Check if received data is available.
+     *
+     * \return true if received data is available.
+     * \return false if received data is not available.
+     */
+    auto received_data_is_available() const noexcept -> bool
+    {
+        return m_usart->status & Peripheral::USART::STATUS::Mask::RXCIF;
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto read_receive_buffer() noexcept -> std::uint8_t
+    {
+        return m_usart->rxdatal;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

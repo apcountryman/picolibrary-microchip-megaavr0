@@ -663,6 +663,15 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     }
 };
 
+/**
+ * \brief Variable configuration basic controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement variable configuration
+ *         controller functionality.
+ */
+template<typename Peripheral>
+class Variable_Configuration_Basic_Controller;
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

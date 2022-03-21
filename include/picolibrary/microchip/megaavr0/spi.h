@@ -682,6 +682,323 @@ template<typename Peripheral>
 using Variable_Configuration_Controller =
     ::picolibrary::SPI::Controller<Variable_Configuration_Basic_Controller<Peripheral>>;
 
+/**
+ * \brief SPI peripheral based variable configuration basic controller.
+ */
+template<>
+class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase) and data exchange bit order
+     *        configuration.
+     */
+    class Configuration {
+      public:
+        /**
+         * \brief Constructor.
+         */
+        constexpr Configuration() noexcept :
+            Configuration{ SPI_Clock_Rate::CLK_PER_2,
+                           SPI_Clock_Polarity::IDLE_LOW,
+                           SPI_Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
+                           SPI_Bit_Order::MSB_FIRST }
+        {
+        }
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] spi_clock_rate The desired SPI clock rate.
+         * \param[in] spi_clock_polarity The desired SPI clock polarity.
+         * \param[in] spi_clock_phase The desired SPI clock phase.
+         * \param[in] spi_bit_order The desired SPI bit order.
+         */
+        constexpr Configuration(
+            SPI_Clock_Rate     spi_clock_rate,
+            SPI_Clock_Polarity spi_clock_polarity,
+            SPI_Clock_Phase    spi_clock_phase,
+            SPI_Bit_Order      spi_bit_order ) noexcept :
+            m_ctrla{ static_cast<std::uint8_t>(
+                Peripheral::SPI::CTRLA::Mask::MASTER | Peripheral::SPI::CTRLA::Mask::ENABLE
+                | static_cast<std::uint8_t>( spi_clock_rate )
+                | static_cast<std::uint8_t>( spi_bit_order ) ) },
+            m_ctrlb{ static_cast<std::uint8_t>(
+                Peripheral::SPI::CTRLB::Mask::SSD | static_cast<std::uint8_t>( spi_clock_polarity )
+                | static_cast<std::uint8_t>( spi_clock_phase ) ) }
+        {
+        }
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] source The source of the move.
+         */
+        constexpr Configuration( Configuration && source ) noexcept = default;
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] original The original to copy.
+         */
+        constexpr Configuration( Configuration const & original ) noexcept = default;
+
+        /**
+         * \brief Destructor.
+         */
+        ~Configuration() noexcept = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration && expression ) noexcept -> Configuration & = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration const & expression ) noexcept
+            -> Configuration & = default;
+
+        /**
+         * \brief Get the configuration's CTRLA register value.
+         *
+         * \return The configuration's CTRLA register value.
+         */
+        constexpr auto ctrla() const noexcept
+        {
+            return m_ctrla;
+        }
+
+        /**
+         * \brief Get the configuration's CTRLB register value.
+         *
+         * \return The configuration's CTRLB register value.
+         */
+        constexpr auto ctrlb() const noexcept
+        {
+            return m_ctrlb;
+        }
+
+      private:
+        /**
+         * \brief The configuration's CTRLA register value.
+         */
+        std::uint8_t m_ctrla{};
+
+        /**
+         * \brief The configuration's CTRLB register value.
+         */
+        std::uint8_t m_ctrlb{};
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Variable_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] spi The SPI to be used by the controller.
+     */
+    Variable_Configuration_Basic_Controller( Peripheral::SPI & spi ) noexcept :
+        m_spi{ &spi },
+        m_spi_sck_mosi{ Multiplexed_Signals::spi_port( spi ),
+                        static_cast<std::uint8_t>(
+                            Multiplexed_Signals::sck_mask( spi ) | Multiplexed_Signals::mosi_mask( spi ) ) }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] spi The SPI to be used by the controller.
+     * \param[in] spi_route The SPI's routing configuration.
+     */
+    Variable_Configuration_Basic_Controller( Peripheral::SPI & spi, Multiplexed_Signals::SPI_Route spi_route ) noexcept
+        :
+        m_spi{ &spi },
+        m_spi_sck_mosi{ Multiplexed_Signals::spi_port( spi, spi_route ),
+                        static_cast<std::uint8_t>(
+                            Multiplexed_Signals::sck_mask( spi, spi_route )
+                            | Multiplexed_Signals::mosi_mask( spi, spi_route ) ) }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller && source ) noexcept
+        :
+        m_spi{ source.m_spi },
+        m_spi_sck_mosi{ std::move( source.m_spi_sck_mosi ) }
+    {
+        source.m_spi = nullptr;
+    }
+
+    Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Variable_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_spi          = expression.m_spi;
+            m_spi_sck_mosi = std::move( expression.m_spi_sck_mosi );
+
+            expression.m_spi = nullptr;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     */
+    void initialize() noexcept
+    {
+        m_spi_sck_mosi.initialize();
+
+        enable_controller();
+    }
+
+    /**
+     * \brief Configure the controller's clock and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     */
+    void configure( Configuration configuration ) noexcept
+    {
+        configure_controller( configuration.ctrla(), configuration.ctrlb() );
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     *
+     * \return The data received from the device.
+     */
+    auto exchange( std::uint8_t data ) noexcept
+    {
+        initiate_exchange( data );
+
+        while ( not exchange_complete() ) {} // while
+
+        return finish_exchange();
+    }
+
+  private:
+    /**
+     * \brief The SPI used by the controller.
+     */
+    Peripheral::SPI * m_spi{};
+
+    /**
+     * \brief The SPI's SCK and MOSI pins.
+     */
+    GPIO::Push_Pull_IO_Pin<Peripheral::PORT> m_spi_sck_mosi{};
+
+    /**
+     * \brief Disable the controller.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_spi ) {
+            disable_controller();
+        } // if
+    }
+
+    /**
+     * \brief Disable the controller.
+     */
+    void disable_controller() noexcept
+    {
+        m_spi->ctrla = 0;
+    }
+
+    /**
+     * \brief Enable the controller.
+     */
+    void enable_controller() noexcept
+    {
+        m_spi->ctrlb   = Peripheral::SPI::CTRLB::Mask::SSD;
+        m_spi->intctrl = 0;
+        m_spi->ctrla = Peripheral::SPI::CTRLA::Mask::MASTER | Peripheral::SPI::CTRLA::Mask::ENABLE;
+    }
+
+    /**
+     * \brief Configure the controller.
+     *
+     * \param[in] ctrla The desired CTRLA register value.
+     * \param[in] ctrlb The desired CTRLB register value.
+     */
+    void configure_controller( std::uint8_t ctrla, std::uint8_t ctrlb ) noexcept
+    {
+        m_spi->ctrla = ctrla;
+        m_spi->ctrlb = ctrlb;
+    }
+
+    /**
+     * \brief Initiate a data exchange.
+     *
+     * \param[in] data The data to transmit.
+     */
+    void initiate_exchange( std::uint8_t data ) noexcept
+    {
+        m_spi->data = data;
+    }
+
+    /**
+     * \brief Check if a data exchange is complete.
+     *
+     * \return true if the data exchange is complete.
+     * \return false if the data exchange is not complete.
+     */
+    auto exchange_complete() const noexcept -> bool
+    {
+        return m_spi->intflags & Peripheral::SPI::INTFLAGS::Mask::IF;
+    }
+
+    /**
+     * \brief Finish a data exchange.
+     *
+     * \return The received data.
+     */
+    auto finish_exchange() noexcept -> std::uint8_t
+    {
+        return m_spi->data;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

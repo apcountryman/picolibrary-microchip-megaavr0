@@ -999,6 +999,385 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
     }
 };
 
+/**
+ * \brief USART peripheral based fixed configuration basic controller.
+ */
+template<>
+class Variable_Configuration_Basic_Controller<Peripheral::USART> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase) and data exchange bit order
+     *        configuration.
+     */
+    class Configuration {
+      public:
+        /**
+         * \brief Constructor.
+         */
+        constexpr Configuration() noexcept :
+            Configuration{ 64,
+                           USART_Clock_Polarity::IDLE_LOW,
+                           USART_Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
+                           USART_Bit_Order::MSB_FIRST }
+        {
+        }
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] usart_clock_generator_scaling_factor The desired USART clock
+         *            generator scaling factor (BAUD register value).
+         * \param[in] usart_clock_polarity The desired USART clock polarity.
+         * \param[in] usart_clock_phase The desired USART clock phase.
+         * \param[in] usart_bit_order The desired USART bit order.
+         */
+        constexpr Configuration(
+            std::uint16_t        usart_clock_generator_scaling_factor,
+            USART_Clock_Polarity usart_clock_polarity,
+            USART_Clock_Phase    usart_clock_phase,
+            USART_Bit_Order      usart_bit_order ) noexcept :
+            m_port_pinctrl_inven{ static_cast<std::uint8_t>( usart_clock_polarity ) },
+            m_usart_ctrlc{ static_cast<std::uint8_t>(
+                Peripheral::USART::CTRLC::CMODE_MSPI | static_cast<std::uint8_t>( usart_clock_phase )
+                | static_cast<std::uint8_t>( usart_bit_order ) ) },
+            m_usart_baud{ usart_clock_generator_scaling_factor }
+        {
+        }
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] source The source of the move.
+         */
+        constexpr Configuration( Configuration && source ) noexcept = default;
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] original The original to copy.
+         */
+        constexpr Configuration( Configuration const & original ) noexcept = default;
+
+        /**
+         * \brief Destructor.
+         */
+        ~Configuration() noexcept = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration && expression ) noexcept -> Configuration & = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration const & expression ) noexcept
+            -> Configuration & = default;
+
+        /**
+         * \brief Get the configuration's PORT.PINCTRL register INVEN field value.
+         *
+         * \return The configuration's PORT.PINCTRL register INVEN field value.
+         */
+        constexpr auto port_pinctrl_inven() const noexcept
+        {
+            return m_port_pinctrl_inven;
+        }
+
+        /**
+         * \brief Get the configuration's USART.CTRLC register value.
+         *
+         * \return The configuration's USART.CTRLC register value.
+         */
+        constexpr auto usart_ctrlc() const noexcept
+        {
+            return m_usart_ctrlc;
+        }
+
+        /**
+         * \brief Get the configuration's USART.BAUD register value.
+         *
+         * \return The configuration's USART.BAUD register value.
+         */
+        constexpr auto usart_baud() const noexcept
+        {
+            return m_usart_baud;
+        }
+
+      private:
+        /**
+         * \brief The configuration's PORT.PINCTRL register INVEN field value.
+         */
+        std::uint8_t m_port_pinctrl_inven{};
+
+        /**
+         * \brief The configuration's USART.CTRLC register value.
+         */
+        std::uint8_t m_usart_ctrlc{};
+
+        /**
+         * \brief The configuration's USART.BAUD register value.
+         */
+        std::uint16_t m_usart_baud{};
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Variable_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the controller.
+     */
+    Variable_Configuration_Basic_Controller( Peripheral::USART & usart ) noexcept :
+        m_usart{ &usart },
+        m_usart_xck_txd_port{ &Multiplexed_Signals::usart_port( usart ) },
+        m_usart_xck_txd_mask{ static_cast<std::uint8_t>(
+            Multiplexed_Signals::xck_mask( usart ) | Multiplexed_Signals::txd_mask( usart ) ) },
+        m_usart_xck_number{ Multiplexed_Signals::xck_number( usart ) }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart_route The USART's routing configuration.
+     */
+    Variable_Configuration_Basic_Controller( Peripheral::USART & usart, Multiplexed_Signals::USART_Route usart_route ) noexcept
+        :
+        m_usart{ &usart },
+        m_usart_xck_txd_port{ &Multiplexed_Signals::usart_port( usart, usart_route ) },
+        m_usart_xck_txd_mask{ static_cast<std::uint8_t>(
+            Multiplexed_Signals::xck_mask( usart, usart_route )
+            | Multiplexed_Signals::txd_mask( usart, usart_route ) ) },
+        m_usart_xck_number{ Multiplexed_Signals::xck_number( usart, usart_route ) }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller && source ) noexcept
+        :
+        m_usart{ source.m_usart },
+        m_usart_xck_txd_port{ source.m_usart_xck_txd_port },
+        m_usart_xck_txd_mask{ source.m_usart_xck_txd_mask },
+        m_usart_xck_number{ source.m_usart_xck_number }
+    {
+        source.m_usart              = nullptr;
+        source.m_usart_xck_txd_port = nullptr;
+        source.m_usart_xck_txd_mask = 0;
+    }
+
+    Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Variable_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_usart              = expression.m_usart;
+            m_usart_xck_txd_port = expression.m_usart_xck_txd_port;
+            m_usart_xck_txd_mask = expression.m_usart_xck_txd_mask;
+            m_usart_xck_number   = expression.m_usart_xck_number;
+
+            expression.m_usart              = nullptr;
+            expression.m_usart_xck_txd_port = nullptr;
+            expression.m_usart_xck_txd_mask = 0;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     */
+    void initialize() noexcept
+    {
+        enable_controller();
+    }
+
+    /**
+     * \brief Configure the controller's clock and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     */
+    void configure( Configuration const & configuration ) noexcept
+    {
+        configure_controller(
+            configuration.port_pinctrl_inven(), configuration.usart_ctrlc(), configuration.usart_baud() );
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     *
+     * \return The data received from the device.
+     */
+    auto exchange( std::uint8_t data ) noexcept
+    {
+        while ( not transmit_buffer_is_empty() ) {} // while
+
+        load_transmit_buffer( data );
+
+        while ( not received_data_is_available() ) {} // while
+
+        return read_receive_buffer();
+    }
+
+  private:
+    /**
+     * \brief The USART used by the controller.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief The USART's XCK and TXD pins PORT.
+     */
+    Peripheral::PORT * m_usart_xck_txd_port{};
+
+    /**
+     * \brief The USART's XCK and TXD pins mask.
+     */
+    std::uint8_t m_usart_xck_txd_mask{};
+
+    /**
+     * \brief The USART's XCK pin number.
+     */
+    std::uint_fast8_t m_usart_xck_number{};
+
+    /**
+     * \brief Disable the controller.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_usart ) {
+            disable_controller();
+        } // if
+    }
+
+    /**
+     * \brief Disable the controller.
+     */
+    void disable_controller() noexcept
+    {
+        m_usart->ctrlb = 0;
+
+        // Silicon errata workaround ("TXD Pin Override Not Released When Disabling the
+        // Transmitter")
+        m_usart->status = 0;
+
+        m_usart_xck_txd_port->dirclr = m_usart_xck_txd_mask;
+        m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ] &= static_cast<std::uint8_t>(
+            ~Peripheral::PORT::PINCTRL::Mask::INVEN );
+    }
+
+    /**
+     * \brief Enable the controller.
+     */
+    void enable_controller() noexcept
+    {
+        m_usart_xck_txd_port->dirset = m_usart_xck_txd_mask;
+
+        m_usart->ctrla = 0;
+        m_usart->ctrlc = Peripheral::USART::CTRLC::CMODE_MSPI;
+        m_usart->baud  = 64;
+        m_usart->ctrlb = Peripheral::USART::CTRLB::Mask::TXEN | Peripheral::USART::CTRLB::Mask::RXEN;
+    }
+
+    /**
+     * \brief Configure the controller.
+     *
+     * \param[in] port_pinctrl_inven The desired PORT.PINCTRL register INVEN field value.
+     * \param[in] usart_ctrlc The desired USART.CTRLC register value.
+     * \param[in] usart_baud The desired USART.BAUD register value.
+     */
+    void configure_controller( std::uint8_t port_pinctrl_inven, std::uint8_t usart_ctrlc, std::uint16_t usart_baud ) noexcept
+    {
+        m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ] = ( m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ]
+                                                                & ~Peripheral::PORT::PINCTRL::Mask::INVEN )
+                                                              | port_pinctrl_inven;
+
+        m_usart->ctrlc = usart_ctrlc;
+        m_usart->baud  = usart_baud;
+    }
+
+    /**
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
+     */
+    auto transmit_buffer_is_empty() const noexcept -> bool
+    {
+        return m_usart->status & Peripheral::USART::STATUS::Mask::DREIF;
+    }
+
+    /**
+     * \brief Load data into the transmit buffer.
+     *
+     * \param[in] data The data to load into the transmit buffer.
+     */
+    void load_transmit_buffer( std::uint8_t data ) noexcept
+    {
+        m_usart->txdatal = data;
+    }
+
+    /**
+     * \brief Check if received data is available.
+     *
+     * \return true if received data is available.
+     * \return false if received data is not available.
+     */
+    auto received_data_is_available() const noexcept -> bool
+    {
+        return m_usart->status & Peripheral::USART::STATUS::Mask::RXCIF;
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto read_receive_buffer() noexcept -> std::uint8_t
+    {
+        return m_usart->rxdatal;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR0::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR0_SPI_H

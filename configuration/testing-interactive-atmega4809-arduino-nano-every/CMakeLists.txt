@@ -87,3 +87,4 @@ include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaa
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-spi/echo/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-usart/echo/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-spi/echo/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-usart/echo/CMakeLists.txt" )

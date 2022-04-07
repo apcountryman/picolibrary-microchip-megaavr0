@@ -17,8 +17,8 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle
- *        interactive test program.
+ * \brief picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle interactive test
+ *        program.
  */
 
 #include <avr-libcpp/delay>
@@ -51,8 +51,8 @@ using namespace ::picolibrary::Microchip::megaAVR0::Peripheral;
 } // namespace
 
 /**
- * \brief Execute the picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin
- *        toggle interactive test.
+ * \brief Execute the picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle
+ *        interactive test.
  *
  * \return N/A
  */

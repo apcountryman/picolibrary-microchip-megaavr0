@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega4809-arduino-nano-every/test/interactive/picolibrary/microchip/mcp23s08/open_drain_io_pin/toggle/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
 #       picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin toggle interactive test
 #       configuration.

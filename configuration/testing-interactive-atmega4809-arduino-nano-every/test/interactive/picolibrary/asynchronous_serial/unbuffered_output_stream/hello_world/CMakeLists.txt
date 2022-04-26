@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega4809-arduino-nano-every/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
 #       picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world interactive
 #       test configuration.

@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega4809-arduino-nano-every/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every interactive
 #       testing configuration.
 

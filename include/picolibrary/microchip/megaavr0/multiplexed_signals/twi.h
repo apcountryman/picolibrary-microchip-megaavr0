@@ -32,6 +32,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 #include "picolibrary/precondition.h"
+#include "picolibrary/utility.h"
 
 namespace picolibrary::Microchip::megaAVR0::Multiplexed_Signals {
 
@@ -80,7 +81,7 @@ inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexce
         case Peripheral::TWI0::ADDRESS:
             portmux.twispiroutea = ( portmux.twispiroutea
                                      & ~Peripheral::PORTMUX::TWISPIROUTEA::Mask::TWI0 )
-                                   | static_cast<std::uint8_t>( route );
+                                   | to_underlying( route );
             return;
     } // switch
 

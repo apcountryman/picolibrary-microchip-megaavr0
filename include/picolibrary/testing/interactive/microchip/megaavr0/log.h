@@ -32,6 +32,7 @@
 #include "picolibrary/precondition.h"
 #include "picolibrary/result.h"
 #include "picolibrary/stream.h"
+#include "picolibrary/utility.h"
 #include "picolibrary/void.h"
 
 namespace picolibrary::Testing::Interactive::Microchip::megaAVR0 {
@@ -84,7 +85,7 @@ class Log : public Output_Stream {
 
         ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route( usart, usart_route );
 
-        usart.ctrlb = static_cast<std::uint8_t>( usart_clock_generator_operating_speed );
+        usart.ctrlb = to_underlying( usart_clock_generator_operating_speed );
         usart.ctrlc = ::picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLC::CMODE_ASYNCHRONOUS
                       | ::picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLC::PMODE_DISABLED
                       | ::picolibrary::Microchip::megaAVR0::Peripheral::USART::CTRLC::CHSIZE_8BIT;

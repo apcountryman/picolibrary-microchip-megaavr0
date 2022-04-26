@@ -29,6 +29,7 @@
 #include "picolibrary/i2c.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/postcondition.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR 0-series Inter-Integrated Circuit (I2C) facilities.
@@ -280,10 +281,9 @@ class Basic_Controller {
         TWI_Inactive_Bus_Time_Out twi_inactive_bus_time_out ) noexcept
     {
         m_twi->mbaud  = twi_clock_generator_scaling_factor;
-        m_twi->mctrla = static_cast<std::uint8_t>( twi_inactive_bus_time_out )
+        m_twi->mctrla = to_underlying( twi_inactive_bus_time_out )
                         | Peripheral::TWI::MCTRLA::Mask::SMEN;
-        m_twi->ctrla = static_cast<std::uint8_t>( twi_sda_hold_time )
-                       | static_cast<std::uint8_t>( twi_bus_speed );
+        m_twi->ctrla = to_underlying( twi_sda_hold_time ) | to_underlying( twi_bus_speed );
     }
 
     /**
@@ -360,7 +360,7 @@ class Basic_Controller {
      */
     void initiate_addressing( ::picolibrary::I2C::Address_Transmitted address, ::picolibrary::I2C::Operation operation ) noexcept
     {
-        m_twi->maddr = address.as_unsigned_integer() | static_cast<std::uint8_t>( operation );
+        m_twi->maddr = address.as_unsigned_integer() | to_underlying( operation );
     }
 
     /**

@@ -32,6 +32,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/spi.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR 0-series Serial Peripheral Interface (SPI) facilities.
@@ -313,11 +314,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
         SPI_Bit_Order      spi_bit_order ) noexcept
     {
         m_spi->ctrla = Peripheral::SPI::CTRLA::Mask::MASTER
-                       | static_cast<std::uint8_t>( spi_clock_rate )
-                       | static_cast<std::uint8_t>( spi_bit_order );
-        m_spi->ctrlb = Peripheral::SPI::CTRLB::Mask::SSD
-                       | static_cast<std::uint8_t>( spi_clock_polarity )
-                       | static_cast<std::uint8_t>( spi_clock_phase );
+                       | to_underlying( spi_clock_rate ) | to_underlying( spi_bit_order );
+        m_spi->ctrlb = Peripheral::SPI::CTRLB::Mask::SSD | to_underlying( spi_clock_polarity )
+                       | to_underlying( spi_clock_phase );
         m_spi->intctrl = 0;
     }
 
@@ -583,15 +582,14 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     {
         m_usart->ctrlb = 0;
         m_usart->ctrla = 0;
-        m_usart->ctrlc = Peripheral::USART::CTRLC::CMODE_MSPI
-                         | static_cast<std::uint8_t>( usart_clock_phase )
-                         | static_cast<std::uint8_t>( usart_bit_order );
+        m_usart->ctrlc = Peripheral::USART::CTRLC::CMODE_MSPI | to_underlying( usart_clock_phase )
+                         | to_underlying( usart_bit_order );
         m_usart->baud = usart_clock_generator_scaling_factor;
 
         m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ] =
             ( m_usart_xck_txd_port->pinctrl[ m_usart_xck_number ]
               & ~Peripheral::PORT::PINCTRL::Mask::INVEN )
-            | static_cast<std::uint8_t>( usart_clock_polarity );
+            | to_underlying( usart_clock_polarity );
     }
 
     /**
@@ -720,11 +718,10 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
             SPI_Bit_Order      spi_bit_order ) noexcept :
             m_ctrla{ static_cast<std::uint8_t>(
                 Peripheral::SPI::CTRLA::Mask::MASTER | Peripheral::SPI::CTRLA::Mask::ENABLE
-                | static_cast<std::uint8_t>( spi_clock_rate )
-                | static_cast<std::uint8_t>( spi_bit_order ) ) },
+                | to_underlying( spi_clock_rate ) | to_underlying( spi_bit_order ) ) },
             m_ctrlb{ static_cast<std::uint8_t>(
-                Peripheral::SPI::CTRLB::Mask::SSD | static_cast<std::uint8_t>( spi_clock_polarity )
-                | static_cast<std::uint8_t>( spi_clock_phase ) ) }
+                Peripheral::SPI::CTRLB::Mask::SSD | to_underlying( spi_clock_polarity )
+                | to_underlying( spi_clock_phase ) ) }
         {
         }
 
@@ -1036,10 +1033,10 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
             USART_Clock_Polarity usart_clock_polarity,
             USART_Clock_Phase    usart_clock_phase,
             USART_Bit_Order      usart_bit_order ) noexcept :
-            m_port_pinctrl_inven{ static_cast<std::uint8_t>( usart_clock_polarity ) },
+            m_port_pinctrl_inven{ to_underlying( usart_clock_polarity ) },
             m_usart_ctrlc{ static_cast<std::uint8_t>(
-                Peripheral::USART::CTRLC::CMODE_MSPI | static_cast<std::uint8_t>( usart_clock_phase )
-                | static_cast<std::uint8_t>( usart_bit_order ) ) },
+                Peripheral::USART::CTRLC::CMODE_MSPI | to_underlying( usart_clock_phase )
+                | to_underlying( usart_bit_order ) ) },
             m_usart_baud{ usart_clock_generator_scaling_factor }
         {
         }

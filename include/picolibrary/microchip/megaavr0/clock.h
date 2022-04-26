@@ -62,7 +62,7 @@ inline auto source_changing() noexcept -> bool
  *
  * \return The clock source.
  */
-inline auto source() noexcept
+inline auto source() noexcept -> Source
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -158,7 +158,7 @@ inline auto prescaler_enabled() noexcept -> bool
  *
  * \return The clock prescaler configuration.
  */
-inline auto prescaler_configuration() noexcept
+inline auto prescaler_configuration() noexcept -> Prescaler
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -170,7 +170,7 @@ inline auto prescaler_configuration() noexcept
  *
  * \return The clock prescaler value.
  */
-inline auto prescaler_value() noexcept
+inline auto prescaler_value() noexcept -> Prescaler_Value
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -259,7 +259,7 @@ inline auto internal_16_20_MHz_oscillator_stable() noexcept -> bool
  *
  * \return The internal 16/20 MHz oscillator mode.
  */
-inline auto internal_16_20_MHz_oscillator_mode() noexcept
+inline auto internal_16_20_MHz_oscillator_mode() noexcept -> Internal_16_20_MHz_Oscillator_Mode
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -336,6 +336,7 @@ inline auto internal_32_768_kHz_ultra_low_power_oscillator_stable() noexcept -> 
  * \return The internal 32.768 kHz ultra low-power oscillator mode.
  */
 inline auto internal_32_768_kHz_ultra_low_power_oscillator_mode() noexcept
+    -> Internal_32_768_kHz_Ultra_Low_Power_Oscillator_Mode
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -399,7 +400,7 @@ inline auto external_32_768_kHz_crystal_oscillator_stable() noexcept -> bool
  *
  * \return The external 32.768 kHz crystal oscillator source.
  */
-inline auto external_32_768_kHz_crystal_oscillator_source() noexcept
+inline auto external_32_768_kHz_crystal_oscillator_source() noexcept -> External_32_768_kHz_Crystal_Oscillator_Source
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -413,6 +414,7 @@ inline auto external_32_768_kHz_crystal_oscillator_source() noexcept
  * \return The external 32.768 kHz crystal oscillator start-up time.
  */
 inline auto external_32_768_kHz_crystal_oscillator_start_up_time() noexcept
+    -> External_32_768_kHz_Crystal_Oscillator_Start_Up_Time
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 
@@ -425,7 +427,7 @@ inline auto external_32_768_kHz_crystal_oscillator_start_up_time() noexcept
  *
  * \return The external 32.768 kHz crystal oscillator mode.
  */
-inline auto external_32_768_kHz_crystal_oscillator_mode() noexcept
+inline auto external_32_768_kHz_crystal_oscillator_mode() noexcept -> External_32_768_kHz_Crystal_Oscillator_Mode
 {
     auto const & clkctrl = Peripheral::CLKCTRL0::instance();
 

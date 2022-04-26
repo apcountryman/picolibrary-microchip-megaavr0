@@ -72,7 +72,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto & operator=( Type expression ) noexcept
+    auto operator=( Type expression ) noexcept -> Register &
     {
         m_register = expression;
 
@@ -86,7 +86,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto & operator&=( Type expression ) noexcept
+    auto operator&=( Type expression ) noexcept -> Register &
     {
         m_register &= expression;
 
@@ -100,7 +100,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto & operator|=( Type expression ) noexcept
+    auto operator|=( Type expression ) noexcept -> Register &
     {
         m_register |= expression;
 
@@ -114,7 +114,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto & operator^=( Type expression ) noexcept
+    auto operator^=( Type expression ) noexcept -> Register &
     {
         m_register ^= expression;
 
@@ -206,7 +206,7 @@ class Protected_Register {
      *
      * \return The assigned to object.
      */
-    auto & operator=( Type expression ) noexcept
+    auto operator=( Type expression ) noexcept -> Protected_Register &
     {
         write( expression );
 
@@ -220,7 +220,7 @@ class Protected_Register {
      *
      * \return The assigned to object.
      */
-    auto & operator&=( Type expression ) noexcept
+    auto operator&=( Type expression ) noexcept -> Protected_Register &
     {
         write( m_protected_register & expression );
 
@@ -234,7 +234,7 @@ class Protected_Register {
      *
      * \return The assigned to object.
      */
-    auto & operator|=( Type expression ) noexcept
+    auto operator|=( Type expression ) noexcept -> Protected_Register &
     {
         write( m_protected_register | expression );
 
@@ -248,7 +248,7 @@ class Protected_Register {
      *
      * \return The assigned to object.
      */
-    auto & operator^=( Type expression ) noexcept
+    auto operator^=( Type expression ) noexcept -> Protected_Register &
     {
         write( m_protected_register ^ expression );
 

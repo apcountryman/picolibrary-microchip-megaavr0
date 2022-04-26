@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega4809-arduino-nano-every/test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
 #       picolibrary::Microchip::megaAVR0::GPIO::Internally_Pulled_Up_Input_Pin state
 #       interactive test configuration.

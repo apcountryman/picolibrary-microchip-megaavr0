@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin toggle
 #       interactive test CMake rules.
 

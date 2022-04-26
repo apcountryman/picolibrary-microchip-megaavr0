@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega4809-arduino-nano-every/test/interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-usart/echo/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
 #       picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>
 #       echo interactive test configuration.

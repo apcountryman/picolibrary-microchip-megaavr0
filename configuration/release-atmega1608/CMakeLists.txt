@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/release-atmega1608/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr0 ATmega1608 release configuration.
 
 # install prefix is not applicable

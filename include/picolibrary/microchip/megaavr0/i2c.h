@@ -125,7 +125,7 @@ class Basic_Controller {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -156,7 +156,7 @@ class Basic_Controller {
      * \return true if a bus error is present.
      * \return false if a bus error is not present.
      */
-    auto bus_error_present() const noexcept
+    auto bus_error_present() const noexcept -> bool
     {
         return controller_bus_error_present();
     }
@@ -196,6 +196,7 @@ class Basic_Controller {
      * \return picolibrary::I2C::Response::NACK if a NACK response is received.
      */
     auto address( ::picolibrary::I2C::Address_Transmitted address, ::picolibrary::I2C::Operation operation ) noexcept
+        -> ::picolibrary::I2C::Response
     {
         initiate_addressing( address, operation );
 
@@ -216,7 +217,7 @@ class Basic_Controller {
      *
      * \return The data read from the device.
      */
-    auto read( ::picolibrary::I2C::Response response ) noexcept
+    auto read( ::picolibrary::I2C::Response response ) noexcept -> std::uint8_t
     {
         configure_read_response( response );
 
@@ -235,7 +236,7 @@ class Basic_Controller {
      * \return picolibrary::I2C::Response::ACK if an ACK response is received.
      * \return picolibrary::I2C::Response::NACK if a NACK response is received.
      */
-    auto write( std::uint8_t data ) noexcept
+    auto write( std::uint8_t data ) noexcept -> ::picolibrary::I2C::Response
     {
         initiate_write( data );
 

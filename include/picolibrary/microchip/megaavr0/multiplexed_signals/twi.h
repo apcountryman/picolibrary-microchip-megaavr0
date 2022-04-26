@@ -122,7 +122,7 @@ constexpr auto scl_number( std::uintptr_t twi_address, TWI_Route route ) noexcep
  *
  * \return The TWI peripheral's SCL pin number.
  */
-inline auto scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return scl_number( reinterpret_cast<std::uintptr_t>( &twi ), route );
 }
@@ -134,7 +134,7 @@ inline auto scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
  *
  * \return The TWI peripheral's SCL pin number.
  */
-inline auto scl_number( Peripheral::TWI const & twi ) noexcept
+inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return scl_number( twi, twi_route( twi ) );
 }
@@ -161,7 +161,7 @@ constexpr auto scl_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept 
  *
  * \return The TWI peripheral's SCL pin mask.
  */
-inline auto scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return scl_mask( reinterpret_cast<std::uintptr_t>( &twi ), route );
 }
@@ -173,7 +173,7 @@ inline auto scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
  *
  * \return The TWI peripheral's SCL pin mask.
  */
-inline auto scl_mask( Peripheral::TWI const & twi ) noexcept
+inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return scl_mask( twi, twi_route( twi ) );
 }
@@ -212,7 +212,7 @@ constexpr auto sda_number( std::uintptr_t twi_address, TWI_Route route ) noexcep
  *
  * \return The TWI peripheral's SDA pin number.
  */
-inline auto sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return sda_number( reinterpret_cast<std::uintptr_t>( &twi ), route );
 }
@@ -224,7 +224,7 @@ inline auto sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
  *
  * \return The TWI peripheral's SDA pin number.
  */
-inline auto sda_number( Peripheral::TWI const & twi ) noexcept
+inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return sda_number( twi, twi_route( twi ) );
 }
@@ -251,7 +251,7 @@ constexpr auto sda_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept 
  *
  * \return The TWI peripheral's SDA pin mask.
  */
-inline auto sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return sda_mask( reinterpret_cast<std::uintptr_t>( &twi ), route );
 }
@@ -263,7 +263,7 @@ inline auto sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
  *
  * \return The TWI peripheral's SDA pin mask.
  */
-inline auto sda_mask( Peripheral::TWI const & twi ) noexcept
+inline auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return sda_mask( twi, twi_route( twi ) );
 }
@@ -304,7 +304,8 @@ constexpr auto twi_controller_port_address( std::uintptr_t twi_address, TWI_Rout
  *
  * \return The TWI peripheral's controller pins PORT peripheral.
  */
-inline auto & twi_controller_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto twi_controller_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         twi_controller_port_address( reinterpret_cast<std::uintptr_t>( &twi ), route ) );
@@ -318,7 +319,7 @@ inline auto & twi_controller_port( Peripheral::TWI const & twi, TWI_Route route 
  *
  * \return The TWI peripheral's controller pins PORT peripheral.
  */
-inline auto & twi_controller_port( Peripheral::TWI const & twi ) noexcept
+inline auto twi_controller_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_controller_port( twi, twi_route( twi ) );
 }
@@ -359,7 +360,8 @@ constexpr auto twi_controller_vport_address( std::uintptr_t twi_address, TWI_Rou
  *
  * \return The TWI peripheral's controller pins VPORT peripheral.
  */
-inline auto & twi_controller_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto twi_controller_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return *reinterpret_cast<Peripheral::VPORT *>(
         twi_controller_vport_address( reinterpret_cast<std::uintptr_t>( &twi ), route ) );
@@ -373,7 +375,7 @@ inline auto & twi_controller_vport( Peripheral::TWI const & twi, TWI_Route route
  *
  * \return The TWI peripheral's controller pins VPORT peripheral.
  */
-inline auto & twi_controller_vport( Peripheral::TWI const & twi ) noexcept
+inline auto twi_controller_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_controller_vport( twi, twi_route( twi ) );
 }
@@ -388,6 +390,7 @@ inline auto & twi_controller_vport( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SCL pin PORT peripheral address.
  */
 constexpr auto controller_scl_port_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_controller_port_address( twi_address, route );
 }
@@ -401,7 +404,8 @@ constexpr auto controller_scl_port_address( std::uintptr_t twi_address, TWI_Rout
  *
  * \return The TWI peripheral's controller SCL pin PORT peripheral.
  */
-inline auto & controller_scl_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_scl_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return twi_controller_port( twi, route );
 }
@@ -414,7 +418,7 @@ inline auto & controller_scl_port( Peripheral::TWI const & twi, TWI_Route route 
  *
  * \return The TWI peripheral's controller SCL pin PORT peripheral.
  */
-inline auto & controller_scl_port( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_controller_port( twi );
 }
@@ -429,6 +433,7 @@ inline auto & controller_scl_port( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SCL pin VPORT peripheral address.
  */
 constexpr auto controller_scl_vport_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_controller_vport_address( twi_address, route );
 }
@@ -442,7 +447,8 @@ constexpr auto controller_scl_vport_address( std::uintptr_t twi_address, TWI_Rou
  *
  * \return The TWI peripheral's controller SCL pin VPORT peripheral.
  */
-inline auto & controller_scl_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_scl_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return twi_controller_vport( twi, route );
 }
@@ -455,7 +461,7 @@ inline auto & controller_scl_vport( Peripheral::TWI const & twi, TWI_Route route
  *
  * \return The TWI peripheral's controller SCL pin VPORT peripheral.
  */
-inline auto & controller_scl_vport( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_controller_vport( twi );
 }
@@ -470,6 +476,7 @@ inline auto & controller_scl_vport( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SCL pin number.
  */
 constexpr auto controller_scl_number( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uint_fast8_t
 {
     return scl_number( twi_address, route );
 }
@@ -483,6 +490,7 @@ constexpr auto controller_scl_number( std::uintptr_t twi_address, TWI_Route rout
  * \return The TWI peripheral's controller SCL pin number.
  */
 inline auto controller_scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> std::uint_fast8_t
 {
     return scl_number( twi, route );
 }
@@ -494,7 +502,7 @@ inline auto controller_scl_number( Peripheral::TWI const & twi, TWI_Route route 
  *
  * \return The TWI peripheral's controller SCL pin number.
  */
-inline auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return scl_number( twi );
 }
@@ -508,7 +516,7 @@ inline auto controller_scl_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SCL pin mask.
  */
-constexpr auto controller_scl_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto controller_scl_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint8_t
 {
     return scl_mask( twi_address, route );
 }
@@ -521,7 +529,7 @@ constexpr auto controller_scl_mask( std::uintptr_t twi_address, TWI_Route route 
  *
  * \return The TWI peripheral's controller SCL pin mask.
  */
-inline auto controller_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return scl_mask( twi, route );
 }
@@ -533,7 +541,7 @@ inline auto controller_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) 
  *
  * \return The TWI peripheral's controller SCL pin mask.
  */
-inline auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept
+inline auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return scl_mask( twi );
 }
@@ -548,6 +556,7 @@ inline auto controller_scl_mask( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SDA pin PORT peripheral address.
  */
 constexpr auto controller_sda_port_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_controller_port_address( twi_address, route );
 }
@@ -561,7 +570,8 @@ constexpr auto controller_sda_port_address( std::uintptr_t twi_address, TWI_Rout
  *
  * \return The TWI peripheral's controller SDA pin PORT peripheral.
  */
-inline auto & controller_sda_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_sda_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return twi_controller_port( twi, route );
 }
@@ -574,7 +584,7 @@ inline auto & controller_sda_port( Peripheral::TWI const & twi, TWI_Route route 
  *
  * \return The TWI peripheral's controller SDA pin PORT peripheral.
  */
-inline auto & controller_sda_port( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_controller_port( twi );
 }
@@ -589,6 +599,7 @@ inline auto & controller_sda_port( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SDA pin VPORT peripheral address.
  */
 constexpr auto controller_sda_vport_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_controller_vport_address( twi_address, route );
 }
@@ -602,7 +613,8 @@ constexpr auto controller_sda_vport_address( std::uintptr_t twi_address, TWI_Rou
  *
  * \return The TWI peripheral's controller SDA pin VPORT peripheral.
  */
-inline auto & controller_sda_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_sda_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return twi_controller_vport( twi, route );
 }
@@ -615,7 +627,7 @@ inline auto & controller_sda_vport( Peripheral::TWI const & twi, TWI_Route route
  *
  * \return The TWI peripheral's controller SDA pin VPORT peripheral.
  */
-inline auto & controller_sda_vport( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_controller_vport( twi );
 }
@@ -630,6 +642,7 @@ inline auto & controller_sda_vport( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's controller SDA pin number.
  */
 constexpr auto controller_sda_number( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uint_fast8_t
 {
     return sda_number( twi_address, route );
 }
@@ -643,6 +656,7 @@ constexpr auto controller_sda_number( std::uintptr_t twi_address, TWI_Route rout
  * \return The TWI peripheral's controller SDA pin number.
  */
 inline auto controller_sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> std::uint_fast8_t
 {
     return sda_number( twi, route );
 }
@@ -654,7 +668,7 @@ inline auto controller_sda_number( Peripheral::TWI const & twi, TWI_Route route 
  *
  * \return The TWI peripheral's controller SDA pin number.
  */
-inline auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return sda_number( twi );
 }
@@ -668,7 +682,7 @@ inline auto controller_sda_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's controller SDA pin mask.
  */
-constexpr auto controller_sda_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto controller_sda_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint8_t
 {
     return sda_mask( twi_address, route );
 }
@@ -681,7 +695,7 @@ constexpr auto controller_sda_mask( std::uintptr_t twi_address, TWI_Route route 
  *
  * \return The TWI peripheral's controller SDA pin mask.
  */
-inline auto controller_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto controller_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return sda_mask( twi, route );
 }
@@ -693,7 +707,7 @@ inline auto controller_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) 
  *
  * \return The TWI peripheral's controller SDA pin mask.
  */
-inline auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept
+inline auto controller_sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return sda_mask( twi );
 }
@@ -733,7 +747,8 @@ constexpr auto twi_device_port_address( std::uintptr_t twi_address, TWI_Route ro
  *
  * \return The TWI peripheral's device pins PORT peripheral.
  */
-inline auto & twi_device_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto twi_device_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         twi_device_port_address( reinterpret_cast<std::uintptr_t>( &twi ), route ) );
@@ -746,7 +761,7 @@ inline auto & twi_device_port( Peripheral::TWI const & twi, TWI_Route route ) no
  *
  * \return The TWI peripheral's device pins PORT peripheral.
  */
-inline auto & twi_device_port( Peripheral::TWI const & twi ) noexcept
+inline auto twi_device_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_device_port( twi, twi_route( twi ) );
 }
@@ -787,7 +802,8 @@ constexpr auto twi_device_vport_address( std::uintptr_t twi_address, TWI_Route r
  *
  * \return The TWI peripheral's device pins VPORT peripheral.
  */
-inline auto & twi_device_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto twi_device_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return *reinterpret_cast<Peripheral::VPORT *>(
         twi_device_vport_address( reinterpret_cast<std::uintptr_t>( &twi ), route ) );
@@ -801,7 +817,7 @@ inline auto & twi_device_vport( Peripheral::TWI const & twi, TWI_Route route ) n
  *
  * \return The TWI peripheral's device pins VPORT peripheral.
  */
-inline auto & twi_device_vport( Peripheral::TWI const & twi ) noexcept
+inline auto twi_device_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_device_vport( twi, twi_route( twi ) );
 }
@@ -816,6 +832,7 @@ inline auto & twi_device_vport( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's device SCL pin PORT peripheral address.
  */
 constexpr auto device_scl_port_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_device_port_address( twi_address, route );
 }
@@ -829,7 +846,8 @@ constexpr auto device_scl_port_address( std::uintptr_t twi_address, TWI_Route ro
  *
  * \return The TWI peripheral's device SCL pin PORT peripheral.
  */
-inline auto & device_scl_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_scl_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return twi_device_port( twi, route );
 }
@@ -842,7 +860,7 @@ inline auto & device_scl_port( Peripheral::TWI const & twi, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SCL pin PORT peripheral.
  */
-inline auto & device_scl_port( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_device_port( twi );
 }
@@ -857,6 +875,7 @@ inline auto & device_scl_port( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's device SCL pin VPORT peripheral address.
  */
 constexpr auto device_scl_vport_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_device_vport_address( twi_address, route );
 }
@@ -870,7 +889,8 @@ constexpr auto device_scl_vport_address( std::uintptr_t twi_address, TWI_Route r
  *
  * \return The TWI peripheral's device SCL pin VPORT peripheral.
  */
-inline auto & device_scl_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_scl_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return twi_device_vport( twi, route );
 }
@@ -883,7 +903,7 @@ inline auto & device_scl_vport( Peripheral::TWI const & twi, TWI_Route route ) n
  *
  * \return The TWI peripheral's device SCL pin VPORT peripheral.
  */
-inline auto & device_scl_vport( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_device_vport( twi );
 }
@@ -897,7 +917,7 @@ inline auto & device_scl_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SCL pin number.
  */
-constexpr auto device_scl_number( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto device_scl_number( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return scl_number( twi_address, route );
 }
@@ -910,7 +930,7 @@ constexpr auto device_scl_number( std::uintptr_t twi_address, TWI_Route route ) 
  *
  * \return The TWI peripheral's device SCL pin number.
  */
-inline auto device_scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_scl_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return scl_number( twi, route );
 }
@@ -922,7 +942,7 @@ inline auto device_scl_number( Peripheral::TWI const & twi, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SCL pin number.
  */
-inline auto device_scl_number( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return scl_number( twi );
 }
@@ -936,7 +956,7 @@ inline auto device_scl_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SCL pin mask.
  */
-constexpr auto device_scl_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto device_scl_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint8_t
 {
     return scl_mask( twi_address, route );
 }
@@ -949,7 +969,7 @@ constexpr auto device_scl_mask( std::uintptr_t twi_address, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SCL pin mask.
  */
-inline auto device_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return scl_mask( twi, route );
 }
@@ -961,7 +981,7 @@ inline auto device_scl_mask( Peripheral::TWI const & twi, TWI_Route route ) noex
  *
  * \return The TWI peripheral's device SCL pin mask.
  */
-inline auto device_scl_mask( Peripheral::TWI const & twi ) noexcept
+inline auto device_scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return scl_mask( twi );
 }
@@ -976,6 +996,7 @@ inline auto device_scl_mask( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's device SDA pin PORT peripheral address.
  */
 constexpr auto device_sda_port_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_device_port_address( twi_address, route );
 }
@@ -989,7 +1010,8 @@ constexpr auto device_sda_port_address( std::uintptr_t twi_address, TWI_Route ro
  *
  * \return The TWI peripheral's device SDA pin PORT peripheral.
  */
-inline auto & device_sda_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_sda_port( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::PORT &
 {
     return twi_device_port( twi, route );
 }
@@ -1002,7 +1024,7 @@ inline auto & device_sda_port( Peripheral::TWI const & twi, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SDA pin PORT peripheral.
  */
-inline auto & device_sda_port( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
     return twi_device_port( twi );
 }
@@ -1017,6 +1039,7 @@ inline auto & device_sda_port( Peripheral::TWI const & twi ) noexcept
  * \return The TWI peripheral's device SDA pin VPORT peripheral address.
  */
 constexpr auto device_sda_vport_address( std::uintptr_t twi_address, TWI_Route route ) noexcept
+    -> std::uintptr_t
 {
     return twi_device_vport_address( twi_address, route );
 }
@@ -1030,7 +1053,8 @@ constexpr auto device_sda_vport_address( std::uintptr_t twi_address, TWI_Route r
  *
  * \return The TWI peripheral's device SDA pin VPORT peripheral.
  */
-inline auto & device_sda_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_sda_vport( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+    -> Peripheral::VPORT &
 {
     return twi_device_vport( twi, route );
 }
@@ -1043,7 +1067,7 @@ inline auto & device_sda_vport( Peripheral::TWI const & twi, TWI_Route route ) n
  *
  * \return The TWI peripheral's device SDA pin VPORT peripheral.
  */
-inline auto & device_sda_vport( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_vport( Peripheral::TWI const & twi ) noexcept -> Peripheral::VPORT &
 {
     return twi_device_vport( twi );
 }
@@ -1057,7 +1081,7 @@ inline auto & device_sda_vport( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SDA pin number.
  */
-constexpr auto device_sda_number( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto device_sda_number( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return sda_number( twi_address, route );
 }
@@ -1070,7 +1094,7 @@ constexpr auto device_sda_number( std::uintptr_t twi_address, TWI_Route route ) 
  *
  * \return The TWI peripheral's device SDA pin number.
  */
-inline auto device_sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_sda_number( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint_fast8_t
 {
     return sda_number( twi, route );
 }
@@ -1082,7 +1106,7 @@ inline auto device_sda_number( Peripheral::TWI const & twi, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SDA pin number.
  */
-inline auto device_sda_number( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
     return sda_number( twi );
 }
@@ -1096,7 +1120,7 @@ inline auto device_sda_number( Peripheral::TWI const & twi ) noexcept
  *
  * \return The TWI peripheral's device SDA pin mask.
  */
-constexpr auto device_sda_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept
+constexpr auto device_sda_mask( std::uintptr_t twi_address, TWI_Route route ) noexcept -> std::uint8_t
 {
     return sda_mask( twi_address, route );
 }
@@ -1109,7 +1133,7 @@ constexpr auto device_sda_mask( std::uintptr_t twi_address, TWI_Route route ) no
  *
  * \return The TWI peripheral's device SDA pin mask.
  */
-inline auto device_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept
+inline auto device_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noexcept -> std::uint8_t
 {
     return sda_mask( twi, route );
 }
@@ -1121,7 +1145,7 @@ inline auto device_sda_mask( Peripheral::TWI const & twi, TWI_Route route ) noex
  *
  * \return The TWI peripheral's device SDA pin mask.
  */
-inline auto device_sda_mask( Peripheral::TWI const & twi ) noexcept
+inline auto device_sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
     return sda_mask( twi );
 }

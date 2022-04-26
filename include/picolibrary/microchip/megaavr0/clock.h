@@ -27,6 +27,7 @@
 
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR 0-series clock facilities
@@ -78,7 +79,7 @@ inline void set_source( Source source ) noexcept
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
     clkctrl.mclkctrla = ( clkctrl.mclkctrla & ~Peripheral::CLKCTRL::MCLKCTRLA::Mask::CLKSEL )
-                        | static_cast<std::uint8_t>( source );
+                        | to_underlying( source );
 }
 
 /**
@@ -186,7 +187,7 @@ inline void configure_prescaler( Prescaler_Value value, Prescaler configuration 
 {
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
-    clkctrl.mclkctrlb = static_cast<std::uint8_t>( value ) | static_cast<std::uint8_t>( configuration );
+    clkctrl.mclkctrlb = to_underlying( value ) | to_underlying( configuration );
 }
 
 /**
@@ -275,7 +276,7 @@ inline void set_internal_16_20_MHz_oscillator_mode( Internal_16_20_MHz_Oscillato
 {
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
-    clkctrl.osc20mctrla = static_cast<std::uint8_t>( mode );
+    clkctrl.osc20mctrla = to_underlying( mode );
 }
 
 /**
@@ -351,7 +352,7 @@ inline void set_internal_32_768_kHz_ultra_low_power_oscillator_mode( Internal_32
 {
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
-    clkctrl.osc32kctrla = static_cast<std::uint8_t>( mode );
+    clkctrl.osc32kctrla = to_underlying( mode );
 }
 
 /**
@@ -446,9 +447,8 @@ inline void configure_external_32_768_kHz_crystal_oscillator(
 {
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
-    clkctrl.xosc32kctrla = static_cast<std::uint8_t>( source )
-                           | static_cast<std::uint8_t>( start_up_time )
-                           | static_cast<std::uint8_t>( mode );
+    clkctrl.xosc32kctrla = to_underlying( source ) | to_underlying( start_up_time )
+                           | to_underlying( mode );
 }
 
 /**
@@ -461,7 +461,7 @@ inline void set_external_32_768_kHz_crystal_oscillator_mode( External_32_768_kHz
     auto & clkctrl = Peripheral::CLKCTRL0::instance();
 
     clkctrl.xosc32kctrla = ( clkctrl.xosc32kctrla & ~Peripheral::CLKCTRL::XOSC32KCTRLA::Mask::RUNSTDBY )
-                           | static_cast<std::uint8_t>( mode );
+                           | to_underlying( mode );
 }
 
 /**

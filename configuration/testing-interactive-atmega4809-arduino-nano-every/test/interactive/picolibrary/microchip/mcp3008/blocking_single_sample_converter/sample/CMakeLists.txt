@@ -14,8 +14,8 @@
 # permissions and limitations under the License.
 
 # Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
-#       picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample interactive test
-#       configuration.
+#       picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample
+#       interactive test configuration.
 
 set( PICOLIBRARY_MICROCHIP_MCP3008_BLOCKING_SINGLE_SAMPLE_CONVERTER_ENABLE_SAMPLE_INTERACTIVE_TEST                        ON                       CACHE BOOL   "" FORCE )
 set( PICOLIBRARY_MICROCHIP_MCP3008_BLOCKING_SINGLE_SAMPLE_CONVERTER_SAMPLE_INTERACTIVE_TEST_CONTROLLER_SPI                "SPI0"                   CACHE STRING "" FORCE )

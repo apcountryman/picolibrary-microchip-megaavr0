@@ -28,6 +28,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
@@ -157,6 +158,11 @@ using TWI0 = Instance<TWI, 0x08A0>;
  * \brief SPI0.
  */
 using SPI0 = Instance<SPI, 0x08C0>;
+
+/**
+ * \brief SIGROW0.
+ */
+using SIGROW0 = Instance<SIGROW, 0x1100>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

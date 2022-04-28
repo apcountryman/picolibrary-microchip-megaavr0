@@ -41,7 +41,7 @@ class SIGROW {
      * This register has the following fields:
      * - OSC16 Calibration (OSCCAL16M)
      */
-    class OSCCAL16M0 : Register<std::uint8_t> {
+    class OSCCAL16M0 : public Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -88,7 +88,7 @@ class SIGROW {
      * This register has the following fields:
      * - OSC16 Temperature Calibration (OSCCAL16MTCAL)
      */
-    class OSCCAL16M1 : Register<std::uint8_t> {
+    class OSCCAL16M1 : public Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -137,7 +137,7 @@ class SIGROW {
      * This register has the following fields:
      * - OSC20 Calibration (OSCCAL20M)
      */
-    class OSCCAL20M0 : Register<std::uint8_t> {
+    class OSCCAL20M0 : public Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -184,7 +184,7 @@ class SIGROW {
      * This register has the following fields:
      * - OSC20 Temperature Calibration (OSCCAL20MTCAL)
      */
-    class OSCCAL20M1 : Register<std::uint8_t> {
+    class OSCCAL20M1 : public Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.

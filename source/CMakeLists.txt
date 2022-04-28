@@ -41,6 +41,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/rstctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/sigrow.cc"
     "picolibrary/microchip/megaavr0/peripheral/spi.cc"
+    "picolibrary/microchip/megaavr0/peripheral/syscfg.cc"
     "picolibrary/microchip/megaavr0/peripheral/twi.cc"
     "picolibrary/microchip/megaavr0/peripheral/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral/vport.cc"

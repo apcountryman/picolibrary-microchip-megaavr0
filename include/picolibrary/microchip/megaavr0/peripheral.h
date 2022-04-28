@@ -30,6 +30,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
@@ -158,6 +159,11 @@ using TWI0 = Instance<TWI, 0x08A0>;
  * \brief SPI0.
  */
 using SPI0 = Instance<SPI, 0x08C0>;
+
+/**
+ * \brief SYSCFG0.
+ */
+using SYSCFG0 = Instance<SYSCFG, 0x0F00>;
 
 /**
  * \brief SIGROW0.

@@ -42,7 +42,7 @@ class WDT {
      * - Period (PERIOD)
      * - Window (WINDOW)
      */
-    class CTRLA : Protected_Register<std::uint8_t> {
+    class CTRLA : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.
@@ -126,7 +126,7 @@ class WDT {
      * - Synchronization Busy (SYNCBUSY)
      * - Lock (LOCK)
      */
-    class STATUS : Protected_Register<std::uint8_t> {
+    class STATUS : public Protected_Register<std::uint8_t> {
       public:
         /**
          * \brief Field sizes.

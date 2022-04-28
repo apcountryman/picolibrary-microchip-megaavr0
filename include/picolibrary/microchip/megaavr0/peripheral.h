@@ -34,6 +34,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
+#include "picolibrary/microchip/megaavr0/peripheral/wdt.h"
 
 /**
  * \brief Microchip megaAVR 0-series peripheral facilities.
@@ -85,6 +86,11 @@ using RSTCTRL0 = Instance<RSTCTRL, 0x0040>;
  * \brief CLKCTRL0.
  */
 using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
+
+/**
+ * \brief WDT0.
+ */
+using WDT0 = Instance<WDT, 0x0100>;
 
 /**
  * \brief PORTA.

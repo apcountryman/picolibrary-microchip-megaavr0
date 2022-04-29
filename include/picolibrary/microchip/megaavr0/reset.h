@@ -196,7 +196,7 @@ inline void clear_reset_source() noexcept
 [[noreturn]] inline void initiate_software_reset() noexcept
 {
     Peripheral::RSTCTRL0::instance().swrr = Peripheral::RSTCTRL::SWRR::Mask::SWRE;
-    
+
     ensure( false, Generic_Error::RUNTIME_ERROR );
 }
 

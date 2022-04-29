@@ -41,7 +41,7 @@ namespace picolibrary::Microchip::megaAVR0::Watchdog_Timer {
 enum class Period : std::uint8_t {
     _8_ms   = Peripheral::WDT::CTRLA::PERIOD_8CLK,   ///< 8 ms.
     _16_ms  = Peripheral::WDT::CTRLA::PERIOD_16CLK,  ///< 16 ms.
-    _32_ms  = Peripheral::WDT::CTRLA::PERIOD_32CLK,  ///< 32 ms.
+    _31_ms  = Peripheral::WDT::CTRLA::PERIOD_32CLK,  ///< 31 ms.
     _63_ms  = Peripheral::WDT::CTRLA::PERIOD_64CLK,  ///< 63 ms.
     _125_ms = Peripheral::WDT::CTRLA::PERIOD_128CLK, ///< 125 ms.
     _250_ms = Peripheral::WDT::CTRLA::PERIOD_256CLK, ///< 250 ms.
@@ -58,7 +58,7 @@ enum class Period : std::uint8_t {
 enum class Closed_Period : std::uint8_t {
     _8_ms   = Peripheral::WDT::CTRLA::WINDOW_8CLK,   ///< 8 ms.
     _16_ms  = Peripheral::WDT::CTRLA::WINDOW_16CLK,  ///< 16 ms.
-    _32_ms  = Peripheral::WDT::CTRLA::WINDOW_32CLK,  ///< 32 ms.
+    _31_ms  = Peripheral::WDT::CTRLA::WINDOW_32CLK,  ///< 31 ms.
     _63_ms  = Peripheral::WDT::CTRLA::WINDOW_64CLK,  ///< 63 ms.
     _125_ms = Peripheral::WDT::CTRLA::WINDOW_128CLK, ///< 125 ms.
     _250_ms = Peripheral::WDT::CTRLA::WINDOW_256CLK, ///< 250 ms.
@@ -75,7 +75,7 @@ enum class Closed_Period : std::uint8_t {
 enum class Open_Period : std::uint8_t {
     _8_ms   = Peripheral::WDT::CTRLA::PERIOD_8CLK,   ///< 8 ms.
     _16_ms  = Peripheral::WDT::CTRLA::PERIOD_16CLK,  ///< 16 ms.
-    _32_ms  = Peripheral::WDT::CTRLA::PERIOD_32CLK,  ///< 32 ms.
+    _31_ms  = Peripheral::WDT::CTRLA::PERIOD_32CLK,  ///< 31 ms.
     _63_ms  = Peripheral::WDT::CTRLA::PERIOD_64CLK,  ///< 63 ms.
     _125_ms = Peripheral::WDT::CTRLA::PERIOD_128CLK, ///< 125 ms.
     _250_ms = Peripheral::WDT::CTRLA::PERIOD_256CLK, ///< 250 ms.

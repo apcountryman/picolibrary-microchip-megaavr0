@@ -36,7 +36,7 @@
 #include "picolibrary/stream.h"
 
 /**
- * \brief Microchip megaAVR 0-series watchdog timer facilities.
+ * \brief Microchip megaAVR 0-series device info facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::Device_Info {
 
@@ -176,7 +176,7 @@ constexpr auto operator==( Device_Revision lhs, Device_Revision rhs ) noexcept -
 }
 
 /**
- * \brief Equality operator.
+ * \brief Inequality operator.
  *
  * \relatedalso picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision
  *
@@ -256,7 +256,7 @@ constexpr auto operator>=( Device_Revision lhs, Device_Revision rhs ) noexcept -
 }
 
 /**
- * \brief Device revision.
+ * \brief Device serial number.
  */
 class Device_Serial_Number {
   public:
@@ -324,7 +324,7 @@ class Device_Serial_Number {
      *
      * \return The device serial number in its array representation.
      */
-    constexpr auto as_array() const noexcept -> Array
+    constexpr auto as_array() const noexcept -> Array const &
     {
         return m_serial_number;
     }
@@ -354,7 +354,7 @@ constexpr auto operator==( Device_Serial_Number const & lhs, Device_Serial_Numbe
 }
 
 /**
- * \brief Equality operator.
+ * \brief Inequality operator.
  *
  * \relatedalso picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number
  *
@@ -667,7 +667,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
             std::numeric_limits<Microchip::megaAVR0::Device_Info::Device_Serial_Number::Array::Value>::digits
             / 4;
 
-        Array<char, 2 + bytes * byte_nibbles> hexadecimal;
+        Array<char, 2 + ( bytes * byte_nibbles )> hexadecimal;
 
         auto i = hexadecimal.rbegin();
         for ( auto byte : device_serial_number.as_array() ) {

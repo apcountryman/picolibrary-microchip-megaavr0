@@ -659,6 +659,8 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
     auto print( Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Serial_Number const & device_serial_number ) noexcept
         -> Result<std::size_t, Error_Code>
     {
+        // #lizard forgives the length
+
         constexpr auto bytes = array_size_v<Microchip::megaAVR0::Device_Info::Device_Serial_Number::Array>;
 
         constexpr auto byte_nibbles =

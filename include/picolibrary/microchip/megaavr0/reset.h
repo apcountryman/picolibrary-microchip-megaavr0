@@ -25,8 +25,10 @@
 
 #include <cstdint>
 
+#include "picolibrary/error.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
+#include "picolibrary/postcondition.h"
 
 /**
  * \brief Microchip megaAVR 0-series reset facilities.
@@ -76,6 +78,8 @@ class Source {
      * \brief Assignment operator.
      *
      * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
      */
     constexpr auto operator=( Source && expression ) noexcept -> Source & = default;
 
@@ -83,6 +87,8 @@ class Source {
      * \brief Assignment operator.
      *
      * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
      */
     constexpr auto operator=( Source const & expression ) noexcept -> Source & = default;
 
@@ -184,10 +190,14 @@ inline void clear_reset_source() noexcept
 
 /**
  * \brief Initiate a software reset.
+ *
+ * \post a software reset is initiated
  */
 [[noreturn]] inline void initiate_software_reset() noexcept
 {
     Peripheral::RSTCTRL0::instance().swrr = Peripheral::RSTCTRL::SWRR::Mask::SWRE;
+    
+    ensure( false, Generic_Error::RUNTIME_ERROR );
 }
 
 } // namespace picolibrary::Microchip::megaAVR0::Reset

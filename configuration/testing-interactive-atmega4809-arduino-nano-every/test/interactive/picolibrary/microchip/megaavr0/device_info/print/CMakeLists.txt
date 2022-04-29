@@ -13,8 +13,11 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary::Microchip::megaAVR0::Device_Info interactive tests CMake
-#       rules.
+# Description: picolibrary-microchip-megaavr0 ATmega4809 Arduino Nano Every
+#       picolibrary::Microchip::megaAVR0::Device_Info print interactive test
+#       configuration.
 
-# build the picolibrary::Microchip::megaAVR0::Device_Info print interactive test
-add_subdirectory( print )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_ENABLE_PRINT_INTERACTIVE_TEST ON CACHE BOOL "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_MICROCHIP_MEGAAVR0_DEVICE_INFO_ENABLE_PRINT_INTERACTIVE_TEST
+)

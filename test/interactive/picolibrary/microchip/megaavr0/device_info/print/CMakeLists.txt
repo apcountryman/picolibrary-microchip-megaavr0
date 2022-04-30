@@ -13,8 +13,8 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary::Microchip::megaAVR0::Device_Info print interactive test
-#       CMake rules.
+# Description: picolibrary::Microchip::megaAVR0::Device_Info print interactive test CMake
+#       rules.
 
 # build the picolibrary::Microchip::megaAVR0::Device_Info print interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )

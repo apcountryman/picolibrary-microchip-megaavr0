@@ -85,6 +85,7 @@ include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp23
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp23s08/push_pull_io_pin/toggle/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp3008/blocking_single_sample_converter/sample/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/asynchronous_serial/transmitter/hello_world/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/device_info/print/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/input_pin/state/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle/CMakeLists.txt" )

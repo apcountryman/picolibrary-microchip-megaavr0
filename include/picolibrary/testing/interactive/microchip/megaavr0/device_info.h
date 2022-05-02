@@ -41,12 +41,19 @@ namespace picolibrary::Testing::Interactive::Microchip::megaAVR0::Device_Info {
  */
 inline void print( Output_Stream & stream ) noexcept
 {
-    auto const result = stream.print(
-        "{} (revision {}), serial number {}\n",
-        ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
-        ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
-        ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number() );
-    expect( not result.is_error(), result.error() );
+    {
+        auto result = stream.print(
+            "{} (revision {}), serial number {}\n",
+            ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
+            ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
+            ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number() );
+        expect( not result.is_error(), result.error() );
+    }
+
+    {
+        auto result = stream.flush();
+        expect( not result.is_error(), result.error() );
+    }
 }
 
 } // namespace picolibrary::Testing::Interactive::Microchip::megaAVR0::Device_Info

@@ -25,15 +25,5 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( TWI ) == 0x0E + 1 );
-static_assert( TWI::CTRLA::Bit::RESERVED5 == 5 );
-static_assert( TWI::DUALCTRL::Bit::RESERVED4 == 4 );
-static_assert( TWI::DBGCTRL::Bit::RESERVED1 == 1 );
-static_assert( TWI::MCTRLA::Bit::RIEN == 7 );
-static_assert( TWI::MCTRLB::Bit::RESERVED4 == 4 );
-static_assert( TWI::MSTATUS::Bit::RIF == 7 );
-static_assert( TWI::SCTRLA::Bit::DIEN == 7 );
-static_assert( TWI::SCTRLB::Bit::RESERVED3 == 3 );
-static_assert( TWI::SSTATUS::Bit::DIF == 7 );
-static_assert( TWI::SADDRMASK::Bit::ADDRMASK == 1 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

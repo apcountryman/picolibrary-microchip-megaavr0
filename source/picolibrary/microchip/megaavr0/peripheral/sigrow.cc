@@ -25,9 +25,5 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( SIGROW ) == 0x25 + 1 );
-static_assert( SIGROW::OSCCAL16M0::Bit::RESERVED7 == 7 );
-static_assert( SIGROW::OSCCAL16M1::Bit::RESERVED4 == 4 );
-static_assert( SIGROW::OSCCAL20M0::Bit::RESERVED7 == 7 );
-static_assert( SIGROW::OSCCAL20M1::Bit::RESERVED4 == 4 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

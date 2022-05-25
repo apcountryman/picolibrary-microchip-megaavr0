@@ -25,7 +25,5 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( RSTCTRL ) == 0x01 + 1 );
-static_assert( RSTCTRL::RSTFR::Bit::RESERVED6 == 6 );
-static_assert( RSTCTRL::SWRR::Bit::RESERVED1 == 1 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

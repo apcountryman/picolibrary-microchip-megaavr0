@@ -25,10 +25,5 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 static_assert( sizeof( SPI ) == 0x04 + 1 );
-static_assert( SPI::CTRLA::Bit::RESERVED7 == 7 );
-static_assert( SPI::CTRLB::Bit::BUFEN == 7 );
-static_assert( SPI::INTCTRL::Bit::RXCIE == 7 );
-static_assert( SPI::INTFLAGS::Bit::IF == 7 );
-static_assert( SPI::INTFLAGS::Bit::RXCIF == 7 );
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

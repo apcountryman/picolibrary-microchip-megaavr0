@@ -43,10 +43,12 @@ inline void print( Output_Stream & stream ) noexcept
 {
     {
         auto result = stream.print(
-            "{} (revision {}), serial number {}\n",
             ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
+            " (revision ",
             ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
-            ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number() );
+            "), serial number ",
+            ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number(),
+            '\n' );
         expect( not result.is_error(), result.error() );
     }
 

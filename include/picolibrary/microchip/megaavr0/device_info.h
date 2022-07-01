@@ -439,18 +439,43 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
      */
     constexpr Output_Formatter() noexcept = default;
 
-    Output_Formatter( Output_Formatter && ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Output_Formatter( Output_Formatter && source ) noexcept = default;
 
-    Output_Formatter( Output_Formatter const & ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] original The original to copy.
+     */
+    constexpr Output_Formatter( Output_Formatter const & original ) noexcept = default;
 
     /**
      * \brief Destructor.
      */
     ~Output_Formatter() noexcept = default;
 
-    auto operator=( Output_Formatter && ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator=( Output_Formatter && expression ) noexcept -> Output_Formatter & = default;
 
-    auto operator=( Output_Formatter const & ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator   =( Output_Formatter const & expression ) noexcept
+        -> Output_Formatter & = default;
 
     /**
      * \brief Parse the format specification for the
@@ -488,6 +513,27 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
         if ( result.is_error() ) {
             return result.error();
         } // if
+
+        return std::strlen( device_type_as_string );
+    }
+
+    /**
+     * \brief Write the formatted
+     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to the stream.
+     *
+     * \param[in] stream The stream to write the formatted
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to.
+     * \param[in] device_type The
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to format.
+     *
+     * \return The number of characters written to the stream.
+     */
+    auto print( Reliable_Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
+        -> std::size_t
+    {
+        auto const device_type_as_string = to_string( device_type );
+
+        stream.put( device_type_as_string );
 
         return std::strlen( device_type_as_string );
     }
@@ -543,18 +589,43 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
      */
     constexpr Output_Formatter() noexcept = default;
 
-    Output_Formatter( Output_Formatter && ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Output_Formatter( Output_Formatter && source ) noexcept = default;
 
-    Output_Formatter( Output_Formatter const & ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] original The original to copy.
+     */
+    constexpr Output_Formatter( Output_Formatter const & original ) noexcept = default;
 
     /**
      * \brief Destructor.
      */
     ~Output_Formatter() noexcept = default;
 
-    auto operator=( Output_Formatter && ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator=( Output_Formatter && expression ) noexcept -> Output_Formatter & = default;
 
-    auto operator=( Output_Formatter const & ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator   =( Output_Formatter const & expression ) noexcept
+        -> Output_Formatter & = default;
 
     /**
      * \brief Parse the format specification for the
@@ -596,6 +667,27 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
 
         return std::size_t{ 1 };
     }
+
+    /**
+     * \brief Write the formatted
+     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to the
+     *        stream.
+     *
+     * \param[in] stream The stream to write the formatted
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to.
+     * \param[in] device_revision The
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to
+     *            format.
+     *
+     * \return The number of characters written to the stream.
+     */
+    auto print( Reliable_Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Revision device_revision ) noexcept
+        -> std::size_t
+    {
+        stream.put( device_revision.as_printable_character() );
+
+        return std::size_t{ 1 };
+    }
 };
 
 /**
@@ -613,18 +705,43 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
      */
     constexpr Output_Formatter() noexcept = default;
 
-    Output_Formatter( Output_Formatter && ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Output_Formatter( Output_Formatter && source ) noexcept = default;
 
-    Output_Formatter( Output_Formatter const & ) = delete;
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] original The original to copy.
+     */
+    constexpr Output_Formatter( Output_Formatter const & original ) noexcept = default;
 
     /**
      * \brief Destructor.
      */
     ~Output_Formatter() noexcept = default;
 
-    auto operator=( Output_Formatter && ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator=( Output_Formatter && expression ) noexcept -> Output_Formatter & = default;
 
-    auto operator=( Output_Formatter const & ) = delete;
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator   =( Output_Formatter const & expression ) noexcept
+        -> Output_Formatter & = default;
 
     /**
      * \brief Parse the format specification for the
@@ -659,37 +776,124 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
     auto print( Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Serial_Number const & device_serial_number ) noexcept
         -> Result<std::size_t, Error_Code>
     {
-        // #lizard forgives the length
+        auto const formatted_device_serial_number = format( device_serial_number );
 
-        constexpr auto bytes = array_size_v<Microchip::megaAVR0::Device_Info::Device_Serial_Number::Array>;
+        auto result = stream.put(
+            formatted_device_serial_number.begin(), formatted_device_serial_number.end() );
+        if ( result.is_error() ) {
+            return result.error();
+        } // if
 
-        constexpr auto byte_nibbles =
-            std::numeric_limits<Microchip::megaAVR0::Device_Info::Device_Serial_Number::Array::Value>::digits
-            / 4;
+        return formatted_device_serial_number.size();
+    }
 
-        Array<char, 2 + ( bytes * byte_nibbles )> hexadecimal;
+    /**
+     * \brief Write the formatted
+     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to the
+     *        stream.
+     *
+     * \param[in] stream The stream to write the formatted
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to.
+     * \param[in] device_type The
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to
+     *            format.
+     *
+     * \return The number of characters written to the stream.
+     */
+    auto print( Reliable_Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Serial_Number const & device_serial_number ) noexcept
+        -> std::size_t
+    {
+        auto const formatted_device_serial_number = format( device_serial_number );
 
-        auto i = hexadecimal.rbegin();
-        for ( auto byte : device_serial_number.as_array() ) {
-            for ( auto byte_nibble = 0; byte_nibble < byte_nibbles; ++byte_nibble ) {
-                auto const n = byte & 0x0F;
+        stream.put( formatted_device_serial_number.begin(), formatted_device_serial_number.end() );
 
-                *i = n < 0xA ? '0' + n : 'A' + ( n - 0xA );
+        return formatted_device_serial_number.size();
+    }
+
+  private:
+    /**
+     * \brief The number of bits in a nibble.
+     */
+    static constexpr auto NIBBLE_DIGITS = 4;
+
+    /**
+     * \brief The largest value a nibble can hold.
+     */
+    static constexpr auto NIBBLE_MAX = std::uint_fast8_t{ 0xF };
+
+    /**
+     * \brief The number of bits in a byte.
+     */
+    static constexpr auto BYTE_DIGITS = std::numeric_limits<std::uint8_t>::digits;
+
+    /**
+     * \brief The number of nibbles in a byte.
+     */
+    static constexpr auto BYTE_NIBBLES = BYTE_DIGITS / NIBBLE_DIGITS;
+
+    /**
+     * \brief The number of bytes in a device serial number.
+     */
+    static constexpr auto DEVICE_SERIAL_NUMBER_BYTES =
+        array_size_v<Microchip::megaAVR0::Device_Info::Device_Serial_Number::Array>;
+
+    /**
+     * \brief The number of nibbles in a device serial number.
+     */
+    static constexpr auto DEVICE_SERIAL_NUMBER_NIBBLES = DEVICE_SERIAL_NUMBER_BYTES * BYTE_NIBBLES;
+
+    /**
+     * \brief Formatted device serial number.
+     */
+    using Formatted_Device_Serial_Number = Array<char, 2 + DEVICE_SERIAL_NUMBER_NIBBLES>;
+
+    /**
+     * \brief Get the pair of nibbles that make up a byte (least significant nibble
+     *        first).
+     *
+     * \param[in] byte The byte to get the pair of nibbles from.
+     *
+     * \return The pair of nibbles that make up the byte (least significant nibble first).
+     */
+    static constexpr auto get_byte_nibbles( std::uint8_t byte ) noexcept
+    {
+        return Array<std::uint_fast8_t, BYTE_NIBBLES>{
+            static_cast<std::uint_fast8_t>( byte & NIBBLE_MAX ),
+            static_cast<std::uint_fast8_t>( byte >> NIBBLE_DIGITS ),
+        };
+    }
+
+    /**
+     * \brief Format a
+     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number.
+     *
+     * \param[in] device_serial_number The
+     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to
+     *            format.
+     *
+     * \return The formatted
+     *         picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number.
+     */
+    static auto format( Microchip::megaAVR0::Device_Info::Device_Serial_Number const & device_serial_number ) noexcept
+        -> Formatted_Device_Serial_Number
+    {
+        Formatted_Device_Serial_Number formatted_device_serial_number;
+
+        auto i = formatted_device_serial_number.rbegin();
+        for ( auto const byte : device_serial_number.as_array() ) {
+            auto const nibbles = get_byte_nibbles( byte );
+
+            for ( auto const nibble : nibbles ) {
+                *i = nibble < 0xA ? '0' + nibble : 'A' + ( nibble - 0xA );
 
                 ++i;
-                byte >>= 4;
             } // for
         }     // for
         *i = 'x';
         ++i;
         *i = '0';
 
-        auto result = stream.put( hexadecimal.begin(), hexadecimal.end() );
-        if ( result.is_error() ) {
-            return result.error();
-        } // if
-
-        return hexadecimal.size();
+        return formatted_device_serial_number;
     }
 };
 

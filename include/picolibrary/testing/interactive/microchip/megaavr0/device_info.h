@@ -58,6 +58,24 @@ inline void print( Output_Stream & stream ) noexcept
     }
 }
 
+/**
+ * \brief Print interactive test helper.
+ *
+ * \param[in] stream The output stream to write the device info to.
+ */
+inline void print( Reliable_Output_Stream & stream ) noexcept
+{
+    stream.print(
+        ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
+        " (revision ",
+        ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
+        "), serial number ",
+        ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number(),
+        '\n' );
+
+    stream.flush();
+}
+
 } // namespace picolibrary::Testing::Interactive::Microchip::megaAVR0::Device_Info
 
 #endif // PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_DEVICE_INFO_H

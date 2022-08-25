@@ -24,39 +24,12 @@
 #define PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_DEVICE_INFO_H
 
 #include "picolibrary/microchip/megaavr0/device_info.h"
-#include "picolibrary/precondition.h"
 #include "picolibrary/stream.h"
 
 /**
  * \brief Microchip megaAVR 0-series device info interactive testing facilities.
  */
 namespace picolibrary::Testing::Interactive::Microchip::megaAVR0::Device_Info {
-
-/**
- * \brief Print interactive test helper.
- *
- * \param[in] stream The output stream to write the device info to.
- *
- * \pre writing to the stream succeeds
- */
-inline void print( Output_Stream & stream ) noexcept
-{
-    {
-        auto result = stream.print(
-            ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
-            " (revision ",
-            ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
-            "), serial number ",
-            ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number(),
-            '\n' );
-        expect( not result.is_error(), result.error() );
-    }
-
-    {
-        auto result = stream.flush();
-        expect( not result.is_error(), result.error() );
-    }
-}
 
 /**
  * \brief Print interactive test helper.

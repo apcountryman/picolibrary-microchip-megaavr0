@@ -3,3 +3,4 @@
 (HIL) for Microchip megaAVR 0-series microcontrollers.
 
 ## Table of Contents
+1. [Usage](usage.md)

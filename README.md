@@ -20,31 +20,6 @@ Library usage documentation, and documentation for major library features can be
 https://apcountryman.github.io/picolibrary-microchip-megaavr0/.
 All other documentation is embedded in the library source code.
 
-## Usage (Dependency)
-To use this library as a dependency, simply add the subdirectory containing this
-repository to a CMake build, and link with the `picolibrary-microchip-megaavr0` static
-library.
-```cmake
-add_subdirectory( picolibrary-microchip-megaavr0 )
-```
-```cmake
-target_link_libraries(
-    foo
-    picolibrary-microchip-megaavr0
-)
-```
-
-## Usage (Development)
-This repository's Git `pre-commit` hook script is the simplest way to configure, and build
-this project during development.
-See the `pre-commit` script's help text for usage details.
-```shell
-./git/hooks/pre-commit --help
-```
-
-Additional checks, such as static analysis, are performed by this project's GitHub Actions
-CI workflow.
-
 ## Versioning
 `picolibrary-microchip-megaavr0` follows the [Abseil Live at Head
 philosophy](https://abseil.io/about/philosophy).

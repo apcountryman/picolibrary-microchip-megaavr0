@@ -49,3 +49,4 @@ Each picolibrary-microchip-megaavr0 interactive test has the following targets:
 - [`::picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter` sample interactive test](test-interactive/picolibrary/microchip/mcp3008/blocking_single_sample_converter/sample.md)
 - [`::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter` hello world interactive test](test-interactive/picolibrary/microchip/megaavr0/asynchronous_serial/transmitter/hello_world.md)
 - [`::picolibrary::Microchip::megaAVR0::Device_Info` print interactive test](test-interactive/picolibrary/microchip/megaavr0/device_info/print.md)
+- [`::picolibrary::Microchip::megaAVR0::GPIO::Internally_Pulled_Up_Input_Pin` state interactive test](test-interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state.md)

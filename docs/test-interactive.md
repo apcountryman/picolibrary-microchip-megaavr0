@@ -40,5 +40,6 @@ Each picolibrary-microchip-megaavr0 interactive test has the following targets:
 
 ## Tests
 - [`::picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world interactive test](test-interactive/picolibrary/asynchronous_serial/reliable_unbuffered_output_stream/hello_world.md)
-- [`::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state world interactive test](test-interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state.md)
-- [`::picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin` toggle world interactive test](test-interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/toggle.md)
+- [`::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state interactive test](test-interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state.md)
+- [`::picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/toggle.md)
+- [`::picolibrary::Microchip::MCP23008::Push_Pull_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/mcp23008/push_pull_io_pin/toggle.md)

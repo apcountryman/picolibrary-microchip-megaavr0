@@ -56,3 +56,5 @@ Each picolibrary-microchip-megaavr0 interactive test has the following targets:
 - [`::picolibrary::Microchip::megaAVR0::I2C::Controller` scan interactive test](test-interactive/picolibrary/microchip/megaavr0/i2c/controller/scan.md)
 - [`::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::SPI>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-spi/echo.md)
 - [`::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-usart/echo.md)
+- [`::picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::SPI>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-spi/echo.md)
+- [`::picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-usart/echo.md)

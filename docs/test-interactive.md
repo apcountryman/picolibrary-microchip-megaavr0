@@ -51,3 +51,4 @@ Each picolibrary-microchip-megaavr0 interactive test has the following targets:
 - [`::picolibrary::Microchip::megaAVR0::Device_Info` print interactive test](test-interactive/picolibrary/microchip/megaavr0/device_info/print.md)
 - [`::picolibrary::Microchip::megaAVR0::GPIO::Input_Pin` state interactive test](test-interactive/picolibrary/microchip/megaavr0/gpio/input_pin/state.md)
 - [`::picolibrary::Microchip::megaAVR0::GPIO::Internally_Pulled_Up_Input_Pin` state interactive test](test-interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state.md)
+- [`::picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle.md)

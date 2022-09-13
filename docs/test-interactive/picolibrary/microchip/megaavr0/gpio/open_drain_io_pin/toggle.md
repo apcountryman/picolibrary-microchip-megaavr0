@@ -17,5 +17,5 @@ supports the following configuration options:
           test pin mask
 
 ## Test Executable Names
-`test-interactive-picolibrary-microchip-megaavr0-gpio-open_drain_io_pin-port-toggle`
-`test-interactive-picolibrary-microchip-megaavr0-gpio-open_drain_io_pin-vport-toggle`
+- `test-interactive-picolibrary-microchip-megaavr0-gpio-open_drain_io_pin-port-toggle`
+- `test-interactive-picolibrary-microchip-megaavr0-gpio-open_drain_io_pin-vport-toggle`

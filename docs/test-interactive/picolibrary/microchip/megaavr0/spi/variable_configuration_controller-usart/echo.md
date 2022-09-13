@@ -30,5 +30,5 @@ echo interactive test supports the following configuration options:
           `::picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>`
           echo interactive test controller USART route
 
-## Test Executable Names
+## Test Executable Name
 `test-interactive-picolibrary-microchip-megaavr0-spi-variable_configuration_controller-usart-echo`

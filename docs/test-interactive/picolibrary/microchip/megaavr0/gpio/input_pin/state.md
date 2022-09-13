@@ -17,5 +17,5 @@ the following configuration options:
           mask
 
 ## Test Executable Names
-`test-interactive-picolibrary-microchip-megaavr0-gpio-input_pin-port-state`
-`test-interactive-picolibrary-microchip-megaavr0-gpio-input_pin-vport-state`
+- `test-interactive-picolibrary-microchip-megaavr0-gpio-input_pin-port-state`
+- `test-interactive-picolibrary-microchip-megaavr0-gpio-input_pin-vport-state`

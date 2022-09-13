@@ -28,5 +28,5 @@ the following configuration options:
           `::picolibrary::Microchip::megaAVR0::I2C::Controller` scan interactive test
           controller TWI route
 
-## Test Executable Names
+## Test Executable Name
 `test-interactive-picolibrary-microchip-megaavr0-i2c-controller-scan`

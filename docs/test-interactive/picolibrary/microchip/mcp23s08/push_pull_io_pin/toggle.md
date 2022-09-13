@@ -11,7 +11,7 @@ supports the following configuration options:
       `ON`:
         - `PICOLIBRARY_MICROCHIP_MCP23S08_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_CONTROLLER_SPI`:
           `::picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin` toggle interactive test
-          controller SPI`
+          controller SPI
         - `PICOLIBRARY_MICROCHIP_MCP23S08_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_RATE`:
           `::picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin` toggle interactive test
           controller SPI clock rate

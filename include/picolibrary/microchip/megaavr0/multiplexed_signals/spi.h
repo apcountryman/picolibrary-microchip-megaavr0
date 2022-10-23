@@ -66,9 +66,7 @@ inline auto spi_route( Peripheral::SPI const & spi ) noexcept -> SPI_Route
                 portmux.twispiroutea & Peripheral::PORTMUX::TWISPIROUTEA::Mask::SPI0 );
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return SPI_Route::NONE; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -89,7 +87,7 @@ inline void set_spi_route( Peripheral::SPI const & spi, SPI_Route route ) noexce
             return;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -117,9 +115,7 @@ constexpr auto spi_port_address( std::uintptr_t spi_address, SPI_Route route ) n
             break;
     };
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -173,9 +169,7 @@ constexpr auto spi_vport_address( std::uintptr_t spi_address, SPI_Route route ) 
             break;
     };
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -307,9 +301,7 @@ constexpr auto ss_number( std::uintptr_t spi_address, SPI_Route route ) noexcept
             break;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -479,9 +471,7 @@ constexpr auto sck_number( std::uintptr_t spi_address, SPI_Route route ) noexcep
             break;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -651,9 +641,7 @@ constexpr auto mosi_number( std::uintptr_t spi_address, SPI_Route route ) noexce
             break;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -823,9 +811,7 @@ constexpr auto miso_number( std::uintptr_t spi_address, SPI_Route route ) noexce
             break;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**

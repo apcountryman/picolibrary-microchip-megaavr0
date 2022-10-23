@@ -80,9 +80,7 @@ inline auto usart_route( Peripheral::USART const & usart ) noexcept -> USART_Rou
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return USART_Route::NONE; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -123,7 +121,7 @@ inline void set_usart_route( Peripheral::USART const & usart, USART_Route route 
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -174,9 +172,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address, USART_Route rou
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     };
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -254,9 +250,7 @@ constexpr auto usart_vport_address( std::uintptr_t usart_address, USART_Route ro
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     };
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -417,9 +411,7 @@ constexpr auto xck_number( std::uintptr_t usart_address, USART_Route route ) noe
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -619,9 +611,7 @@ constexpr auto xdir_number( std::uintptr_t usart_address, USART_Route route ) no
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -819,9 +809,7 @@ constexpr auto txd_number( std::uintptr_t usart_address, USART_Route route ) noe
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -1019,9 +1007,7 @@ constexpr auto rxd_number( std::uintptr_t usart_address, USART_Route route ) noe
 #endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
     }  // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**

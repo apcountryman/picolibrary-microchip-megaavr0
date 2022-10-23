@@ -197,7 +197,7 @@ inline void clear_reset_source() noexcept
 {
     Peripheral::RSTCTRL0::instance().swrr = Peripheral::RSTCTRL::SWRR::Mask::SWRE;
 
-    ensure( false, Generic_Error::RUNTIME_ERROR );
+    ensure( Generic_Error::RUNTIME_ERROR );
 }
 
 } // namespace picolibrary::Microchip::megaAVR0::Reset

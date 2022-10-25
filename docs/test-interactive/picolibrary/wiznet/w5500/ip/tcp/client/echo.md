@@ -81,4 +81,4 @@ following configuration options:
           remote endpoint
 
 ## Test Executable Name
-`test-interactive-picolibrary-wiznet-w5500-ip-network_stack-echo`
+`test-interactive-picolibrary-wiznet-w5500-ip-tcp-client-echo`

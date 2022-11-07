@@ -52,14 +52,14 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
             picolibrary-microchip-megaavr0
             picolibrary-microchip-megaavr0-testing-interactive-fatal_error
         )
-        add_avrdude_programming_targets(
+        add_avrdude_flash_programming_targets(
             test-interactive-picolibrary-microchip-megaavr0-gpio-internally_pulled_up_input_pin-port-state
             "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_RESET}"
             CONFIGURATION_FILE "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_CONFIGURATION_FILE}"
             PORT               "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_PORT}"
-            PROGRAM_FLASH      "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_PROGRAM_FLASH}"
             VERBOSITY          "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_VERBOSITY}"
-            VERIFY_FLASH       "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_VERIFY_FLASH}"
+            PROGRAM            "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_PROGRAM_FLASH}"
+            VERIFY             "${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_VERIFY_FLASH}"
         )
     endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_GPIO_INTERNALLY_PULLED_UP_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST} )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )

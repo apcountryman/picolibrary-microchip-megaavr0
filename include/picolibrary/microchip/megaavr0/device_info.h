@@ -478,21 +478,6 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
         -> Output_Formatter & = default;
 
     /**
-     * \brief Parse the format specification for the
-     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to be formatted.
-     *
-     * \param[in] format The format specification for the
-     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to be
-     *            formatted.
-     *
-     * \return format
-     */
-    constexpr auto parse( char const * format ) noexcept -> char const *
-    {
-        return format;
-    }
-
-    /**
      * \brief Write the formatted
      *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Type to the stream.
      *
@@ -628,22 +613,6 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
         -> Output_Formatter & = default;
 
     /**
-     * \brief Parse the format specification for the
-     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to be
-     *        formatted.
-     *
-     * \param[in] format The format specification for the
-     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to be
-     *            formatted.
-     *
-     * \return format
-     */
-    constexpr auto parse( char const * format ) noexcept -> char const *
-    {
-        return format;
-    }
-
-    /**
      * \brief Write the formatted
      *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision to the
      *        stream.
@@ -742,22 +711,6 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
      */
     constexpr auto operator   =( Output_Formatter const & expression ) noexcept
         -> Output_Formatter & = default;
-
-    /**
-     * \brief Parse the format specification for the
-     *        picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to be
-     *        formatted.
-     *
-     * \param[in] format The format specification for the
-     *            picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number to
-     *            be formatted.
-     *
-     * \return format
-     */
-    constexpr auto parse( char const * format ) noexcept -> char const *
-    {
-        return format;
-    }
 
     /**
      * \brief Write the formatted

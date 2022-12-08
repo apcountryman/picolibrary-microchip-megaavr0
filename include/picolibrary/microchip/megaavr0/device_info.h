@@ -532,7 +532,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
      * \return The picolibrary::Microchip::megaAVR0::Device_Info::Device_Type converted to
      *         a null-terminated string.
      */
-    static constexpr auto to_string( Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
+    static auto to_string( Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
         -> ROM::String
     {
         switch ( device_type ) {

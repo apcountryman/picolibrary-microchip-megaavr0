@@ -427,9 +427,6 @@ namespace picolibrary {
 
 /**
  * \brief picolibrary::Microchip::megaAVR0::Device_Info::Device_Type output formatter.
- *
- * picolibrary::Microchip::megaAVR0::Device_Info::Device_Type only supports the default
- * format specification ("{}").
  */
 template<>
 class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
@@ -562,9 +559,6 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
 
 /**
  * \brief picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision output formatter.
- *
- * picolibrary::Microchip::megaAVR0::Device_Info::Device_Revision only supports the
- * default format specification ("{}").
  */
 template<>
 class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
@@ -662,9 +656,6 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
 /**
  * \brief picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number output
  *        formatter.
- *
- * picolibrary::Microchip::megaAVR0::Device_Info::Device_Serial_Number only supports the
- * default format specification ("{}").
  */
 template<>
 class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {

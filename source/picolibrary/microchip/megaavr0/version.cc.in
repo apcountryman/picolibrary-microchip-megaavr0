@@ -21,12 +21,13 @@
  */
 
 #include "picolibrary/microchip/megaavr0/version.h"
+#include "picolibrary/rom.h"
 
 namespace picolibrary::Microchip::megaAVR0 {
 
-auto version() noexcept -> char const *
+auto version() noexcept -> ROM::String
 {
-    return "@PICOLIBRARY_MICROCHIP_MEGAAVR0_VERSION@";
+    return PICOLIBRARY_ROM_STRING( "@PICOLIBRARY_MICROCHIP_MEGAAVR0_VERSION@" );
 }
 
 } // namespace picolibrary::Microchip::megaAVR0

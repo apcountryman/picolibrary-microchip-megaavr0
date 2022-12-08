@@ -33,6 +33,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/result.h"
+#include "picolibrary/rom.h"
 #include "picolibrary/stream.h"
 
 /**
@@ -517,7 +518,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
 
         stream.put( device_type_as_string );
 
-        return std::strlen( device_type_as_string );
+        return ROM::length( device_type_as_string );
     }
 
   private:
@@ -531,29 +532,29 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
      * \return The picolibrary::Microchip::megaAVR0::Device_Info::Device_Type converted to
      *         a null-terminated string.
      */
-    static constexpr auto to_string( Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
-        -> char const *
+    static auto to_string( Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
+        -> ROM::String
     {
         switch ( device_type ) {
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA808:
-                return "ATmega808";
+                return PICOLIBRARY_ROM_STRING( "ATmega808" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA809:
-                return "ATmega809";
+                return PICOLIBRARY_ROM_STRING( "ATmega809" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA1608:
-                return "ATmega1608";
+                return PICOLIBRARY_ROM_STRING( "ATmega1608" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA1609:
-                return "ATmega1609";
+                return PICOLIBRARY_ROM_STRING( "ATmega1609" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA3208:
-                return "ATmega3208";
+                return PICOLIBRARY_ROM_STRING( "ATmega3208" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA3209:
-                return "ATmega3209";
+                return PICOLIBRARY_ROM_STRING( "ATmega3209" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA4808:
-                return "ATmega4808";
+                return PICOLIBRARY_ROM_STRING( "ATmega4808" );
             case Microchip::megaAVR0::Device_Info::Device_Type::ATMEGA4809:
-                return "ATmega4809";
+                return PICOLIBRARY_ROM_STRING( "ATmega4809" );
         } // switch
 
-        return "UNKNOWN";
+        return PICOLIBRARY_ROM_STRING( "UNKNOWN" );
     }
 };
 

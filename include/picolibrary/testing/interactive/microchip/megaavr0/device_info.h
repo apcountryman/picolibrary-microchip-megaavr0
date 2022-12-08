@@ -24,6 +24,7 @@
 #define PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR0_DEVICE_INFO_H
 
 #include "picolibrary/microchip/megaavr0/device_info.h"
+#include "picolibrary/rom.h"
 #include "picolibrary/stream.h"
 
 /**
@@ -40,9 +41,9 @@ inline void print( Reliable_Output_Stream & stream ) noexcept
 {
     stream.print(
         ::picolibrary::Microchip::megaAVR0::Device_Info::device_type(),
-        " (revision ",
+        PICOLIBRARY_ROM_STRING( " (revision " ),
         ::picolibrary::Microchip::megaAVR0::Device_Info::device_revision(),
-        "), serial number ",
+        PICOLIBRARY_ROM_STRING( "), serial number " ),
         ::picolibrary::Microchip::megaAVR0::Device_Info::device_serial_number(),
         '\n' );
 

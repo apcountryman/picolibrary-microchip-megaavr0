@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::VERSION interface.
+ * \brief picolibrary::Microchip::megaAVR0::version() interface.
  */
 
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_VERSION_H
@@ -26,9 +26,11 @@
 namespace picolibrary::Microchip::megaAVR0 {
 
 /**
- * \brief Library version.
+ * \brief Get the library version.
+ *
+ * \return The library version.
  */
-extern char const * const VERSION;
+auto version() noexcept -> char const *;
 
 } // namespace picolibrary::Microchip::megaAVR0
 

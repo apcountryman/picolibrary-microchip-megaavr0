@@ -17,13 +17,16 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR0::VERSION implementation.
+ * \brief picolibrary::Microchip::megaAVR0::version() implementation.
  */
 
 #include "picolibrary/microchip/megaavr0/version.h"
 
 namespace picolibrary::Microchip::megaAVR0 {
 
-char const * const VERSION{ "@PICOLIBRARY_MICROCHIP_MEGAAVR0_VERSION@" };
+auto version() noexcept -> char const *
+{
+    return "@PICOLIBRARY_MICROCHIP_MEGAAVR0_VERSION@";
+}
 
 } // namespace picolibrary::Microchip::megaAVR0

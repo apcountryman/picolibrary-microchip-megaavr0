@@ -25,15 +25,25 @@
 #include <cstdlib>
 
 #include "picolibrary/error.h"
+#include "picolibrary/rom.h"
 #include "picolibrary/testing/interactive/microchip/megaavr0/log.h"
 
 namespace picolibrary {
 
+#ifndef PICOLIBRARY_SUPPRESS_ASSERTION_FAILURE_LOCATION_INFORMATION
+void trap_fatal_error( ROM::String file, int line, Error_Code const & error ) noexcept
+{
+    Testing::Interactive::Microchip::megaAVR0::Log::report_fatal_error( file, line, error );
+
+    std::abort();
+}
+#else  // PICOLIBRARY_SUPPRESS_ASSERTION_FAILURE_LOCATION_INFORMATION
 void trap_fatal_error( Error_Code const & error ) noexcept
 {
     Testing::Interactive::Microchip::megaAVR0::Log::report_fatal_error( error );
 
     std::abort();
 }
+#endif // PICOLIBRARY_SUPPRESS_ASSERTION_FAILURE_LOCATION_INFORMATION
 
 } // namespace picolibrary

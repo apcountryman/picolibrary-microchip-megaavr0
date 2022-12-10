@@ -62,7 +62,7 @@ inline auto twi_route( Peripheral::TWI const & twi ) noexcept -> TWI_Route
                 portmux.twispiroutea & Peripheral::PORTMUX::TWISPIROUTEA::Mask::TWI0 );
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -83,7 +83,7 @@ inline void set_twi_route( Peripheral::TWI const & twi, TWI_Route route ) noexce
             return;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -107,7 +107,7 @@ constexpr auto scl_number( std::uintptr_t twi_address, TWI_Route route ) noexcep
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -195,7 +195,7 @@ constexpr auto sda_number( std::uintptr_t twi_address, TWI_Route route ) noexcep
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -284,7 +284,7 @@ constexpr auto twi_controller_port_address( std::uintptr_t twi_address, TWI_Rout
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -338,7 +338,7 @@ constexpr auto twi_controller_vport_address( std::uintptr_t twi_address, TWI_Rou
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -724,7 +724,7 @@ constexpr auto twi_device_port_address( std::uintptr_t twi_address, TWI_Route ro
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -776,7 +776,7 @@ constexpr auto twi_device_vport_address( std::uintptr_t twi_address, TWI_Route r
             break;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**

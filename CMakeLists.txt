@@ -73,6 +73,8 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_BUILD_FLAGS} )
         -Wshadow
         -Wunsafe-loop-optimizations
         -fno-threadsafe-statics
+        -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}/=
+        -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}/picolibrary/=
     )
     add_compile_definitions(
         F_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR0_F_CPU}

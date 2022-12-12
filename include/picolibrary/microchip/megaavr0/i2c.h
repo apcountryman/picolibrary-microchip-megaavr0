@@ -202,9 +202,9 @@ class Basic_Controller {
 
         while ( not addressing_complete() ) {} // while
 
-        ensure( not controller_bus_error_present(), Generic_Error::BUS_ERROR );
+        PICOLIBRARY_ENSURE( not controller_bus_error_present(), Generic_Error::BUS_ERROR );
 
-        ensure( not arbitration_lost(), Generic_Error::ARBITRATION_LOST );
+        PICOLIBRARY_ENSURE( not arbitration_lost(), Generic_Error::ARBITRATION_LOST );
 
         return nack_received() ? ::picolibrary::I2C::Response::NACK
                                : ::picolibrary::I2C::Response::ACK;
@@ -242,9 +242,9 @@ class Basic_Controller {
 
         while ( not write_complete() ) {} // while
 
-        ensure( not controller_bus_error_present(), Generic_Error::BUS_ERROR );
+        PICOLIBRARY_ENSURE( not controller_bus_error_present(), Generic_Error::BUS_ERROR );
 
-        ensure( not arbitration_lost(), Generic_Error::ARBITRATION_LOST );
+        PICOLIBRARY_ENSURE( not arbitration_lost(), Generic_Error::ARBITRATION_LOST );
 
         return nack_received() ? ::picolibrary::I2C::Response::NACK
                                : ::picolibrary::I2C::Response::ACK;

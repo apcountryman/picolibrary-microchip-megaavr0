@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin` toggle interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Names](#test-executable-names)
+
 ## Test Configuration Options
 The `::picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin` toggle interactive test
 supports the following configuration options:

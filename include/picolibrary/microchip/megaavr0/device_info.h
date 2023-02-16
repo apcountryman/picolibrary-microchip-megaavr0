@@ -488,7 +488,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
      * \return An error code if the write failed.
      */
     auto print( Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Type const & device_type ) noexcept
-        -> Result<std::size_t, Error_Code>
+        -> Result<std::size_t>
     {
         auto const device_type_as_string = to_string( device_type );
 
@@ -518,7 +518,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Type> {
 
         stream.put( device_type_as_string );
 
-        return ROM::length( device_type_as_string );
+        return ROM::strlen( device_type_as_string );
     }
 
   private:
@@ -622,7 +622,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Revision> {
      * \return An error code if the write failed.
      */
     auto print( Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Revision device_revision ) noexcept
-        -> Result<std::size_t, Error_Code>
+        -> Result<std::size_t>
     {
         auto result = stream.put( device_revision.as_printable_character() );
         if ( result.is_error() ) {
@@ -719,7 +719,7 @@ class Output_Formatter<Microchip::megaAVR0::Device_Info::Device_Serial_Number> {
      * \return An error code if the write failed.
      */
     auto print( Output_Stream & stream, Microchip::megaAVR0::Device_Info::Device_Serial_Number const & device_serial_number ) noexcept
-        -> Result<std::size_t, Error_Code>
+        -> Result<std::size_t>
     {
         auto const formatted_device_serial_number = format( device_serial_number );
 

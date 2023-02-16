@@ -23,11 +23,11 @@
 
 #include <cstdint>
 
-#include "picolibrary/asynchronous_serial/stream.h"
+#include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr0/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
-#include "picolibrary/testing/interactive/asynchronous_serial/stream.h"
+#include "picolibrary/testing/interactive/asynchronous_serial.h"
 #include "picolibrary/testing/interactive/microchip/megaavr0/clock.h"
 #include "picolibrary/testing/interactive/microchip/megaavr0/log.h"
 

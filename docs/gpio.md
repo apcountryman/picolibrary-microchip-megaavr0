@@ -7,19 +7,19 @@ header/source file pair.
 1. [Pin](#pin)
 1. [Input Pin](#input-pin)
 1. [Internally Pulled-Up Input Pin](#internally-pulled-up-input-pin)
-1. [Open-Drain I/O Pin](#open-drain-io-pin)
+1. [Open-Drain Input/Output (I/O) Pin](#open-drain-inputoutput-io-pin)
 1. [Push-Pull I/O Pin](#push-pull-io-pin)
 
 ## Pin
 `::picolibrary::Microchip::megaAVR0::GPIO::Pin` template class specializations provide a
-mostly standardized interface for interacting with a Microchip megaAVR 0-series
-microcontroller pin using either the PORT peripheral or the VPORT peripheral.
+mostly common interface for interacting with a Microchip megaAVR 0-series microcontroller
+pin using either a PORT peripheral or a VPORT peripheral.
 The
 `::picolibrary::Microchip::megaAVR0::GPIO::Pin<::picolibrary::Microchip::megaAVR0::Peripheral::PORT>`
-specialization implements this interface using the PORT peripheral.
+specialization implements this interface using a PORT peripheral.
 The
 `::picolibrary::Microchip::megaAVR0::GPIO::Pin<::picolibrary::Microchip::megaAVR0::Peripheral::VPORT>`
-specialization implements this interface using the VPORT peripheral.
+specialization implements this interface using a VPORT peripheral.
 - To check if a pin is associated with a GPIO port or virtual port, use the `bool`
   conversion operator.
 - To configure a pin to act as an input, use the
@@ -31,7 +31,7 @@ specialization implements this interface using the VPORT peripheral.
 - To configure a pin to act as an open-drain I/O pin, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::configure_pin_as_open_drain_io()` member
   function.
-- To configure a pin to act as an push-pull I/O pin, use the
+- To configure a pin to act as a push-pull I/O pin, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::configure_pin_as_push_pull_io()` member
   function.
 - To check if an internally pulled-up input pin's internal pull-up resistor is disabled,
@@ -55,18 +55,18 @@ specialization implements this interface using the VPORT peripheral.
 - To transition an open-drain I/O pin to the low state, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::transition_open_drain_io_to_low()`
   member function.
-- To transition an push-pull I/O pin to the low state, use the
+- To transition a push-pull I/O pin to the low state, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::transition_push_pull_io_to_low()` member
   function.
 - To transition an open-drain I/O pin to the high state, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::transition_open_drain_io_to_high()`
   member function.
-- To transition an push-pull I/O pin to the high state, use the
+- To transition a push-pull I/O pin to the high state, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::transition_push_pull_io_to_high()`
   member function.
 - To toggle the state of an open-drain I/O pin, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::toggle_open_drain_io()` member function.
-- To toggle the state of an push-pull I/O pin, use the
+- To toggle the state of a push-pull I/O pin, use the
   `::picolibrary::Microchip::megaAVR0::GPIO::Pin::toggle_push_pull_io()` member function.
 
 ## Input Pin
@@ -92,7 +92,7 @@ interactive test is defined in the
 [`test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/main.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/main.cc)
 source file.
 
-## Open-Drain I/O Pin
+## Open-Drain Input/Output (I/O) Pin
 The `::picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin` template class
 implements a GPIO open-drain I/O pin interface for interacting with a Microchip megaAVR
 0-series microcontroller pin.

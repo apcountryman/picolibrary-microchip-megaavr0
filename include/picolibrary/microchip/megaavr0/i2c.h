@@ -32,7 +32,7 @@
 #include "picolibrary/utility.h"
 
 /**
- * \brief Microchip megaAVR 0-series Inter-Integrated Circuit (I2C) facilities.
+ * \brief Microchip megaAVR 0-series I2C facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::I2C {
 

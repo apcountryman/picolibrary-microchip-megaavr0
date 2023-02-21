@@ -1,4 +1,4 @@
-# Inter-Integrated Circuit (I<sup>2</sup>C) Facilities
+# I<sup>2</sup>C Facilities
 Microchip megaAVR 0-series I<sup>2</sup>C facilities are defined in the
 [`include/picolibrary/microchip/megaavr0/i2c.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/i2c.h)/[`source/picolibrary/microchip/megaavr0/i2c.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/i2c.cc)
 header/source file pair.

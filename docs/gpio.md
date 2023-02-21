@@ -97,8 +97,8 @@ The `::picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin` template class
 implements a GPIO open-drain I/O pin interface for interacting with a Microchip megaAVR
 0-series microcontroller pin.
 See the [`::picolibrary::GPIO::IO_Pin_Concept`
-documentation](https://apcountryman.github.io/picolibrary/gpio.html#inputoutput-io-pin)
-for more information.
+documentation](https://apcountryman.github.io/picolibrary/gpio.html#io-pin) for more
+information.
 The `::picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin` toggle interactive test
 is defined in the
 [`test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle/main.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/test/interactive/picolibrary/microchip/megaavr0/gpio/open_drain_io_pin/toggle/main.cc)
@@ -109,8 +109,8 @@ The `::picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin` template class 
 a GPIO push-pull I/O pin interface for interacting with a Microchip megaAVR 0-series
 microcontroller pin.
 See the [`::picolibrary::GPIO::IO_Pin_Concept`
-documentation](https://apcountryman.github.io/picolibrary/gpio.html#inputoutput-io-pin)
-for more information.
+documentation](https://apcountryman.github.io/picolibrary/gpio.html#io-pin) for more
+information.
 The `::picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin` toggle interactive test
 is defined in the
 [`test/interactive/picolibrary/microchip/megaavr0/gpio/push_pull_io_pin/toggle/main.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/test/interactive/picolibrary/microchip/megaavr0/gpio/push_pull_io_pin/toggle/main.cc)

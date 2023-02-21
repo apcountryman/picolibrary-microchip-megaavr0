@@ -31,7 +31,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 
 /**
- * \brief Microchip megaAVR 0-series General Purpose Input/Output (GPIO) facilities.
+ * \brief Microchip megaAVR 0-series GPIO facilities.
  */
 namespace picolibrary::Microchip::megaAVR0::GPIO {
 
@@ -731,7 +731,7 @@ class Internally_Pulled_Up_Input_Pin {
 };
 
 /**
- * \brief Open-drain Input/Output (I/O) pin.
+ * \brief Open-drain I/O pin.
  *
  * \tparam Peripheral The type of peripheral used to implement open-drain I/O pin
  *         functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or
@@ -876,7 +876,7 @@ class Open_Drain_IO_Pin {
 };
 
 /**
- * \brief Push-pull Input/Output (I/O) pin.
+ * \brief Push-pull I/O pin.
  *
  * \tparam Peripheral The type of peripheral used to implement push-pull I/O pin
  *         functionality (must be picolibrary::Microchip::megaAVR0::Peripheral::PORT or

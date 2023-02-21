@@ -1,4 +1,4 @@
-# General Purpose Input/Output (GPIO) Facilities
+# GPIO Facilities
 Microchip megaAVR 0-series GPIO facilities are defined in the
 [`include/picolibrary/microchip/megaavr0/gpio.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/gpio.h)/[`source/picolibrary/microchip/megaavr0/gpio.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/gpio.cc)
 header/source file pair.
@@ -7,7 +7,7 @@ header/source file pair.
 1. [Pin](#pin)
 1. [Input Pin](#input-pin)
 1. [Internally Pulled-Up Input Pin](#internally-pulled-up-input-pin)
-1. [Open-Drain Input/Output (I/O) Pin](#open-drain-inputoutput-io-pin)
+1. [Open-Drain I/O Pin](#open-drain-io-pin)
 1. [Push-Pull I/O Pin](#push-pull-io-pin)
 
 ## Pin
@@ -92,7 +92,7 @@ interactive test is defined in the
 [`test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/main.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/test/interactive/picolibrary/microchip/megaavr0/gpio/internally_pulled_up_input_pin/state/main.cc)
 source file.
 
-## Open-Drain Input/Output (I/O) Pin
+## Open-Drain I/O Pin
 The `::picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin` template class
 implements a GPIO open-drain I/O pin interface for interacting with a Microchip megaAVR
 0-series microcontroller pin.

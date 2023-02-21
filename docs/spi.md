@@ -1,4 +1,4 @@
-# Serial Peripheral Interface (SPI) Facilities
+# SPI Facilities
 Microchip megaAVR 0-series SPI facilities are defined in the
 [`include/picolibrary/microchip/megaavr0/spi.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/spi.h)/[`source/picolibrary/microchip/megaavr0/spi.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/spi.cc)
 header/source file pair.

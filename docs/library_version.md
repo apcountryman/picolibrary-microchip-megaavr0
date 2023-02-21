@@ -1,6 +1,6 @@
 # Library Version
-To access the null-terminated library version string that may be stored in ROM, link with
-the `picolibrary-microchip-megaavr0-version` static library, include
+To access the null-terminated library version string that is stored in ROM, link with the
+`picolibrary-microchip-megaavr0-version` static library, include
 [`picolibrary/microchip/megaavr0/version.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/version.h)
 and use `::picolibrary::Microchip::megaAVR0::version()`:
 ```cmake

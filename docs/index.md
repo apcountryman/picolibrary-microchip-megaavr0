@@ -8,6 +8,7 @@
 1. [Interactive Tests](test-interactive.md)
 1. [Library Version](library_version.md)
 1. [Clock Facilities](clock.md)
+1. [Device Info Facilities](device_info.md)
 1. [GPIO Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
 1. [I<sup>2</sup>C Facilities](i2c.md)

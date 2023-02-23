@@ -7,6 +7,7 @@
 1. [Usage](usage.md)
 1. [Interactive Tests](test-interactive.md)
 1. [Library Version](library_version.md)
+1. [Watchdog Timer Facilities](watchdog_timer.md)
 1. [Clock Facilities](clock.md)
 1. [Reset Facilities](reset.md)
 1. [Device Info Facilities](device_info.md)

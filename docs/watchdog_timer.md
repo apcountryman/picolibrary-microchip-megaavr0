@@ -5,7 +5,6 @@ header/source file pair.
 
 ## Table of Contents
 1. [Configuration](#configuration)
-1. [Configuration Lock](#configuration-lock)
 1. [Reset](#reset)
 
 ## Configuration

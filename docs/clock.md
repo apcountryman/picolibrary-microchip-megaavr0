@@ -9,7 +9,7 @@ header/source file pair.
 1. [Prescaler](#prescaler)
 1. [Configuration Lock](#configuration-lock)
 1. [Internal 16/20 MHz Oscillator](#internal-1620-mhz-oscillator)
-1. [Internal 32.768 kHz Ultra Low-Power Oscillator](#internal-32768-khz-ultra-low-power-oscilaltor)
+1. [Internal 32.768 kHz Ultra Low-Power Oscillator](#internal-32768-khz-ultra-low-power-oscillator)
 1. [External 32.768 kHz Crystal Oscillator](#external-32768-khz-crystal-oscillator)
 1. [External Clock](#external-clock)
 1. [Interactive Testing Clock Configuration](#interactive-testing-clock-configuration)
@@ -21,7 +21,7 @@ The following Microchip megaAVR 0-series clock source operations are supported:
 - To get the clock source, use the `::picolibrary::Microchip::megaAVR0::Clock::source()`
   function.
 - To set the clock source, use the
-  `::picolibrary::Microchip::megaAVR0::Clock::setsource()` function.
+  `::picolibrary::Microchip::megaAVR0::Clock::set_source()` function.
 
 ## Output
 The following Microchip megaAVR 0-series clock output operations are supported:

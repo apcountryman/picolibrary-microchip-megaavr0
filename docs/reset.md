@@ -4,7 +4,7 @@ Microchip megaAVR 0-series reset facilities are defined in the
 header/source file pair.
 
 ## Table of Contents
-1. [Reset Source](#source)
+1. [Reset Source](#reset-source)
 1. [Software Reset](#software-reset)
 
 ## Reset Source

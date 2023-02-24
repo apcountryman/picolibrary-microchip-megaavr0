@@ -10,6 +10,7 @@
 1. [Watchdog Timer Facilities](watchdog_timer.md)
 1. [Clock Facilities](clock.md)
 1. [Reset Facilities](reset.md)
+1. [Interrupt Facilities](interrupt.md)
 1. [Device Info Facilities](device_info.md)
 1. [GPIO Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)

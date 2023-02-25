@@ -5,6 +5,7 @@ is `ON`.
 
 ## Table of Contents
 1. [Fatal Error Trap](#fatal-error-trap)
+1. [Clock Configuration](#clock-configuration)
 1. [Log](#log)
 
 ## Fatal Error Trap
@@ -16,6 +17,15 @@ source file.
 The `picolibrary-microchip-megaavr0` static library does not include this implementation.
 To use this implementation, link with the
 `picolibrary-microchip-megaavr0-testing-interactive-fatal_error` static library.
+
+## Clock Configuration
+The `::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock()`
+functions configure the Microchip megaAVR 0-series clock to use the internal 16/20 MHz
+oscillator with the desired clock prescaler settings.
+The `::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock()`
+functions are defined in the
+[`include/picolibrary/testing/interactive/microchip/megaavr0/clock.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/testing/interactive/microchip/megaavr0/clock.h)/[`source/picolibrary/testing/interactive/microchip/megaavr0/clock.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/testing/interactive/microchip/megaavr0/clock.cc)
+header/source file pair.
 
 ## Log
 The `::picolibrary::Testing::Interactive::Microchip::megaAVR0::Log` class is a reliable

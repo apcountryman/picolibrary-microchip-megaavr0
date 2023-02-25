@@ -32,7 +32,7 @@ header/source file pair.
   member functions.
 - To report a fatal error, use the
   `::picolibrary::Testing::Interactive::Microchip::megaAVR0::Log::report_fatal_error()`
-  static member functions.
+  static member function.
 - To get the log instance, use the
   `::picolibrary::Testing::Interactive::Microchip::megaAVR0::Log::instance()` static
-  member functions.
+  member function.

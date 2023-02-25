@@ -12,7 +12,6 @@ header/source file pair.
 1. [Internal 32.768 kHz Ultra Low-Power Oscillator](#internal-32768-khz-ultra-low-power-oscillator)
 1. [External 32.768 kHz Crystal Oscillator](#external-32768-khz-crystal-oscillator)
 1. [External Clock](#external-clock)
-1. [Interactive Testing Clock Configuration](#interactive-testing-clock-configuration)
 
 ## Source
 The following Microchip megaAVR 0-series clock source operations are supported:
@@ -122,12 +121,3 @@ are supported:
 The following Microchip megaAVR 0-series external clock operations are supported:
 - To check if the external clock is stable, use the
   `::picolibrary::Microchip::megaAVR0::Clock::external_clock_stable()` member function.
-
-## Interactive Testing Clock Configuration
-The `::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock()`
-interactive testing clock configuration utilities are available if the
-`PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING` project configuration option
-is `ON`.
-The utilities are defined in the
-[`include/picolibrary/testing/interactive/microchip/megaavr0/clock.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/testing/interactive/microchip/megaavr0/clock.h)/[`source/picolibrary/testing/interactive/microchip/megaavr0/clock.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/testing/interactive/microchip/megaavr0/clock.cc)
-header/source file pair.

@@ -21,11 +21,11 @@ Register access is restricted to the following operations:
 ## Reserved Register
 The `::picolibrary::Microchip::megaAVR0::Reserved_Register` class is used to declare a
 Microchip megaAVR 0-series reserved register.
-A reserved register cannot be accessed.
+Reserved registers cannot be accessed.
 
 ## Protected Register
 The `::picolibrary::Microchip::megaAVR0::Protected_Register` class is used to declare a
-Microchip megaAVR 0-series protected register.
+Microchip megaAVR 0-series register that is under configuration change protection.
 Register access is restricted to the following operations:
 - Conversion to the underlying register type (reading the register)
 - Assignment

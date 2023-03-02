@@ -8,6 +8,7 @@
 1. [Interactive Tests](test-interactive.md)
 1. [Library Version](library_version.md)
 1. [Register Facilities](register.md)
+1. [Peripheral Facilities](peripheral.md)
 1. [Watchdog Timer Facilities](watchdog_timer.md)
 1. [Clock Facilities](clock.md)
 1. [Reset Facilities](reset.md)

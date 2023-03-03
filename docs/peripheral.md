@@ -24,7 +24,7 @@ the SPI peripheral's CTRLA register is accessed via the
 `::picolibrary::Microchip::megaAVR0::Peripheral::SPI::ctrla` member variable).
 Peripheral register information is defined in member classes named after the registers
 (e.g. SPI peripheral CTRLA register information is defined in the
-`::picolibrary::Microchip::megaAVR0::Peripheral::CTRLA` member class).
+`::picolibrary::Microchip::megaAVR0::Peripheral::SPI::CTRLA` member class).
 Peripheral register field constants are defined in the following member structures:
 - `Size`: field sizes (e.g. the size of the ENABLE field of the SPI peripheral's CTRLA
   register is defined by the
@@ -127,7 +127,7 @@ header/source file pair.
 Microchip megaAVR 0-series peripheral instances are defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral.h)/[`source/picolibrary/microchip/megaavr0/peripheral.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral.cc)
 header/source file pair.
-Peripheral instance names are based on the names use in the "Peripheral Module Address
+Peripheral instance names are based on the names used in the "Peripheral Module Address
 Map" table of the datasheets with the following change: a `0` is added to the end of the
 name of peripherals that only have a single instance to differentiate the peripheral name
 and the instance name.
@@ -139,7 +139,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTD`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTE`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTF`
-- `::picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::RSTCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SIGROW0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SPI0`

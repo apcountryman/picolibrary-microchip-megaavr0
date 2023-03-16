@@ -94,7 +94,7 @@ header/source file pair.
 
 ### USART
 The `::picolibrary::Microchip::megaAVR0::Peripheral::USART` class defines the layout of
-the Microchip megaAVR 0-series USART peripheral.
+the Microchip megaAVR 0-series USART peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::USART` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/usart.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/usart.h)/[`source/picolibrary/microchip/megaavr0/peripheral/usart.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/usart.cc)
 header/source file pair.

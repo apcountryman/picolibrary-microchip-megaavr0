@@ -115,7 +115,7 @@ header/source file pair.
 
 ## Peripheral Instances
 The `::picolibrary::Microchip::megaAVR0::Peripheral::Instance` template class is used to
-define Microchip megaAVR0 peripheral instances.
+define Microchip megaAVR 0-series peripheral instances.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::Instance` template class is defined
 in the
 [`include/picolibrary/microchip/megaavr0/peripheral/instance.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/instance.h)/[`source/picolibrary/microchip/megaavr0/peripheral/instance.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/instance.cc)

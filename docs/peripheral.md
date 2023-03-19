@@ -7,6 +7,7 @@
     1. [PORTMUX](#portmux)
     1. [RSTCTRL](#rstctrl)
     1. [SIGROW](#sigrow)
+    1. [SLPCTRL](#slpctrl)
     1. [SPI](#spi)
     1. [SYSCFG](#syscfg)
     1. [TWI](#twi)
@@ -69,6 +70,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::SIGROW` class defines the l
 the Microchip megaAVR 0-series SIGROW peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::SIGROW` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/sigrow.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/sigrow.h)/[`source/picolibrary/microchip/megaavr0/peripheral/sigrow.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/sigrow.cc)
+header/source file pair.
+
+### SLPCTRL
+The `::picolibrary::Microchip::megaAVR0::Peripheral::SLPCTRL` class defines the layout of
+the Microchip megaAVR 0-series SLPCTRL peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::SLPCTRL` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/slpctrl.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/slpctrl.h)/[`source/picolibrary/microchip/megaavr0/peripheral/slpctrl.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/slpctrl.cc)
 header/source file pair.
 
 ### SPI
@@ -142,6 +150,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::RSTCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SIGROW0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::SLPCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SPI0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SYSCFG0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::TWI0`

@@ -29,6 +29,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
+#include "picolibrary/microchip/megaavr0/peripheral/slpctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
@@ -81,6 +82,11 @@ using VPORTF = Instance<VPORT, 0x0014>;
  * \brief RSTCTRL0.
  */
 using RSTCTRL0 = Instance<RSTCTRL, 0x0040>;
+
+/**
+ * \brief SLPCTRL0.
+ */
+using SLPCTRL0 = Instance<SLPCTRL, 0x0050>;
 
 /**
  * \brief CLKCTRL0.

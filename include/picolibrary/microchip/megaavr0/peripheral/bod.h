@@ -94,14 +94,6 @@ class BOD {
             ACTIVE_ENWAKE  = 0x3 << Bit::ACTIVE, ///< Enabled in continuous mode. Execution is halted at wake-up until BOD is running.
         };
 
-        /**
-         * \brief SAMPFREQ.
-         */
-        enum SAMPFREQ : std::uint8_t {
-            SAMPFREQ_1KHZ  = 0x0 << Bit::SAMPFREQ, ///< 1 kHz.
-            SAMPFREQ_125HZ = 0x1 << Bit::SAMPFREQ, ///< 125 Hz.
-        };
-
         CTRLA() = delete;
 
         CTRLA( CTRLA && ) = delete;
@@ -203,15 +195,6 @@ class BOD {
         struct Mask {
             static constexpr auto VLMLVL = mask<std::uint8_t>( Size::VLMLVL, Bit::VLMLVL ); ///< VLMLVL.
             static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
-        };
-
-        /**
-         * \brief VLMLVL.
-         */
-        enum VLMLVL : std::uint8_t {
-            VLMLVL_5ABOVE = 0x0 << Bit::VLMLVL, ///< VLM threshold 5% above BOD threshold.
-            VLMLVL_15ABOVE = 0x1 << Bit::VLMLVL, ///< VLM threshold 15% above BOD threshold.
-            VLMLVL_25ABOVE = 0x2 << Bit::VLMLVL, ///< VLM threshold 25% above BOD threshold.
         };
 
         VLMCTRLA() = delete;

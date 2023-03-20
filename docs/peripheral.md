@@ -2,6 +2,7 @@
 
 ## Table of Contents
 1. [Peripherals](#peripherals)
+    1. [BOD](#bod)
     1. [CLKCTRL](#clkctrl)
     1. [PORT](#port)
     1. [PORTMUX](#portmux)
@@ -36,6 +37,13 @@ Peripheral register field constants are defined in the following member structur
 - `Mask`: field bit masks (e.g. the mask for the ENABLE field of the SPI peripheral's
   CTRLA register is defined by the
   `::picolibrary::Microchip::megaAVR0::Peripheral::SPI::CTRLA::Mask::ENABLE` constant)
+
+### BOD
+The `::picolibrary::Microchip::megaAVR0::Peripheral::BOD` class defines the layout of the
+Microchip megaAVR 0-series BOD peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::BOD` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/bod.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/bod.h)/[`source/picolibrary/microchip/megaavr0/peripheral/bod.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/bod.cc)
+header/source file pair.
 
 ### CLKCTRL
 The `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL` class defines the layout of
@@ -140,6 +148,7 @@ Map" table of the datasheets with the following change: a `0` is added to the en
 name of peripherals that only have a single instance to differentiate the peripheral name
 and the instance name.
 The following peripheral instances are defined (listed alphabetically):
+- `::picolibrary::Microchip::megaAVR0::Peripheral::BOD0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTA`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTB`

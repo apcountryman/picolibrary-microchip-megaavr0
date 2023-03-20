@@ -23,6 +23,7 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
+#include "picolibrary/microchip/megaavr0/peripheral/bod.h"
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
@@ -92,6 +93,11 @@ using SLPCTRL0 = Instance<SLPCTRL, 0x0050>;
  * \brief CLKCTRL0.
  */
 using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
+
+/**
+ * \brief BOD0.
+ */
+using BOD0 = Instance<BOD, 0x0080>;
 
 /**
  * \brief WDT0.

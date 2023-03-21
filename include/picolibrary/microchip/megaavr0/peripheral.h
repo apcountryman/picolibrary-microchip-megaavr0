@@ -36,6 +36,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
+#include "picolibrary/microchip/megaavr0/peripheral/vref.h"
 #include "picolibrary/microchip/megaavr0/peripheral/wdt.h"
 
 /**
@@ -98,6 +99,11 @@ using CLKCTRL0 = Instance<CLKCTRL, 0x0060>;
  * \brief BOD0.
  */
 using BOD0 = Instance<BOD, 0x0080>;
+
+/**
+ * \brief VREF0.
+ */
+using VREF0 = Instance<VREF, 0x00A0>;
 
 /**
  * \brief WDT0.

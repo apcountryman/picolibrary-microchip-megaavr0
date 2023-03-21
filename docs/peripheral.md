@@ -14,6 +14,7 @@
     1. [TWI](#twi)
     1. [USART](#usart)
     1. [VPORT](#vport)
+    1. [VREF](#vref)
     1. [WDT](#wdt)
 1. [Peripheral Instances](#peripheral-instances)
 
@@ -122,6 +123,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::VPORT` class is defined in 
 [`include/picolibrary/microchip/megaavr0/peripheral/vport.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/vport.h)/[`source/picolibrary/microchip/megaavr0/peripheral/vport.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/vport.cc)
 header/source file pair.
 
+### VREF
+The `::picolibrary::Microchip::megaAVR0::Peripheral::VREF` class defines the layout of the
+Microchip megaAVR 0-series VREF peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::VREF` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/vref.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/vref.h)/[`source/picolibrary/microchip/megaavr0/peripheral/vref.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/vref.cc)
+header/source file pair.
+
 ### WDT
 The `::picolibrary::Microchip::megaAVR0::Peripheral::WDT` class defines the layout of the
 Microchip megaAVR 0-series WDT peripheral and information about its registers.
@@ -173,6 +181,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTD`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTE`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTF`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::VREF0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::WDT0`
 
 The availability of these Microchip megaAVR 0-series peripheral instance definitions

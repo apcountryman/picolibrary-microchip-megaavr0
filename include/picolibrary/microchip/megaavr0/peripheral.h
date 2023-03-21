@@ -25,6 +25,7 @@
 
 #include "picolibrary/microchip/megaavr0/peripheral/bod.h"
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
@@ -109,6 +110,11 @@ using VREF0 = Instance<VREF, 0x00A0>;
  * \brief WDT0.
  */
 using WDT0 = Instance<WDT, 0x0100>;
+
+/**
+ * \brief CPUINT0.
+ */
+using CPUINT0 = Instance<CPUINT, 0x0110>;
 
 /**
  * \brief PORTA.

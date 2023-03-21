@@ -32,7 +32,7 @@ namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
  * \brief Microchip megaAVR 0-series Cyclic Redundancy Check Memory Scan (CRCSCAN)
-  *       peripheral.
+ *        peripheral.
  */
 class CRCSCAN {
   public:

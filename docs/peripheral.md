@@ -4,7 +4,7 @@
 1. [Peripherals](#peripherals)
     1. [BOD](#bod)
     1. [CLKCTRL](#clkctrl)
-    1. [CPUINT](#sigrow)
+    1. [CPUINT](#cpuint)
     1. [PORT](#port)
     1. [PORTMUX](#portmux)
     1. [RSTCTRL](#rstctrl)

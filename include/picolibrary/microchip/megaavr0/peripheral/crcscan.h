@@ -31,7 +31,8 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief Microchip megaAVR 0-series CPU Interrupt Controller (CRCSCAN) peripheral.
+ * \brief Microchip megaAVR 0-series Cyclic Redundancy Check Memory Scan (CRCSCAN)
+  *       peripheral.
  */
 class CRCSCAN {
   public:

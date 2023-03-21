@@ -4,6 +4,7 @@
 1. [Peripherals](#peripherals)
     1. [BOD](#bod)
     1. [CLKCTRL](#clkctrl)
+    1. [CPUINT](#cpuint)
     1. [PORT](#port)
     1. [PORTMUX](#portmux)
     1. [RSTCTRL](#rstctrl)
@@ -51,6 +52,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL` class defines the 
 the Microchip megaAVR 0-series CLKCTRL peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/clkctrl.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/clkctrl.h)/[`source/picolibrary/microchip/megaavr0/peripheral/clkctrl.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/clkctrl.cc)
+header/source file pair.
+
+### CPUINT
+The `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT` class defines the layout of
+the Microchip megaAVR 0-series CPUINT peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/cpuint.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/cpuint.h)/[`source/picolibrary/microchip/megaavr0/peripheral/cpuint.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/cpuint.cc)
 header/source file pair.
 
 ### PORT
@@ -158,6 +166,7 @@ and the instance name.
 The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::BOD0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTA`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTB`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTC`

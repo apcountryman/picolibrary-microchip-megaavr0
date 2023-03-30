@@ -9,6 +9,7 @@
     1. [PORT](#port)
     1. [PORTMUX](#portmux)
     1. [RSTCTRL](#rstctrl)
+    1. [RTC](#rtc)
     1. [SIGROW](#sigrow)
     1. [SLPCTRL](#slpctrl)
     1. [SPI](#spi)
@@ -88,6 +89,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::RSTCTRL` class defines the 
 the Microchip megaAVR 0-series RSTCTRL peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::RSTCTRL` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/rstctrl.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/rstctrl.h)/[`source/picolibrary/microchip/megaavr0/peripheral/rstctrl.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/rstctrl.cc)
+header/source file pair.
+
+### RTC
+The `::picolibrary::Microchip::megaAVR0::Peripheral::RTC` class defines the layout of the
+Microchip megaAVR 0-series RTC peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::RTC` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/rtc.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/rtc.h)/[`source/picolibrary/microchip/megaavr0/peripheral/rtc.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/rtc.cc)
 header/source file pair.
 
 ### SIGROW
@@ -184,6 +192,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTF`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTMUX0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::RSTCTRL0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::RTC0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SIGROW0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SLPCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SPI0`

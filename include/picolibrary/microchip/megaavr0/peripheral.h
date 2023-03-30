@@ -31,6 +31,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
+#include "picolibrary/microchip/megaavr0/peripheral/rtc.h"
 #include "picolibrary/microchip/megaavr0/peripheral/sigrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/slpctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
@@ -121,6 +122,11 @@ using CPUINT0 = Instance<CPUINT, 0x0110>;
  * \brief CRCSCAN0.
  */
 using CRCSCAN0 = Instance<CRCSCAN, 0x0120>;
+
+/**
+ * \brief RTC0.
+ */
+using RTC0 = Instance<RTC, 0x0140>;
 
 /**
  * \brief PORTA.

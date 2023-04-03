@@ -337,8 +337,8 @@ class RTC {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto ERROR = std::uint_fast8_t{ 1 }; ///< ERROR.
-            static constexpr auto SIGN  = std::uint_fast8_t{ 7 }; ///< SIGN.
+            static constexpr auto ERROR = std::uint_fast8_t{ 7 }; ///< ERROR.
+            static constexpr auto SIGN  = std::uint_fast8_t{ 1 }; ///< SIGN.
         };
 
         /**
@@ -376,7 +376,7 @@ class RTC {
      * \brief Clock Selection (CLKSEL) register.
      *
      * This register has the following fields:
-     * - Clock Select (CLKSELECT)
+     * - Clock Select (CLKSEL)
      */
     class CLKSEL : public Register<std::uint8_t> {
       public:
@@ -512,7 +512,7 @@ class RTC {
      * \brief Periodic Interrupt Timer Status (PITSTATUS) register.
      *
      * This register has the following fields:
-     * - (CTRLBUSY)
+     * - PITCTRLA Synchronization Busy (CTRLBUSY)
      */
     class PITSTATUS : public Register<std::uint8_t> {
       public:
@@ -717,7 +717,7 @@ class RTC {
     INTFLAGS intflags;
 
     /**
-     *
+     * \brief Temporary (TEMP) register.
      */
     Register<std::uint8_t> temp;
 

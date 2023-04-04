@@ -374,7 +374,7 @@ class BOD {
     /**
      * \brief CTRLB.
      */
-    CTRLB ctrlb;
+    CTRLB const ctrlb;
 
     /**
      * \brief Reserved registers (offset 0x02-0x07).
@@ -399,7 +399,7 @@ class BOD {
     /**
      * \brief STATUS.
      */
-    STATUS status;
+    STATUS const status;
 
     BOD() = delete;
 

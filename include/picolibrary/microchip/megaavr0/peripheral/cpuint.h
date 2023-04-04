@@ -156,7 +156,7 @@ class CPUINT {
     /**
      * \brief STATUS.
      */
-    STATUS status;
+    STATUS const status;
 
     /**
      * \brief Interrupt Priority Level 0 (LVL0PRI) register.

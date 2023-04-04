@@ -704,7 +704,7 @@ class RTC {
     /**
      * \brief STATUS.
      */
-    STATUS status;
+    STATUS const status;
 
     /**
      * \brief INTCTRL.
@@ -764,7 +764,7 @@ class RTC {
     /**
      * \brief PITSTATUS.
      */
-    PITSTATUS pitstatus;
+    PITSTATUS const pitstatus;
 
     /**
      * \brief PITINTCTRL.

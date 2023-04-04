@@ -225,7 +225,7 @@ class CRCSCAN {
     /**
      * \brief STATUS.
      */
-    STATUS status;
+    STATUS const status;
 
     CRCSCAN() = delete;
 

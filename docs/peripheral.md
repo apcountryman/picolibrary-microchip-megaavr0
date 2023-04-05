@@ -2,6 +2,7 @@
 
 ## Table of Contents
 1. [Peripherals](#peripherals)
+    1. [AC](#ac)
     1. [ADC](#adc)
     1. [BOD](#bod)
     1. [CLKCTRL](#clkctrl)
@@ -42,6 +43,13 @@ Peripheral register field constants are defined in the following member structur
 - `Mask`: field bit masks (e.g. the mask for the ENABLE field of the SPI peripheral's
   CTRLA register is defined by the
   `::picolibrary::Microchip::megaAVR0::Peripheral::SPI::CTRLA::Mask::ENABLE` constant)
+
+### AC
+The `::picolibrary::Microchip::megaAVR0::Peripheral::AC` class defines the layout of the
+Microchip megaAVR 0-series AC peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::AC` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/ac.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/ac.h)/[`source/picolibrary/microchip/megaavr0/peripheral/ac.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/ac.cc)
+header/source file pair.
 
 ### ADC
 The `::picolibrary::Microchip::megaAVR0::Peripheral::ADC` class defines the layout of the
@@ -188,6 +196,7 @@ Map" table of the datasheets with the following change: a `0` is added to the en
 name of peripherals that only have a single instance to differentiate the peripheral name
 and the instance name.
 The following peripheral instances are defined (listed alphabetically):
+- `::picolibrary::Microchip::megaAVR0::Peripheral::AC0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::ADC0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::BOD0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`

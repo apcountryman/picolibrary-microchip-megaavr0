@@ -35,6 +35,7 @@ set(
     "picolibrary/microchip/megaavr0/multiplexed_signals/twi.cc"
     "picolibrary/microchip/megaavr0/multiplexed_signals/usart.cc"
     "picolibrary/microchip/megaavr0/peripheral.cc"
+    "picolibrary/microchip/megaavr0/peripheral/adc.cc"
     "picolibrary/microchip/megaavr0/peripheral/bod.cc"
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/cpuint.cc"

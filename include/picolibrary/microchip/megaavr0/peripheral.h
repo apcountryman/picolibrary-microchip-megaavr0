@@ -23,6 +23,7 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR0_PERIPHERAL_H
 
+#include "picolibrary/microchip/megaavr0/peripheral/adc.h"
 #include "picolibrary/microchip/megaavr0/peripheral/bod.h"
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
@@ -168,6 +169,11 @@ using PORTF = Instance<PORT, 0x04A0>;
  * \brief PORTMUX0.
  */
 using PORTMUX0 = Instance<PORTMUX, 0x05E0>;
+
+/**
+ * \brief ADC0.
+ */
+using ADC0 = Instance<ADC, 0x0600>;
 
 /**
  * \brief USART0.

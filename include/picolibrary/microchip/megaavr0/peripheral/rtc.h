@@ -31,7 +31,7 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief Microchip megaAVR 0-series Serial Peripheral Interface (RTC) peripheral.
+ * \brief Microchip megaAVR 0-series Real-Time Counter (RTC) peripheral.
  */
 class RTC {
   public:

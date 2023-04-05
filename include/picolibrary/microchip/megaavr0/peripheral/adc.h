@@ -31,7 +31,7 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief Microchip megaAVR 0-series Serial Peripheral Interface (ADC) peripheral.
+ * \brief Microchip megaAVR 0-series Analog-to-Digital Converter (ADC) peripheral.
  */
 class ADC {
   public:
@@ -369,7 +369,7 @@ class ADC {
      * \brief Sample Control (SAMPCTRL) register.
      *
      * This register has the following fields:
-     * - (SAMPLEN)
+     * - Sample Length (SAMPLEN)
      */
     class SAMPCTRL : public Register<std::uint8_t> {
       public:
@@ -844,14 +844,14 @@ class ADC {
     DBGCTRL dbgctrl;
 
     /**
-     * \brief Reserved registers (offset 0x0E-0x0F).
-     */
-    Reserved_Register<std::uint8_t> const reserved_0x0E_0x0F[ ( 0x0F - 0x0E ) + 1 ];
-
-    /**
      * \brief Temporary (TEMP) register.
      */
     Register<std::uint8_t> temp;
+
+    /**
+     * \brief Reserved registers (offset 0x0E-0x0F).
+     */
+    Reserved_Register<std::uint8_t> const reserved_0x0E_0x0F[ ( 0x0F - 0x0E ) + 1 ];
 
     /**
      * \brief Result (RES) register.

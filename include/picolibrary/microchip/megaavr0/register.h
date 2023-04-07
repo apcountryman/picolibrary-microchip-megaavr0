@@ -168,7 +168,7 @@ class Reserved_Register {
  * \brief Microchip megaAVR 0-series CPU peripheral CCP register key.
  */
 enum class CPU_CCP_Key : std::uint8_t {
-    SPM   = 0x9D, ///< Allow self programming.
+    SPM   = 0x9D, ///< Allow self-programming.
     IOREG = 0xD8, ///< Unlock protected I/O registers.
 };
 

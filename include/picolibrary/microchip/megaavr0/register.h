@@ -26,6 +26,8 @@
 #include <cstdint>
 #include <type_traits>
 
+#include "picolibrary/utility.h"
+
 namespace picolibrary::Microchip::megaAVR0 {
 
 /**
@@ -163,11 +165,20 @@ class Reserved_Register {
 };
 
 /**
+ * \brief Microchip megaAVR 0-series CPU peripheral CCP register key.
+ */
+enum class CPU_CCP_Key : std::uint8_t {
+    SPM   = 0x9D, ///< Allow self programming.
+    IOREG = 0xD8, ///< Unlock protected I/O registers.
+};
+
+/**
  * \brief A Microchip megaAVR 0-series protected register.
  *
  * \tparam T The protected register's underlying integral type (must be std::uint8_t).
+ * \tparam CPU_CCP_KEY The protected register's CPU peripheral CCP register key.
  */
-template<typename T>
+template<typename T, CPU_CCP_Key CPU_CCP_KEY>
 class Protected_Register {
   public:
     static_assert( std::is_same_v<T, std::uint8_t> );
@@ -272,11 +283,6 @@ class Protected_Register {
     static constexpr auto CPU_CCP_ADDRESS = std::uintptr_t{ CPU_ADDRESS + CPU_CCP_OFFSET };
 
     /**
-     * \brief CPU peripheral CCP register unlock protected I/O registers signature.
-     */
-    static constexpr auto CPU_CCP_UNLOCK_PROTECTED_IO_REGISTERS = std::uint8_t{ 0xD8 };
-
-    /**
      * \brief The protected register.
      */
     Type volatile m_protected_register;
@@ -293,7 +299,7 @@ class Protected_Register {
             "sts %[protected_register_address], %[protected_register_data]"
             :
             : [ cpu_ccp_address ] "I"( CPU_CCP_ADDRESS ),
-              [ cpu_ccp_unlock_protected_io_registers ] "d"( CPU_CCP_UNLOCK_PROTECTED_IO_REGISTERS ),
+              [ cpu_ccp_unlock_protected_io_registers ] "d"( to_underlying( CPU_CCP_KEY ) ),
               [ protected_register_address ] "n"( &m_protected_register ),
               [ protected_register_data ] "r"( data ) );
     }

@@ -43,7 +43,7 @@ class BOD {
      * - Active (ACTIVE)
      * - Sample Frequency (SAMPFREQ)
      */
-    class CTRLA : public Protected_Register<std::uint8_t> {
+    class CTRLA : public Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG> {
       public:
         /**
          * \brief Field sizes.
@@ -106,7 +106,7 @@ class BOD {
 
         auto operator=( CTRLA const & ) = delete;
 
-        using Protected_Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG>::operator=;
     };
 
     /**

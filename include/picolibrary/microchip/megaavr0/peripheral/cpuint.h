@@ -43,7 +43,7 @@ class CPUINT {
      * - Compact Vector Table (CVT)
      * - Interrupt Vector Select (IVSEL)
      */
-    class CTRLA : public Protected_Register<std::uint8_t> {
+    class CTRLA : public Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG> {
       public:
         /**
          * \brief Field sizes.
@@ -90,7 +90,7 @@ class CPUINT {
 
         auto operator=( CTRLA const & ) = delete;
 
-        using Protected_Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG>::operator=;
     };
 
     /**

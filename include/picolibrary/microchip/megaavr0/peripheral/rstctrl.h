@@ -108,7 +108,7 @@ class RSTCTRL {
      * This register has the following fields:
      * - Software Reset Enable (SWRE)
      */
-    class SWRR : public Protected_Register<std::uint8_t> {
+    class SWRR : public Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG> {
       public:
         /**
          * \brief Field sizes.
@@ -146,7 +146,7 @@ class RSTCTRL {
 
         auto operator=( SWRR const & ) = delete;
 
-        using Protected_Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG>::operator=;
     };
 
     /**

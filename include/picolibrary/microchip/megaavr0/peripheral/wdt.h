@@ -42,7 +42,7 @@ class WDT {
      * - Period (PERIOD)
      * - Window (WINDOW)
      */
-    class CTRLA : public Protected_Register<std::uint8_t> {
+    class CTRLA : public Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG> {
       public:
         /**
          * \brief Field sizes.
@@ -116,7 +116,7 @@ class WDT {
 
         auto operator=( CTRLA const & ) = delete;
 
-        using Protected_Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG>::operator=;
     };
 
     /**
@@ -126,7 +126,7 @@ class WDT {
      * - Synchronization Busy (SYNCBUSY)
      * - Lock (LOCK)
      */
-    class STATUS : public Protected_Register<std::uint8_t> {
+    class STATUS : public Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG> {
       public:
         /**
          * \brief Field sizes.
@@ -167,7 +167,7 @@ class WDT {
 
         auto operator=( STATUS const & ) = delete;
 
-        using Protected_Register<std::uint8_t>::operator=;
+        using Protected_Register<std::uint8_t, CPU_CCP_Key::IOREG>::operator=;
     };
 
     /**

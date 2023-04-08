@@ -250,7 +250,7 @@ class NVMCTRL {
     };
 
     /**
-     * \brief Interrupt Control (INTFLAGS) register.
+     * \brief Interrupt Flags (INTFLAGS) register.
      *
      * This register has the following fields:
      * - EEREADY Interrupt Flag (EEREADY)

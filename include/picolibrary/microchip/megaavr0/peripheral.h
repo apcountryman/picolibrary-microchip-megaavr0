@@ -30,6 +30,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
 #include "picolibrary/microchip/megaavr0/peripheral/crcscan.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
+#include "picolibrary/microchip/megaavr0/peripheral/nvmctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
 #include "picolibrary/microchip/megaavr0/peripheral/portmux.h"
 #include "picolibrary/microchip/megaavr0/peripheral/rstctrl.h"
@@ -218,6 +219,11 @@ using SPI0 = Instance<SPI, 0x08C0>;
  * \brief SYSCFG0.
  */
 using SYSCFG0 = Instance<SYSCFG, 0x0F00>;
+
+/**
+ * \brief NVMCTRL0.
+ */
+using NVMCTRL0 = Instance<NVMCTRL, 0x1000>;
 
 /**
  * \brief SIGROW0.

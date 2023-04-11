@@ -31,7 +31,7 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief Microchip megaAVR 0-series Analog-to-Digital Converter (TCA) peripheral.
+ * \brief Microchip megaAVR 0-series 16-bit Timer/Counter Type A (TCA) peripheral.
  */
 class TCA {
   public:
@@ -654,10 +654,10 @@ class TCA {
         };
 
         /**
-         * \brief Interrupt Flags (INTFLAGS) register.
+         * \brief Interrupt Flag (INTFLAGS) register.
          *
          * This register has the following fields:
-         * - Timer Overflow/Underflow Interrupt Flag (OVF)
+         * - Overflow/Underflow Interrupt Flag (OVF)
          * - Compare Channel 0 Interrupt Flag (CMP0)
          * - Compare Channel 1 Interrupt Flag (CMP1)
          * - Compare Channel 2 Interrupt Flag (CMP2)
@@ -728,7 +728,7 @@ class TCA {
              */
             struct Size {
                 static constexpr auto DBGRUN    = std::uint_fast8_t{ 1 }; ///< DBGRUN.
-                static constexpr auto RESERVED1 = std::uint_fast8_t{ 1 }; ///< RESERVED1.
+                static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
             };
 
             /**
@@ -1182,7 +1182,7 @@ class TCA {
             struct Size {
                 static constexpr auto CMDEN  = std::uint_fast8_t{ 2 }; ///< CMDEN.
                 static constexpr auto CMD    = std::uint_fast8_t{ 2 }; ///< CMD.
-                static constexpr auto FIELD2 = std::uint_fast8_t{ 4 }; ///< FIELD2.
+                static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
             };
 
             /**
@@ -1191,7 +1191,7 @@ class TCA {
             struct Bit {
                 static constexpr auto CMDEN = std::uint_fast8_t{}; ///< CMDEN.
                 static constexpr auto CMD = std::uint_fast8_t{ CMDEN + Size::CMDEN }; ///< CMD.
-                static constexpr auto FIELD2 = std::uint_fast8_t{ CMD + Size::CMD }; ///< FIELD2.
+                static constexpr auto RESERVED4 = std::uint_fast8_t{ CMD + Size::CMD }; ///< RESERVED4.
             };
 
             /**
@@ -1200,7 +1200,7 @@ class TCA {
             struct Mask {
                 static constexpr auto CMDEN = mask<std::uint8_t>( Size::CMDEN, Bit::CMDEN ); ///< CMDEN.
                 static constexpr auto CMD = mask<std::uint8_t>( Size::CMD, Bit::CMD ); ///< CMD.
-                static constexpr auto FIELD2 = mask<std::uint8_t>( Size::FIELD2, Bit::FIELD2 ); ///< FIELD2.
+                static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
             };
 
             /**
@@ -1208,7 +1208,7 @@ class TCA {
              */
             enum CMDEN : std::uint8_t {
                 CMDEN_NONE = 0x0 << Bit::CMDEN, ///< None.
-                CMDEN_BOTH = 0x3 << Bit::CMDEN, ///< Command (CMD) will be applied to both low byte and hight byte timer/counter.
+                CMDEN_BOTH = 0x3 << Bit::CMDEN, ///< Command (CMD) will be applied to both low byte and high byte timer/counter.
             };
 
             /**
@@ -1250,7 +1250,7 @@ class TCA {
             struct Size {
                 static constexpr auto CMDEN  = std::uint_fast8_t{ 2 }; ///< CMDEN.
                 static constexpr auto CMD    = std::uint_fast8_t{ 2 }; ///< CMD.
-                static constexpr auto FIELD2 = std::uint_fast8_t{ 4 }; ///< FIELD2.
+                static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
             };
 
             /**
@@ -1259,7 +1259,7 @@ class TCA {
             struct Bit {
                 static constexpr auto CMDEN = std::uint_fast8_t{}; ///< CMDEN.
                 static constexpr auto CMD = std::uint_fast8_t{ CMDEN + Size::CMDEN }; ///< CMD.
-                static constexpr auto FIELD2 = std::uint_fast8_t{ CMD + Size::CMD }; ///< FIELD2.
+                static constexpr auto RESERVED4 = std::uint_fast8_t{ CMD + Size::CMD }; ///< RESERVED4.
             };
 
             /**
@@ -1268,7 +1268,7 @@ class TCA {
             struct Mask {
                 static constexpr auto CMDEN = mask<std::uint8_t>( Size::CMDEN, Bit::CMDEN ); ///< CMDEN.
                 static constexpr auto CMD = mask<std::uint8_t>( Size::CMD, Bit::CMD ); ///< CMD.
-                static constexpr auto FIELD2 = mask<std::uint8_t>( Size::FIELD2, Bit::FIELD2 ); ///< FIELD2.
+                static constexpr auto RESERVED4 = mask<std::uint8_t>( Size::RESERVED4, Bit::RESERVED4 ); ///< RESERVED4.
             };
 
             /**
@@ -1276,7 +1276,7 @@ class TCA {
              */
             enum CMDEN : std::uint8_t {
                 CMDEN_NONE = 0x0 << Bit::CMDEN, ///< None.
-                CMDEN_BOTH = 0x3 << Bit::CMDEN, ///< Command (CMD) will be applied to both low byte and hight byte timer/counter.
+                CMDEN_BOTH = 0x3 << Bit::CMDEN, ///< Command (CMD) will be applied to both low byte and high byte timer/counter.
             };
 
             /**
@@ -1370,7 +1370,7 @@ class TCA {
         };
 
         /**
-         * \brief Interrupt Control (INTFLAGS) register.
+         * \brief Interrupt Flag (INTFLAGS) register.
          *
          * This register has the following fields:
          * - Low Byte Underflow Interrupt Flag (LUNF)
@@ -1448,7 +1448,7 @@ class TCA {
              */
             struct Size {
                 static constexpr auto DBGRUN    = std::uint_fast8_t{ 1 }; ///< DBGRUN.
-                static constexpr auto RESERVED1 = std::uint_fast8_t{ 1 }; ///< RESERVED1.
+                static constexpr auto RESERVED1 = std::uint_fast8_t{ 7 }; ///< RESERVED1.
             };
 
             /**

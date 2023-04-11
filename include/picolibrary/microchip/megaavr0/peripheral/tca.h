@@ -570,10 +570,27 @@ class TCA {
              * \brief EVACT.
              */
             enum EVACT : std::uint8_t {
-                EVACT_POSEDGE = 0x0 << Bit::EVACT, ///< Count on positive event edge.
-                EVACT_ANYEDGE = 0x1 << Bit::EVACT, ///< Count on any event edge.
-                EVACT_HIGHLVL = 0x2 << Bit::EVACT, ///< Count prescaled clock cycles while the event signal is high.
-                EVACT_UPDOWN  = 0x3 << Bit::EVACT, ///< Count prescaled clock cycles (up when the event signal is low, down when it is high).
+                /**
+                 * Count on positive event edge.
+                 */
+                EVACT_POSEDGE = 0x0 << Bit::EVACT,
+
+                /**
+                 * Count on any event edge.
+                 */
+                EVACT_ANYEDGE = 0x1 << Bit::EVACT,
+
+                /**
+                 * Count prescaled clock cycles while the event signal is high.
+                 */
+                EVACT_HIGHLVL = 0x2 << Bit::EVACT,
+
+                /**
+                 * Count prescaled clock cycles. The event signal controls the count
+                 * direction, up when low and down when high. The direction is latched
+                 * when the counter counts.
+                 */
+                EVACT_UPDOWN = 0x3 << Bit::EVACT,
             };
 
             EVCTRL() = delete;

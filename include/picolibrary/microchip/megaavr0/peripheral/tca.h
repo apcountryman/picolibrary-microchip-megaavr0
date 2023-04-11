@@ -1180,8 +1180,8 @@ class TCA {
              * \brief Field sizes.
              */
             struct Size {
-                static constexpr auto CMDEN  = std::uint_fast8_t{ 2 }; ///< CMDEN.
-                static constexpr auto CMD    = std::uint_fast8_t{ 2 }; ///< CMD.
+                static constexpr auto CMDEN     = std::uint_fast8_t{ 2 }; ///< CMDEN.
+                static constexpr auto CMD       = std::uint_fast8_t{ 2 }; ///< CMD.
                 static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
             };
 
@@ -1248,8 +1248,8 @@ class TCA {
              * \brief Field sizes.
              */
             struct Size {
-                static constexpr auto CMDEN  = std::uint_fast8_t{ 2 }; ///< CMDEN.
-                static constexpr auto CMD    = std::uint_fast8_t{ 2 }; ///< CMD.
+                static constexpr auto CMDEN     = std::uint_fast8_t{ 2 }; ///< CMDEN.
+                static constexpr auto CMD       = std::uint_fast8_t{ 2 }; ///< CMD.
                 static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
             };
 

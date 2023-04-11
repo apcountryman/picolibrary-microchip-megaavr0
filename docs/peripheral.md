@@ -17,6 +17,7 @@
     1. [SLPCTRL](#slpctrl)
     1. [SPI](#spi)
     1. [SYSCFG](#syscfg)
+    1. [TCA](#tca)
     1. [TWI](#twi)
     1. [USART](#usart)
     1. [VPORT](#vport)
@@ -150,6 +151,27 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::SYSCFG` class is defined in
 [`include/picolibrary/microchip/megaavr0/peripheral/syscfg.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/syscfg.h)/[`source/picolibrary/microchip/megaavr0/peripheral/syscfg.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/syscfg.cc)
 header/source file pair.
 
+### TCA
+The `::picolibrary::Microchip::megaAVR0::Peripheral::TCA` class defines the layout of the
+Microchip megaAVR 0-series TCA peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::TCA` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/tca.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/tca.h)/[`source/picolibrary/microchip/megaavr0/peripheral/tca.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/tca.cc)
+header/source file pair.
+
+The `::picolibrary::Microchip::megaAVR0::Peripheral::TCA` class has a different structure
+than other Microchip megaAVR 0-series peripheral classes due to the Microchip megaAVR
+0-series TCA peripheral's multiple operating modes (normal mode and split mode).
+Classes and variables that would be members of the
+`::picolibrary::Microchip::megaAVR0::Peripheral::TCA` class are instead members of the
+`::picolibrary::Microchip::megaAVR0::Peripheral::TCA::Normal` and
+`::picolibrary::Microchip::megaAVR0::Peripheral::TCA::Split` member classes.
+A TCA peripheral's `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::Normal` instance
+is accessed via the `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::normal` member
+variable.
+A TCA peripheral's `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::Split` instance
+is accessed via the `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::split` member
+variable.
+
 ### TWI
 The `::picolibrary::Microchip::megaAVR0::Peripheral::TWI` class defines the layout of the
 Microchip megaAVR 0-series TWI peripheral and information about its registers.
@@ -224,6 +246,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SLPCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SPI0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SYSCFG0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::TCA0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::TWI0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART1`

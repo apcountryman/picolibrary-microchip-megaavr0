@@ -18,6 +18,7 @@
     1. [SPI](#spi)
     1. [SYSCFG](#syscfg)
     1. [TCA](#tca)
+    1. [TCB](#tcb)
     1. [TWI](#twi)
     1. [USART](#usart)
     1. [VPORT](#vport)
@@ -172,6 +173,13 @@ A TCA peripheral's `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::Split` 
 is accessed via the `::picolibrary::Microchip::megaAVR0::Peripheral::TCA::split` member
 variable.
 
+### TCB
+The `::picolibrary::Microchip::megaAVR0::Peripheral::TCB` class defines the layout of the
+Microchip megaAVR 0-series TCB peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::TCB` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/tcb.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/tcb.h)/[`source/picolibrary/microchip/megaavr0/peripheral/tcb.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/tcb.cc)
+header/source file pair.
+
 ### TWI
 The `::picolibrary::Microchip::megaAVR0::Peripheral::TWI` class defines the layout of the
 Microchip megaAVR 0-series TWI peripheral and information about its registers.
@@ -247,6 +255,10 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SPI0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::SYSCFG0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::TCA0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::TCB0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::TCB1`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::TCB2`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::TCB3`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::TWI0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART1`

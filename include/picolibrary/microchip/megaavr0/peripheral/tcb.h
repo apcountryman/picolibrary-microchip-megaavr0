@@ -31,7 +31,7 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 /**
- * \brief Microchip megaAVR 0-series Two-Wire Interface (TCB) peripheral.
+ * \brief Microchip megaAVR 0-series 16-Bit Timer/Counter Type B (TCB) peripheral.
  */
 class TCB {
   public:
@@ -189,12 +189,9 @@ class TCB {
      * \brief Event Control (EVCTRL) register.
      *
      * This register has the following fields:
-     * - (CAPTEI)
-     * - (RESERVED1)
-     * - (EDGE)
-     * - (RESERVED5)
-     * - (FILTER)
-     * - (RESERVED7)
+     * - Capture Event Input Enable (CAPTEI)
+     * - Event Edge (EDGE)
+     * - Input Capture Noise Cancellation Filter (FILTER)
      */
     class EVCTRL : public Register<std::uint8_t> {
       public:
@@ -394,7 +391,7 @@ class TCB {
      * \brief (DBGCTRL) register.
      *
      * This register has the following fields:
-     * - (DBGRUN)
+     * - Debug Run (DBGRUN)
      */
     class DBGCTRL : public Register<std::uint8_t> {
       public:

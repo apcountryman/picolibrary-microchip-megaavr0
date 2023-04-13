@@ -40,6 +40,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/syscfg.h"
 #include "picolibrary/microchip/megaavr0/peripheral/tca.h"
+#include "picolibrary/microchip/megaavr0/peripheral/tcb.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
@@ -220,6 +221,26 @@ using SPI0 = Instance<SPI, 0x08C0>;
  * \brief TCA0.
  */
 using TCA0 = Instance<TCA, 0x0A00>;
+
+/**
+ * \brief TCB0.
+ */
+using TCB0 = Instance<TCB, 0x0A80>;
+
+/**
+ * \brief TCB1.
+ */
+using TCB1 = Instance<TCB, 0x0A90>;
+
+/**
+ * \brief TCB2.
+ */
+using TCB2 = Instance<TCB, 0x0AA0>;
+
+/**
+ * \brief TCB3.
+ */
+using TCB3 = Instance<TCB, 0x0AB0>;
 
 /**
  * \brief SYSCFG0.

@@ -853,20 +853,62 @@ class ADC {
      */
     Reserved_Register<std::uint8_t> const reserved_0x0E_0x0F[ ( 0x0F - 0x0E ) + 1 ];
 
-    /**
-     * \brief Result (RES) register.
-     */
-    Register<std::uint16_t> const res;
+    union {
+        /**
+         * \brief Result (RES) register.
+         */
+        Register<std::uint16_t> const res;
 
-    /**
-     * \brief Window Comparator Low Threshold (WINLT) register.
-     */
-    Register<std::uint16_t> winlt;
+        struct {
+            /**
+             * \brief Result Low Byte (RESL) register.
+             */
+            Register<std::uint8_t> const resl;
 
-    /**
-     * \brief Window Comparator High Threshold (WINHT) register.
-     */
-    Register<std::uint16_t> winht;
+            /**
+             * \brief Result High Byte (RESH) register.
+             */
+            Register<std::uint8_t> const resh;
+        };
+    };
+
+    union {
+        /**
+         * \brief Window Comparator Low Threshold (WINLT) register.
+         */
+        Register<std::uint16_t> winlt;
+
+        struct {
+            /**
+             * \brief Window Comparator Low Threshold Low Byte (WINLTL) register.
+             */
+            Register<std::uint8_t> winltl;
+
+            /**
+             * \brief Window Comparator Low Threshold High Byte (WINLTL) register.
+             */
+            Register<std::uint8_t> winlth;
+        };
+    };
+
+    union {
+        /**
+         * \brief Window Comparator High Threshold (WINHT) register.
+         */
+        Register<std::uint16_t> winht;
+
+        struct {
+            /**
+             * \brief Window Comparator High Threshold Low Byte (WINHTL) register.
+             */
+            Register<std::uint8_t> winhtl;
+
+            /**
+             * \brief Window Comparator High Threshold High Byte (WINHTL) register.
+             */
+            Register<std::uint8_t> winhth;
+        };
+    };
 
     /**
      * \brief CALIB.

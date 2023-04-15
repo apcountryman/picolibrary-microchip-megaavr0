@@ -736,20 +736,62 @@ class RTC {
      */
     CLKSEL clksel;
 
-    /**
-     * \brief Count (CNT) register.
-     */
-    Register<std::uint16_t> cnt;
+    union {
+        /**
+         * \brief Count (CNT) register.
+         */
+        Register<std::uint16_t> cnt;
 
-    /**
-     * \brief Period (PER) register.
-     */
-    Register<std::uint16_t> per;
+        struct {
+            /**
+             * \brief Count Low Byte (CNTL) register.
+             */
+            Register<std::uint8_t> cntl;
 
-    /**
-     * \brief Compare (CMP) register.
-     */
-    Register<std::uint16_t> cmp;
+            /**
+             * \brief Count High Byte (CNTH) register.
+             */
+            Register<std::uint8_t> cnth;
+        };
+    };
+
+    union {
+        /**
+         * \brief Period (PER) register.
+         */
+        Register<std::uint16_t> per;
+
+        struct {
+            /**
+             * \brief Period Low Byte (PERL) register.
+             */
+            Register<std::uint8_t> perl;
+
+            /**
+             * \brief Period High Byte (PERH) register.
+             */
+            Register<std::uint8_t> perh;
+        };
+    };
+
+    union {
+        /**
+         * \brief Compare (CMP) register.
+         */
+        Register<std::uint16_t> cmp;
+
+        struct {
+            /**
+             * \brief Compare Low Byte (CMPL) register.
+             */
+            Register<std::uint8_t> cmpl;
+
+            /**
+             * \brief Compare High Byte (CMPH) register.
+             */
+            Register<std::uint8_t> cmph;
+        };
+    };
 
     /**
      * \brief Reserved registers (offset 0x0E-0x0F).

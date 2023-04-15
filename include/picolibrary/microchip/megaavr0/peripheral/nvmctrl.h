@@ -326,15 +326,43 @@ class NVMCTRL {
      */
     Reserved_Register<std::uint8_t> const reserved_0x05_0x05[ ( 0x05 - 0x05 ) + 1 ];
 
-    /**
-     * \brief Data (DATA) register.
-     */
-    Register<std::uint16_t> data;
+    union {
+        /**
+         * \brief Data (DATA) register.
+         */
+        Register<std::uint16_t> data;
 
-    /**
-     * \brief Address (ADDR) register.
-     */
-    Register<std::uint16_t> addr;
+        struct {
+            /**
+             * \brief Data Low Byte (DATAL) register.
+             */
+            Register<std::uint8_t> datal;
+
+            /**
+             * \brief Data High Byte (DATAH) register.
+             */
+            Register<std::uint8_t> datah;
+        };
+    };
+
+    union {
+        /**
+         * \brief Address (ADDR) register.
+         */
+        Register<std::uint16_t> addr;
+
+        struct {
+            /**
+             * \brief Address Low Byte (ADDRL) register.
+             */
+            Register<std::uint8_t> addrl;
+
+            /**
+             * \brief Address High Byte (ADDRH) register.
+             */
+            Register<std::uint8_t> addrh;
+        };
+    };
 
     NVMCTRL() = delete;
 

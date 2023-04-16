@@ -885,7 +885,7 @@ class ADC {
             Register<std::uint8_t> winltl;
 
             /**
-             * \brief Window Comparator Low Threshold High Byte (WINLTL) register.
+             * \brief Window Comparator Low Threshold High Byte (WINLTH) register.
              */
             Register<std::uint8_t> winlth;
         };
@@ -904,7 +904,7 @@ class ADC {
             Register<std::uint8_t> winhtl;
 
             /**
-             * \brief Window Comparator High Threshold High Byte (WINHTL) register.
+             * \brief Window Comparator High Threshold High Byte (WINHTH) register.
              */
             Register<std::uint8_t> winhth;
         };

@@ -479,15 +479,43 @@ class TCB {
      */
     Register<std::uint8_t> temp;
 
-    /**
-     * \brief Count (CNT) register.
-     */
-    Register<std::uint16_t> cnt;
+    union {
+        /**
+         * \brief Count (CNT) register.
+         */
+        Register<std::uint16_t> cnt;
 
-    /**
-     * \brief Capture/Compare (CCMP) register.
-     */
-    Register<std::uint16_t> ccmp;
+        struct {
+            /**
+             * \brief Count Low Byte (CNTL) register.
+             */
+            Register<std::uint8_t> cntl;
+
+            /**
+             * \brief Count High Byte (CNTH) register.
+             */
+            Register<std::uint8_t> cnth;
+        };
+    };
+
+    union {
+        /**
+         * \brief Capture/Compare (CCMP) register.
+         */
+        Register<std::uint16_t> ccmp;
+
+        struct {
+            /**
+             * \brief Capture/Compare Low Byte (CCMPL) register.
+             */
+            Register<std::uint8_t> ccmpl;
+
+            /**
+             * \brief Capture/Compare High Byte (CCMPH) register.
+             */
+            Register<std::uint8_t> ccmph;
+        };
+    };
 
     TCB() = delete;
 

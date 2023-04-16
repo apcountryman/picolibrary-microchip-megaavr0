@@ -859,60 +859,186 @@ class TCA {
          */
         Reserved_Register<std::uint8_t> const reserved_0x10_0x1F[ ( 0x1F - 0x10 ) + 1 ];
 
-        /**
-         * \brief Counter (CNT) register.
-         */
-        Register<std::uint16_t> cnt;
+        union {
+            /**
+             * \brief Counter (CNT) register.
+             */
+            Register<std::uint16_t> cnt;
+
+            struct {
+                /**
+                 * \brief Counter Low Byte (CNTL) register.
+                 */
+                Register<std::uint8_t> cntl;
+
+                /**
+                 * \brief Counter High Byte (CNTH) register.
+                 */
+                Register<std::uint8_t> cnth;
+            };
+        };
 
         /**
          * \brief Reserved registers (offset 0x22-0x25).
          */
         Reserved_Register<std::uint8_t> const reserved_0x22_0x25[ ( 0x25 - 0x22 ) + 1 ];
 
-        /**
-         * \brief Period (PER) register.
-         */
-        Register<std::uint16_t> per;
+        union {
+            /**
+             * \brief Period (PER) register.
+             */
+            Register<std::uint16_t> per;
 
-        /**
-         * \brief Compare 0 (CMP0) register.
-         */
-        Register<std::uint16_t> cmp0;
+            struct {
+                /**
+                 * \brief Period Low Byte (PERL) register.
+                 */
+                Register<std::uint8_t> perl;
 
-        /**
-         * \brief Compare 1 (CMP1) register.
-         */
-        Register<std::uint16_t> cmp1;
+                /**
+                 * \brief Period High Byte (PERH) register.
+                 */
+                Register<std::uint8_t> perh;
+            };
+        };
 
-        /**
-         * \brief Compare 2 (CMP2) register.
-         */
-        Register<std::uint16_t> cmp2;
+        union {
+            /**
+             * \brief Compare 0 (CMP0) register.
+             */
+            Register<std::uint16_t> cmp0;
+
+            struct {
+                /**
+                 * \brief Compare 0 Low Byte (CMP0L) register.
+                 */
+                Register<std::uint8_t> cmp0l;
+
+                /**
+                 * \brief Compare 0 High Byte (CMP0H) register.
+                 */
+                Register<std::uint8_t> cmp0h;
+            };
+        };
+
+        union {
+            /**
+             * \brief Compare 1 (CMP1) register.
+             */
+            Register<std::uint16_t> cmp1;
+
+            struct {
+                /**
+                 * \brief Compare 1 Low Byte (CMP1L) register.
+                 */
+                Register<std::uint8_t> cmp1l;
+
+                /**
+                 * \brief Compare 1 High Byte (CMP1H) register.
+                 */
+                Register<std::uint8_t> cmp1h;
+            };
+        };
+
+        union {
+            /**
+             * \brief Compare 2 (CMP2) register.
+             */
+            Register<std::uint16_t> cmp2;
+
+            struct {
+                /**
+                 * \brief Compare 2 Low Byte (CMP2L) register.
+                 */
+                Register<std::uint8_t> cmp2l;
+
+                /**
+                 * \brief Compare 2 High Byte (CMP2H) register.
+                 */
+                Register<std::uint8_t> cmp2h;
+            };
+        };
 
         /**
          * \brief Reserved registers (offset 0x2E-0x35).
          */
         Reserved_Register<std::uint8_t> const reserved_0x2E_0x35[ ( 0x35 - 0x2E ) + 1 ];
 
-        /**
-         * \brief Period Buffer (PERBUF) register.
-         */
-        Register<std::uint16_t> perbuf;
+        union {
+            /**
+             * \brief Period Buffer (PERBUF) register.
+             */
+            Register<std::uint16_t> perbuf;
 
-        /**
-         * \brief Compare 0 Buffer (CMP0BUF) register.
-         */
-        Register<std::uint16_t> cmp0buf;
+            struct {
+                /**
+                 * \brief Period Buffer Low Byte (PERBUFL) register.
+                 */
+                Register<std::uint8_t> perbufl;
 
-        /**
-         * \brief Compare 1 Buffer (CMP1BUF) register.
-         */
-        Register<std::uint16_t> cmp1buf;
+                /**
+                 * \brief Period Buffer High Byte (PERBUFH) register.
+                 */
+                Register<std::uint8_t> perbufh;
+            };
+        };
 
-        /**
-         * \brief Compare 2 Buffer (CMP2BUF) register.
-         */
-        Register<std::uint16_t> cmp2buf;
+        union {
+            /**
+             * \brief Compare 0 Buffer (CMP0BUF) register.
+             */
+            Register<std::uint16_t> cmp0buf;
+
+            struct {
+                /**
+                 * \brief Compare 0 Buffer Low Byte (CMP0BUFL) register.
+                 */
+                Register<std::uint8_t> cmp0bufl;
+
+                /**
+                 * \brief Compare 0 Buffer High Byte (CMP0BUFH) register.
+                 */
+                Register<std::uint8_t> cmp0bufh;
+            };
+        };
+
+        union {
+            /**
+             * \brief Compare 1 Buffer (CMP1BUF) register.
+             */
+            Register<std::uint16_t> cmp1buf;
+
+            struct {
+                /**
+                 * \brief Compare 1 Buffer Low Byte (CMP1BUFL) register.
+                 */
+                Register<std::uint8_t> cmp1bufl;
+
+                /**
+                 * \brief Compare 1 Buffer High Byte (CMP1BUFH) register.
+                 */
+                Register<std::uint8_t> cmp1bufh;
+            };
+        };
+
+        union {
+            /**
+             * \brief Compare 2 Buffer (CMP2BUF) register.
+             */
+            Register<std::uint16_t> cmp2buf;
+
+            struct {
+                /**
+                 * \brief Compare 2 Buffer Low Byte (CMP2BUFL) register.
+                 */
+                Register<std::uint8_t> cmp2bufl;
+
+                /**
+                 * \brief Compare 2 Buffer High Byte (CMP2BUFH) register.
+                 */
+                Register<std::uint8_t> cmp2bufh;
+            };
+        };
 
         Normal() = delete;
 

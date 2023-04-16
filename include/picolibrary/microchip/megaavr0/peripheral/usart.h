@@ -719,10 +719,24 @@ class USART {
      */
     CTRLC ctrlc;
 
-    /**
-     * \brief Baud (BAUD) register.
-     */
-    Register<std::uint16_t> baud;
+    union {
+        /**
+         * \brief Baud (BAUD) register.
+         */
+        Register<std::uint16_t> baud;
+
+        struct {
+            /**
+             * \brief Baud Low Byte (BAUDL) register.
+             */
+            Register<std::uint8_t> baudl;
+
+            /**
+             * \brief Baud High Byte (BAUDH) register.
+             */
+            Register<std::uint8_t> baudh;
+        };
+    };
 
     /**
      * \brief CTRLD.

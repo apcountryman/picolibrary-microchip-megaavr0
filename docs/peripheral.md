@@ -8,6 +8,7 @@
     1. [CLKCTRL](#clkctrl)
     1. [CPUINT](#cpuint)
     1. [CRCSCAN](#crcscan)
+    1. [FUSE](#fuse)
     1. [NVMCTRL](#nvmctrl)
     1. [PORT](#port)
     1. [PORTMUX](#portmux)
@@ -87,6 +88,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN` class defines the 
 the Microchip megaAVR 0-series CRCSCAN peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/crcscan.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/crcscan.h)/[`source/picolibrary/microchip/megaavr0/peripheral/crcscan.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/crcscan.cc)
+header/source file pair.
+
+### FUSE
+The `::picolibrary::Microchip::megaAVR0::Peripheral::FUSE` class defines the layout of the
+Microchip megaAVR 0-series FUSE peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::FUSE` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/fuse.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/fuse.h)/[`source/picolibrary/microchip/megaavr0/peripheral/fuse.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/fuse.cc)
 header/source file pair.
 
 ### NVMCTRL
@@ -240,6 +248,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::FUSE0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::NVMCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTA`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTB`

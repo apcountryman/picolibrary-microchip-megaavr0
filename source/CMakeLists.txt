@@ -56,6 +56,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/tcb.cc"
     "picolibrary/microchip/megaavr0/peripheral/twi.cc"
     "picolibrary/microchip/megaavr0/peripheral/usart.cc"
+    "picolibrary/microchip/megaavr0/peripheral/userrow.cc"
     "picolibrary/microchip/megaavr0/peripheral/vport.cc"
     "picolibrary/microchip/megaavr0/peripheral/vref.cc"
     "picolibrary/microchip/megaavr0/peripheral/wdt.cc"

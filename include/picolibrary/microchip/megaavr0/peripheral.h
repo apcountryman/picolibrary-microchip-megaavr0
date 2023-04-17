@@ -29,6 +29,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
 #include "picolibrary/microchip/megaavr0/peripheral/crcscan.h"
+#include "picolibrary/microchip/megaavr0/peripheral/fuse.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/nvmctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/port.h"
@@ -256,6 +257,11 @@ using NVMCTRL0 = Instance<NVMCTRL, 0x1000>;
  * \brief SIGROW0.
  */
 using SIGROW0 = Instance<SIGROW, 0x1100>;
+
+/**
+ * \brief FUSE0.
+ */
+using FUSE0 = Instance<FUSE, 0x1280>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

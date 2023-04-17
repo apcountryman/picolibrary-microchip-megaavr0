@@ -25,13 +25,13 @@
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 
 #if defined( __AVR_ATmega808__ ) || defined( __AVR_ATmega809__ ) \
-    || defined( __AVR_ATmega1608 ) || defined( __AVR_ATmega1609 )
+    || defined( __AVR_ATmega1608__ ) || defined( __AVR_ATmega1609__ )
 static_assert( sizeof( USERROW ) == 32 );
-#endif // defined( __AVR_ATmega808__ ) || defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1608 ) || defined( __AVR_ATmega1609 )
+#endif // defined( __AVR_ATmega808__ ) || defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1608__ ) || defined( __AVR_ATmega1609__ )
 
 #if defined( __AVR_ATmega3208__ ) || defined( __AVR_ATmega3209__ ) \
-    || defined( __AVR_ATmega4808 ) || defined( __AVR_ATmega4809 )
+    || defined( __AVR_ATmega4808__ ) || defined( __AVR_ATmega4809__ )
 static_assert( sizeof( USERROW ) == 64 );
-#endif // defined( __AVR_ATmega3208__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4808 ) || defined( __AVR_ATmega4809 )
+#endif // defined( __AVR_ATmega3208__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4808__ ) || defined( __AVR_ATmega4809__ )
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral

@@ -44,6 +44,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/tcb.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr0/peripheral/usart.h"
+#include "picolibrary/microchip/megaavr0/peripheral/userrow.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vport.h"
 #include "picolibrary/microchip/megaavr0/peripheral/vref.h"
 #include "picolibrary/microchip/megaavr0/peripheral/wdt.h"
@@ -262,6 +263,11 @@ using SIGROW0 = Instance<SIGROW, 0x1100>;
  * \brief FUSE0.
  */
 using FUSE0 = Instance<FUSE, 0x1280>;
+
+/**
+ * \brief USERROW0.
+ */
+using USERROW0 = Instance<USERROW, 0x1300>;
 
 } // namespace picolibrary::Microchip::megaAVR0::Peripheral
 

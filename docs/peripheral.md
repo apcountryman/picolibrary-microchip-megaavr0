@@ -22,6 +22,7 @@
     1. [TCB](#tcb)
     1. [TWI](#twi)
     1. [USART](#usart)
+    1. [USERROW](#userrow)
     1. [VPORT](#vport)
     1. [VREF](#vref)
     1. [WDT](#wdt)
@@ -202,6 +203,13 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::USART` class is defined in 
 [`include/picolibrary/microchip/megaavr0/peripheral/usart.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/usart.h)/[`source/picolibrary/microchip/megaavr0/peripheral/usart.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/usart.cc)
 header/source file pair.
 
+### USERROW
+The `::picolibrary::Microchip::megaAVR0::Peripheral::USERROW` class defines the layout of
+the Microchip megaAVR 0-series USERROW peripheral.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::USERROW` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/userrow.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/userrow.h)/[`source/picolibrary/microchip/megaavr0/peripheral/userrow.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/userrow.cc)
+header/source file pair.
+
 ### VPORT
 The `::picolibrary::Microchip::megaAVR0::Peripheral::VPORT` class defines the layout of
 the Microchip megaAVR 0-series VPORT peripheral.
@@ -273,6 +281,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART1`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART2`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::USART3`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::USERRROW0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTA`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTB`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::VPORTC`

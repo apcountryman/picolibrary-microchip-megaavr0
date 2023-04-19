@@ -41,6 +41,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/cpuint.cc"
     "picolibrary/microchip/megaavr0/peripheral/crcscan.cc"
+    "picolibrary/microchip/megaavr0/peripheral/evsys.cc"
     "picolibrary/microchip/megaavr0/peripheral/fuse.cc"
     "picolibrary/microchip/megaavr0/peripheral/instance.cc"
     "picolibrary/microchip/megaavr0/peripheral/nvmctrl.cc"

@@ -29,6 +29,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
 #include "picolibrary/microchip/megaavr0/peripheral/crcscan.h"
+#include "picolibrary/microchip/megaavr0/peripheral/evsys.h"
 #include "picolibrary/microchip/megaavr0/peripheral/fuse.h"
 #include "picolibrary/microchip/megaavr0/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr0/peripheral/nvmctrl.h"
@@ -134,6 +135,11 @@ using CRCSCAN0 = Instance<CRCSCAN, 0x0120>;
  * \brief RTC0.
  */
 using RTC0 = Instance<RTC, 0x0140>;
+
+/**
+ * \brief EVSYS0.
+ */
+using EVSYS0 = Instance<EVSYS, 0x0180>;
 
 /**
  * \brief PORTA.

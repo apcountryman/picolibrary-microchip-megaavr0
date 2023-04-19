@@ -8,6 +8,7 @@
     1. [CLKCTRL](#clkctrl)
     1. [CPUINT](#cpuint)
     1. [CRCSCAN](#crcscan)
+    1. [EVSYS](#evsys)
     1. [FUSE](#fuse)
     1. [NVMCTRL](#nvmctrl)
     1. [PORT](#port)
@@ -90,6 +91,21 @@ the Microchip megaAVR 0-series CRCSCAN peripheral and information about its regi
 The `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/crcscan.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/crcscan.h)/[`source/picolibrary/microchip/megaavr0/peripheral/crcscan.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/crcscan.cc)
 header/source file pair.
+
+### EVSYS
+The `::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS` class defines the layout of
+the Microchip megaAVR 0-series EVSYS peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/evsys.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/evsys.h)/[`source/picolibrary/microchip/megaavr0/peripheral/evsys.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/evsys.cc)
+header/source file pair.
+
+The `::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS` class supports both array and
+named access to the Microchip megaAVR 0-series EVSYS peripheral's CHANNEL and USER
+register arrays.
+CHANNEL register array indices are defined in the
+`::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS::CHANNEL_Index` enum.
+USER register array indices are defined in the
+`::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS::USER_Index` enum.
 
 ### FUSE
 The `::picolibrary::Microchip::megaAVR0::Peripheral::FUSE` class defines the layout of the
@@ -256,6 +272,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::EVSYS0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::FUSE0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::NVMCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::PORTA`

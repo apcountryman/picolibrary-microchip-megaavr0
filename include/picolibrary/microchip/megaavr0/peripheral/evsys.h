@@ -294,9 +294,9 @@ class EVSYS {
         USER_EVOUTE   = 13, ///< EVSYS pin output E.
         USER_EVOUTF   = 14, ///< EVSYS pin output F.
         USER_USART0   = 15, ///< USART0 event input.
-        USER_USART1   = 16, ///< USART0 event input.
-        USER_USART2   = 17, ///< USART0 event input.
-        USER_USART3   = 18, ///< USART0 event input.
+        USER_USART1   = 16, ///< USART1 event input.
+        USER_USART2   = 17, ///< USART2 event input.
+        USER_USART3   = 18, ///< USART3 event input.
         USER_TCA0     = 19, ///< TCA0 event input.
         USER_TCB0     = 20, ///< TCB0 event input.
         USER_TCB1     = 21, ///< TCB1 event input.

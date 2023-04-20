@@ -121,6 +121,8 @@ class Basic_Controller {
         Multiplexed_Signals::TWI_Route twi_route ) noexcept :
         m_twi{ &twi }
     {
+        // #lizard forgives the parameter count
+
         Multiplexed_Signals::set_twi_route( twi, twi_route );
 
         configure_controller(

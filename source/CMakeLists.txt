@@ -38,6 +38,7 @@ set(
     "picolibrary/microchip/megaavr0/peripheral/ac.cc"
     "picolibrary/microchip/megaavr0/peripheral/adc.cc"
     "picolibrary/microchip/megaavr0/peripheral/bod.cc"
+    "picolibrary/microchip/megaavr0/peripheral/ccl.cc"
     "picolibrary/microchip/megaavr0/peripheral/clkctrl.cc"
     "picolibrary/microchip/megaavr0/peripheral/cpuint.cc"
     "picolibrary/microchip/megaavr0/peripheral/crcscan.cc"

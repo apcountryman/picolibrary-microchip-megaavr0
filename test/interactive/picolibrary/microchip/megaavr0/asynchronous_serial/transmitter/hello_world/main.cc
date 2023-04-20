@@ -37,7 +37,6 @@ using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Clock_Gener
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Data_Bits;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Parity;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Stop_Bits;
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world;
 using ::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock;
@@ -59,15 +58,14 @@ int main() noexcept
 
     Log::initialize();
 
-    set_usart_route( TRANSMITTER_USART::instance(), USART_Route::TRANSMITTER_USART_ROUTE );
-
     hello_world( Transmitter<TRANSMITTER_DATA_TYPE>{
         TRANSMITTER_USART::instance(),
         USART_Data_Bits::TRANSMITTER_USART_DATA_BITS,
         USART_Parity::TRANSMITTER_USART_PARITY,
         USART_Stop_Bits::TRANSMITTER_USART_STOP_BITS,
         USART_Clock_Generator_Operating_Speed::TRANSMITTER_USART_CLOCK_GENERATOR_OPERATING_SPEED,
-        TRANSMITTER_USART_CLOCK_GENERATOR_SCALING_FACTOR } );
+        TRANSMITTER_USART_CLOCK_GENERATOR_SCALING_FACTOR,
+        USART_Route::TRANSMITTER_USART_ROUTE } );
 
     for ( ;; ) {} // for
 }

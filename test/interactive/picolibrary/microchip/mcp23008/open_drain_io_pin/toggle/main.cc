@@ -40,7 +40,6 @@ using ::picolibrary::Microchip::megaAVR0::I2C::Controller;
 using ::picolibrary::Microchip::megaAVR0::I2C::TWI_Bus_Speed;
 using ::picolibrary::Microchip::megaAVR0::I2C::TWI_Inactive_Bus_Time_Out;
 using ::picolibrary::Microchip::megaAVR0::I2C::TWI_SDA_Hold_Time;
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_twi_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::TWI_Route;
 using ::picolibrary::Testing::Interactive::Microchip::MCP23008::toggle;
 using ::picolibrary::Testing::Interactive::Microchip::megaAVR0::configure_clock;
@@ -62,14 +61,13 @@ int main() noexcept
 
     Log::initialize();
 
-    set_twi_route( CONTROLLER_TWI::instance(), TWI_Route::CONTROLLER_TWI_ROUTE );
-
     toggle<Open_Drain_IO_Pin>(
         Controller{ CONTROLLER_TWI::instance(),
                     TWI_SDA_Hold_Time::CONTROLLER_TWI_SDA_HOLD_TIME,
                     TWI_Bus_Speed::CONTROLLER_TWI_BUS_SPEED,
                     CONTROLLER_TWI_CLOCK_GENERATOR_SCALING_FACTOR,
-                    TWI_Inactive_Bus_Time_Out::CONTROLLER_TWI_INACTIVE_BUS_TIME_OUT },
+                    TWI_Inactive_Bus_Time_Out::CONTROLLER_TWI_INACTIVE_BUS_TIME_OUT,
+                    TWI_Route::CONTROLLER_TWI_ROUTE },
         MCP23008_ADDRESS,
         MCP23008_PIN_MASK,
         []() { avrlibcpp::delay_ms( 500 ); } );

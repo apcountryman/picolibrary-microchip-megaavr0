@@ -33,7 +33,6 @@
 
 namespace {
 
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller;
 using ::picolibrary::Microchip::megaAVR0::SPI::USART_Bit_Order;
@@ -60,15 +59,14 @@ int main() noexcept
 
     Log::initialize();
 
-    set_usart_route( CONTROLLER_USART::instance(), USART_Route::CONTROLLER_USART_ROUTE );
-
     echo(
         Log::instance(),
         Fixed_Configuration_Controller<USART>{ CONTROLLER_USART::instance(),
                                                CONTROLLER_USART_CLOCK_GENERATOR_SCALING_FACTOR,
                                                USART_Clock_Polarity::CONTROLLER_USART_CLOCK_POLARITY,
                                                USART_Clock_Phase::CONTROLLER_USART_CLOCK_PHASE,
-                                               USART_Bit_Order::CONTROLLER_USART_BIT_ORDER },
+                                               USART_Bit_Order::CONTROLLER_USART_BIT_ORDER,
+                                               USART_Route::CONTROLLER_USART_ROUTE },
         Fixed_Configuration_Controller<USART>::Configuration{},
         []() { avrlibcpp::delay_ms( 100 ); } );
 

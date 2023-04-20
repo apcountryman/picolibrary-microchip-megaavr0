@@ -33,7 +33,6 @@
 
 namespace {
 
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_usart_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::USART_Route;
 using ::picolibrary::Microchip::megaAVR0::SPI::USART_Bit_Order;
 using ::picolibrary::Microchip::megaAVR0::SPI::USART_Clock_Phase;
@@ -60,11 +59,10 @@ int main() noexcept
 
     Log::initialize();
 
-    set_usart_route( CONTROLLER_USART::instance(), USART_Route::CONTROLLER_USART_ROUTE );
-
     echo(
         Log::instance(),
-        Variable_Configuration_Controller<USART>{ CONTROLLER_USART::instance() },
+        Variable_Configuration_Controller<USART>{ CONTROLLER_USART::instance(),
+                                                  USART_Route::CONTROLLER_USART_ROUTE },
         Variable_Configuration_Controller<USART>::Configuration{
             CONTROLLER_USART_CLOCK_GENERATOR_SCALING_FACTOR,
             USART_Clock_Polarity::CONTROLLER_USART_CLOCK_POLARITY,

@@ -33,7 +33,6 @@
 
 namespace {
 
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_spi_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI_Route;
 using ::picolibrary::Microchip::megaAVR0::SPI::SPI_Bit_Order;
 using ::picolibrary::Microchip::megaAVR0::SPI::SPI_Clock_Phase;
@@ -61,11 +60,9 @@ int main() noexcept
 
     Log::initialize();
 
-    set_spi_route( CONTROLLER_SPI::instance(), SPI_Route::CONTROLLER_SPI_ROUTE );
-
     echo(
         Log::instance(),
-        Variable_Configuration_Controller<SPI>{ CONTROLLER_SPI::instance() },
+        Variable_Configuration_Controller<SPI>{ CONTROLLER_SPI::instance(), SPI_Route::CONTROLLER_SPI_ROUTE },
         Variable_Configuration_Controller<SPI>::Configuration{
             SPI_Clock_Rate::CONTROLLER_SPI_CLOCK_RATE,
             SPI_Clock_Polarity::CONTROLLER_SPI_CLOCK_POLARITY,

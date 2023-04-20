@@ -33,7 +33,6 @@
 
 namespace {
 
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_spi_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI_Route;
 using ::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller;
 using ::picolibrary::Microchip::megaAVR0::SPI::SPI_Bit_Order;
@@ -61,15 +60,14 @@ int main() noexcept
 
     Log::initialize();
 
-    set_spi_route( CONTROLLER_SPI::instance(), SPI_Route::CONTROLLER_SPI_ROUTE );
-
     echo(
         Log::instance(),
         Fixed_Configuration_Controller<SPI>{ CONTROLLER_SPI::instance(),
                                              SPI_Clock_Rate::CONTROLLER_SPI_CLOCK_RATE,
                                              SPI_Clock_Polarity::CONTROLLER_SPI_CLOCK_POLARITY,
                                              SPI_Clock_Phase::CONTROLLER_SPI_CLOCK_PHASE,
-                                             SPI_Bit_Order::CONTROLLER_SPI_BIT_ORDER },
+                                             SPI_Bit_Order::CONTROLLER_SPI_BIT_ORDER,
+                                             SPI_Route::CONTROLLER_SPI_ROUTE },
         Fixed_Configuration_Controller<SPI>::Configuration{},
         []() { avrlibcpp::delay_ms( 100 ); } );
 

@@ -42,7 +42,6 @@ using ::picolibrary::GPIO::Active_Low_IO_Pin;
 using ::picolibrary::Microchip::MCP23S08::Address_Numeric;
 using ::picolibrary::Microchip::MCP23S08::Address_Transmitted;
 using ::picolibrary::Microchip::megaAVR0::GPIO::Push_Pull_IO_Pin;
-using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::set_spi_route;
 using ::picolibrary::Microchip::megaAVR0::Multiplexed_Signals::SPI_Route;
 using ::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller;
 using ::picolibrary::Microchip::megaAVR0::SPI::SPI_Bit_Order;
@@ -70,15 +69,14 @@ int main() noexcept
 
     Log::initialize();
 
-    set_spi_route( CONTROLLER_SPI::instance(), SPI_Route::CONTROLLER_SPI_ROUTE );
-
     state(
         Log::instance(),
         Fixed_Configuration_Controller<SPI>{ CONTROLLER_SPI::instance(),
                                              SPI_Clock_Rate::CONTROLLER_SPI_CLOCK_RATE,
                                              SPI_Clock_Polarity::CONTROLLER_SPI_CLOCK_POLARITY,
                                              SPI_Clock_Phase::CONTROLLER_SPI_CLOCK_PHASE,
-                                             SPI_Bit_Order::MSB_FIRST },
+                                             SPI_Bit_Order::MSB_FIRST,
+                                             SPI_Route::CONTROLLER_SPI_ROUTE },
         Fixed_Configuration_Controller<SPI>::Configuration{},
         GPIO_Output_Pin_Device_Selector<Active_Low_IO_Pin<Push_Pull_IO_Pin<PORT>>>{
             DEVICE_SELECTOR_PORT::instance(), DEVICE_SELECTOR_MASK },

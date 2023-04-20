@@ -251,10 +251,13 @@ using TCB1 = Instance<TCB, 0x0A90>;
  */
 using TCB2 = Instance<TCB, 0x0AA0>;
 
+#if defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) \
+    || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 /**
  * \brief TCB3.
  */
 using TCB3 = Instance<TCB, 0x0AB0>;
+#endif // defined( __AVR_ATmega809__ ) || defined( __AVR_ATmega1609__ ) || defined( __AVR_ATmega3209__ ) || defined( __AVR_ATmega4809__ )
 
 /**
  * \brief SYSCFG0.

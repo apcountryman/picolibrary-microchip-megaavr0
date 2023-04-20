@@ -26,6 +26,7 @@
 #include "picolibrary/microchip/megaavr0/peripheral/ac.h"
 #include "picolibrary/microchip/megaavr0/peripheral/adc.h"
 #include "picolibrary/microchip/megaavr0/peripheral/bod.h"
+#include "picolibrary/microchip/megaavr0/peripheral/ccl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/clkctrl.h"
 #include "picolibrary/microchip/megaavr0/peripheral/cpuint.h"
 #include "picolibrary/microchip/megaavr0/peripheral/crcscan.h"
@@ -140,6 +141,11 @@ using RTC0 = Instance<RTC, 0x0140>;
  * \brief EVSYS0.
  */
 using EVSYS0 = Instance<EVSYS, 0x0180>;
+
+/**
+ * \brief CCL0.
+ */
+using CCL0 = Instance<CCL, 0x01C0>;
 
 /**
  * \brief PORTA.

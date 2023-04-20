@@ -5,6 +5,7 @@
     1. [AC](#ac)
     1. [ADC](#adc)
     1. [BOD](#bod)
+    1. [CCL](#ccl)
     1. [CLKCTRL](#clkctrl)
     1. [CPUINT](#cpuint)
     1. [CRCSCAN](#crcscan)
@@ -70,6 +71,19 @@ Microchip megaAVR 0-series BOD peripheral and information about its registers.
 The `::picolibrary::Microchip::megaAVR0::Peripheral::BOD` class is defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral/bod.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/bod.h)/[`source/picolibrary/microchip/megaavr0/peripheral/bod.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/bod.cc)
 header/source file pair.
+
+### CCL
+The `::picolibrary::Microchip::megaAVR0::Peripheral::CCL` class defines the layout of the
+Microchip megaAVR 0-series CCL peripheral and information about its registers.
+The `::picolibrary::Microchip::megaAVR0::Peripheral::CCL` class is defined in the
+[`include/picolibrary/microchip/megaavr0/peripheral/ccl.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/ccl.h)/[`source/picolibrary/microchip/megaavr0/peripheral/ccl.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/ccl.cc)
+header/source file pair.
+
+The `::picolibrary::Microchip::megaAVR0::Peripheral::CCL` class supports both array and
+named access to the Microchip megaAVR 0-series CCL peripheral's look-up table register
+sets (LUTnCTRLA, LUTnCTRLB, LUTnCTRLC, and TRUTHn).
+The look-up table register sets array is accessed via the
+`::picolibrary::Microchip::megaAVR0::Peripheral::CCL::lut` member variable.
 
 ### CLKCTRL
 The `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL` class defines the layout of
@@ -269,6 +283,7 @@ The following peripheral instances are defined (listed alphabetically):
 - `::picolibrary::Microchip::megaAVR0::Peripheral::AC0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::ADC0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::BOD0`
+- `::picolibrary::Microchip::megaAVR0::Peripheral::CCL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CLKCTRL0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CPUINT0`
 - `::picolibrary::Microchip::megaAVR0::Peripheral::CRCSCAN0`

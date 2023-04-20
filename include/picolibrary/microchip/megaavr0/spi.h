@@ -147,6 +147,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Constructor.
      *
+     * \attention The SPI peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] spi The SPI to be used by the controller.
      * \param[in] spi_clock_rate The desired SPI clock rate.
      * \param[in] spi_clock_polarity The desired SPI clock polarity.
@@ -175,7 +178,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
      * \param[in] spi_clock_polarity The desired SPI clock polarity.
      * \param[in] spi_clock_phase The desired SPI clock phase.
      * \param[in] spi_bit_order The desired SPI bit order.
-     * \param[in] spi_route The SPI's routing configuration.
+     * \param[in] spi_route The desired SPI peripheral routing configuration.
      */
     Fixed_Configuration_Basic_Controller(
         Peripheral::SPI &              spi,
@@ -191,6 +194,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
                             | Multiplexed_Signals::mosi_mask( spi, spi_route ) ) }
     {
         // #lizard forgives the parameter count
+
+        Multiplexed_Signals::set_spi_route( spi, spi_route );
 
         configure_controller( spi_clock_rate, spi_clock_polarity, spi_clock_phase, spi_bit_order );
     }
@@ -390,6 +395,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     /**
      * \brief Constructor.
      *
+     * \attention The USART peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] usart The USART to be used by the controller.
      * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
      *            scaling factor (BAUD register value).
@@ -422,7 +430,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
      * \param[in] usart_clock_polarity The desired USART clock polarity.
      * \param[in] usart_clock_phase The desired USART clock phase.
      * \param[in] usart_bit_order The desired USART bit order.
-     * \param[in] usart_route The USART's routing configuration.
+     * \param[in] usart_route The desired USART peripheral routing configuration.
      */
     Fixed_Configuration_Basic_Controller(
         Peripheral::USART &              usart,
@@ -439,6 +447,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
         m_usart_xck_number{ Multiplexed_Signals::xck_number( usart, usart_route ) }
     {
         // #lizard forgives the parameter count
+
+        Multiplexed_Signals::set_usart_route( usart, usart_route );
 
         configure_controller(
             usart_clock_generator_scaling_factor, usart_clock_polarity, usart_clock_phase, usart_bit_order );
@@ -805,6 +815,9 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Constructor.
      *
+     * \attention The SPI peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] spi The SPI to be used by the controller.
      */
     Variable_Configuration_Basic_Controller( Peripheral::SPI & spi ) noexcept :
@@ -819,7 +832,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
      * \brief Constructor.
      *
      * \param[in] spi The SPI to be used by the controller.
-     * \param[in] spi_route The SPI's routing configuration.
+     * \param[in] spi_route The desired SPI peripheral routing configuration.
      */
     Variable_Configuration_Basic_Controller( Peripheral::SPI & spi, Multiplexed_Signals::SPI_Route spi_route ) noexcept
         :
@@ -829,6 +842,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
                             Multiplexed_Signals::sck_mask( spi, spi_route )
                             | Multiplexed_Signals::mosi_mask( spi, spi_route ) ) }
     {
+        Multiplexed_Signals::set_spi_route( spi, spi_route );
     }
 
     /**
@@ -1137,6 +1151,9 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
     /**
      * \brief Constructor.
      *
+     * \attention The USART peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] usart The USART to be used by the controller.
      */
     Variable_Configuration_Basic_Controller( Peripheral::USART & usart ) noexcept :
@@ -1152,7 +1169,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
      * \brief Constructor.
      *
      * \param[in] usart The USART to be used by the controller.
-     * \param[in] usart_route The USART's routing configuration.
+     * \param[in] usart_route The desired USART peripheral routing configuration.
      */
     Variable_Configuration_Basic_Controller( Peripheral::USART & usart, Multiplexed_Signals::USART_Route usart_route ) noexcept
         :
@@ -1163,6 +1180,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
             | Multiplexed_Signals::txd_mask( usart, usart_route ) ) },
         m_usart_xck_number{ Multiplexed_Signals::xck_number( usart, usart_route ) }
     {
+        Multiplexed_Signals::set_usart_route( usart, usart_route );
     }
 
     /**

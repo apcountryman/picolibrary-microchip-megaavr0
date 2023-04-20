@@ -27,6 +27,7 @@
 
 #include "picolibrary/error.h"
 #include "picolibrary/i2c.h"
+#include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral/twi.h"
 #include "picolibrary/postcondition.h"
 #include "picolibrary/utility.h"
@@ -78,6 +79,9 @@ class Basic_Controller {
     /**
      * \brief Constructor.
      *
+     * \attention The TWI peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] twi The TWI to be used by the controller.
      * \param[in] twi_sda_hold_time The desired TWI SDA hold time.
      * \param[in] twi_bus_speed The desired TWI bus speed configuration.
@@ -93,6 +97,32 @@ class Basic_Controller {
         TWI_Inactive_Bus_Time_Out twi_inactive_bus_time_out ) noexcept :
         m_twi{ &twi }
     {
+        configure_controller(
+            twi_sda_hold_time, twi_bus_speed, twi_clock_generator_scaling_factor, twi_inactive_bus_time_out );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] twi The TWI to be used by the controller.
+     * \param[in] twi_sda_hold_time The desired TWI SDA hold time.
+     * \param[in] twi_bus_speed The desired TWI bus speed configuration.
+     * \param[in] twi_clock_generator_scaling_factor The desired TWI clock generator
+     *            scaling factor (MBAUD register value).
+     * \param[in] twi_inactive_bus_time_out The desired TWI inactive bus time-out.
+     * \param[in] twi_route The desired TWI peripheral routing configuration.
+     */
+    Basic_Controller(
+        Peripheral::TWI &              twi,
+        TWI_SDA_Hold_Time              twi_sda_hold_time,
+        TWI_Bus_Speed                  twi_bus_speed,
+        std::uint8_t                   twi_clock_generator_scaling_factor,
+        TWI_Inactive_Bus_Time_Out      twi_inactive_bus_time_out,
+        Multiplexed_Signals::TWI_Route twi_route ) noexcept :
+        m_twi{ &twi }
+    {
+        Multiplexed_Signals::set_twi_route( twi, twi_route );
+
         configure_controller(
             twi_sda_hold_time, twi_bus_speed, twi_clock_generator_scaling_factor, twi_inactive_bus_time_out );
     }

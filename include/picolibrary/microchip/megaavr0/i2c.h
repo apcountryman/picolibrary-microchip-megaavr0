@@ -82,7 +82,7 @@ class Basic_Controller {
      * \attention The TWI peripheral's routing configuration must be set prior to using
      *            this constructor.
      *
-     * \param[in] twi The TWI to be used by the controller.
+     * \param[in] twi The TWI peripheral to be used by the controller.
      * \param[in] twi_sda_hold_time The desired TWI SDA hold time.
      * \param[in] twi_bus_speed The desired TWI bus speed configuration.
      * \param[in] twi_clock_generator_scaling_factor The desired TWI clock generator
@@ -104,7 +104,7 @@ class Basic_Controller {
     /**
      * \brief Constructor.
      *
-     * \param[in] twi The TWI to be used by the controller.
+     * \param[in] twi The TWI peripheral to be used by the controller.
      * \param[in] twi_sda_hold_time The desired TWI SDA hold time.
      * \param[in] twi_bus_speed The desired TWI bus speed configuration.
      * \param[in] twi_clock_generator_scaling_factor The desired TWI clock generator

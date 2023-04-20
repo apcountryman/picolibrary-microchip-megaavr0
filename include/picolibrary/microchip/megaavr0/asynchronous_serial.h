@@ -97,6 +97,9 @@ class Basic_Transmitter {
     /**
      * \brief Constructor.
      *
+     * \attention The USART peripheral's routing configuration must be set prior to using
+     *            this constructor.
+     *
      * \param[in] usart The USART to be used by the transmitter.
      * \param[in] usart_data_bits The desired USART data bits configuration.
      * \param[in] usart_parity The desired USART parity configuration.
@@ -116,6 +119,37 @@ class Basic_Transmitter {
         m_usart{ &usart }
     {
         // #lizard forgives the parameter count
+
+        configure_transmitter(
+            usart_data_bits, usart_parity, usart_stop_bits, usart_clock_generator_operating_speed, usart_clock_generator_scaling_factor );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the transmitter.
+     * \param[in] usart_data_bits The desired USART data bits configuration.
+     * \param[in] usart_parity The desired USART parity configuration.
+     * \param[in] usart_stop_bits The desired USART stop bits configuration.
+     * \param[in] usart_clock_generator_operating_speed The desired USART clock generator
+     *            operating speed configuration.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (BAUD register value).
+     * \param[in] usart_route The desired USART peripheral routing configuration.
+     */
+    Basic_Transmitter(
+        Peripheral::USART &                   usart,
+        USART_Data_Bits                       usart_data_bits,
+        USART_Parity                          usart_parity,
+        USART_Stop_Bits                       usart_stop_bits,
+        USART_Clock_Generator_Operating_Speed usart_clock_generator_operating_speed,
+        std::uint16_t                         usart_clock_generator_scaling_factor,
+        Multiplexed_Signals::USART_Route      usart_route ) noexcept :
+        m_usart{ &usart }
+    {
+        // #lizard forgives the parameter count
+
+        Multiplexed_Signals::set_usart_route( usart, usart_route );
 
         configure_transmitter(
             usart_data_bits, usart_parity, usart_stop_bits, usart_clock_generator_operating_speed, usart_clock_generator_scaling_factor );

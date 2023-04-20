@@ -90,7 +90,7 @@ class CCL {
     };
 
     /**
-     * \brief Sequence Control 0 (SEQCTRL0) register.
+     * \brief Sequencer Control 0 (SEQCTRL0) register.
      *
      * This register has the following fields:
      * - LUT0 and LUT1 Sequencer Selection (SEQSEL0)
@@ -148,7 +148,7 @@ class CCL {
     };
 
     /**
-     * \brief Sequence Control 1 (SEQCTRL1) register.
+     * \brief Sequencer Control 1 (SEQCTRL1) register.
      *
      * This register has the following fields:
      * - LUT2 and LUT3 Sequencer Selection (SEQSEL1)
@@ -309,7 +309,6 @@ class CCL {
      * - LUT1 Interrupt Flag (INT1)
      * - LUT2 Interrupt Flag (INT2)
      * - LUT3 Interrupt Flag (INT3)
-     * - (RESERVED4)
      */
     class INTFLAGS : public Register<std::uint8_t> {
       public:
@@ -321,7 +320,7 @@ class CCL {
             static constexpr auto INT1      = std::uint_fast8_t{ 1 }; ///< INT1.
             static constexpr auto INT2      = std::uint_fast8_t{ 1 }; ///< INT2.
             static constexpr auto INT3      = std::uint_fast8_t{ 1 }; ///< INT3.
-            static constexpr auto RESERVED4 = std::uint_fast8_t{ 1 }; ///< RESERVED4.
+            static constexpr auto RESERVED4 = std::uint_fast8_t{ 4 }; ///< RESERVED4.
         };
 
         /**
@@ -414,7 +413,7 @@ class CCL {
             CLKSRC_IN2       = 0x1 << Bit::CLKSRC, ///< LUT input 2 is clocking the LUT.
             CLKSRC_OSC20M    = 0x4 << Bit::CLKSRC, ///< 16/20 MHz oscillator before prescaler is clocking the LUT.
             CLKSRC_OSCULP32K = 0x5 << Bit::CLKSRC, ///< 32.768 kHz internal oscillator is clocking the LUT.
-            CLKSRC_OSCULP1K  = 0x6 << Bit::CLKSRC, ///< 1.024 kHz (OSCKILP32K after DIV32) is clocking the LUT.
+            CLKSRC_OSCULP1K  = 0x6 << Bit::CLKSRC, ///< 1.024 kHz (OSCKULP32K after DIV32) is clocking the LUT.
         };
 
         /**
@@ -654,12 +653,12 @@ class CCL {
             /**
              * \brief LUT 0 Control B (LUT0CTRLB) register.
              */
-            LUTCTRLA lut0ctrlb;
+            LUTCTRLB lut0ctrlb;
 
             /**
              * \brief LUT 0 Control C (LUT0CTRLC) register.
              */
-            LUTCTRLA lut0ctrlc;
+            LUTCTRLC lut0ctrlc;
 
             /**
              * \brief LUT 0 Truth Table (TRUTH0) register.
@@ -674,12 +673,12 @@ class CCL {
             /**
              * \brief LUT 1 Control B (LUT1CTRLB) register.
              */
-            LUTCTRLA lut1ctrlb;
+            LUTCTRLB lut1ctrlb;
 
             /**
              * \brief LUT 1 Control C (LUT1CTRLC) register.
              */
-            LUTCTRLA lut1ctrlc;
+            LUTCTRLC lut1ctrlc;
 
             /**
              * \brief LUT 1 Truth Table (TRUTH1) register.
@@ -694,12 +693,12 @@ class CCL {
             /**
              * \brief LUT 2 Control B (LUT2CTRLB) register.
              */
-            LUTCTRLA lut2ctrlb;
+            LUTCTRLB lut2ctrlb;
 
             /**
              * \brief LUT 2 Control C (LUT2CTRLC) register.
              */
-            LUTCTRLA lut2ctrlc;
+            LUTCTRLC lut2ctrlc;
 
             /**
              * \brief LUT 2 Truth Table (TRUTH2) register.
@@ -714,12 +713,12 @@ class CCL {
             /**
              * \brief LUT 3 Control B (LUT3CTRLB) register.
              */
-            LUTCTRLA lut3ctrlb;
+            LUTCTRLB lut3ctrlb;
 
             /**
              * \brief LUT 3 Control C (LUT3CTRLC) register.
              */
-            LUTCTRLA lut3ctrlc;
+            LUTCTRLC lut3ctrlc;
 
             /**
              * \brief LUT 3 Truth Table (TRUTH3) register.

@@ -14,3 +14,6 @@
 # permissions and limitations under the License.
 
 # Description: picolibrary::Adafruit::PID781::Driver interactive tests CMake rules.
+
+# build the picolibrary::Adafruit::PID781::Driver hello world interactive test
+add_subdirectory( hello_world )

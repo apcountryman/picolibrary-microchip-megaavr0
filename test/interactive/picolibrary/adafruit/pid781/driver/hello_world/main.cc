@@ -17,13 +17,11 @@
 
 /**
  * \file
- * \brief picolibrary::Adafruit::PID781::Driver hello world
- *        interactive test program.
+ * \brief picolibrary::Adafruit::PID781::Driver hello world interactive test program.
  */
 
 #include <cstdint>
 
-#include "picolibrary/adafruit/pid781.h"
 #include "picolibrary/microchip/megaavr0/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr0/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr0/peripheral.h"
@@ -33,7 +31,6 @@
 
 namespace {
 
-using ::picolibrary::Adafruit::PID781::Driver;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Clock_Generator_Operating_Speed;
 using ::picolibrary::Microchip::megaAVR0::Asynchronous_Serial::USART_Data_Bits;

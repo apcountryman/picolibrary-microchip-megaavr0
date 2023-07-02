@@ -12,6 +12,12 @@ The following Microchip megaAVR 0-series watchdog timer configuration operations
 supported:
 - To enable the watchdog timer, use the
   `::picolibrary::Microchip::megaAVR0::Watchdog_Timer::enable()` functions.
+- To get the watchdog timer time-out period, use the
+  `::picolibrary::Microchip::megaAVR0::Watchdog_Timer::period()` function.
+- To get the watchdog timer window closed period, use the
+  `::picolibrary::Microchip::megaAVR0::Watchdog_Timer::closed_period()` function.
+- To get the watchdog timer window open period, use the
+  `::picolibrary::Microchip::megaAVR0::Watchdog_Timer::open_period()` function.
 - To check if a watchdog timer configuration change is in progress, use the
   `::picolibrary::Microchip::megaAVR0::Watchdog_Timer::configuration_change_in_progress()`
   function.

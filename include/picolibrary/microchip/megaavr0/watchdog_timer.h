@@ -108,6 +108,38 @@ inline void enable( Closed_Period closed_period, Open_Period open_period ) noexc
 }
 
 /**
+ * \brief Get the watchdog timer time-out period.
+ *
+ * \return The watchdog timer time-out period.
+ */
+inline auto period() noexcept -> Period
+{
+    return static_cast<Period>( Peripheral::WDT0::instance().ctrla & Peripheral::WDT::CTRLA::Mask::PERIOD );
+}
+
+/**
+ * \brief Get the watchdog timer window closed period.
+ *
+ * \return The watchdog timer window closed period.
+ */
+inline auto closed_period() noexcept -> Closed_Period
+{
+    return static_cast<Closed_Period>(
+        Peripheral::WDT0::instance().ctrla & Peripheral::WDT::CTRLA::Mask::WINDOW );
+}
+
+/**
+ * \brief Get the watchdog timer window open period.
+ *
+ * \return The watchdog timer window open period.
+ */
+inline auto open_period() noexcept -> Open_Period
+{
+    return static_cast<Open_Period>(
+        Peripheral::WDT0::instance().ctrla & Peripheral::WDT::CTRLA::Mask::PERIOD );
+}
+
+/**
  * \brief Check if a watchdog timer configuration change is in progress.
  *
  * \return true if a watchdog timer configuration change is in progress.

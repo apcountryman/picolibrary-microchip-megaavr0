@@ -65,3 +65,4 @@ Each picolibrary-microchip-megaavr0 interactive test has the following targets:
 - [`::picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/fixed_configuration_controller-usart/echo.md)
 - [`::picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::SPI>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-spi/echo.md)
 - [`::picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr0/spi/variable_configuration_controller-usart/echo.md)
+- [`::picolibrary::Texas_Instruments::TCA9548A::Driver` scan interactive test](test-interactive/picolibrary/texas_instruments/tca9548a/driver/scan.md)

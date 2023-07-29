@@ -61,6 +61,8 @@ using namespace ::picolibrary::Microchip::megaAVR0::Peripheral;
  */
 int main() noexcept
 {
+    // #lizard forgives the length
+
     configure_clock();
 
     Log::initialize();

@@ -73,6 +73,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
             "DISABLED" CACHE STRING
             "picolibrary-microchip-megaavr0: picolibrary::WIZnet::W5500::IP::Network_Stack ping interactive test network stack ARP forcing configuration"
         )
+
         set(
             PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_RETRANSMISSION_RETRY_TIME
             "2000" CACHE STRING

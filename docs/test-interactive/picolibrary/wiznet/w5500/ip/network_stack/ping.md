@@ -35,8 +35,8 @@ following configuration options:
           selector mask
         - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_PHY_MODE`
           (defaults to `ALL_CAPABLE_AUTO_NEGOTIATION_ENABLED`):
-          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test W5500
-          PHY mode
+          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test network
+          stack PHY mode
         - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_ARP_FORCING_CONFIGURATION`
           (defaults to `DISABLED`): `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping
           interactive test network stack ARP forcing configuration
@@ -48,8 +48,8 @@ following configuration options:
           interactive test network stack retransmission retry count
         - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_MAC_ADDRESS`
           (defaults to `0x02,0x00,0x00,0x00,0x00,0x00`):
-          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test W5500
-          MAC address
+          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test network
+          stack MAC address
         - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_IPV4_ADDRESS`
           (defaults to `0,0,0,0`): `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping
           interactive test network stack IPv4 address
@@ -58,8 +58,8 @@ following configuration options:
           interactive test network stack IPv4 gateway address
         - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_NETWORK_STACK_IPV4_SUBNET_MASK`
           (defaults to `255,255,255,255`):
-          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test W5500
-          IPv4 subnet mask
+          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test network
+          stack IPv4 subnet mask
 
 ## Test Executable Name
 `test-interactive-picolibrary-wiznet-w5500-ip-network_stack-ping`

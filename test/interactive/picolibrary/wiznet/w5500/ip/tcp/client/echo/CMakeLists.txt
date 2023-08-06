@@ -134,13 +134,13 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
         set(
             PICOLIBRARY_WIZNET_W5500_IP_TCP_CLIENT_ECHO_INTERACTIVE_TEST_CLIENT_TIME_TO_LIVE
             "0x80" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test client IPv4 time to live field value"
+            "picolibrary-microchip-megaavr0: picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test client time to live"
         )
 
         set(
             PICOLIBRARY_WIZNET_W5500_IP_TCP_CLIENT_ECHO_INTERACTIVE_TEST_CLIENT_KEEPALIVE_PERIOD
             "0x00" CACHE STRING
-            "picolibrary-microchip-megaavr0: picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test client keepalive packet transmission period"
+            "picolibrary-microchip-megaavr0: picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test client keepalive period"
         )
 
         set(

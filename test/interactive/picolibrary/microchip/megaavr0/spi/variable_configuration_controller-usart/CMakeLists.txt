@@ -16,7 +16,6 @@
 # Description: picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>
 #       interactive tests CMake rules.
 
-# build the
 # picolibrary::Microchip::megaAVR0::SPI::Variable_Configuration_Controller<Peripheral::USART>
 # echo interactive test
 add_subdirectory( echo )

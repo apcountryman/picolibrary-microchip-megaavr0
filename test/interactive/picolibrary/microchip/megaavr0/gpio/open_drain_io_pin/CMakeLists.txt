@@ -16,6 +16,5 @@
 # Description: picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin interactive tests
 #       CMake rules.
 
-# build the picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin toggle interactive
-# test
+# picolibrary::Microchip::megaAVR0::GPIO::Open_Drain_IO_Pin toggle interactive test
 add_subdirectory( toggle )

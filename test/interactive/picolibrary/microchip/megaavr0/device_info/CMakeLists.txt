@@ -16,5 +16,5 @@
 # Description: picolibrary::Microchip::megaAVR0::Device_Info interactive tests CMake
 #       rules.
 
-# build the picolibrary::Microchip::megaAVR0::Device_Info print interactive test
+# picolibrary::Microchip::megaAVR0::Device_Info print interactive test
 add_subdirectory( print )

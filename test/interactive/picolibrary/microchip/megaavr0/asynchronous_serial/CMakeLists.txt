@@ -16,6 +16,5 @@
 # Description: picolibrary::Microchip::megaAVR0::Asynchronous_Serial interactive tests
 #       CMake rules.
 
-# build the picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter interactive
-# tests
+# picolibrary::Microchip::megaAVR0::Asynchronous_Serial::Transmitter interactive tests
 add_subdirectory( transmitter )

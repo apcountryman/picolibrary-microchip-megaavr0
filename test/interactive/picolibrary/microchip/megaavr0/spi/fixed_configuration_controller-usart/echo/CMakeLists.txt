@@ -16,7 +16,6 @@
 # Description: picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::USART>
 #       echo interactive test CMake rules.
 
-# build the
 # picolibrary::Microchip::megaAVR0::SPI::Fixed_Configuration_Controller<Peripheral::USART>
 # echo interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )

@@ -170,8 +170,8 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
     endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_AVRDUDE_RESET_ENABLED} )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING} )
 
-# build the library
+# library
 add_subdirectory( source )
 
-# build the library's tests
+# library tests
 add_subdirectory( test )

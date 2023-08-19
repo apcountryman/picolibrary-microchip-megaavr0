@@ -15,17 +15,17 @@
 
 # Description: picolibrary::Microchip::megaAVR0 interactive tests CMake rules.
 
-# build the picolibrary::Microchip::megaAVR0::Asynchronous_Serial interactive tests
+# picolibrary::Microchip::megaAVR0::Asynchronous_Serial interactive tests
 add_subdirectory( asynchronous_serial )
 
-# build the picolibrary::Microchip::megaAVR0::Device_Info interactive tests
+# picolibrary::Microchip::megaAVR0::Device_Info interactive tests
 add_subdirectory( device_info )
 
-# build the picolibrary::Microchip::megaAVR0::GPIO interactive tests
+# picolibrary::Microchip::megaAVR0::GPIO interactive tests
 add_subdirectory( gpio )
 
-# build the picolibrary::Microchip::megaAVR0::I2C interactive tests
+# picolibrary::Microchip::megaAVR0::I2C interactive tests
 add_subdirectory( i2c )
 
-# build the picolibrary::Microchip::megaAVR0::SPI interactive tests
+# picolibrary::Microchip::megaAVR0::SPI interactive tests
 add_subdirectory( spi )

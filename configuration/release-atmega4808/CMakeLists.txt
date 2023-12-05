@@ -16,11 +16,10 @@
 # Description: picolibrary-microchip-megaavr0 ATmega4808 release configuration.
 
 # build configuration
-set( CMAKE_BUILD_TYPE                                              "MinSizeRel" CACHE INTERNAL "" )
-set( CMAKE_EXPORT_COMPILE_COMMANDS                                 ON           CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR0_F_CPU                          "16000000UL" CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR0_MCU                            "atmega4808" CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_BUILD_FLAGS OFF          CACHE INTERNAL "" )
+set( CMAKE_BUILD_TYPE                     "MinSizeRel" CACHE INTERNAL "" )
+set( CMAKE_EXPORT_COMPILE_COMMANDS        ON           CACHE INTERNAL "" )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_F_CPU "16000000UL" CACHE INTERNAL "" )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR0_MCU   "atmega4808" CACHE INTERNAL "" )
 
 # avr-libcpp configuration
 set( PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP OFF CACHE INTERNAL "" )

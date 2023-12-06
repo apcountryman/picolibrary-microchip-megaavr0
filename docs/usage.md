@@ -3,6 +3,8 @@
 ## Table of Contents
 1. [Dependency](#dependency)
     1. [Configuration Options](#configuration-options)
+    1. [avr-libcpp Configuration Requirements](#avr-libcpp-configuration-requirements)
+    1. [picolibrary Configuration Requirements](#picolibrary-configuration-requirements)
 1. [Development](#development)
 
 ## Dependency
@@ -71,6 +73,20 @@ picolibrary-microchip-megaavr0 supports the following project configuration opti
   parent project's avr-libcpp
 - `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_PICOLIBRARY` (defaults to `ON`): use
   parent project's picolibrary
+
+### avr-libcpp Configuration Requirements
+If `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP` is `ON`, avr-libcpp must
+be configured as follows:
+- `AVRLIBCPP_SUPPRESS_SFR_MACROS` must be `ON`
+
+### picolibrary Configuration Requirements
+If `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_PICOLIBRARY` is `ON`, picolibrary
+must be configured as follows:
+- `PICOLIBRARY_HIL_INCLUDE_DIR` must be set to the path to
+  picolibrary-microchip-megaavr0's `include/` directory
+- `PICOLIBRARY_ENABLE_AUTOMATED_TESTING` must be `OFF`
+- `PICOLIBRARY_ENABLE_INTERACTIVE_TESTING` must be `ON` if
+  `PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING` is `ON`
 
 ## Development
 The repository's Git `pre-commit` hook script is the simplest way to configure, and build

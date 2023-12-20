@@ -26,6 +26,7 @@
 #include <cstdint>
 
 #include "picolibrary/microchip/megaavr0/register.h"
+#include "picolibrary/register.h"
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 

@@ -27,6 +27,7 @@
 
 #include "picolibrary/bit_manipulation.h"
 #include "picolibrary/microchip/megaavr0/register.h"
+#include "picolibrary/register.h"
 
 namespace picolibrary::Microchip::megaAVR0::Peripheral {
 

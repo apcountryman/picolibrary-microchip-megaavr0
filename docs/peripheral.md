@@ -262,16 +262,6 @@ The `::picolibrary::Microchip::megaAVR0::Peripheral::WDT` class is defined in th
 header/source file pair.
 
 ## Peripheral Instances
-The `::picolibrary::Microchip::megaAVR0::Peripheral::Instance` template class is used to
-define Microchip megaAVR 0-series peripheral instances.
-The `::picolibrary::Microchip::megaAVR0::Peripheral::Instance` template class is defined
-in the
-[`include/picolibrary/microchip/megaavr0/peripheral/instance.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral/instance.h)/[`source/picolibrary/microchip/megaavr0/peripheral/instance.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral/instance.cc)
-header/source file pair.
-- To access a peripheral instance, use the
-  `::picolibrary::Microchip::megaAVR0::Peripheral::Instance::instance()` static member
-  function.
-
 Microchip megaAVR 0-series peripheral instances are defined in the
 [`include/picolibrary/microchip/megaavr0/peripheral.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/microchip/megaavr0/peripheral.h)/[`source/picolibrary/microchip/megaavr0/peripheral.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/source/picolibrary/microchip/megaavr0/peripheral.cc)
 header/source file pair.

@@ -1,7 +1,7 @@
 /**
  * picolibrary-microchip-megaavr0
  *
- * Copyright 2021-2023, Andrew Countryman <apcountryman@gmail.com> and the
+ * Copyright 2021-2024, Andrew Countryman <apcountryman@gmail.com> and the
  * picolibrary-microchip-megaavr0 contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this

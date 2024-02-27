@@ -87,11 +87,17 @@ add_subdirectory( avr-libcpp )
 link_libraries( avr-libcpp )
 
 # configure picolibrary
-set( PICOLIBRARY_HIL_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include" CACHE INTERNAL "" )
-
 set( PICOLIBRARY_ENABLE_AUTOMATED_TESTING OFF CACHE INTERNAL "" )
 
 set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING}" CACHE INTERNAL "" )
+
+add_library(
+    picolibrary-hil INTERFACE
+)
+target_include_directories(
+    picolibrary-hil
+    INTERFACE "${PROJECT_SOURCE_DIR}/include"
+)
 
 add_subdirectory( picolibrary )
 

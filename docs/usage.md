@@ -69,17 +69,6 @@ picolibrary-microchip-megaavr0 supports the following project configuration opti
           USART clock generator scaling factor (see
           [`include/picolibrary/testing/interactive/microchip/megaavr0/log.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/testing/interactive/microchip/megaavr0/log.h)
           for more information)
-- `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_PICOLIBRARY` (defaults to `ON`): use
-  parent project's picolibrary
-
-### picolibrary Configuration Requirements
-If `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_PICOLIBRARY` is `ON`, picolibrary
-must be configured as follows:
-- `PICOLIBRARY_HIL_INCLUDE_DIR` must be set to the path to
-  picolibrary-microchip-megaavr0's `include/` directory
-- `PICOLIBRARY_ENABLE_AUTOMATED_TESTING` must be `OFF`
-- `PICOLIBRARY_ENABLE_INTERACTIVE_TESTING` must be `ON` if
-  `PICOLIBRARY_MICROCHIP_MEGAAVR0_ENABLE_INTERACTIVE_TESTING` is `ON`
 
 ## Development
 The repository's Git `pre-commit` hook script is the simplest way to configure, and build

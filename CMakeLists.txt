@@ -80,25 +80,11 @@ if( "${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}" )
 endif( "${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}" )
 
 # configure avr-libcpp
-option(
-    PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP
-    "picolibrary-microchip-megaavr0: use parent project's avr-libcpp"
-    ON
-)
+set( AVRLIBCPP_SUPPRESS_SFR_MACROS ON CACHE INTERNAL "" )
 
-if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
-    set( AVRLIBCPP_SUPPRESS_SFR_MACROS ON CACHE INTERNAL "" )
-endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
+add_subdirectory( avr-libcpp )
 
-if( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
-    message( FATAL_ERROR "AVRLIBCPP_SUPPRESS_SFR_MACROS must be ON" )
-endif( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
-
-if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
-    add_subdirectory( avr-libcpp )
-
-    link_libraries( avr-libcpp )
-endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP} )
+link_libraries( avr-libcpp )
 
 # configure picolibrary
 option(

@@ -69,6 +69,13 @@ picolibrary-microchip-megaavr0 supports the following project configuration opti
           USART clock generator scaling factor (see
           [`include/picolibrary/testing/interactive/microchip/megaavr0/log.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr0/blob/main/include/picolibrary/testing/interactive/microchip/megaavr0/log.h)
           for more information)
+- `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP` (defaults to `ON`): use
+  parent project's avr-libcpp
+
+### avr-libcpp Configuration Requirements
+If `PICOLIBRARY_MICROCHIP_MEGAAVR0_USE_PARENT_PROJECT_AVRLIBCPP` is `ON`, avr-libcpp must
+be configured as follows:
+- `AVRLIBCPP_SUPPRESS_SFR_MACROS` must be `ON`
 
 ## Development
 The repository's Git `pre-commit` hook script is the simplest way to configure, and build

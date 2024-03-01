@@ -4,7 +4,6 @@
 1. [Dependency](#dependency)
     1. [Configuration Options](#configuration-options)
     1. [avr-libcpp Configuration Requirements](#avr-libcpp-configuration-requirements)
-    1. [picolibrary Configuration Requirements](#picolibrary-configuration-requirements)
 1. [Development](#development)
 
 ## Dependency
